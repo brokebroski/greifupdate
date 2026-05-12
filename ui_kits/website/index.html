@@ -1,0 +1,3265 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greif СНГ — Промышленная упаковка</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  /* ── КАРТА РОССИИ С ТОЧКАМИ ── */
+.map-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #e8f0e8;
+  border-radius: 24px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+.map-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.map-point {
+  cursor: pointer;
+  transition: r 0.2s, filter 0.2s;
+}
+
+.map-point circle {
+  transition: r 0.2s;
+}
+
+.map-point:hover circle {
+  r: 12;
+  filter: drop-shadow(0 0 8px rgba(0,107,76,0.5));
+}
+
+.tooltip {
+  position: absolute;
+  background: white;
+  color: #1a2e1a;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+  border-left: 4px solid var(--green-primary);
+  pointer-events: none;
+  white-space: nowrap;
+  z-index: 100;
+  transition: opacity 0.2s;
+  font-family: 'Roboto', sans-serif;
+}
+
+.tooltip strong {
+  color: var(--green-primary);
+  display: block;
+  margin-bottom: 4px;
+  font-size: 14px;
+}
+
+.tooltip .address {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+  white-space: normal;
+  max-width: 220px;
+}
+
+@media (max-width: 768px) {
+  .tooltip {
+    white-space: normal;
+    max-width: 180px;
+    font-size: 11px;
+    padding: 8px 12px;
+  }
+}
+  
+  /* ── ПЛАВНОЕ ВЫЕЗЖАНИЕ КАРТИНКИ СПРАВА ── */
+.hero-drums {
+  opacity: 0;
+  transform: translateX(50px);
+  animation: slideInFromRight 0.8s ease-out forwards;
+}
+
+@keyframes slideInFromRight {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  100% {
+    opacity: 0.9;
+    transform: translateX(0);
+  }
+}
+  .dropbtn {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+}
+  /* ── СТРАНИЦА ПРОДУКТА (СТАЛЬНЫЕ БОЧКИ) ── */
+.product-detail-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 32px;
+}
+
+.product-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+
+.product-image-col {
+  background: var(--green-light-bg);
+  border-radius: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  border: 1px solid var(--border);
+}
+
+.product-main-image svg {
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+}
+
+.product-info-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.product-description {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+
+.product-features {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.feature-block {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.feature-icon-small {
+  font-size: 32px;
+  min-width: 48px;
+}
+
+.feature-text h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-primary);
+  margin-bottom: 6px;
+}
+
+.feature-text p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.btn-consult {
+  background: var(--green-primary);
+  color: white;
+  border: none;
+  padding: 14px 28px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.btn-consult:hover {
+  background: var(--green-secondary);
+}
+
+/* Табы */
+.product-tabs {
+  margin: 48px 0;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tab-headers {
+  display: flex;
+  flex-wrap: wrap;
+  background: var(--green-light-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.tab-btn {
+  padding: 14px 24px;
+  background: transparent;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tab-btn.active {
+  background: white;
+  color: var(--green-primary);
+  border-bottom: 2px solid var(--green-primary);
+  margin-bottom: -1px;
+}
+
+.tab-content {
+  display: none;
+  padding: 32px;
+  background: white;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+.tab-content h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-primary);
+  margin: 16px 0 8px 0;
+}
+
+.tab-content h4:first-child {
+  margin-top: 0;
+}
+
+.tab-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+
+.tab-content ul {
+  margin: 12px 0 16px 20px;
+}
+
+.tab-content li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+/* Регионы */
+.regions-section {
+  margin: 48px 0;
+  padding: 32px;
+  background: var(--green-light-bg);
+  border-radius: 16px;
+}
+
+.regions-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 24px;
+}
+
+.regions-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.region-group h4 {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-primary);
+  margin-bottom: 12px;
+}
+
+.region-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.region-list span {
+  font-size: 12px;
+  padding: 4px 12px;
+  background: white;
+  border-radius: 20px;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+/* Менеджер */
+.manager-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px 32px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.manager-card h4 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 8px;
+}
+
+.manager-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--green-primary);
+  margin-bottom: 12px;
+}
+
+.manager-contacts {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.manager-contacts a {
+  font-size: 14px;
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.manager-contacts a:hover {
+  color: var(--green-primary);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .product-detail-page {
+    padding: 20px;
+  }
+  
+  .product-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  
+  .tab-headers {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  
+  .tab-btn {
+    white-space: nowrap;
+  }
+  
+  .tab-content {
+    padding: 20px;
+  }
+  
+  .regions-section {
+    padding: 20px;
+  }
+  
+  .manager-contacts {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+  /* ── ВЫПАДАЮЩЕЕ МЕНЮ ── */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  cursor: pointer;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--green-primary);
+  padding: 36px 32px;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.service-card:hover {
+  box-shadow: 0 8px 32px rgba(0,107,76,0.12);
+  transform: translateY(-2px);
+}
+.service-card-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--green-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.service-card-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+.service-card-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+.service-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--green-primary);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  min-width: 220px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  z-index: 100;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  top: 100%;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  border-bottom: 1px solid var(--border);
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  background-color: var(--green-light-bg);
+  color: var(--green-primary);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+  /* ── СТИЛИ ДЛЯ СТРАНИЦЫ ВАКАНСИЙ ── */
+.career-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.city-menu-container {
+  margin-bottom: 30px;
+}
+
+.city-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  background: #f5faf5;
+  padding: 12px;
+  border-radius: 50px;
+  border: 1px solid #d0e0d0;
+}
+
+.city-tab {
+  padding: 10px 20px;
+  border: none;
+  background: transparent;
+  color: #2f4d2f;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.city-tab.active {
+  background: var(--green-primary);
+  color: white;
+}
+
+.city-tab:hover:not(.active) {
+  background: #e8f3e8;
+}
+
+.city-title {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--green-primary);
+  margin: 30px 0 20px 0;
+  padding-left: 12px;
+  border-left: 4px solid var(--green-primary);
+}
+
+.city-section {
+  display: none;
+}
+
+.city-section.active {
+  display: block;
+}
+
+.vacancy-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.vacancy-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 3px 15px rgba(0, 40, 0, 0.05);
+  border: 1px solid #d0e0d0;
+  display: flex;
+  flex-direction: column;
+}
+
+.vacancy-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a2e1a;
+  margin: 0 0 12px 0;
+}
+
+.vacancy-card p {
+  color: #2f4d2f;
+  margin: 0 0 15px 0;
+  flex-grow: 1;
+}
+
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.details-btn, .telegram-btn {
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  flex: 1;
+}
+
+.details-btn {
+  background: #e8f3e8;
+  color: var(--green-primary);
+  border: 1px solid var(--green-primary);
+}
+
+.details-btn:hover {
+  background: var(--green-primary);
+  color: white;
+}
+
+.telegram-btn {
+  background: #0088cc;
+  color: white !important;
+  border: none;
+}
+
+.telegram-btn:hover {
+  background: #006699;
+}
+
+.why-us {
+  margin: 50px 0;
+}
+
+.why-us h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: #1a2e1a;
+}
+
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.why-card {
+  background: #f8faf8;
+  padding: 25px 15px;
+  border-radius: 16px;
+  text-align: center;
+  border: 1px solid #e0ede0;
+}
+
+.why-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.why-card h4 {
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  color: #1a2e1a;
+}
+
+.why-card p {
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: #5a6a65;
+  margin: 0;
+}
+
+.company-section {
+  margin: 40px 0;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.photo-caption {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(255,255,255,0.95);
+  padding: 10px 20px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.social-section {
+  margin: 40px 0;
+  text-align: center;
+}
+
+.social-section h3 {
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  color: #1a2e1a;
+}
+
+.social-grid {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.social-grid a {
+  min-width: 150px;
+  padding: 12px 25px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-weight: 500;
+  background: white;
+  color: #1a2e1a;
+  border: 1px solid #d0e0d0;
+  transition: all 0.3s;
+}
+
+.social-grid a:hover {
+  background: var(--green-primary);
+  color: white !important;
+  border-color: var(--green-primary);
+}
+
+/* Попап */
+#vacancyPopup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  z-index: 999999;
+}
+
+#vacancyPopup > div {
+  background: white;
+  width: 90%;
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 25px;
+  border-radius: 20px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 36px;
+  height: 36px;
+  background: var(--green-primary);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .career-page {
+    padding: 20px 15px;
+  }
+  
+  .city-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+  
+  .city-tab {
+    white-space: nowrap;
+  }
+  
+  .vacancy-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .why-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .why-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .details-btn, .telegram-btn {
+    width: 100%;
+  }
+}
+  /* Добавить в конец раздела <style> */
+  /* ── НОВЫЙ ФУТЕР (узкий) ───────────────────────── */
+.footer {
+  background: var(--green-footer);
+  padding: 32px 0 24px;
+  margin-top: 0;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+.footer-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 20px;
+}
+
+.footer-menu {
+  display: flex;
+  gap: 28px;
+}
+
+.footer-menu a {
+  font-size: 13px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.footer-menu a:hover {
+  color: #6fcba5;
+}
+
+.footer-copyright {
+  font-size: 11px;
+  color: rgba(255,255,255,0.45);
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.social-icon {
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  background-color: rgba(255,255,255,0.1);
+  border-radius: 50%;
+  text-indent: -9999px;
+  transition: background-color 0.15s;
+}
+
+.social-icon_fb {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.social-icon_yt {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M23.5 6.2s-.2-1.6-1-2.3c-.9-1-2-1-2.5-1C17.5 2.7 12 2.7 12 2.7s-5.5 0-8 .2c-.5 0-1.6 0-2.5 1-.8.7-1 2.3-1 2.3S0 8.1 0 10v1.8c0 1.9.2 3.8.2 3.8s.2 1.6 1 2.3c.9 1 2 1 2.5 1 1.8.2 7.5.2 7.5.2s5.5 0 8-.2c.5 0 1.6 0 2.5-1 .8-.7 1-2.3 1-2.3s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 15.2v-7l6.5 3.5-6.5 3.5z'/%3E%3C/svg%3E");
+  background-size: 16px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.social-icon:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+.country-chooser {
+  text-align: right;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.country-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.country-chooser ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.country-chooser a {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.country-chooser a:hover {
+  color: #6fcba5;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .footer-info {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+  
+  .footer-menu {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .country-chooser {
+    text-align: center;
+    margin-top: 4px;
+  }
+  
+  .country-chooser ul {
+    justify-content: center;
+  }
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Roboto', Arial, sans-serif; background: #fff; color: #1a1a1a; }
+
+:root {
+  --green-primary:   #006B4C;
+  --green-secondary: #008B63;
+  --green-light-bg:  #F0F7F3;
+  --green-footer:    #003D2D;
+  --text-dark:       #1A1A1A;
+  --text-muted:      #5a6a65;
+  --text-light:      #ffffff;
+  --border:          #d4e4dc;
+}
+
+/* ── HEADER ───────────────────────── */
+.site-header { background: #fff; border-bottom: 2px solid var(--green-primary); position: sticky; top: 0; z-index: 100; }
+.header-top { background: var(--green-footer); padding: 6px 0; }
+.header-top-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; justify-content: space-between; align-items: center; }
+.header-top span { font-size: 11px; color: rgba(255,255,255,0.55); letter-spacing: 0.04em; }
+.header-top a { font-size: 11px; color: rgba(255,255,255,0.6); text-decoration: none; }
+.header-main { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; gap: 32px; min-height: 68px; padding-top: 10px; padding-bottom: 10px; }
+
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; flex-shrink: 0; }
+.logo img { height: 52px; width: auto; display: block; }
+
+nav { display: flex; gap: 2px; flex: 1; align-items: center; }
+nav a, .dropbtn { 
+  font-size: 13px; 
+  font-weight: 500; 
+  color: #333; 
+  text-decoration: none; 
+  padding: 6px 14px; 
+  letter-spacing: 0.01em; 
+  transition: color 0.15s; 
+  display: inline-block;
+  line-height: normal;
+}
+nav a:hover, nav a.active, .dropbtn:hover { color: var(--green-primary); font-weight: 700; }
+nav a.active { border-bottom: 2px solid var(--green-primary); }
+
+/* ── HERO ─────────────────────────── */
+.hero { position: relative; min-height: 500px; display: flex; align-items: center; overflow: hidden; background: #0a1f17; }
+.hero-bg { position: absolute; inset: 0; }
+.hero-grid { position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent, transparent 59px, rgba(0,107,76,0.07) 59px, rgba(0,107,76,0.07) 60px), repeating-linear-gradient(90deg, transparent, transparent 59px, rgba(0,107,76,0.07) 59px, rgba(0,107,76,0.07) 60px); }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,61,45,0.97) 45%, rgba(0,61,45,0.5) 80%, transparent 100%); }
+.hero-drums { position: absolute; right: 0; top: 0; bottom: 0; width: 55%; display: flex; align-items: center; justify-content: center; opacity: 0.9; }
+.hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; padding: 80px 32px; flex: 1; }
+.hero-eyebrow { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #6fcba5; margin-bottom: 18px; }
+.hero-headline { font-size: 54px; font-weight: 900; line-height: 1.05; color: #fff; letter-spacing: -0.025em; margin-bottom: 20px; max-width: 540px; }
+.hero-headline em { font-style: normal; color: #6fcba5; }
+.hero-sub { font-size: 15px; color: rgba(255,255,255,0.65); line-height: 1.65; max-width: 460px; margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 14px; margin-bottom: 56px; }
+.btn-hero-primary { background: var(--green-primary); color: #fff; border: none; padding: 15px 32px; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: background 0.15s; }
+.btn-hero-primary:hover { background: var(--green-secondary); }
+.btn-hero-secondary { background: transparent; color: #fff; border: 2px solid rgba(255,255,255,0.5); padding: 13px 30px; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: border-color 0.15s, background 0.15s; }
+.btn-hero-secondary:hover { border-color: rgba(255,255,255,0.85); background: rgba(255,255,255,0.08); }
+.hero-stats { display: flex; gap: 48px; }
+.hero-stat-num { font-size: 32px; font-weight: 900; color: #6fcba5; letter-spacing: -0.02em; }
+.hero-stat-label { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.65); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+
+/* ── PRODUCTS ─────────────────────── */
+.products { background: #fff; padding: 72px 0; }
+.section-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.section-eyebrow { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--green-primary); margin-bottom: 10px; }
+.section-title { font-size: 30px; font-weight: 900; color: var(--text-dark); letter-spacing: -0.02em; margin-bottom: 8px; }
+.section-sub { font-size: 14px; color: var(--text-muted); margin-bottom: 40px; line-height: 1.6; }
+.section-header-row { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; }
+.btn-outline-green { background: transparent; color: var(--green-primary); border: 2px solid var(--green-primary); padding: 10px 20px; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 12px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.15s; }
+.btn-outline-green:hover { background: var(--green-primary); color: #fff; }
+
+.product-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.product-card { background: #fff; border: 1px solid var(--border); overflow: hidden; position: relative; transition: box-shadow 0.2s, transform 0.2s; cursor: pointer; }
+.product-card:hover { box-shadow: 0 8px 28px rgba(0,107,76,0.13); transform: translateY(-3px); }
+.product-card-stripe { height: 4px; background: var(--green-primary); }
+.product-card-img { padding: 28px 20px 16px; display: flex; justify-content: center; background: var(--green-light-bg); border-bottom: 1px solid var(--border); min-height: 130px; align-items: center; }
+.product-card-body { padding: 16px 18px 12px; }
+.product-card-cat { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green-primary); margin-bottom: 6px; }
+.product-card-title { font-size: 14px; font-weight: 700; color: var(--text-dark); margin-bottom: 7px; line-height: 1.3; }
+.product-card-desc { font-size: 12px; color: var(--text-muted); line-height: 1.55; margin-bottom: 10px; }
+.product-card-volume { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; font-weight: 700; color: #888; letter-spacing: 0.04em; }
+.product-card-footer { padding: 10px 18px 16px; display: flex; justify-content: space-between; align-items: center; }
+.product-tag { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; padding: 3px 8px; text-transform: uppercase; letter-spacing: 0.07em; background: rgba(0,107,76,0.1); color: var(--green-primary); }
+.product-link { font-size: 12px; font-weight: 700; color: var(--green-primary); background: none; border: none; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; font-family: 'Roboto', sans-serif; padding: 0; }
+
+/* ── FEATURES ─────────────────────── */
+.features { background: var(--green-light-bg); padding: 72px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 40px; }
+.feature-card { background: #fff; border: 1px solid var(--border); padding: 32px 28px; position: relative; }
+.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--green-primary); }
+.feature-icon { width: 52px; height: 52px; background: var(--green-primary); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.feature-icon svg { color: #fff; }
+.feature-title { font-size: 16px; font-weight: 700; color: var(--text-dark); margin-bottom: 10px; }
+.feature-desc { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+.feature-list { margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+.feature-list-item { display: flex; align-items: center; gap: 8px; font-size: 12px; color: var(--text-muted); }
+.feature-bullet { width: 6px; height: 6px; background: var(--green-primary); flex-shrink: 0; }
+
+/* ── HEADER QUICK ACTIONS ────────────────── */
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+.header-action-btn {
+  background: transparent;
+  border: 1.5px solid var(--green-primary);
+  color: var(--green-primary);
+  font-family: 'Roboto', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  padding: 5px 14px;
+  cursor: pointer;
+  text-align: left;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+  line-height: 1.3;
+}
+.header-action-btn:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+
+/* ── POPUP OVERLAY ───────────────────────── */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+.popup-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+.popup-box {
+  background: #fff;
+  width: 100%;
+  max-width: 480px;
+  margin: 20px;
+  border-top: 4px solid var(--green-primary);
+  box-shadow: 0 16px 48px rgba(0,0,0,0.2);
+  transform: translateY(-12px);
+  transition: transform 0.2s;
+}
+.popup-overlay.active .popup-box {
+  transform: translateY(0);
+}
+.popup-head {
+  padding: 24px 28px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--border);
+}
+.popup-title {
+  font-size: 17px;
+  font-weight: 900;
+  color: var(--text-dark);
+  line-height: 1.2;
+}
+.popup-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+.popup-close {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #aaa;
+  font-size: 22px;
+  line-height: 1;
+  padding: 0;
+  margin-left: 12px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.popup-close:hover { color: #333; }
+.popup-body {
+  padding: 22px 28px 28px;
+}
+.popup-body .form-field { margin-bottom: 14px; }
+.popup-body .form-field:last-child { margin-bottom: 0; }
+.popup-success {
+  display: none;
+  padding: 28px;
+  text-align: center;
+}
+.popup-success-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--green-primary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+.popup-success-icon svg { color: #fff; }
+.popup-success-title {
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--text-dark);
+  margin-bottom: 8px;
+}
+.popup-success-text {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ── FOOTER ───────────────────────── */
+.footer { background: var(--green-footer); }
+.footer-main { max-width: 1200px; margin: 0 auto; padding: 56px 32px 48px; display: flex; gap: 48px; }
+.footer-brand { width: 220px; flex-shrink: 0; }
+.footer-logo { font-weight: 900; font-size: 28px; color: #6fcba5; letter-spacing: -1px; line-height: 1; margin-bottom: 4px; }
+.footer-logo-sub { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 16px; }
+.footer-desc { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.65; margin-bottom: 18px; }
+.footer-tagline { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; color: #6fcba5; letter-spacing: 0.18em; text-transform: uppercase; }
+.footer-col { flex: 1; }
+.footer-col-heading { font-family: 'Roboto Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #6fcba5; margin-bottom: 16px; }
+.footer-col a { display: block; font-size: 12px; color: rgba(255,255,255,0.5); text-decoration: none; padding-bottom: 8px; transition: color 0.15s; }
+.footer-col a:hover { color: rgba(255,255,255,0.85); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,0.07); }
+.footer-bottom-inner { max-width: 1200px; margin: 0 auto; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+.footer-copy { font-size: 11px; color: rgba(255,255,255,0.3); }
+.footer-bottom-links { display: flex; gap: 20px; }
+.footer-bottom-links a { font-size: 11px; color: rgba(255,255,255,0.3); text-decoration: none; }
+
+/* ── PAGE TRANSITIONS ─────────────── */
+.page { animation: fadeIn 0.2s ease; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* ── PAGE: PRODUCTS ───────────────── */
+.page-hero { background: var(--green-footer); border-bottom: 3px solid var(--green-primary); padding: 44px 0 38px; }
+.page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+
+/* ── PAGE: CONTACT ────────────────── */
+.contact-form { background: #fff; border: 1px solid var(--border); padding: 40px; max-width: 760px; margin: 40px auto; }
+.form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 18px; }
+.form-field { margin-bottom: 18px; }
+.form-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: #333; margin-bottom: 6px; font-family: 'Roboto Condensed', sans-serif; }
+.form-input { width: 100%; padding: 10px 12px; border: 1.5px solid var(--border); font-family: 'Roboto', sans-serif; font-size: 14px; color: #111; outline: none; transition: border-color 0.15s; }
+.form-input:focus { border-color: var(--green-primary); box-shadow: 0 0 0 3px rgba(0,107,76,0.1); }
+.btn-form-submit { background: var(--green-primary); color: #fff; border: none; padding: 14px 32px; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; transition: background 0.15s; }
+.btn-form-submit:hover { background: var(--green-secondary); }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+  <div class="header-top">
+    <div class="header-top-inner">
+      <span>Производитель промышленной упаковки · UN-сертификация</span>
+      <div style="display:flex;gap:12px;align-items:center">
+        <a href="#">RU</a><span style="color:#2a5a46">|</span><a href="#">EN</a>
+        <span style="color:#2a5a46;margin:0 4px">·</span>
+        <a href="tel:+78007000000">+7 (800) 700-00-00</a>
+      </div>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="#" class="logo" onclick="navigate('home');return false;">
+      <img src="https://www.greif.ru/wp-content/themes/greif/images/logo.png" alt="Greif" style="height:52px;width:auto;display:block;">
+    </a>
+    <nav id="main-nav">
+  <a href="#" data-page="about" onclick="navigate('about');return false;">О компании</a>
+  <div class="dropdown">
+    <a href="#" class="dropbtn" onclick="navigate('products');return false;">Продукция</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="navigateProductSubpage('steelDrums');return false;">Стальные бочки</a>
+      <a href="#" onclick="navigateProductSubpage('plastic-drums');return false;">Пластиковые барабаны</a>
+      <a href="#" onclick="navigateProductSubpage('ibc');return false;">Еврокубы (IBC)</a>
+      <a href="#" onclick="navigateProductSubpage('conical');return false;">Конические бочки</a>
+      <a href="#" onclick="navigateProductSubpage('canisters');return false;">Канистры</a>
+      <a href="#" onclick="navigateProductSubpage('clover');return false;">Кловертейнеры</a>
+    </div>
+  </div>
+  <div class="dropdown">
+    <a href="#" class="dropbtn" onclick="navigate('services');return false;">Сервисы</a>
+    <div class="dropdown-content">
+      <a href="#" onclick="navigateIBCBuy();return false;">Покупаем б/у еврокубы</a>
+      <a href="#" onclick="navigate('branding');return false;">Брендирование упаковки</a>
+      <a href="#" onclick="navigate('specification');return false;">Подбор спецификации</a>
+      <a href="#" onclick="navigate('logistics');return false;">Оптимизация логистики</a>
+    </div>
+  </div>
+  <a href="#" data-page="vacancies" onclick="navigate('vacancies');return false;">Вакансии</a>
+  <a href="#" data-page="contact" onclick="navigate('contact');return false;">Контакты</a>
+</nav>
+    <div class="header-actions">
+      <button class="header-action-btn" onclick="openPopup('popup-hr')">Связаться с отделом кадров</button>
+      <button class="header-action-btn" onclick="openPopup('popup-request')">Сделать запрос</button>
+      <button class="header-action-btn" onclick="openPopup('popup-director')">Написать директору</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══ PAGES ════════════════════════════════════════════════ -->
+<main id="main-content"></main>
+
+
+
+<!-- ══ POPUP: ОТДЕЛ КАДРОВ ═══════════════════════════════ -->
+<div class="popup-overlay" id="popup-hr" onclick="closePopupOnOverlay(event, 'popup-hr')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Связаться с отделом кадров</div>
+        <div class="popup-subtitle">Вопросы трудоустройства и карьеры</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-hr')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-hr-form">
+      <div class="form-field">
+        <label class="form-label">Ваше имя *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="hr-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон *</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="hr-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="example@mail.ru" id="hr-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Интересующая вакансия</label>
+        <input class="form-input" type="text" placeholder="Менеджер по продажам, инженер и др." id="hr-vacancy">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Сообщение</label>
+        <textarea class="form-input" rows="3" placeholder="Опишите ваш вопрос или интерес..." id="hr-message" style="resize:vertical;min-height:72px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-hr')">Отправить</button>
+    </div>
+    <div class="popup-success" id="popup-hr-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Сообщение отправлено!</div>
+      <div class="popup-success-text">Специалист отдела кадров свяжется с вами в течение 1 рабочего дня.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP: СДЕЛАТЬ ЗАПРОС ═════════════════════════════ -->
+<div class="popup-overlay" id="popup-request" onclick="closePopupOnOverlay(event, 'popup-request')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Сделать запрос</div>
+        <div class="popup-subtitle">Запрос на продукцию или коммерческое предложение</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-request')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-request-form">
+      <div class="form-field">
+        <label class="form-label">Компания *</label>
+        <input class="form-input" type="text" placeholder="ООО «Название»" id="req-company">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Контактное лицо *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="req-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон *</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="req-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="example@company.ru" id="req-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Тема запроса *</label>
+        <select class="form-input" id="req-subject" style="background:#fff;cursor:pointer">
+          <option value="">— Выберите тему —</option>
+          <option>Запрос коммерческого предложения</option>
+          <option>Технические характеристики продукции</option>
+          <option>Условия поставки и логистика</option>
+          <option>Сертификация и документация</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Описание запроса</label>
+        <textarea class="form-input" rows="3" placeholder="Опишите ваш запрос подробнее..." id="req-message" style="resize:vertical;min-height:72px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-request')">Отправить запрос</button>
+    </div>
+    <div class="popup-success" id="popup-request-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Запрос принят!</div>
+      <div class="popup-success-text">Наш менеджер обработает ваш запрос и свяжется с вами в течение рабочего дня.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP: НАПИСАТЬ ДИРЕКТОРУ ═════════════════════════ -->
+<div class="popup-overlay" id="popup-director" onclick="closePopupOnOverlay(event, 'popup-director')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Написать директору</div>
+        <div class="popup-subtitle">Прямое обращение к руководству компании</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-director')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-director-form">
+      <div class="form-field">
+        <label class="form-label">Ваше имя *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="dir-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Должность / Компания</label>
+        <input class="form-input" type="text" placeholder="Менеджер, ООО «Компания»" id="dir-position">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email *</label>
+        <input class="form-input" type="email" placeholder="example@mail.ru" id="dir-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="dir-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Тема обращения *</label>
+        <input class="form-input" type="text" placeholder="Кратко опишите суть обращения" id="dir-subject">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Текст обращения *</label>
+        <textarea class="form-input" rows="4" placeholder="Изложите ваше обращение..." id="dir-message" style="resize:vertical;min-height:96px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-director')">Отправить обращение</button>
+    </div>
+    <div class="popup-success" id="popup-director-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Обращение отправлено!</div>
+      <div class="popup-success-text">Ваше обращение передано директору. Ответ придёт на указанный email в течение 2–3 рабочих дней.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <a href="#" onclick="navigate('home');return false;" style="flex-shrink:0;">
+        <img src="https://www.greif.ru/wp-content/themes/greif/images/logo.png" alt="Greif" style="height:36px;width:auto;display:block;filter:brightness(0) invert(1);opacity:0.75;">
+      </a>
+      <div class="footer-menu">
+        <a href="#">О компании</a>
+        <a href="#">Продукция</a>
+        <a href="#" onclick="navigate('services');return false;">Сервисы</a>
+        <a href="#">Контакты</a>
+        <a href="#">Вакансии</a>
+      </div>
+      
+      <div class="footer-copyright">
+        Greif Russia. Copyright by GREIF Inc. All rights reserved.
+      </div>
+
+      <ul class="social-icons">
+        <li><a href="https://ru-ru.facebook.com/GreifInc/" class="social-icon social-icon_fb" target="_blank">Facebook</a></li>
+        <li><a href="https://www.youtube.com/channel/UCFa1IzCyPcTp-ckGTcIMwNw/featured" class="social-icon social-icon_yt" target="_blank">Youtube</a></li>
+      </ul>
+    </div>
+
+    <div class="country-chooser">
+      <span class="country-label">Greif Global Website</span>
+      <ul>
+        <li><a href="https://www.greif.com/" target="_blank">🌐 Global</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── PAGES ──────────────────────────────────────────────────
+const PRODUCTS = [
+  { cat: 'Стальные бочки', title: 'Стальные бочки', desc: 'Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов, не оказывающих воздействия на сталь.', vol: '200 л', tag: '', icon: 'drum', img: 'http://www.greif.ru/wp-content/uploads/bochka.png', page: 'steelDrums' },
+  { cat: 'Еврокубы', title: 'Еврокубы (IBC)', desc: 'Еврокубы — пластиковые контейнеры средней грузоподъемности (IBC), применяемые для перевозки наливных и насыпных грузов.', vol: '1000 л', tag: '', icon: 'ibc', img: 'http://www.greif.ru/wp-content/uploads/8dc1514e-ea8b-47d1-8f6a-113233fdc7f3-1.png', page: 'ibc' },
+  { cat: 'Конические бочки', title: 'Конические бочки', desc: 'Стальная тара для транспортировки и хранения овощных и фруктовых концентратов, а также непищевых продуктов.', vol: '', tag: '', icon: 'conical', img: 'http://www.greif.ru/wp-content/uploads/konboch.png', page: 'conical' },
+  { cat: 'Канистры', title: 'Канистры', desc: 'Многослойные канистры используются для хранения агрохимических продуктов.', vol: '', tag: '', icon: 'canister', img: 'http://www.greif.ru/wp-content/uploads/kanistry.png', page: 'canisters' },
+  { cat: 'Кловертейнеры', title: 'Кловертейнеры', desc: 'Представляют собой картонные IBC, которые успешно применяются для фасовки битума и обеспечивают его эффективную логистику.', vol: '', tag: '', icon: 'clover', img: 'http://www.greif.ru/wp-content/uploads/klover.png', page: 'clover' },
+];
+
+const drumSVG = (color) => `<svg width="68" height="80" viewBox="0 0 80 90" fill="none">
+  <rect x="15" y="10" width="50" height="70" rx="3" fill="${color}11" stroke="${color}" stroke-width="2.5"/>
+  <ellipse cx="40" cy="16" rx="25" ry="7" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <ellipse cx="40" cy="74" rx="25" ry="7" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <rect x="15" y="34" width="50" height="8" fill="${color}" opacity="0.7"/>
+  <rect x="15" y="52" width="50" height="8" fill="${color}" opacity="0.7"/>
+</svg>`;
+
+const ibcSVG = (color) => `<svg width="80" height="76" viewBox="0 0 100 90" fill="none">
+  <rect x="5" y="20" width="90" height="56" rx="3" fill="${color}11" stroke="${color}" stroke-width="2.5"/>
+  <rect x="18" y="10" width="64" height="14" rx="3" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <rect x="0" y="70" width="100" height="14" rx="2" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <line x1="5" y1="38" x2="95" y2="38" stroke="${color}" stroke-width="1" stroke-dasharray="6 3" opacity="0.5"/>
+  <line x1="5" y1="52" x2="95" y2="52" stroke="${color}" stroke-width="1" stroke-dasharray="6 3" opacity="0.5"/>
+</svg>`;
+
+const conicalSVG = (color) => `<svg width="60" height="80" viewBox="0 0 80 90" fill="none">
+  <polygon points="40,10 70,70 10,70" fill="${color}11" stroke="${color}" stroke-width="2.5"/>
+  <ellipse cx="40" cy="70" rx="30" ry="8" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <line x1="30" y1="40" x2="50" y2="40" stroke="${color}" stroke-width="2"/>
+</svg>`;
+
+const canisterSVG = (color) => `<svg width="54" height="80" viewBox="0 0 70 90" fill="none">
+  <rect x="12" y="20" width="46" height="60" rx="4" fill="${color}11" stroke="${color}" stroke-width="2.5"/>
+  <rect x="20" y="10" width="30" height="14" rx="3" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <rect x="26" y="36" width="18" height="26" rx="2" fill="none" stroke="${color}" stroke-width="1.5" stroke-dasharray="4 2"/>
+</svg>`;
+
+const cloverSVG = (color) => `<svg width="70" height="70" viewBox="0 0 100 90" fill="none">
+  <rect x="10" y="15" width="80" height="60" rx="5" fill="${color}11" stroke="${color}" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <rect x="25" y="5" width="50" height="14" rx="2" fill="${color}22" stroke="${color}" stroke-width="2"/>
+  <path d="M30 45 L70 45 M50 25 L50 65" stroke="${color}" stroke-width="1.5" stroke-dasharray="4 2"/>
+</svg>`;
+
+function getIcon(type, color) {
+  if (type === 'drum') return drumSVG(color);
+  if (type === 'ibc') return ibcSVG(color);
+  if (type === 'conical') return conicalSVG(color);
+  if (type === 'canister') return canisterSVG(color);
+  if (type === 'clover') return cloverSVG(color);
+  return drumSVG(color);
+}
+
+function productCard(p) {
+  const nav = p.page && PAGES[p.page] ? `navigateProductSubpage('${p.page}')` : `navigate('products')`;
+  return `
+  <div class="product-card" onclick="${nav}">
+    <div class="product-card-stripe"></div>
+    <div class="product-card-img">${p.img ? `<img src="${p.img}" alt="${p.title}" style="max-height:110px;max-width:100%;object-fit:contain;">` : getIcon(p.icon, '#006B4C')}</div>
+    <div class="product-card-body">
+      <div class="product-card-cat">${p.cat}</div>
+      <div class="product-card-title">${p.title}</div>
+      <div class="product-card-desc">${p.desc}</div>
+      ${p.vol ? `<div class="product-card-volume">${p.vol}</div>` : ''}
+    </div>
+    <div class="product-card-footer">
+      ${p.tag ? `<span class="product-tag">${p.tag}</span>` : '<span></span>'}
+      <button class="product-link" onclick="event.stopPropagation();${nav}">ПЕРЕЙТИ →</button>
+    </div>
+  </div>`;
+}
+
+const PAGES = {
+  steelDrums: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Стальные бочки</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Надёжная промышленная упаковка для любых задач</p>
+    </div>
+  </div>
+  
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <!-- Левая колонка - изображение -->
+      <div class="product-image-col">
+        <div class="product-main-image">
+          <img src="http://www.greif.ru/wp-content/uploads/bochka.png" alt="Стальные бочки" style="max-width:100%;max-height:280px;object-fit:contain;">
+        </div>
+      </div>
+      
+      <!-- Правая колонка - описание -->
+      <div class="product-info-col">
+        <p class="product-description">Большие металлические бочки являются нашим ключевым продуктом. Они соответствуют требованиям международных и национальных стандартов, предъявляемым к стальным бочкам.</p>
+        
+        <div class="product-features">
+          <div class="feature-block">
+            <div class="feature-icon-small">📦</div>
+            <div class="feature-text">
+              <h4>Поможем</h4>
+              <p>Подбор упаковки редко обходится стандартными решениями. Наши менеджеры подберут оптимальные параметры упаковки, исходя из конкретных задач клиента.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">🚚</div>
+            <div class="feature-text">
+              <h4>Доставим</h4>
+              <p>Мы готовы организовать доставку вашей продукции с использованием собственного транспорта или привлекая проверенные транспортные компании.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">💬</div>
+            <div class="feature-text">
+              <h4>Посоветуем</h4>
+              <p>Мы уделяем равное внимание как крупным корпорациям, так и молодым компаниям. Для каждого клиента мы готовы предложить решения, способствующие оптимизации логистики и производственных операций.</p>
+            </div>
+          </div>
+        </div>
+        
+        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+      </div>
+    </div>
+    
+    <!-- Табы с детальной информацией -->
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="inner">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="caps">СИСТЕМЫ УКУПОРКИ</button>
+      </div>
+      
+      <div class="tab-content active" id="tab-desc">
+        <p>Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения металлических бочек — химическая, нефтехимическая, металлургическая, лакокрасочная и пищевая отрасли. Все производимые бочки проходят многочисленные испытания, в том числе и уникальную проверку на герметичность на гелиевом тестере. Наши бочки являются одним из самых надежных упаковочных решений для транспортировки опасных грузов. Производства бочек расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Ангарске. В 2018 году запущена новая высокопроизводительная линия мощностью 2 миллиона бочек в год в Индустриальном парке Ворсино (Калужская область).</p>
+        <p>Мы выпускаем бочки двух типов — закатная стальная бочка и бочка с открывающимся верхом. Стандартная стальная бочка имеет объем от 210 до 230 л. Она состоит из верхнего и нижнего доньев (крышки) и корпуса (обечайка). Корпус бочки сваривается продольным швом, затем донья присоединяются к обечайке закатным швом. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Днище имеет куполообразный профиль, что способствует усилению стойкости конструкции бочки по отношению к вибрационным воздействиям.</p>
+      </div>
+      
+      <div class="tab-content" id="tab-specs">
+        <h4>Цилиндрические стальные бочки</h4>
+        <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС производства ОАО «Северсталь», которая соответствует международным стандартам ISO 3574:2012 «Сталь углеродистая листовая, обжатая в холодном состоянии, торгового качества и для вытяжки» или EN10130/EN10131.</p>
+        
+        <h4>Бочка с закрытым верхом, тип 1А1</h4>
+        <ul>
+          <li><strong>Стандартный объем:</strong> 216,5 л (до 230 л)</li>
+          <li><strong>Верх:</strong> несъемное верхнее дно</li>
+          <li><strong>Укупорка:</strong> горловины и крышки-пломбы Tab-Seal® 2” и ¾” Tri-Sure® с прокладками 4S®. Горловины пломбируются крышками-пломбами Tab Seal Caps®.</li>
+        </ul>
+        
+        <h4>Бочка с открывающимся верхом, тип 1А2</h4>
+        <ul>
+          <li><strong>Стандартный объем:</strong> 210 л</li>
+          <li><strong>Верх:</strong> съемная крышка</li>
+          <li><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем</li>
+        </ul>
+        
+        <p>Толщина стали, из которой изготавливается бочка, может быть разной — от 0,8 до 1,2 мм; соответственно варьируется и ее вес. На бочки с толщиной стенки 1,0 мм и менее наносятся дополнительные ребра жесткости (корругация Spiraltainer®), что увеличивает механическую стойкость бочки к внутреннему вакуумному сжатию.</p>
+      </div>
+      
+      <div class="tab-content" id="tab-coatings">
+        <h4>Внешние покрытия</h4>
+        <p>Бочки могут изготавливаться с различными типами внешних покрытий для защиты от коррозии и улучшения внешнего вида:</p>
+        <ul>
+          <li><strong>Полиуретановые краски</strong> — высокая стойкость к механическим воздействиям</li>
+          <li><strong>Эпоксидные покрытия</strong> — отличная химическая стойкость</li>
+          <li><strong>Многоцветная окраска</strong> — возможность нанесения логотипа или торговой марки (до 3 цветов)</li>
+          <li><strong>Порошковая окраска</strong> — экологичное и долговечное покрытие</li>
+        </ul>
+      </div>
+      
+      <div class="tab-content" id="tab-inner">
+        <h4>Внутренние покрытия</h4>
+        <p>Бочки могут изготавливаться с внутренними полимерными покрытиями на основе лаков RDL®, которые предотвращают взаимодействие фасуемых продуктов с металлической поверхностью бочки и гарантируют неизменность их характеристик.</p>
+        <ul>
+          <li><strong>RDL® Food</strong> — для пищевых продуктов</li>
+          <li><strong>RDL® Chemical</strong> — для агрессивных химических веществ</li>
+          <li><strong>RDL® Universal</strong> — универсальное покрытие</li>
+          <li><strong>Фенольные покрытия</strong> — для кислот и растворителей</li>
+        </ul>
+      </div>
+      
+      <div class="tab-content" id="tab-caps">
+        <h4>Системы укупорки</h4>
+        <ul>
+          <li><strong>Tri-Sure®</strong> — мировые стандарты для горловин и крышек</li>
+          <li><strong>Tab-Seal®</strong> — крышки-пломбы с гарантией первого вскрытия</li>
+          <li><strong>Прокладки 4S®</strong> — надёжная герметизация</li>
+          <li><strong>Обжимные кольца</strong> — для бочек с открывающимся верхом</li>
+          <li><strong>Рычажные замки</strong> — лёгкое открывание и закрывание</li>
+        </ul>
+      </div>
+    </div>
+    
+    
+    <!-- Менеджер -->
+    <div class="manager-card">
+      <div class="manager-info">
+        <h4>Ваш менеджер:</h4>
+        <div class="manager-name">Марина Леонова</div>
+        <div class="manager-contacts">
+          <a href="tel:+79872309971">+7 (987) 230-99-71</a>
+          <a href="mailto:Marina.Leonova@greif.com">Marina.Leonova@greif.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+  ibc: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Еврокубы</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">IBC (Intermediate Bulk Container или Еврокуб) — современный контейнер, конструкция которого позволила объединить логистическое удобство с лучшими качествами пластиковой и стальной упаковки.</p>
+    </div>
+  </div>
+
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <!-- Левая колонка - изображение -->
+      <div class="product-image-col">
+        <div class="product-main-image">
+          <img src="http://www.greif.ru/wp-content/uploads/8dc1514e-ea8b-47d1-8f6a-113233fdc7f3-1.png" alt="Еврокубы (IBC)" style="max-width:100%;max-height:320px;object-fit:contain;">
+        </div>
+      </div>
+
+      <!-- Правая колонка - описание -->
+      <div class="product-info-col">
+        <div class="product-features">
+          <div class="feature-block">
+            <div class="feature-icon-small">📦</div>
+            <div class="feature-text">
+              <h4>Поможем</h4>
+              <p>Подбор упаковки редко обходится стандартными решениями. Наши менеджеры подберут оптимальные параметры упаковки, исходя из конкретных задач клиента.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">🚚</div>
+            <div class="feature-text">
+              <h4>Доставим</h4>
+              <p>Мы готовы организовать доставку вашей продукции с использованием собственного транспорта или привлекая проверенные транспортные компании.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">💬</div>
+            <div class="feature-text">
+              <h4>Посоветуем</h4>
+              <p>Мы уделяем равное внимание как крупным корпорациям, так и молодым компаниям. Для каждого клиента мы готовы предложить решения, способствующие оптимизации логистики и производственных операций.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+      </div>
+    </div>
+
+    <!-- Табы с детальной информацией -->
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="ibc-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="ibc-specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="ibc-caps">УКУПОРОЧНЫЕ СРЕДСТВА</button>
+        <button class="tab-btn" data-tab="ibc-buy">ПОКУПАЕМ Б/У ЕВРОКУБЫ</button>
+      </div>
+
+      <div class="tab-content active" id="tab-ibc-desc">
+        <p>IBC (Intermediate Bulk Container, еврокуб) — это современный тип транспортной упаковки, широко применяемый для перевозки и хранения жидких и сыпучих грузов в нефтяной, химической, пищевой, косметической, лакокрасочной, а также фармацевтической отраслях. IBC-контейнеры могут использоваться в широком температурном диапазоне с сохранением абсолютной герметичности и механической прочности тары.</p>
+        <p>Мы выпускаем кубовые контейнеры с 2007 года, занимая значительную долю рынка новой промышленной пластиковой тары России и СНГ. Площадки, где осуществляется весь цикл производства IBC контейнеров, находятся в Казани и Индустриальном парке Ворсино в Калужской области, крупных промышленных и транспортных узлах России. Пластиковые контейнеры соответствуют российским и международным стандартам, в том числе и требованиям ООН к таре для перевозки опасных грузов.</p>
+        <p>Тесное общение с партнерами в различных странах позволяет Greif непрерывно совершенствовать производимую промышленную упаковку. В результате такого взаимодействия был разработан новый кубовый контейнер GCube, особенности конструкции и дизайн которого едины на всех заводах Greif в мире.</p>
+      </div>
+
+      <div class="tab-content" id="tab-ibc-specs">
+        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-ibc-caps">
+        <p style="color:var(--text-muted)">Информация об укупорочных средствах находится в разработке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-ibc-buy">
+        <p>Компания Greif предоставляет профессиональный сервис по восстановлению бывших в употреблении еврокубов. Если у Вас накопились пустые контейнеры, то мы готовы оперативно их вывезти с Вашей площадки. Мы готовы выкупить у Вас загрязненную тару, а также предложить услуги по промывке контейнеров, замене колбы, ремонту обрешетки и т.д. Каждый сотрудник компании Грайф делает все возможное для того, чтобы оптимизировать Ваши расходы на промышленную упаковку и продлить ее жизненный цикл.</p>
+
+        <!-- Фото б/у еврокубов -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0">
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+            <img src="https://www.greif.ru/wp-content/uploads/8dc1514e-ea8b-47d1-8f6a-113233fdc7f3-1.png" alt="Б/у еврокубы" style="max-width:100%;max-height:100%;object-fit:contain;padding:12px">
+          </div>
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+            <img src="https://www.greif.ru/wp-content/uploads/8dc1514e-ea8b-47d1-8f6a-113233fdc7f3-1.png" alt="Б/у еврокубы" style="max-width:100%;max-height:100%;object-fit:contain;padding:12px">
+          </div>
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center">
+            <img src="https://www.greif.ru/wp-content/uploads/8dc1514e-ea8b-47d1-8f6a-113233fdc7f3-1.png" alt="Б/у еврокубы" style="max-width:100%;max-height:100%;object-fit:contain;padding:12px">
+          </div>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:28px 0">
+          <!-- Преимущества -->
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:24px 28px">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Преимущества работы с Грайф</div>
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Надежный партнер в сфере промышленной упаковки</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Индивидуальный подход к формированию цены</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Возможность выкупить весь объём</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Покупка обрешеток без колбы</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Предложение на условиях самовывоза</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Работа на всей территории РФ</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Минимизация экологических рисков</li>
+            </ul>
+          </div>
+
+          <!-- Общие требования -->
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:24px 28px">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Общие требования к еврокубам</div>
+            <ul style="list-style:none;padding:0;margin:0">
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Количество — кратно 52 шт.</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Колба, поддон и обрешетка без значительных механических повреждений</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Остатки продукта не более 5 кг</li>
+              <li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>Наличие табличек, крышки и разгрузочного крана</li>
+            </ul>
+          </div>
+        </div>
+
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px">Подробное описание характеристик, на основании которых формируется выкупная стоимость еврокуба, находится по ссылке:</p>
+
+        <a href="https://www.greif.ru/wp-content/uploads/Trebovaniya-k-b_u-kubam.pdf" target="_blank" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px 24px;text-decoration:none;border:none;cursor:pointer;margin-bottom:32px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          Требования к б/у еврокубам (PDF)
+        </a>
+
+        <p style="font-size:14px;color:var(--text-muted);margin-bottom:20px">Мы заинтересованы в установлении долгосрочных партнерских связей с производственными компаниями.</p>
+
+        <!-- Контакт менеджера по б/у еврокубам -->
+        <div style="background:#fff;border:1px solid var(--border);border-left:4px solid var(--green-primary);padding:20px 24px;display:flex;align-items:center;gap:24px;max-width:560px">
+          <div style="width:52px;height:52px;background:var(--green-primary);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </div>
+          <div>
+            <div style="font-size:15px;font-weight:700;color:var(--text-dark);margin-bottom:4px">Рафаэль Курбанов</div>
+            <div style="font-size:13px;color:var(--text-muted);margin-bottom:6px">Менеджер по закупке б/у еврокубов</div>
+            <div style="display:flex;flex-direction:column;gap:4px">
+              <a href="mailto:rafael.kurbanov@greif.com" style="font-size:13px;color:var(--green-primary);text-decoration:none">rafael.kurbanov@greif.com</a>
+              <a href="tel:+79872922727" style="font-size:13px;color:var(--green-primary);text-decoration:none">+7 (987) 292-27-27</a>
+            </div>
+          </div>
+        </div>
+
+        <p style="margin-top:24px;font-size:14px;color:var(--text-muted)">Вы можете заполнить заявку на сайте или связаться с нами напрямую.</p>
+      </div>
+    </div>
+
+    <!-- Менеджер -->
+    <div class="manager-card">
+      <div class="manager-info">
+        <h4>Ваш менеджер:</h4>
+        <div class="manager-name">Марина Алешина</div>
+        <div class="manager-contacts">
+          <a href="tel:+79870601092">+7 (987) 060-10-92</a>
+          <a href="mailto:Marina.Aleshina@greif.com">Marina.Aleshina@greif.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+  home: () => `
+    <div class="page">
+      <!-- Hero -->
+      <section class="hero">
+        <div class="hero-bg">
+          <div class="hero-grid"></div>
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-drums">
+  <img src="https://www.greif.ru/wp-content/uploads/70759f7f-29b8-4452-ba1f-e5d2e9930845-1.png" alt="Промышленная упаковка" style="width:100%; max-width:500px; height:auto; object-fit:contain;">
+</div>
+        <div class="hero-content">
+          <div class="hero-eyebrow">Производитель промышленной упаковки №1 в мире</div>
+          <h1 class="hero-headline">Промышленная<br><em>упаковка</em> для<br>вашего бизнеса</h1>
+          <p class="hero-sub">Стальные бочки, еврокубы, канистры, конические бочки и кловертейнеры. Стандарты безопасности UN.</p>
+          <div class="hero-actions">
+            <button class="btn-hero-primary" onclick="navigate('products')">Смотреть продукцию</button>
+            <button class="btn-hero-secondary" onclick="navigate('contact')">Запросить цену</button>
+          </div>
+          <div class="hero-stats">
+            ${[['32 года','в России'],['9','городов'],['8','заводов'],['1000+','клиентов']].map(([n,l]) => `
+              <div><div class="hero-stat-num">${n}</div><div class="hero-stat-label">${l}</div></div>
+            `).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- Products -->
+      <section class="products">
+        <div class="section-inner">
+          <div class="section-header-row">
+            <div>
+              <div class="section-eyebrow">Наша продукция</div>
+              <div class="section-title">Промышленная упаковка для любых задач</div>
+            </div>
+            <button class="btn-outline-green" onclick="navigate('products')">Весь каталог →</button>
+          </div>
+          <div class="product-grid">
+            ${PRODUCTS.map(productCard).join('')}
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="features">
+        <div class="section-inner">
+          <div class="section-eyebrow">Почему Greif</div>
+          <div class="section-title">Надёжность. Опыт. Сертификация.</div>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square"><rect x="2" y="3" width="20" height="14"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="feature-title">Производство</div>
+              <div class="feature-desc">8 производственных площадок в России. Жесткие корпоративные требования к качеству продукции обеспечивают сохранность фасуемого продукта и гарантируют безопасность.</div>
+              <div class="feature-list">
+                <div class="feature-list-item"><div class="feature-bullet"></div>ISO 9001 / ISO 14001</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>Производство под заказ</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>Логистика по СНГ</div>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+              </div>
+              <div class="feature-title">Восстановление упаковки</div>
+              <div class="feature-desc">Сервис сбора и восстановления использованной тары (IBC — еврокубов). Одна из крупнейших сетей по восстановлению жесткой промышленной упаковки в РФ.</div>
+              <div class="feature-list">
+                <div class="feature-list-item"><div class="feature-bullet"></div>Снижение нагрузки на экологию</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>Вторая жизнь упаковки</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>Эффективность цепи поставок</div>
+              </div>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <div class="feature-title">Сертификация UN</div>
+              <div class="feature-desc">Вся продукция Greif соответствует требованиям UN для опасных грузов классов I–IX. Полный пакет документов для таможни и логистики.</div>
+              <div class="feature-list">
+                <div class="feature-list-item"><div class="feature-bullet"></div>UN 1A1 / 1A2 / 1H1 / 1H2</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>ADR / IMDG / IATA</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>ГОСТ Р 54 037</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>`,
+
+  products: () => `
+    <div class="page">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em;margin-bottom:10px">Промышленная упаковка Greif</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55)">Полный ассортимент UN-сертифицированной упаковки для любой отрасли</p>
+        </div>
+      </div>
+      <!-- filter tabs -->
+      <div style="background:#fff;border-bottom:1px solid var(--border)">
+        <div style="max-width:1200px;margin:0 auto;padding:0 32px;display:flex;gap:4px;height:52px;align-items-center" id="filter-bar">
+          ${['Все','Стальные бочки','Еврокубы','Конические бочки','Канистры','Кловертейнеры'].map((f,i) => `
+            <button onclick="filterProducts(this,'${f}')" style="font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;padding:6px 14px;border:1.5px solid var(--border);background:${i===0?'var(--green-primary)':'#fff'};color:${i===0?'#fff':'#666'};cursor:pointer">${f}</button>
+          `).join('')}
+        </div>
+      </div>
+      <div class="section-inner" style="padding-top:36px;padding-bottom:56px">
+        <div class="product-grid" id="products-grid">
+          ${PRODUCTS.map(productCard).join('')}
+        </div>
+      </div>
+    </div>`,
+
+  about: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">О компании</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Greif в России и СНГ</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">32 года надёжности и качества</p>
+    </div>
+  </div>
+  
+  <div style="background:#fff;padding:48px 0">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px;display:flex;gap:40px;align-items:flex-start">
+      
+      <!-- ЛЕВАЯ НАВИГАЦИЯ ПО РАЗДЕЛАМ -->
+      <div style="width:260px; flex-shrink:0; position:sticky; top:100px;">
+        <div style="background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.05)">
+          <div style="padding:16px 20px; background:var(--green-primary); color:white; font-weight:700; font-size:14px">Содержание</div>
+          <div style="padding:8px 0">
+  <a href="#" data-about-section="years32" class="about-nav-link active" style="display:block; padding:12px 20px; color:var(--green-primary); text-decoration:none; font-size:14px; border-left:3px solid var(--green-primary); transition:all 0.2s">32 года в России</a>
+  <a href="#" data-about-section="historyInc" class="about-nav-link" style="display:block; padding:12px 20px; color:#333; text-decoration:none; font-size:14px; border-left:3px solid transparent; transition:all 0.2s">История Greif Inc.</a>
+  <a href="#" data-about-section="historyRu" class="about-nav-link" style="display:block; padding:12px 20px; color:#333; text-decoration:none; font-size:14px; border-left:3px solid transparent; transition:all 0.2s">История Greif в России</a>
+  <a href="#" data-about-section="sustainability" class="about-nav-link" style="display:block; padding:12px 20px; color:#333; text-decoration:none; font-size:14px; border-left:3px solid transparent; transition:all 0.2s">Устойчивое развитие</a>
+</div>
+        </div>
+      </div>
+      
+      <!-- ПРАВЫЙ КОНТЕНТ (будет меняться) -->
+      <div id="about-content" style="flex:1">
+        <!-- Содержимое загружается через JS -->
+      </div>
+      
+    </div>
+  </div>
+</div>`,
+
+  branding: () => `
+    <div class="page">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Сервисы</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Брендирование упаковки</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55)">Нанесение фирменного стиля и корпоративной символики на промышленную тару</p>
+        </div>
+      </div>
+
+      <div style="background:var(--green-light-bg);padding:56px 0">
+        <div style="max-width:1100px;margin:0 auto;padding:0 32px">
+
+          <!-- Intro -->
+          <div style="background:#fff;border:1px solid var(--border);border-top:4px solid var(--green-primary);padding:40px 44px;margin-bottom:32px">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Цветовая кастомизация</div>
+            <p style="font-size:15px;color:var(--text-dark);line-height:1.75;margin:0">
+              Компания Greif предлагает изготовление металлических бочек, окрашенных в корпоративные цвета вашей компании. В качестве стандарта цветов на предприятиях Greif принята система <strong>RAL</strong>.
+            </p>
+            <p style="font-size:15px;color:var(--text-dark);line-height:1.75;margin:16px 0 0">
+              Персонализация IBC возможна путём нанесения логотипа, торговой марки или любой другой релевантной информации на идентификационную табличку ёмкости; в случае пластиковой бочки брендируется корпус тары. По запросу клиента IBC и полиэтиленовые бочки также могут изготавливаться различных цветов. Персонализация поликарбонатной бутыли обеспечивается путём нанесения логотипа на дно или боковую поверхность. Оригинальный дизайн тары обеспечивает дополнительную защиту от подделок.
+            </p>
+          </div>
+
+          <!-- Cards grid -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:24px;margin-bottom:40px">
+
+            <!-- Нанесение логотипа -->
+            <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:32px 28px">
+              <div style="width:48px;height:48px;background:var(--green-primary);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:12px">Нанесение логотипа</div>
+              <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:0">
+                Персонализация металлических бочек за счёт нанесения логотипа, торговой марки или любой другой релевантной информации в центральной части корпуса между гофрами. Технология позволяет создавать изображения высокой чёткости, обладающие всеми характеристиками внешних покрытий.
+              </p>
+              <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:12px 0 0">
+                Комплектация стандартной бочки крышками-пломбами с оригинальным дизайном в корпоративной стилистике обеспечивает дополнительную защиту продукции от подделок.
+              </p>
+            </div>
+
+            <!-- Литографический дизайн -->
+            <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:32px 28px">
+              <div style="width:48px;height:48px;background:var(--green-primary);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="3" width="18" height="18" rx="2" stroke="#fff" stroke-width="2"/>
+                  <path d="M3 9h18M9 21V9" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:12px">Литографический дизайн</div>
+              <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:0">
+                Эксклюзивность премиальных продуктов, расфасованных в металлические бочки, можно подчеркнуть полноцветным литографическим изображением — это позволит выгодно выделить продукт на фоне конкурентов.
+              </p>
+            </div>
+
+            <!-- Трёхполосное окрашивание -->
+            <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:32px 28px">
+              <div style="width:48px;height:48px;background:var(--green-primary);display:flex;align-items:center;justify-content:center;margin-bottom:20px">
+                <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+                  <rect x="3" y="4" width="18" height="4" rx="1" fill="#fff" opacity="0.9"/>
+                  <rect x="3" y="10" width="18" height="4" rx="1" fill="#fff" opacity="0.6"/>
+                  <rect x="3" y="16" width="18" height="4" rx="1" fill="#fff" opacity="0.35"/>
+                </svg>
+              </div>
+              <div style="font-size:16px;font-weight:700;color:var(--text-dark);margin-bottom:12px">Трёхполосное окрашивание</div>
+              <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:0">
+                С 2014 года на заводах Greif в Вологде и Перми внедрена инновационная технология: корпус бочки окрашивается в разные цвета, а в зоны между гофрами наносятся несколько различных изображений.
+              </p>
+              <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:12px 0 0">
+                Помимо стандартного логотипа предлагается нанесение: контактных данных, QR-кода со ссылкой на сайт, характеристик продукта, рекомендаций по обращению, знаков опасности, информации об участии в отраслевых союзах и мероприятиях.
+              </p>
+            </div>
+          </div>
+
+          <!-- Применимость по типам тары -->
+          <div style="background:#fff;border:1px solid var(--border);padding:36px 44px;border-left:4px solid var(--green-primary)">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-primary);margin-bottom:20px">Применимость по типам тары</div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+              ${[
+                ['Металлические бочки','Окраска по RAL, нанесение логотипа между гофрами, литографический и трёхполосный дизайн'],
+                ['Пластиковые бочки','Брендирование корпуса тары, цветное исполнение по запросу'],
+                ['IBC / Еврокубы','Логотип и информация на идентификационной табличке, цветное исполнение по запросу'],
+                ['Поликарбонатные бутыли','Нанесение логотипа на дно или боковую поверхность'],
+              ].map(([title, desc]) => `
+                <div style="padding:20px 18px;background:var(--green-light-bg);border-radius:2px">
+                  <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:8px">${title}</div>
+                  <div style="font-size:12px;color:var(--text-muted);line-height:1.6">${desc}</div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div style="text-align:center;margin-top:44px">
+            <button class="btn-consult" onclick="navigate('contact')">ЗАПРОСИТЬ БРЕНДИРОВАНИЕ</button>
+          </div>
+
+        </div>
+      </div>
+    </div>`,
+
+  services: () => `
+    <div class="page">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Услуги</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Сервисы Greif</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55)">Выберите нужный сервис для получения подробной информации</p>
+        </div>
+      </div>
+      <div style="max-width:1100px;margin:56px auto;padding:0 32px;display:grid;grid-template-columns:repeat(2,1fr);gap:24px">
+
+        <div onclick="navigate('branding')" class="service-card">
+          <div class="service-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="service-card-title">Брендирование упаковки</div>
+          <div class="service-card-desc">Нанесение фирменного стиля, цветовой палитры и корпоративной символики на промышленную упаковку любого объёма. Окраска по RAL, логотип, литографический и трёхполосный дизайн.</div>
+          <div class="service-card-link">ПОДРОБНЕЕ <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div onclick="navigateIBCBuy()" class="service-card">
+          <div class="service-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="service-card-title">Покупаем б/у еврокубы</div>
+          <div class="service-card-desc">Сервис сбора и восстановления использованной тары. Оперативный вывоз пустых контейнеров с вашей площадки, выкуп загрязнённой тары, промывка, замена колбы и ремонт обрешётки.</div>
+          <div class="service-card-link">ПОДРОБНЕЕ <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div onclick="navigate('specification')" class="service-card">
+          <div class="service-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <path d="M9 11l3 3L22 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div class="service-card-title">Подбор спецификации</div>
+          <div class="service-card-desc">Индивидуальный подбор характеристик упаковки под химическую природу вашего продукта. Консультации технолога, испытания в лаборатории Greif, рекомендации по покрытиям и прокладкам.</div>
+          <div class="service-card-link">ПОДРОБНЕЕ <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+        <div onclick="navigate('logistics')" class="service-card">
+          <div class="service-card-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none">
+              <rect x="1" y="3" width="15" height="13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M16 8h4l3 3v5h-7V8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="5.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/>
+              <circle cx="18.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="service-card-title">Оптимизация логистики</div>
+          <div class="service-card-desc">Комплексные решения для повышения эффективности цепи поставок. Автоматическая разгрузка, консигнационный склад, управление запасами и Just-in-Time поставки.</div>
+          <div class="service-card-link">ПОДРОБНЕЕ <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        </div>
+
+      </div>
+    </div>`,
+
+  specification: () => `
+    <div class="page">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Сервисы</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Подбор спецификации</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55)">Индивидуальный подбор упаковки под химическую природу вашего продукта</p>
+        </div>
+      </div>
+
+      <div style="max-width:900px;margin:56px auto;padding:0 32px">
+
+        <!-- Intro -->
+        <p style="font-size:15px;color:var(--text-dark);line-height:1.75;margin-bottom:48px">
+          Компанией Greif накоплен обширный внутрифирменный опыт в области совместимости различных продуктов с конкретным типом стальной бочки. Менеджеры Greif подберут оптимальную конфигурацию упаковки в соответствии со спецификой химической природы вашего продукта.
+        </p>
+
+        <!-- Консультации технолога -->
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Консультации технолога</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 20px">
+            Основываясь на информации, содержащейся в паспорте безопасности продукта (MSDS), наши технологи оперативно предоставят рекомендации с указанием необходимой толщины стенок, типа внутренних покрытий и прокладки горловин, степени заполнения бочки продуктом и пр. Если имеющихся данных недостаточно или ваша композиция отсутствует в базе данных, наши специалисты готовы провести необходимые испытания в лаборатории Greif.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 20px">
+            Для проведения анализов нам потребуется <strong style="color:var(--text-dark)">250 мл вашего продукта</strong>, а также следующие данные:
+          </p>
+          <ul style="margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+            ${[
+              'тип продукта;',
+              'химическое название;',
+              'компоненты и их концентрация (включая воду);',
+              'плотность, давление пара, точки кипения и плавления, вязкость, pH и пр.;',
+              'температуры налива и опорожнения;',
+              'условия хранения и предполагаемый срок годности.',
+            ].map(item => `
+              <li style="font-size:14px;color:var(--text-muted);line-height:1.65">${item}</li>
+            `).join('')}
+          </ul>
+        </div>
+
+        <!-- Disclaimer -->
+        <div style="background:var(--green-light-bg);border-left:3px solid var(--green-primary);padding:24px 28px;margin-bottom:48px">
+          <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:8px">Greif сервисы</div>
+          <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:0">
+            Рекомендации специалистов Greif подлежат оценке клиентом и не освобождают его от ответственности за выбор соответствующей упаковки (или сочетания упаковок). Клиент несет ответственность за выбор упаковки, основанный на всей имеющейся у него информации, включая определённую сферу применения, соответствие предписаниям, запросам рынка и требованиям отгрузки.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div style="text-align:center">
+          <button class="btn-consult" onclick="navigate('contact')">ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ</button>
+        </div>
+
+      </div>
+    </div>`,
+
+logistics: () => `
+    <div class="page">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Сервисы</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Оптимизация логистики</h1>
+          <p style="font-size:14px;color:rgba(255,255,255,0.55)">Комплексные решения для повышения эффективности цепи поставок</p>
+        </div>
+      </div>
+
+      <div style="max-width:900px;margin:56px auto;padding:0 32px">
+
+        <p style="font-size:15px;color:var(--text-dark);line-height:1.75;margin-bottom:48px">
+          Компания Greif стремится установить с каждым из своих клиентов долгосрочные партнерские отношения. В рамках данной стратегии мы не ограничиваемся лишь поставкой упаковки, но принимаем всемерное участие в улучшении эффективности всех бизнес-процессов, реализуемых на протяжении всей цепи поставок упаковки от завода Greif до производственной площадки клиента.
+        </p>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Автоматическая разгрузка</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Мы разработали специализированную систему для автоматической разгрузки бочек. Роботизированная система обеспечивает разгрузку партии из <strong style="color:var(--text-dark)">150 бочек менее чем за 30 минут</strong> благодаря оперативному попаданию бочек из контейнера на конвейер фасовочной линии. Система полностью исключает операции с бочками, производимые вручную, а также обеспечивает быструю и практичную разгрузку.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Тем самым, клиенты получают реальные возможности для повышения безопасности производственных операций за счет снижения рисков падения бочек, сопряженных материальных потерь и травм работников.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            Автоматизированная разгрузка комбинируется с другими сервисами Greif — поставкой бочек в контейнерах Greif Экспресс и паллетизированной доставкой. Мы заинтересованы в реализации совместных проектов по установке автоматизированных систем разгрузки тары со своими партнерами.
+          </p>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Бочки KDD для самостоятельной сборки</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Самостоятельная сборка стальных бочек из заготовок интересна в первую очередь компаниям, которым нужны относительно небольшие партии бочек, а также в регионах, где совокупный спрос не оправдывает создание полномасштабного завода.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Технология KDD (Knock-down drums) позволяет существенно сократить транспортные издержки при поставке стальных бочек на большие расстояния. По сравнению с традиционным способом доставки (240 пустых бочек в кузове автомобиля), на линию сборки могут быть доставлены около <strong style="color:var(--text-dark)">1000 комплектов</strong> плотно упакованных заготовок при существенно меньших логистических затратах.
+          </p>
+          <div style="background:var(--green-light-bg);border-left:3px solid var(--green-primary);padding:20px 24px;margin-top:4px">
+            <div style="font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:8px">Реализованные проекты</div>
+            <p style="font-size:13px;color:var(--text-muted);line-height:1.7;margin:0">
+              Подобные проекты реализованы Greif в Южной Африке (Greif South Africa), а также совместно с компанией HILL Corporation в Шымкенте (Казахстан) — первым и единственным заводом по производству смазочных материалов мирового класса в Республике Казахстан.
+            </p>
+          </div>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Комбинированные партии упаковки</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Greif предлагает поставки сборных партий, составленных из нескольких типов упаковки. Данный сервис удобен для тех клиентов, которым не требуется полная загрузка транспортного контейнера одним типом тары.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            Малые смешанные партии из стальных и пластиковых бочек, IBC контейнеров позволят оптимизировать расходы на приобретение, транспортировку и хранение промышленной упаковки с сохранением всех преимуществ работы по принципу «одного окна».
+          </p>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Поставка точно в срок</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Сокращение затрат, связанных со стальными бочками, может быть достигнуто путем организации доставки тары в режиме <strong style="color:var(--text-dark)">точно-в-срок (Just-in-Time)</strong>. Логистическая концепция, впервые апробированная в производственной системе Toyota, позволяет прежде всего сократить выделенные под тару складские площади и затраты на её хранение.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            Диверсифицированная сеть предприятий Greif в России и организованная система страховки поставок гарантируют отсутствие сбоев в доставке стальных бочек при любых обстоятельствах.
+          </p>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Паллетизированная доставка</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 20px">
+            Greif предлагает доставку паллетизированных стальных бочек. Дизайн паллет обеспечивает оптимальное размещение бочек и придаёт им дополнительную устойчивость в процессе транспортировки. Бочки размещаются на паллетах до момента отгрузки, обеспечивая заданную ориентацию горловин для ускорения процесса налива.
+          </p>
+          <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:12px">Преимущества паллетизированной доставки:</div>
+          <ul style="margin:0 0 20px;padding-left:20px;display:flex;flex-direction:column;gap:8px">
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">логистические затраты сокращаются на протяжении всей цепи поставок;</li>
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">эргономика — оптимизация разгрузки и возможности для полуавтоматической разгрузки;</li>
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">безопасность — меньший риск падения металлических бочек при выгрузке;</li>
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">стабильное качество — снижение рисков повреждений бочек при транспортировке;</li>
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">надёжность — отсутствует необходимость ремонта паллет на протяжении длительного периода;</li>
+            <li style="font-size:14px;color:var(--text-muted);line-height:1.65">возможность вторичной переработки паллет.</li>
+          </ul>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            При перевозке автотранспортом стандартная паллетизированная партия состоит из схемы 3–4–3 (26 рядов). Максимальный объём партии — <strong style="color:var(--text-dark)">264 бочки</strong> объёмом до 224 литров.
+          </p>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:32px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Сервис Greif Express</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 20px">
+            Специальный логистический сервис — доставка бочек в контейнерах Greif Express — позволяет исключить сложности при поставке и операциях с металлическими бочками: поиск персонала для разгрузки, выделение складской зоны и перемещение бочек в зону фасовки.
+          </p>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:20px">
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">48 бочек на паллетах</div>
+              <div style="font-size:12px;color:var(--text-muted)">в одном контейнере Greif Express</div>
+            </div>
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">6 контейнеров</div>
+              <div style="font-size:12px;color:var(--text-muted)">в одном грузовике</div>
+            </div>
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">Перемещение вилочным погрузчиком</div>
+              <div style="font-size:12px;color:var(--text-muted)">быстро и безопасно</div>
+            </div>
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">Хранение в контейнерах</div>
+              <div style="font-size:12px;color:var(--text-muted)">снижение стоимости хранения, чистота без пыли и ржавчины</div>
+            </div>
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">Высвобождение складских площадей</div>
+              <div style="font-size:12px;color:var(--text-muted)">меньше несчастных случаев и повреждений тары</div>
+            </div>
+            <div style="background:var(--green-light-bg);padding:16px 18px">
+              <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">Открытая верхняя часть</div>
+              <div style="font-size:12px;color:var(--text-muted)">возможна автоматическая разгрузка</div>
+            </div>
+          </div>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            При организации поставок по системе Greif Express тягач подвозит прицепы с бочками к терминалу заказчика и оставляет их на территории промышленной площадки. Новый логистический сервис позволяет заказчикам Greif в России и СНГ максимально оптимизировать складские и производственные операции.
+          </p>
+        </div>
+
+        <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:48px">
+          <h2 style="font-family:'Roboto',sans-serif;font-size:20px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Фуры увеличенной вместимости</h2>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">
+            Затраты на транспортировку и дистрибуцию должны учитываться при выборе оптимального способа доставки. В большинстве случаев бочки перевозятся автомобильным транспортом в вертикальном положении.
+          </p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">
+            Использование фур повышенной вместимости позволяет уменьшить величину транспортных расходов, приходящихся на единицу упаковки, а также оптимизировать их периодичность. Выбор в пользу упаковки и предлагаемых сервисов Greif позволит вам сконцентрировать усилия на совершенствовании производственных процессов.
+          </p>
+        </div>
+
+        <div style="text-align:center">
+          <button class="btn-consult" onclick="navigate('contact')">ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ</button>
+        </div>
+
+      </div>
+    </div>`,
+
+contact: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Контакты</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Наши производства</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">9 заводов в крупнейших промышленных узлах России</p>
+    </div>
+  </div>
+  
+  <div style="background:var(--green-light-bg);padding:48px 0 56px">
+    <div style="max-width:1200px;margin:0 auto;padding:0 32px">
+      
+      <!-- Контейнер для карты -->
+      <div id="map" style="width:100%; height:500px; border-radius:20px; overflow:hidden; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.1)"></div>
+      
+      <!-- Подпись под картой -->
+      <p style="text-align:center; font-size:12px; color:var(--text-muted); margin-bottom:32px">Нажмите на метку, чтобы увидеть контакты завода</p>
+      
+      <!-- Список контактов под картой -->
+      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px">
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Москва</div>
+          <div style="font-size:12px;color:#555">ул. Ленинская слобода, 19, ком. 2061</div>
+          <div style="font-size:12px;color:#555">+7 (495) 933-59-47</div>
+          <a href="mailto:Moscow.Office@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Moscow.Office@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Вологда</div>
+          <div style="font-size:12px;color:#555">ул. Маяковского, 38</div>
+          <div style="font-size:12px;color:#555">+7 (8172) 26-40-13</div>
+          <a href="mailto:Vologda.Office@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Vologda.Office@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Волгоград</div>
+          <div style="font-size:12px;color:#555">ул. Промысловая, 15</div>
+          <div style="font-size:12px;color:#555">+7 (8442) 78-02-80</div>
+          <a href="mailto:Aleksandr.Sedov@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Aleksandr.Sedov@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Пермь</div>
+          <div style="font-size:12px;color:#555">ул. Героев Хасана, 74</div>
+          <div style="font-size:12px;color:#555">+7 (342) 211-07-00</div>
+          <a href="mailto:Anna.Egorova@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Anna.Egorova@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Екатеринбург</div>
+          <div style="font-size:12px;color:#555">п. Белоярский, ул. Мира, 20</div>
+          <div style="font-size:12px;color:#555">+7 (343) 389-09-79</div>
+          <a href="mailto:Sergei.Dronov@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Sergei.Dronov@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Казань</div>
+          <div style="font-size:12px;color:#555">ул. М.Миля, 49А</div>
+          <div style="font-size:12px;color:#555">+7 (843) 202-05-45</div>
+          <a href="mailto:Marina.Leonova@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Marina.Leonova@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Омск</div>
+          <div style="font-size:12px;color:#555">ул. И.Н. Багнюка, 10</div>
+          <div style="font-size:12px;color:#555">+7 (381) 221-41-12</div>
+          <a href="mailto:Aleksei.Kuzmin@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Aleksei.Kuzmin@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Рязань</div>
+          <div style="font-size:12px;color:#555">ш. Ряжское, 20</div>
+          <div style="font-size:12px;color:#555">+7 (491) 270-14-17</div>
+          <a href="mailto:Moscow.Office@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Moscow.Office@greif.com</a>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
+          <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">Калуга (Ворсино)</div>
+          <div style="font-size:12px;color:#555">Индустриальный парк Ворсино</div>
+          <div style="font-size:12px;color:#555">+7 (4842) 92-21-01</div>
+          <a href="mailto:Kaluga.Office@greif.com" style="font-size:12px;color:var(--green-primary);text-decoration:none">Kaluga.Office@greif.com</a>
+        </div>
+      </div>
+      
+      <!-- Форма запроса -->
+      <div style="background:#fff;border:1px solid var(--border);padding:36px 40px;max-width:760px;margin:40px auto 0;border-top:3px solid var(--green-primary);border-radius:16px">
+        <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Сделать запрос</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px">
+          <div><label class="form-label">Имя</label><input class="form-input" placeholder="Иван Иванов"></div>
+          <div><label class="form-label">Компания</label><input class="form-input" placeholder="ООО «Химпром»"></div>
+        </div>
+        <div class="form-field"><label class="form-label">Телефон</label><input class="form-input" placeholder="+7 (___) ___-__-__"></div>
+        <div class="form-field"><label class="form-label">Email</label><input class="form-input" type="email" placeholder="ivan@company.ru"></div>
+        <div class="form-field"><label class="form-label">Сообщение</label><textarea class="form-input" rows="4" placeholder="Опишите запрос…" style="resize:vertical"></textarea></div>
+        <button class="btn-form-submit">Отправить</button>
+      </div>
+    </div>
+  </div>
+</div>`,
+    vacancies: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Карьера</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Вакансии в Greif</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Присоединяйтесь к команде мирового лидера промышленной упаковки</p>
+    </div>
+  </div>
+  
+  <div class="career-page">
+    <!-- МЕНЮ ВЫБОРА ГОРОДОВ -->
+    <div class="city-menu-container">
+      <div class="city-tabs">
+        <button class="city-tab active" data-city="all">Все города</button>
+        <button class="city-tab" data-city="vologda">Вологда</button>
+        <button class="city-tab" data-city="kaluga">Калуга (Обнинск)</button>
+        <button class="city-tab" data-city="perm">Пермь</button>
+        <button class="city-tab" data-city="volgograd">Волгоград</button>
+        <button class="city-tab" data-city="kazan">Казань</button>
+        <button class="city-tab" data-city="omsk">Омск</button>
+      </div>
+    </div>
+
+    <!-- ВАКАНСИИ -->
+    <section class="vacancies">
+      <div class="city-section active" data-city="vologda">
+        <h3 class="city-title">Вологда</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Инженер-технолог</h4>
+            <p>Специалист по подбору персонала: Александра Караваева</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Инженер-технолог', 'от 80 000 ₽', 'Вологда, ул. Маяковского, 38', 'Александра Караваева', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+          <div class="vacancy-card">
+            <h4>Мастер смены</h4>
+            <p>Специалист по подбору персонала: Александра Караваева</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Мастер смены', 'от 70 000 ₽', 'Вологда, ул. Маяковского, 38', 'Александра Караваева', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-section" data-city="kaluga">
+        <h3 class="city-title">Калуга (Обнинск)</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Оператор линии розлива</h4>
+            <p>Специалист по подбору персонала: Ильина Вероника</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Оператор линии розлива', 'от 65 000 ₽', 'Калужская обл., Индустриальный парк Ворсино', 'Ильина Вероника', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-section" data-city="perm">
+        <h3 class="city-title">Пермь</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Начальник склада</h4>
+            <p>Специалист по подбору персонала: Анна Егорова</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Начальник склада', 'от 90 000 ₽', 'Пермь, ул. Героев Хасана, 74', 'Анна Егорова', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-section" data-city="volgograd">
+        <h3 class="city-title">Волгоград</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Слесарь-ремонтник</h4>
+            <p>Специалист по подбору персонала: Александр Седов</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Слесарь-ремонтник', 'от 60 000 ₽', 'Волгоград, ул. Промысловая, 15', 'Александр Седов', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-section" data-city="kazan">
+        <h3 class="city-title">Казань</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Инженер-химик</h4>
+            <p>Специалист по подбору персонала: Марина Леонова</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Инженер-химик', 'от 85 000 ₽', 'Казань, ул. М.Миля, 49А', 'Марина Леонова', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="city-section" data-city="omsk">
+        <h3 class="city-title">Омск</h3>
+        <div class="vacancy-grid">
+          <div class="vacancy-card">
+            <h4>Электромонтер</h4>
+            <p>Специалист по подбору персонала: Алексей Кузьмин</p>
+            <div class="button-group">
+              <button class="details-btn" onclick="showVacancyDemo('Электромонтер', 'от 55 000 ₽', 'Омск, ул. И.Н. Багнюка, 10', 'Алексей Кузьмин', '@example', '+7 XXX XXX XX XX')">Подробнее</button>
+              <a href="#" class="telegram-btn" target="_blank">Telegram</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПОЧЕМУ У НАС КРУТО РАБОТАТЬ -->
+    <section class="why-us">
+      <h2>Почему у нас круто работать</h2>
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon">🌍</div>
+          <h4>Международная компания</h4>
+          <p>Greif — глобальный производственный лидер с 1877 года</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">📈</div>
+          <h4>Карьерный рост</h4>
+          <p>Возможности профессионального развития и обучения</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">💼</div>
+          <h4>Официальное трудоустройство</h4>
+          <p>Полный социальный пакет и стабильность</p>
+        </div>
+        <div class="why-card">
+          <div class="why-icon">🏭</div>
+          <h4>Современное производство</h4>
+          <p>Безопасные условия труда по стандартам UN</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ФОТО -->
+    <section class="company-section">
+      <img src="https://www.greif.ru/wp-content/uploads/2024/11/7.JPG" alt="Команда Greif" style="width:100%; border-radius:16px;">
+      <p class="photo-caption">Наша команда — профессионалы своего дела</p>
+    </section>
+
+    <!-- СОЦСЕТИ -->
+    <section class="social-section">
+      <h3>Следите за нами</h3>
+      <div class="social-grid">
+        <a href="https://vk.com/greif_russia" target="_blank">ВКонтакте</a>
+        <a href="https://t.me/greif_russia" target="_blank">Telegram</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- ПОПАП -->
+  <div id="vacancyPopup" style="display: none;">
+    <div>
+      <button class="close-popup" onclick="closeVacancyPopup()">×</button>
+      <div id="popupContent"></div>
+    </div>
+  </div>
+</div>`,
+
+  conical: () => `
+<div class="page">
+  <div class="page-hero" style="position:relative;overflow:hidden;min-height:220px;display:flex;align-items:center;">
+    <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(0,107,76,0.07) 59px,rgba(0,107,76,0.07) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(0,107,76,0.07) 59px,rgba(0,107,76,0.07) 60px);"></div>
+
+<div class="page-hero-inner" style="position:relative;z-index:2;flex:1;">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Конические бочки</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Стальная тара для пищевых концентратов и непищевых продуктов</p>
+    </div>
+  </div>
+
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <div class="product-image-col">
+        <div class="product-main-image">
+          <img src="http://www.greif.ru/wp-content/uploads/konboch.png" alt="Коническая бочка Greif" style="max-width:100%;max-height:300px;object-fit:contain;">
+        </div>
+      </div>
+
+      <div class="product-info-col">
+        <p class="product-description">Конические стальные бочки используются для транспортировки и хранения пищевых продуктов. В частности концентратов томатной пасты, соков, пюре, а также любых густых и сыпучих непищевых продуктов, для которых необходима жёсткая тара.</p>
+
+        <div class="product-features">
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128230;</div>
+            <div class="feature-text">
+              <h4>Поможем</h4>
+              <p>Подбор упаковки редко обходится стандартными решениями. Наши менеджеры подберут оптимальные параметры упаковки, исходя из конкретных задач клиента.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128666;</div>
+            <div class="feature-text">
+              <h4>Доставим</h4>
+              <p>Коническая бочка штабелируется и доставляется на значительные расстояния без существенного удорожания по сравнению со стандартной бочкой.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128172;</div>
+            <div class="feature-text">
+              <h4>Посоветуем</h4>
+              <p>Мы уделяем равное внимание как крупным корпорациям, так и молодым компаниям. Для каждого клиента мы готовы предложить решения, способствующие оптимизации логистики и производственных операций.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+      </div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="con-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="con-specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="con-coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="con-inner">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="con-caps">СИСТЕМЫ УКУПОРКИ</button>
+      </div>
+
+      <div class="tab-content active" id="tab-con-desc">
+        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;">
+          <div style="flex:1;min-width:260px;">
+            <p>Конические (конусные) бочки выпускаются на заводах компании Greif, расположенных в США, Великобритании, Греции, Италии, Турции, Португалии, Египте и Бразилии. С 2007 года производство конических бочек осуществляется в России — в г. Волгограде.</p>
+            <p>Конические бочки используются для упаковки и транспортировки пищевых продуктов, например, томатной пасты и фруктовых концентратов. Стандартная ёмкость бочки составляет 217 л, она оснащена пластиковой или стальной крышкой с запорным кольцом. Обычно пищевые продукты предварительно упаковываются в полиэтиленовые или асептические мешки. Для упаковки различных видов пищевых продуктов в одну бочку могут применяться пластиковые разделители. Упаковка непищевых продуктов может осуществляться без мешков. Внутренняя поверхность бочки по желанию заказчика покрывается специальным покрытием, защищающим продукт от контакта с металлом, также по желанию заказчика дно бочки может быть перфорировано для удобства использования упаковочных мешков и предотвращения скопления конденсата.</p>
+          </div>
+          <div style="flex-shrink:0;text-align:center;">
+            <img src="http://www.greif.ru/wp-content/uploads/konboch.png" alt="Коническая бочка Greif" style="max-width:200px;max-height:220px;object-fit:contain;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.10);background:#f0f7f3;padding:12px;">
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-con-specs">
+        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-con-coatings">
+        <p style="color:var(--text-muted)">Информация о внешних покрытиях находится в разработке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-con-inner">
+        <p style="color:var(--text-muted)">Информация о внутренних покрытиях находится в разработке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-con-caps">
+        <p style="color:var(--text-muted)">Информация о системах укупорки находится в разработке.</p>
+      </div>
+    </div>
+
+    <div class="manager-card">
+      <div class="manager-info">
+        <h4>Ваш менеджер:</h4>
+        <div class="manager-name">Александр Седов</div>
+        <div class="manager-contacts">
+          <a href="tel:+79033703111">+7 (903) 370-31-11</a>
+          <a href="mailto:Aleksandr.Sedov@greif.com">Aleksandr.Sedov@greif.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+  canisters: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Канистры</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Многослойные пластиковые канистры для агрохимии</p>
+    </div>
+  </div>
+
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <div class="product-image-col">
+        <div class="product-main-image">
+          <img src="http://www.greif.ru/wp-content/uploads/kanistry.png" alt="Канистры Greif" style="max-width:100%;max-height:280px;object-fit:contain;">
+        </div>
+      </div>
+
+      <div class="product-info-col">
+        <p class="product-description">Многослойные канистры используются для хранения агрохимических продуктов. От традиционных полиэтиленовых канистр они отличаются наличием дополнительного полиамидного слоя, который обеспечивает барьерные свойства тары и позволяет избежать миграцию молекул растворителя через стенки канистры.</p>
+
+        <div class="product-features">
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128230;</div>
+            <div class="feature-text">
+              <h4>Поможем</h4>
+              <p>Подбор упаковки редко обходится стандартными решениями. Наши менеджеры подберут оптимальные параметры упаковки, исходя из конкретных задач клиента.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128666;</div>
+            <div class="feature-text">
+              <h4>Доставим</h4>
+              <p>Мы готовы организовать доставку вашей продукции с использованием собственного транспорта или привлекая проверенные транспортные компании.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128172;</div>
+            <div class="feature-text">
+              <h4>Посоветуем</h4>
+              <p>Мы уделяем равное внимание как крупным корпорациям, так и молодым компаниям. Для каждого клиента мы готовы предложить решения, способствующие оптимизации логистики и производственных операций.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+      </div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="can-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="can-specs">СПЕЦИФИКАЦИИ</button>
+      </div>
+
+      <div class="tab-content active" id="tab-can-desc">
+        <p>Компания Greif начала производить в России многослойные пластиковые канистры с 2022 года. Площадка по выпуску канистр находится в Индустриальном парке Ворсино Калужской области. Область применения — фасовка агрохимии.</p>
+      </div>
+
+      <div class="tab-content" id="tab-can-specs">
+        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+      </div>
+    </div>
+
+    <div class="manager-card">
+      <div class="manager-info">
+        <h4>Ваш менеджер:</h4>
+        <div class="manager-name">Александр Седов</div>
+        <div class="manager-contacts">
+          <a href="tel:+79033703111">+7 (903) 370-31-11</a>
+          <a href="mailto:Aleksandr.Sedov@greif.com">Aleksandr.Sedov@greif.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
+  clover: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#6fcba5;margin-bottom:10px">Продукция</div>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Кловертейнеры</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Clovertainer® — картонный IBC объёмом 1000 л для битума</p>
+    </div>
+  </div>
+
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <div class="product-image-col">
+        <div class="product-main-image">
+          <img src="http://www.greif.ru/wp-content/uploads/klover.png" alt="Кловертейнер Greif" style="max-width:280px;max-height:280px;width:100%;object-fit:contain;">
+        </div>
+      </div>
+
+      <div class="product-info-col">
+        <p class="product-description">Clovertainer® — среднетоннажный контейнер из многослойного картона ёмкостью 1000 литров. Кубическая форма кловертейнера обеспечивает удобство погрузочно-разгрузочных работ, компактное размещение при многоярусном хранении и оптимизацию процесса транспортировки.</p>
+
+        <div class="product-features">
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128230;</div>
+            <div class="feature-text">
+              <h4>Поможем</h4>
+              <p>Подбор упаковки редко обходится стандартными решениями. Наши менеджеры подберут оптимальные параметры упаковки, исходя из конкретных задач клиента.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128666;</div>
+            <div class="feature-text">
+              <h4>Доставим</h4>
+              <p>Мы готовы организовать доставку вашей продукции с использованием собственного транспорта или привлекая проверенные транспортные компании.</p>
+            </div>
+          </div>
+          <div class="feature-block">
+            <div class="feature-icon-small">&#128172;</div>
+            <div class="feature-text">
+              <h4>Посоветуем</h4>
+              <p>Мы уделяем равное внимание как крупным корпорациям, так и молодым компаниям. Для каждого клиента мы готовы предложить решения, способствующие оптимизации логистики и производственных операций.</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+      </div>
+    </div>
+
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="clv-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="clv-specs">СПЕЦИФИКАЦИИ</button>
+      </div>
+
+      <div class="tab-content active" id="tab-clv-desc">
+        <p>Кловертейнер состоит из поддона и крышки, снабжённой заливным отверстием, соединённых вертикальными стойками и обечайкой. Кловертейнеры успешно применяются для транспортировки и хранения битума и битумных мастик.</p>
+        <p>Производство кловертейнеров компании Greif в России началось с 2010 года. В отличие от железнодорожных цистерн и битумовозов, традиционно используемых в России, затаривание битума в кловертейнеры обеспечивает сокращение транспортных расходов до 15%. Эффективность логистики достигается благодаря кубической форме картонного IBC контейнера и повышенной загрузке в автофургоны и вагоны в сравнении с аналогичным объёмом битума, расфасованным в металлическую тару.</p>
+        <p>Контейнер был разработан совместно с производителями битума и подтвердил свою надёжность. Производственные предприятия Greif в Омске и в Рязани обеспечивают бесперебойные поставки битума в кловертейнерах заказчикам из России и по всему миру.</p>
+        <p>Инновационная разработка Greif получила высокую оценку руководителей Министерства Транспорта Российской Федерации, Федерального дорожного агентства «Росавтодор» и Государственной компании «Автодор».</p>
+      </div>
+
+      <div class="tab-content" id="tab-clv-specs">
+        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+      </div>
+    </div>
+
+    <div class="manager-card">
+      <div class="manager-info">
+        <h4>Ваш менеджер:</h4>
+        <div class="manager-name">Марина Леонова</div>
+        <div class="manager-contacts">
+          <a href="tel:+79872309971">+7 (987) 230-99-71</a>
+          <a href="mailto:Marina.Leonova@greif.com">Marina.Leonova@greif.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+};
+
+// ── NAVIGATION ─────────────────────────────────────────────
+let currentPage = localStorage.getItem('greif_green_page') || 'home';
+
+function navigateProductSubpage(product) {
+  currentPage = product;
+  localStorage.setItem('greif_green_page', product);
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function navigateIBCBuy() {
+  currentPage = 'ibc';
+  localStorage.setItem('greif_green_page', 'ibc');
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  setTimeout(() => {
+    const btn = document.querySelector('[data-tab="ibc-buy"]');
+    if (btn) btn.click();
+  }, 100);
+}
+
+function navigate(page) {
+  currentPage = page;
+  localStorage.setItem('greif_green_page', page);
+  render();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function render() {
+  const fn = PAGES[currentPage] || PAGES.home;
+  document.getElementById('main-content').innerHTML = fn();
+  
+  // Обновляем активный класс в меню
+  document.querySelectorAll('#main-nav a').forEach(a => {
+    const p = a.getAttribute('data-page');
+    if (p) {
+      a.classList.toggle('active', p === currentPage);
+    }
+  });
+  
+  // Инициализация табов для страниц продуктов
+  if (['steelDrums', 'ibc', 'conical', 'canisters', 'clover'].includes(currentPage)) {
+    setTimeout(() => {
+      const tabBtns = document.querySelectorAll('.tab-btn');
+      const tabContents = document.querySelectorAll('.tab-content');
+
+      tabBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          const tabId = this.dataset.tab;
+          tabBtns.forEach(b => b.classList.remove('active'));
+          tabContents.forEach(c => c.classList.remove('active'));
+          this.classList.add('active');
+          document.getElementById(`tab-${tabId}`).classList.add('active');
+        });
+      });
+    }, 50);
+  }
+  
+  // Инициализация вкладок вакансий
+  if (currentPage === 'vacancies') {
+    setTimeout(() => {
+      initVacancyTabs();
+    }, 50);
+  }
+  
+  // Инициализация навигации по разделам "О компании"
+  if (currentPage === 'about') {
+    setTimeout(() => {
+      initAboutNav();
+    }, 50);
+  }
+
+  if (currentPage === 'contact') {
+    setTimeout(() => {
+      if (typeof ymaps !== 'undefined') {
+        ymaps.ready(initYandexMap);
+      }
+    }, 50);
+  }
+}
+
+// ── ФУНКЦИИ ДЛЯ ВАКАНСИЙ ─────────────────────────────────────
+function initVacancyTabs() {
+  const tabs = document.querySelectorAll('.city-tab');
+  const sections = document.querySelectorAll('.city-section');
+  
+  if (!tabs.length) return;
+  
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function() {
+      const city = this.dataset.city;
+      
+      tabs.forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      
+      if (city === 'all') {
+        sections.forEach(s => s.classList.add('active'));
+      } else {
+        sections.forEach(s => {
+          if (s.dataset.city === city) {
+            s.classList.add('active');
+          } else {
+            s.classList.remove('active');
+          }
+        });
+      }
+    });
+  });
+}
+
+window.showVacancyDemo = function(title, salary, location, recruiter, telegram, phone) {
+  const html = `
+    <h2>${title}</h2>
+    <p style="font-size: 22px; font-weight: bold; color: #1a2e1a;">${salary}</p>
+    <p style="color: #2e7d32; font-weight: 500;"><strong>📍 ${location}</strong></p>
+    <hr style="border: none; border-top: 2px solid #e0ede0; margin: 15px 0;">
+    <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;">
+      <div>✅ Официальное трудоустройство</div>
+      <div>✅ Полный социальный пакет</div>
+      <div>✅ Комфортные условия труда</div>
+    </div>
+    <div style="background: #e8f3e8; padding: 15px; border-radius: 10px; margin-top: 20px;">
+      <p><strong>Специалист:</strong> ${recruiter}</p>
+      <p><strong>Telegram:</strong> <a href="https://t.me/${telegram.replace('@', '')}" target="_blank" style="color: #2e7d32;">${telegram}</a></p>
+      <p><strong>Телефон:</strong> <a href="tel:${phone}" style="color: #2e7d32;">${phone}</a></p>
+    </div>
+  `;
+  
+  const popupContent = document.getElementById('popupContent');
+  const popup = document.getElementById('vacancyPopup');
+  if (popupContent && popup) {
+    popupContent.innerHTML = html;
+    popup.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeVacancyPopup = function() {
+  const popup = document.getElementById('vacancyPopup');
+  if (popup) {
+    popup.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+};
+
+// Закрытие попапа по клику на фон
+document.addEventListener('click', function(e) {
+  const popup = document.getElementById('vacancyPopup');
+  if (e.target === popup) {
+    closeVacancyPopup();
+  }
+});
+
+// Закрытие по ESC
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeVacancyPopup();
+  }
+});
+
+// ── ФУНКЦИИ ДЛЯ СТРАНИЦЫ "О КОМПАНИИ" ───────────────────────
+const aboutSections = {
+  years32: `
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center">
+      <div>
+        <h2 style="font-size:28px; font-weight:900; color:var(--text-dark); letter-spacing:-0.01em; margin-bottom:20px">32 года в России</h2>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:16px">Компания Грайф работает на территории России с 1993 года. Под брендом Грайф производятся стальные бочки; пластиковая тара – IBC (еврокубы) и канистры; картонные контейнеры для битума. В 2023 году наша компания отметила 30-летний юбилей работы в России.</p>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.7">В нашем бизнесе мы используем передовые технологии и оборудование, предъявляем самые строгие требования к качеству выпускаемой нами упаковки. Наши клиенты — все ведущие химические и нефтехимические компании России и СНГ, и мы гордимся долгим и плодотворным сотрудничеством!</p>
+      </div>
+      <div style="background:var(--green-light-bg); border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08)">
+        <img src="http://www.greif.ru/wp-content/uploads/Proizvodstvennaya-set-Grajf-v-RF.jpg" alt="Производственная сеть Greif в России" style="width:100%; height:auto; display:block;">
+      </div>
+    </div>
+  `,
+  
+  historyInc: `
+    <div>
+      <h2 style="font-size:28px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin-bottom:24px">История Greif Inc.</h2>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px">Greif Inc. является мировым лидером в области производства промышленной упаковки. Компания производит широкий ассортимент упаковки из металлов, полимеров, бумаги и картона, а также предоставляет услуги по смешению, фасовке и упаковке химической продукции для различных отраслей промышленности.</p>
+      
+      <div style="overflow-x:auto; margin-bottom:32px">
+        <table style="width:100%; border-collapse:collapse; background:#fff; border:1px solid var(--border); border-radius:16px; overflow:hidden">
+          <thead>
+            <tr style="background:var(--green-primary); color:white">
+              <th style="padding:14px 16px; text-align:left; font-size:13px; font-weight:700"></th>
+              <th style="padding:14px 16px; text-align:left; font-size:13px; font-weight:700">Промышленная упаковка и услуги</th>
+              <th style="padding:14px 16px; text-align:left; font-size:13px; font-weight:700">Гибкая упаковка и услуги</th>
+              <th style="padding:14px 16px; text-align:left; font-size:13px; font-weight:700">Бумажная упаковка</th>
+              <th style="padding:14px 16px; text-align:left; font-size:13px; font-weight:700">Управление земельными активами</th>
+             </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:14px 16px; font-weight:700; background:#f8faf8; vertical-align:top">Продукты</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Стальные, картонные и пластиковые бочки и канистры, среднетоннажные пластиковые контейнеры (IBC, еврокубы), укупорочные системы для промышленной упаковки, бутыли для воды и восстановленные промышленные стальные и пластиковые контейнеры</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Мягкие среднетоннажные контейнеры (FIBC), транспортные мешки, многослойная упаковка промышленного и бытового назначения</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Упаковочный картон, гофролисты и прочие продукты из гофрированного картона</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Лесоматериалы, лесные угодья, земли</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:14px 16px; font-weight:700; background:#f8faf8; vertical-align:top">Услуги</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Смешение химических продуктов, фасовка, логистика и складское хранение, сбор отработанной упаковки, ее восстановление или утилизация</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Сбор и восстановление мягких среднетоннажных контейнеров (FIBC)</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Услуги по фасовке</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Управление земельными активами, консультирование, охрана и восстановление природы</td>
+            </tr>
+            <tr>
+              <td style="padding:14px 16px; font-weight:700; background:#f8faf8; vertical-align:top">Рынки</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Химические вещества, краски и пигменты, пищевые продукты и напитки, топливо, промышленные покрытия, сельскохозяйственные и фармацевтические препараты, минеральные материалы</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Рынки аналогичны представленным в категории «промышленная упаковка и услуги» с большей долей в сегментах сельскохозяйственной и пищевой отраслях</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Бытовая техника, малогабаритное оборудование, бакалея, строительные материалы, автомобильные детали, книги и мебель и многое другое</td>
+              <td style="padding:14px 16px; font-size:13px; color:var(--text-muted); vertical-align:top">Активное культивирование и восстановление лесных ресурсов США с целью достижения устойчивости в долгосрочном периоде, а также продажа лесных угодий и земель</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">История компании Greif началась в 1877 году в Кливленде (штат Огайо, США), когда Вильямом Грайфом и Альбертом Вандервайстом была основана бондарная мастерская «Vanderwyst and Greif». После смерти Вандервайста в 1882 году компания стала семейным бизнесом четверых братьев Грайф. В 1890 произошли смена названия на «Greif Brothers Company» и регистрация новой организации.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Основным направлением бизнеса компании стало производство бочек, ящиков, кадок и прочих емкостей для хранения. Благодаря высокому качеству бочек, бизнес Greif процветал, и компания приобрела 300 000 акров лесных угодий для того, чтобы обеспечивать заводы сырьем. Greif до сих пор владеет земельными участками на юго-востоке США и в Канаде. В 1926 году компания совершила первую эмиссию ценных бумаг от лица Greif Bros. Cooperage Corporation.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">В период Второй мировой войны продажи стальных бочек составляли 50% от всей выручки Greif, и было очевидно, что деревянные бочки проигрывают по сравнению с более легкой стальной упаковкой. Во второй половине 1900-х, компания переключилась от производства деревянных бочек и кадок на выпуск тары из картона, стали, пластика, среднетоннажных контейнеров, многослойной упаковки и пр. В 1951 году штаб-квартира компании была перенесена из Кливленда в Делавер, штат Огайо; компания получила название Greif Bros. Corporation.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Развитие Greif в период 1990-х годов явилось результатом серии поглощений. Приобретение в 1998 году подразделения промышленной упаковки у американской компании Sonoco Products Company сделало Greif лидером американского рынка промышленной упаковки. В 2001 году Greif выкупила бизнес промышленной упаковки у Huhtamaki Van Leer. После поглощения Van Leer, компания Greif Bros. Corporation была переименована в Greif Inc. и появилась новая международная торговая марка, которая используется в настоящее время. С 2002 года акции компании торгуются на Нью-Йоркской Фондовой Бирже.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7">В 2003 году в состав Greif Inc. вошла компания CorrChoice Inc. (США), состоящая из семи заводов по производству гофрированного картона. В 2006 году Greif осуществила еще два значимых поглощения — Delta Petroleum Company Inc. (США) и Blagden Packaging Group (Великобритания), занимавших ключевые позиции в области производства стальных бочек, укупорочных систем и предоставлении услуг по фасовке. 2010 год ознаменовался присоединением еще одного перспективного направления — гибкой упаковки — в результате объединения турецких Unsa, Sunjut и европейских Storsack, Ligtermoet в самостоятельное подразделение Greif Flexible Products & Services. В 2011 году Greif осуществила поглощение итальянской компании Fustiplast s.r.l. (Италия), это позволило укрепить позиции компании и расширить портфолио производимых продуктов в сегменте пластиковой упаковки/IBC. В 2020-х в состав Greif вошли Ipackchem, Reliance Products, Colepak, Centurionibc, LeeContainer и ряд других компаний.</p>
+    </div>
+  `,
+  
+  historyRu: `
+    <div>
+      <h2 style="font-size:28px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin-bottom:24px">История Greif в России</h2>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">На заводах Greif в России и СНГ реализован более чем вековой опыт компании в области производства промышленной упаковки. Жесткие корпоративные требования к качеству изготавливаемой продукции обеспечивают не только сохранность фасуемого продукта, но и гарантируют безопасность здоровья людей и окружающей среды.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">За годы работы на постсоветском пространстве Greif (до 1999 года — Van Leer) удалось сформировать партнерские отношения с ведущими предприятиями химической, нефтехимической, пищевой индустрии, закрепив свою позицию в качестве лидирующего производителя промышленной упаковки.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px">В России расположены 8 производственных площадок, где производятся такие виды промышленной упаковки как стальные бочки, еврокубы, кловертейнеры и пластиковые канистры.</p>
+      
+      <div style="display:flex; flex-direction:column; gap:16px; margin-top:24px">
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">1993 год</div><div style="font-size:14px; color:var(--text-muted)">Первым звеном в производственной сети компании в России стал завод по производству стальных цилиндрических бочек в поселке Белоярский Свердловской области.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">1998 год</div><div style="font-size:14px; color:var(--text-muted)">Состоялось открытие завода по производству стальных бочек в Вологде, что позволило укрепить позиции компании в Центральном и Северо-Западном регионах.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2003 год</div><div style="font-size:14px; color:var(--text-muted)">Открыт завод Greif по производству стальных бочек в Волгограде, что позволило сократить транспортное плечо и повысить ритмичность поставок для клиентов Южных регионов России и СНГ. Позже на той же производственной площадке запущена линия по изготовлению конических стальных бочек, предназначенных для фасовки томатной пасты и фруктовых концентратов.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2004 год</div><div style="font-size:14px; color:var(--text-muted)">В Перми состоялся запуск нового завода Greif по производству стальных бочек, что позволило значительно усилить позиции компании на российском рынке жесткой промышленной упаковки. Локализация производства в Пермском крае позволила снизить логистические издержки заказчиков Уральского и Приволжского федеральных округов.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2007 год</div><div style="font-size:14px; color:var(--text-muted)">Новые мощности по производству стальных бочек появились в Сибирском регионе — Омске. Кроме того, усилилось направление пластиковой упаковки: в Казани началось производство пластиковой упаковочной тары — IBC контейнеров (еврокубов).</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2010 год</div><div style="font-size:14px; color:var(--text-muted)">В Омске началось производство контейнеров типа Clovertainer®, предназначенных для фасовки битума, которые в настоящее время пользуется высоким спросом среди ведущих нефтеперерабатывающих компаний России.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2014 год</div><div style="font-size:14px; color:var(--text-muted)">В Казани запущена линия по изготовлению еврокубов нового поколения GCube.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2015 год</div><div style="font-size:14px; color:var(--text-muted)">В Рязани запущен новый цех Greif по производству кловертейнеров для битума.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2018-19 год</div><div style="font-size:14px; color:var(--text-muted)">В Индустриальном парке Ворсино (Обнинск, Калужская область) стартовало производство стальных бочек и еврокубов IBC GCUBE.</div></div>
+        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2022 год</div><div style="font-size:14px; color:var(--text-muted)">В дополнение к существующим мощностям в Калужской области, запущена линия по производству многослойных канистр для агрохимических продуктов.</div></div>
+      </div>
+      
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-top:32px">К настоящему времени более 1000 предприятий из России и СНГ, работающих в различных сферах — от производства растительных масел до изготовления сверхчистых металлов, являются клиентами Greif. Greif видит большой потенциал в дальнейшем развитии деятельности на территории СНГ и продолжит представлять своим потребителям новые виды промышленной упаковки и сервисов.</p>
+    </div>
+  `,
+  
+  sustainability: `
+    <div>
+      <h2 style="font-size:28px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin-bottom:24px">Устойчивое развитие</h2>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Выступая в качестве признанного лидера на рынке промышленной упаковки, Greif предлагает продукцию и услуги, которые максимально удовлетворяют потребностям клиентов. В результате позиционирования Greif в качестве надежного поставщика, заказчики, начиная деловые отношения с компанией, тем самым делают выбор в пользу безопасности своей деятельности. Безопасность достигается в результате сочетания высоких стандартов производства, глобальной сети поставок и уникальной корпоративной культуры The Greif Way.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">В мире все большим спросом пользуется продукция, которая оказывает минимум негативного воздействия на окружающую среду и производится в соответствии с принципами устойчивого развития. Реализация данной политики промышленными компаниями позволяет сбалансировать экономические, экологические и социальные аспекты деятельности предприятия, создавая при этом дополнительную ценность для других участников производственной цепи. Устойчивое развитие представляет собой единственный путь удовлетворения потребностей возрастающего числа жителей нашей планеты и обеспечения экономического роста без ущерба для природы и последствий для жизни на планете.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Корпорация Greif Inc., являющаяся мировым лидером на рынке промышленной упаковки и услуг, активно использует принципы «sustainability» в своей деятельности. Начиная с 2003 года Greif ведет активную работу в направлении сокращения расходов во всех сферах деятельности, охватывая закупки, производство и продажу, что реализуется с использованием принципов бережливого производства (lean manufacturing). В настоящее время бизнес-система Greif основана на концепции непрерывного совершенствования и сокращения любых потерь во всех бизнес-процессах. Целью компании в рамках реализуемой политики является «ноль отходов», отправляемых на полигоны.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">Восстановление упаковки удлиняет ее жизненный цикл, что значительно уменьшает объем потребляемых сырьевых ресурсов. Для реализации «устойчивого» подхода к промышленной упаковке, с 2010 года клиентам Greif был предложен сервис сбора использованной тары (IBC — еврокубы). В России в настоящее время создана инфраструктура для сбора и восстановления IBC (еврокубов) и она является одной из крупнейших сетей по восстановлению жесткой промышленной упаковки в РФ. Благодаря данному сервису производственные компании получают полный комплекс услуг по сбору и восстановлению использованной тары, а также качественную вторичную тару. Такой способ организации производственной деятельности обеспечивает бережное обращение с имеющимися ресурсами, давая им вторую жизнь, и эффективную работу цепи поставок.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7">Вторичная переработка упаковки позволяет снизить нагрузку на окружающую среду. В частности, большинство стальных бочек могут быть подвергнуты 100%-ой переработке; промышленные пластиковые упаковочные продукты также могут быть утилизированы как лом и вторично использованы в производстве паллет или иных продуктов из дробленого пластика. В то же время, поскольку жесткая промышленная упаковка часто используется для фасовки химических или опасных продуктов, процесс сбора и восстановления такой тары должен быть организован с учетом минимального риска для окружающей среды.</p>
+    </div>
+  `
+};
+
+let currentAboutSection = 'years32';
+
+function switchAboutSection(sectionId) {
+  currentAboutSection = sectionId;
+  const contentDiv = document.getElementById('about-content');
+  if (contentDiv && aboutSections[sectionId]) {
+    contentDiv.innerHTML = aboutSections[sectionId];
+  } else {
+    console.error('Section not found:', sectionId);
+  }
+  
+  document.querySelectorAll('.about-nav-link').forEach(link => {
+    const linkSection = link.getAttribute('data-about-section');
+    if (linkSection === sectionId) {
+      link.classList.add('active');
+      link.style.borderLeftColor = 'var(--green-primary)';
+      link.style.color = 'var(--green-primary)';
+    } else {
+      link.classList.remove('active');
+      link.style.borderLeftColor = 'transparent';
+      link.style.color = '#333';
+    }
+  });
+}
+
+function initAboutNav() {
+  const navLinks = document.querySelectorAll('.about-nav-link');
+  
+  navLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const sectionId = this.getAttribute('data-about-section');
+      switchAboutSection(sectionId);
+    });
+  });
+  
+  switchAboutSection('years32');
+}
+
+// ── FILTER ─────────────────────────────────────────────────
+function filterProducts(btn, filter) {
+  const filterBar = document.getElementById('filter-bar');
+  if (!filterBar) return;
+  
+  document.querySelectorAll('#filter-bar button').forEach(b => {
+    b.style.background = '#fff';
+    b.style.color = '#666';
+  });
+  btn.style.background = 'var(--green-primary)';
+  btn.style.color = '#fff';
+  
+  const grid = document.getElementById('products-grid');
+  if (!grid) return;
+  
+  const categoryMap = {
+    'Стальные бочки': 'Стальные бочки',
+    'Еврокубы': 'Еврокубы',
+    'Конические бочки': 'Конические бочки',
+    'Канистры': 'Канистры',
+    'Кловертейнеры': 'Кловертейнеры'
+  };
+  
+  const filtered = filter === 'Все' ? PRODUCTS : PRODUCTS.filter(p => p.cat === categoryMap[filter]);
+  grid.innerHTML = filtered.map(productCard).join('');
+}
+
+// ── INIT ───────────────────────────────────────────────────
+render();
+</script>
+<!-- Подключение Яндекс.Карт API -->
+<script src="https://api-maps.yandex.ru/2.1/?apikey=5b37fb0d-cefe-4d3f-9517-75d396747e1a&lang=ru_RU" type="text/javascript"></script>
+
+<script>
+let _yandexMapInstance = null;
+
+function initYandexMap() {
+    if (_yandexMapInstance) {
+        _yandexMapInstance.destroy();
+        _yandexMapInstance = null;
+    }
+    const mapEl = document.getElementById('map');
+    if (!mapEl) return;
+    // Координаты городов (широта, долгота)
+    const cities = {
+        moscow: { coords: [55.751574, 37.573856], name: 'Москва', address: 'ул. Ленинская слобода, 19, ком. 2061', phone: '+7 (495) 933-59-47', email: 'Moscow.Office@greif.com' },
+        vologda: { coords: [59.220492, 39.891567], name: 'Вологда', address: 'ул. Маяковского, 38', phone: '+7 (8172) 26-40-13', email: 'Vologda.Office@greif.com' },
+        volgograd: { coords: [48.707103, 44.516939], name: 'Волгоград', address: 'ул. Промысловая, 15', phone: '+7 (8442) 78-02-80', email: 'Aleksandr.Sedov@greif.com' },
+        perm: { coords: [58.010500, 56.250000], name: 'Пермь', address: 'ул. Героев Хасана, 74', phone: '+7 (342) 211-07-00', email: 'Anna.Egorova@greif.com' },
+        ekaterinburg: { coords: [56.838011, 60.597466], name: 'Екатеринбург', address: 'п. Белоярский, ул. Мира, 20', phone: '+7 (343) 389-09-79', email: 'Sergei.Dronov@greif.com' },
+        kazan: { coords: [55.796127, 49.106405], name: 'Казань', address: 'ул. М.Миля, 49А', phone: '+7 (843) 202-05-45', email: 'Marina.Leonova@greif.com' },
+        omsk: { coords: [54.988480, 73.324236], name: 'Омск', address: 'ул. И.Н. Багнюка, 10', phone: '+7 (381) 221-41-12', email: 'Aleksei.Kuzmin@greif.com' },
+        ryazan: { coords: [54.626530, 39.691600], name: 'Рязань', address: 'ш. Ряжское, 20', phone: '+7 (491) 270-14-17', email: 'Moscow.Office@greif.com' },
+        kaluga: { coords: [54.553889, 36.273056], name: 'Калуга (Ворсино)', address: 'Индустриальный парк Ворсино', phone: '+7 (4842) 92-21-01', email: 'Kaluga.Office@greif.com' }
+    };
+    
+    // Создаем карту с центром на Москве
+    _yandexMapInstance = new ymaps.Map('map', {
+        center: [55.751574, 37.573856],
+        zoom: 4,
+        controls: ['zoomControl', 'fullscreenControl']
+    });
+    const map = _yandexMapInstance;
+    
+    // Добавляем метки для каждого города
+    Object.values(cities).forEach(city => {
+        const placemark = new ymaps.Placemark(city.coords, {
+            hintContent: city.name,
+            balloonContent: `
+                <div style="font-family:Roboto, sans-serif; min-width:200px">
+                    <strong style="color:#006B4C; font-size:16px">📍 ${city.name}</strong><br>
+                    <span style="font-size:13px; color:#333">${city.address}</span><br>
+                    <span style="font-size:13px; color:#555">📞 ${city.phone}</span><br>
+                    <span style="font-size:13px; color:#555">✉️ <a href="mailto:${city.email}" style="color:#006B4C; text-decoration:none">${city.email}</a></span>
+                </div>
+            `
+        }, {
+            preset: 'islands#greenIcon',
+            iconColor: '#006B4C'
+        });
+        
+        map.geoObjects.add(placemark);
+    });
+}
+
+// ── POPUP FUNCTIONS ───────────────────────────
+function openPopup(id) {
+  const overlay = document.getElementById(id);
+  if (!overlay) return;
+  overlay.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closePopup(id) {
+  const overlay = document.getElementById(id);
+  if (!overlay) return;
+  overlay.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function closePopupOnOverlay(e, id) {
+  if (e.target === e.currentTarget) closePopup(id);
+}
+
+function submitPopup(id) {
+  const formEl = document.getElementById(id + '-form');
+  const successEl = document.getElementById(id + '-success');
+  const required = formEl.querySelectorAll('input[id], textarea[id], select[id]');
+  let valid = true;
+
+  required.forEach(el => {
+    const label = el.closest('.form-field')?.querySelector('.form-label');
+    if (label && label.textContent.includes('*') && !el.value.trim()) {
+      el.style.borderColor = '#c0392b';
+      valid = false;
+    } else {
+      el.style.borderColor = '';
+    }
+  });
+
+  if (!valid) return;
+
+  formEl.style.display = 'none';
+  successEl.style.display = 'block';
+
+  setTimeout(() => {
+    closePopup(id);
+    setTimeout(() => {
+      formEl.style.display = '';
+      successEl.style.display = 'none';
+      formEl.querySelectorAll('input, textarea, select').forEach(el => el.value = '');
+    }, 300);
+  }, 2800);
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    ['popup-hr', 'popup-request', 'popup-director'].forEach(id => closePopup(id));
+  }
+});
+
+// Ждем загрузки страницы и API Яндекс.Карт
+if (typeof ymaps !== 'undefined') {
+    ymaps.ready(initYandexMap);
+} else {
+    // Если API еще не загрузился, ждем
+    window.addEventListener('load', function() {
+        if (typeof ymaps !== 'undefined') {
+            ymaps.ready(initYandexMap);
+        } else {
+            console.error('Яндекс.Карты не загрузились');
+        }
+    });
+}
+</script>
+</body>
+</html>

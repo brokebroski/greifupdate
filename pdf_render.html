@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+</head>
+<body>
+<div id="status">Loading...</div>
+<div id="canvases"></div>
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+async function go() {
+  const resp = await fetch('uploads/BrandMark_One Pager.pdf');
+  const buf = await resp.arrayBuffer();
+  const pdf = await pdfjsLib.getDocument({data: new Uint8Array(buf)}).promise;
+  document.getElementById('status').textContent = 'Pages: ' + pdf.numPages;
+  for (let i = 1; i <= pdf.numPages; i++) {
+    const page = await pdf.getPage(i);
+    const vp = page.getViewport({scale: 1.8});
+    const canvas = document.createElement('canvas');
+    canvas.width = vp.width; canvas.height = vp.height;
+    canvas.style.display = 'block';
+    canvas.style.marginBottom = '10px';
+    canvas.id = 'page' + i;
+    document.getElementById('canvases').appendChild(canvas);
+    await page.render({canvasContext: canvas.getContext('2d'), viewport: vp}).promise;
+    document.getElementById('status').textContent = 'Rendered page ' + i;
+  }
+  document.getElementById('status').textContent = 'Done';
+}
+go();
+</script>
+</body>
+</html>

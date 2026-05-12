@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-primary); background: #fff; padding: 20px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.token { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border: 1px solid #eee; border-radius: 4px; }
+.dot { width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.08); }
+.name { font-size: 11px; font-weight: 700; color: #222; }
+.val { font-size: 10px; color: #888; font-family: var(--font-condensed); }
+</style>
+</head><body>
+<div class="grid">
+  <div class="token"><div class="dot" style="background:var(--fg-primary)"></div><div><div class="name">fg-primary</div><div class="val">#000000</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--fg-secondary)"></div><div><div class="name">fg-secondary</div><div class="val">#545458</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--fg-muted)"></div><div><div class="name">fg-muted</div><div class="val">#a8a8ac</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--fg-accent); border-color:transparent"></div><div><div class="name">fg-accent</div><div class="val">#f28900</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--bg-page); border: 1px solid #ddd"></div><div><div class="name">bg-page</div><div class="val">#ffffff</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--bg-subtle)"></div><div><div class="name">bg-subtle</div><div class="val">#f5f5f7</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--bg-brand)"></div><div><div class="name">bg-brand</div><div class="val">#f28900</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--bg-inverse)"></div><div><div class="name">bg-inverse</div><div class="val">#000000</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--status-success)"></div><div><div class="name">success</div><div class="val">#337761</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--status-info)"></div><div><div class="name">info</div><div class="val">#0070cd</div></div></div>
+  <div class="token"><div class="dot" style="background:var(--status-warning)"></div><div><div class="name">warning</div><div class="val">#fce200</div></div></div>
+  <div class="token"><div class="dot" style="background:#d93025"></div><div><div class="name">danger</div><div class="val">#d93025</div></div></div>
+</div>
+</body></html>

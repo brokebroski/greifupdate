@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-primary); background: #fff; padding: 20px; }
+.row { display: flex; gap: 8px; flex-wrap: wrap; }
+.swatch { flex: 1; min-width: 80px; border-radius: 4px; overflow: hidden; }
+.color-block { height: 64px; }
+.meta { padding: 8px 10px; background: #fff; border: 1px solid #eee; border-top: none; }
+.hex { font-family: var(--font-condensed); font-size: 11px; color: #666; font-weight: 700; letter-spacing: 0.05em; }
+.name { font-size: 12px; font-weight: 700; color: #222; margin-bottom: 2px; }
+.pantone { font-size: 10px; color: #999; }
+</style>
+</head><body>
+<div class="row">
+  <div class="swatch">
+    <div class="color-block" style="background:#f28900"></div>
+    <div class="meta"><div class="name">Orange</div><div class="hex">#f28900</div><div class="pantone">Pantone 144 C</div></div>
+  </div>
+  <div class="swatch">
+    <div class="color-block" style="background:#ef7521"></div>
+    <div class="meta"><div class="name">Orange Dark</div><div class="hex">#ef7521</div><div class="pantone">Pantone 158 C</div></div>
+  </div>
+  <div class="swatch">
+    <div class="color-block" style="background:#fce200"></div>
+    <div class="meta"><div class="name">Yellow</div><div class="hex">#fce200</div><div class="pantone">Pantone 102 C</div></div>
+  </div>
+  <div class="swatch">
+    <div class="color-block" style="background:#ffdc00"></div>
+    <div class="meta"><div class="name">Yellow 2</div><div class="hex">#ffdc00</div><div class="pantone">Pantone 108 C</div></div>
+  </div>
+  <div class="swatch">
+    <div class="color-block" style="background:#000"></div>
+    <div class="meta"><div class="name">Black</div><div class="hex">#000000</div><div class="pantone">Process Black</div></div>
+  </div>
+</div>
+</body></html>

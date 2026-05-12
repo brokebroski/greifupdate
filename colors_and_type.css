@@ -1,0 +1,193 @@
+/* ============================================================
+   Greif СНГ Design System — colors_and_type.css
+   Source: BrandMark_One Pager.pdf
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,400&family=Roboto+Condensed:wght@400;700&display=swap');
+
+/* ── BASE COLOR TOKENS ─────────────────────────────────────── */
+:root {
+  /* ── CIS GREEN PALETTE (v2 — primary identity) ─────────────── */
+  --greif-green:         #007A53;   /* Primary corporate green */
+  --greif-green-dark:    #005C3E;   /* Hover / pressed */
+  --greif-green-deeper:  #1A3B2B;   /* Footer, dark sections */
+  --greif-green-light:   #E6F2EE;   /* Backgrounds, tinted panels */
+  --greif-green-mid:     #4E9A7A;   /* Secondary green accent */
+
+  /* Text */
+  --greif-dark:          #2C3E2F;   /* Deep green-gray (body text) */
+  --greif-gray:          #5A6B5D;   /* Secondary text */
+  --greif-gray-light:    #A0ADAA;   /* Muted/placeholder */
+  --greif-gray-metallic: #D3D8D3;   /* Dividers, light borders */
+  --greif-gray-bg:       #F4F7F5;   /* Page background */
+  --greif-white:         #ffffff;
+  --greif-black:         #000000;
+
+  /* Legacy palette (Pantone — retained for reference / print) */
+  --greif-orange:        #f28900;   /* Pantone 144 C */
+  --greif-orange-dark:   #ef7521;   /* Pantone 158 C */
+  --greif-yellow:        #fce200;   /* Pantone 102 C */
+  --greif-blue:          #0070cd;   /* Pantone 285 C */
+  --greif-purple:        #62269e;   /* Pantone 267 C */
+
+  /* ── SEMANTIC TOKENS ───────────────────────────────────────── */
+
+  /* Foregrounds */
+  --fg-primary:          var(--greif-dark);
+  --fg-secondary:        var(--greif-gray);
+  --fg-muted:            var(--greif-gray-light);
+  --fg-inverse:          var(--greif-white);
+  --fg-accent:           var(--greif-green);
+  --fg-link:             var(--greif-green);
+  --fg-link-hover:       var(--greif-green-dark);
+
+  /* Backgrounds */
+  --bg-page:             var(--greif-white);
+  --bg-subtle:           var(--greif-gray-bg);
+  --bg-tinted:           var(--greif-green-light);
+  --bg-inverse:          var(--greif-green-deeper);
+  --bg-brand:            var(--greif-green);
+  --bg-brand-hover:      var(--greif-green-dark);
+
+  /* Borders */
+  --border-default:      var(--greif-gray-metallic);
+  --border-strong:       var(--greif-gray-light);
+  --border-brand:        var(--greif-green);
+
+  /* Interactive */
+  --action-primary:      var(--greif-green);
+  --action-primary-hover:var(--greif-green-dark);
+  --action-primary-press:var(--greif-green-deeper);
+  --action-secondary:    var(--greif-dark);
+
+  /* Status */
+  --status-success:      var(--greif-green);
+  --status-info:         var(--greif-blue);
+  --status-warning:      var(--greif-orange);
+  --status-danger:       #c0392b;
+
+  /* Product Category Colors */
+  --cat-steel-drums:     var(--greif-green);
+  --cat-plastic-drums:   var(--greif-green-mid);
+  --cat-ibc:             var(--greif-green-dark);
+  --cat-canisters:       #4E9A7A;
+  --cat-reconditioning:  var(--greif-green);
+
+  /* ── SPACING SCALE ─────────────────────────────────────────── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+
+  /* ── RADIUS ────────────────────────────────────────────────── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-pill: 999px;
+
+  /* ── SHADOWS ────────────────────────────────────────────────── */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:  0 2px 8px rgba(0,0,0,0.12);
+  --shadow-lg:  0 4px 20px rgba(0,0,0,0.16);
+
+  /* ── TYPOGRAPHY ─────────────────────────────────────────────── */
+  --font-primary:    'Roboto', Arial, sans-serif;
+  --font-condensed:  'Roboto Condensed', Arial Narrow, sans-serif;
+  --font-fallback:   Arial, Helvetica, sans-serif;
+
+  --font-weight-light:   300;
+  --font-weight-regular: 400;
+  --font-weight-medium:  500;
+  --font-weight-bold:    700;
+  --font-weight-black:   900;
+
+  --line-height-tight:   1.15;
+  --line-height-base:    1.5;
+  --line-height-loose:   1.75;
+
+  --letter-spacing-tight:  -0.01em;
+  --letter-spacing-base:    0em;
+  --letter-spacing-wide:    0.04em;
+  --letter-spacing-widest:  0.1em;
+}
+
+/* ── SEMANTIC TYPE ELEMENTS ─────────────────────────────────── */
+
+h1, .h1 {
+  font-family: var(--font-primary);
+  font-size: 2.5rem;       /* 40px */
+  font-weight: var(--font-weight-black);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+  color: var(--fg-primary);
+}
+
+h2, .h2 {
+  font-family: var(--font-primary);
+  font-size: 1.875rem;     /* 30px */
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--fg-primary);
+}
+
+h3, .h3 {
+  font-family: var(--font-primary);
+  font-size: 1.375rem;     /* 22px */
+  font-weight: var(--font-weight-bold);
+  line-height: 1.3;
+  color: var(--fg-primary);
+}
+
+h4, .h4 {
+  font-family: var(--font-primary);
+  font-size: 1.125rem;     /* 18px */
+  font-weight: var(--font-weight-medium);
+  line-height: 1.4;
+  color: var(--fg-primary);
+}
+
+p, .body {
+  font-family: var(--font-primary);
+  font-size: 1rem;         /* 16px */
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-base);
+  color: var(--fg-secondary);
+}
+
+.body-sm {
+  font-size: 0.875rem;     /* 14px */
+  line-height: var(--line-height-base);
+  color: var(--fg-secondary);
+}
+
+.label {
+  font-family: var(--font-condensed);
+  font-size: 0.75rem;      /* 12px */
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-widest);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.display {
+  font-family: var(--font-primary);
+  font-size: 3.5rem;       /* 56px */
+  font-weight: var(--font-weight-black);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--fg-primary);
+}
+
+code, .mono {
+  font-family: 'Roboto Mono', 'Courier New', monospace;
+  font-size: 0.875rem;
+  background: var(--bg-subtle);
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+}

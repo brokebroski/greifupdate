@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Greif Drum Pictogram">
+  <rect x="20" y="12" width="40" height="56" rx="6" fill="none" stroke="#f28900" stroke-width="4"></rect>
+  <ellipse cx="40" cy="18" rx="20" ry="6" fill="none" stroke="#f28900" stroke-width="3"></ellipse>
+  <ellipse cx="40" cy="62" rx="20" ry="6" fill="none" stroke="#f28900" stroke-width="3"></ellipse>
+  <line x1="20" y1="35" x2="60" y2="35" stroke="#f28900" stroke-width="2.5"></line>
+  <line x1="20" y1="45" x2="60" y2="45" stroke="#f28900" stroke-width="2.5"></line>
+</svg>

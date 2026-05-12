@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html><head>
+<link rel="stylesheet" href="../colors_and_type.css">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-primary); background: #fff; padding: 20px 22px; }
+.row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.row:last-child { margin-bottom: 0; }
+.row-label {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 10px; font-weight: 700; color: #bbb;
+  width: 72px; flex-shrink: 0;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+/* Status badges — filled, sharp */
+.badge {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 11px; font-weight: 700;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 0;
+  line-height: 1.2;
+}
+/* Category tags — outlined pill */
+.tag {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 11px; font-weight: 700;
+  padding: 3px 10px; border-radius: 999px;
+  border: 1.5px solid; letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+/* Inline tinted chip */
+.chip {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 10px; font-weight: 700;
+  padding: 3px 8px; border-radius: 2px;
+  letter-spacing: 0.07em; text-transform: uppercase;
+  line-height: 1.2;
+}
+/* Green palette */
+.g-primary   { background: #006B4C; color: #fff; }
+.g-secondary { background: #008B63; color: #fff; }
+.g-light     { background: #F0F7F3; color: #006B4C; border: 1px solid #b8dac9; }
+.g-outline   { color: #006B4C; border-color: #006B4C; }
+/* Semantic */
+.s-success   { background: #337761; color: #fff; }
+.s-info      { background: #0070cd; color: #fff; }
+.s-warning   { background: #fce200; color: #1a1a1a; }
+.s-danger    { background: #d93025; color: #fff; }
+.s-neutral   { background: #e5e5e8; color: #545458; }
+/* Category outlines */
+.c-steel     { color: #006B4C; border-color: #006B4C; }
+.c-plastic   { color: #0070cd; border-color: #0070cd; }
+.c-ibc       { color: #7e55c3; border-color: #7e55c3; }
+.c-canister  { color: #008fbe; border-color: #008fbe; }
+.c-recon     { color: #337761; border-color: #337761; }
+/* Inline chips */
+.chip-orange { background: #fff8ee; color: #f28900; }
+.chip-green  { background: #F0F7F3; color: #006B4C; }
+.chip-blue   { background: #f0f8ff; color: #0070cd; }
+.chip-purple { background: #f5f0ff; color: #7e55c3; }
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="row-label">Status</div>
+  <span class="badge g-primary">Новинка</span>
+  <span class="badge g-secondary">В наличии</span>
+  <span class="badge s-success">UN Cert</span>
+  <span class="badge s-info">Рекомендуем</span>
+  <span class="badge s-warning">Под заказ</span>
+  <span class="badge s-danger">Снят</span>
+  <span class="badge s-neutral">Архив</span>
+</div>
+
+<div class="row">
+  <div class="row-label">Category</div>
+  <span class="tag c-steel">Сталь</span>
+  <span class="tag c-plastic">Пластик</span>
+  <span class="tag c-ibc">IBC</span>
+  <span class="tag c-canister">Канистры</span>
+  <span class="tag c-recon">Восстановление</span>
+</div>
+
+<div class="row">
+  <div class="row-label">Tinted</div>
+  <span class="badge g-light">EarthMinded™</span>
+  <span class="chip chip-green">Эко-линейка</span>
+  <span class="chip chip-orange">Топ продаж</span>
+  <span class="chip chip-blue">Пищевой класс</span>
+  <span class="chip chip-purple">Спецзаказ</span>
+</div>
+
+</body></html>
