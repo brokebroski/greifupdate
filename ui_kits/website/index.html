@@ -1188,6 +1188,338 @@ nav a.active { border-bottom: 2px solid var(--green-primary); }
 .form-input:focus { border-color: var(--green-primary); box-shadow: 0 0 0 3px rgba(0,107,76,0.1); }
 .btn-form-submit { background: var(--green-primary); color: #fff; border: none; padding: 14px 32px; font-family: 'Roboto', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; text-transform: uppercase; letter-spacing: 0.05em; width: 100%; transition: background 0.15s; }
 .btn-form-submit:hover { background: var(--green-secondary); }
+
+/* ── HAMBURGER ──────────────────────────────────── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 8px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--green-primary);
+  transition: all 0.25s;
+  border-radius: 1px;
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── MOBILE NAV DRAWER ──────────────────────────── */
+.mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 150;
+}
+.mobile-nav-overlay.open { display: block; }
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: min(320px, 88vw);
+  height: 100%;
+  background: #fff;
+  z-index: 160;
+  overflow-y: auto;
+  transition: right 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  border-left: 3px solid var(--green-primary);
+}
+.mobile-nav-drawer.open { right: 0; }
+.mobile-nav-head {
+  padding: 14px 20px;
+  background: var(--green-footer);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.mobile-nav-close {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 28px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0;
+}
+.mobile-nav-links { padding: 8px 0; flex: 1; }
+.mobile-nav-links a {
+  display: block;
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-dark);
+  text-decoration: none;
+  border-bottom: 1px solid var(--border);
+  transition: color 0.15s;
+}
+.mobile-nav-links a:hover { color: var(--green-primary); }
+.mobile-nav-group-title {
+  padding: 13px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text-dark);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: color 0.15s;
+  user-select: none;
+}
+.mobile-nav-group-title:hover { color: var(--green-primary); }
+.mobile-nav-group-title .arrow {
+  font-size: 18px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+.mobile-nav-group-title.open .arrow { transform: rotate(90deg); }
+.mobile-nav-submenu { display: none; background: #f8faf8; }
+.mobile-nav-submenu.open { display: block; }
+.mobile-nav-submenu a {
+  padding-left: 32px;
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+.mobile-nav-actions {
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 2px solid var(--green-primary);
+  background: #fafffe;
+  flex-shrink: 0;
+}
+.mobile-nav-actions button {
+  background: var(--green-primary);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.15s;
+  font-family: 'Roboto', sans-serif;
+}
+.mobile-nav-actions button:hover { background: var(--green-secondary); }
+
+/* ── RESPONSIVE: TABLET ─────────────────────────── */
+@media (max-width: 960px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .features-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .hero-headline { font-size: 42px; }
+  .hero-stats { gap: 28px; }
+  .hero-stat-num { font-size: 26px; }
+  .section-header-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .header-actions { display: none; }
+}
+
+/* ── RESPONSIVE: MOBILE ─────────────────────────── */
+@media (max-width: 768px) {
+  /* Header */
+  .header-top { display: none; }
+  #main-nav { display: none; }
+  .header-actions { display: none !important; }
+  .hamburger { display: flex; }
+  .header-main { padding: 0 16px; min-height: 60px; gap: 0; }
+  .logo img { height: 42px; }
+
+  /* Hero */
+  .hero { min-height: auto; }
+  .hero-drums { display: none; }
+  .hero-overlay { background: rgba(0,61,45,0.93); }
+  .hero-content { padding: 44px 16px 36px; }
+  .hero-headline { font-size: 34px; max-width: 100%; }
+  .hero-eyebrow { margin-bottom: 12px; }
+  .hero-sub { font-size: 14px; max-width: 100%; margin-bottom: 24px; }
+  .hero-actions { flex-direction: column; gap: 10px; margin-bottom: 28px; }
+  .hero-actions button { width: 100%; text-align: center; padding: 14px 20px; }
+  .hero-stats { flex-wrap: wrap; gap: 18px; }
+  .hero-stat-num { font-size: 24px; }
+  .hero-stat-label { font-size: 9px; }
+
+  /* Sections */
+  .products { padding: 36px 0; }
+  .features { padding: 36px 0; }
+  .section-inner { padding: 0 16px; }
+  .section-title { font-size: 22px; }
+  .section-sub { font-size: 13px; }
+  .section-header-row { flex-direction: column; align-items: flex-start; gap: 12px; margin-bottom: 20px; }
+  .product-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .features-grid { grid-template-columns: 1fr; gap: 14px; }
+  .feature-card { padding: 22px 18px; }
+
+  /* Page hero */
+  .page-hero { padding: 26px 0 20px; }
+  .page-hero-inner { padding: 0 16px; }
+  .page-hero-inner h1 { font-size: 24px !important; }
+  .page-hero-inner p { font-size: 13px !important; }
+
+  /* Product detail */
+  .product-detail-page { padding: 20px 16px; }
+  .product-detail-grid { grid-template-columns: 1fr !important; gap: 20px; }
+  .product-image-col { padding: 20px; }
+  .tab-headers { overflow-x: auto; flex-wrap: nowrap !important; }
+  .tab-btn { white-space: nowrap; padding: 12px 16px; }
+  .tab-content { padding: 20px 16px !important; overflow-x: auto; }
+  .tab-content table { min-width: 420px; }
+  .manager-contacts { flex-direction: column; gap: 6px; }
+  .manager-card { padding: 20px; }
+
+  /* About page: sidebar stacks */
+  [style*="width:260px"][style*="position:sticky"] {
+    width: 100% !important;
+    position: static !important;
+  }
+  .about-nav-link { padding: 10px 16px !important; font-size: 13px !important; }
+
+  /* Services grid */
+  [style*="grid-template-columns:repeat(2,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* IBC closures & specs 2-col grid */
+  #tab-ibc-closures > div,
+  #tab-ibc-specs > div[style*="grid-template-columns:1fr 1fr"],
+  [style*="grid-template-columns:1fr 1fr;gap:24px"],
+  [style*="grid-template-columns:1fr 1fr;gap:20px"],
+  [style*="grid-template-columns:1fr 1fr;gap:18px"],
+  [style*="grid-template-columns:1fr 1fr;gap:16px"],
+  [style*="grid-template-columns:1fr 1fr;gap:12px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Branding 3-col grid */
+  [style*="grid-template-columns:1fr 1fr 1fr"],
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Contact map */
+  #map { height: 300px !important; }
+
+  /* Contact cards grid */
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Logistics feature mini-grid */
+  [style*="grid-template-columns:1fr 1fr;gap:12px"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Form grids */
+  .form-grid-2 { grid-template-columns: 1fr; }
+
+  /* Footer */
+  .footer { padding: 20px 0 16px; }
+  .footer-inner { padding: 0 16px; }
+  .footer-info { flex-direction: column; text-align: center; gap: 12px; }
+  .footer-menu { flex-wrap: wrap; justify-content: center; gap: 10px 18px; }
+  .country-chooser { text-align: center; }
+  .country-chooser ul { justify-content: center; }
+  .footer-main { flex-direction: column; padding: 28px 16px; gap: 20px; }
+  .footer-brand { width: 100%; }
+  .footer-bottom-inner { flex-direction: column; gap: 8px; text-align: center; padding: 12px 16px; }
+  .footer-bottom-links { flex-wrap: wrap; justify-content: center; }
+
+  /* Popups */
+  .popup-box { margin: 12px; max-height: calc(100vh - 24px); overflow-y: auto; }
+  .popup-head { padding: 16px 18px 12px; }
+  .popup-body { padding: 14px 18px 18px; }
+  .popup-title { font-size: 15px !important; }
+
+  /* IBC buy form grids */
+  #ibc-buy-form [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Regions section */
+  .regions-section { padding: 20px 16px; }
+  .region-list span { font-size: 11px; }
+
+  /* Why us */
+  .why-grid { grid-template-columns: 1fr 1fr !important; }
+
+  /* Career page */
+  .career-page { padding: 20px 12px; }
+  .city-tabs { padding: 8px; gap: 6px; }
+  .city-tab { padding: 8px 14px; font-size: 0.85rem; }
+  .vacancy-grid { grid-template-columns: 1fr !important; }
+
+  /* About page news/history layout */
+  [style*="display:flex;gap:40px;align-items:flex-start"],
+  [style*="display:flex; gap:40px; align-items:flex-start"] {
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* History timeline year labels */
+  [style*="min-width:100px"] {
+    min-width: 70px !important;
+    font-size: 13px !important;
+  }
+
+  /* About right content padding */
+  #about-content { min-width: 0; }
+
+  /* GCube advantages */
+  [style*="border-left:3px solid var(--green-primary)"][style*="padding:16px 20px"] {
+    padding: 14px 14px !important;
+  }
+
+  /* Manager inline card */
+  [style*="display:flex;align-items:center;gap:24px;max-width:560px"] {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+/* ── RESPONSIVE: SMALL MOBILE ───────────────────── */
+@media (max-width: 480px) {
+  .product-grid { grid-template-columns: 1fr; }
+  .hero-headline { font-size: 28px; }
+  .hero-stat-num { font-size: 22px; }
+  .page-hero-inner h1 { font-size: 20px !important; }
+
+  /* Contact cards: single col */
+  [style*="grid-template-columns:repeat(3,1fr)"] {
+    grid-template-columns: 1fr !important;
+  }
+  [style*="grid-template-columns:1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Why grid: single col */
+  .why-grid { grid-template-columns: 1fr !important; }
+
+  /* Popup full-screen feel */
+  .popup-box { margin: 0; border-radius: 0; max-height: 100vh; }
+  .popup-overlay { align-items: flex-end; }
+  .popup-overlay .popup-box { width: 100%; border-top-width: 4px; }
+
+  /* Hero actions single col */
+  .btn-hero-primary, .btn-hero-secondary { font-size: 13px; padding: 13px 20px; }
+
+  /* Tab content padding */
+  .tab-content { padding: 14px 12px !important; }
+}
 </style>
 </head>
 <body>
@@ -1227,8 +1559,51 @@ nav a.active { border-bottom: 2px solid var(--green-primary); }
       <button class="header-action-btn" onclick="openPopup('popup-request')">Сделать запрос</button>
       <button class="header-action-btn" onclick="openPopup('popup-director')">Написать директору</button>
     </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Открыть меню" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
+
+<!-- ══ MOBILE NAV ═══════════════════════════════════════════ -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-head">
+    <img src="https://www.greif.ru/wp-content/themes/greif/images/logo.png" alt="Greif" style="height:34px;filter:brightness(0) invert(1)">
+    <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Закрыть">&times;</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="#" onclick="closeMobileNav();navigate('home');return false;">Главная</a>
+    <a href="#" onclick="closeMobileNav();navigate('about');return false;">О компании</a>
+    <div class="mobile-nav-group-title" onclick="toggleMobileSubmenu('sub-products', this)">
+      Продукция <span class="arrow">›</span>
+    </div>
+    <div class="mobile-nav-submenu" id="sub-products">
+      <a href="#" onclick="closeMobileNav();navigate('products');return false;">Все продукты</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('steelDrums');return false;">Стальные бочки</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('ibc');return false;">Еврокубы (IBC)</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('conical');return false;">Конические бочки</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('canisters');return false;">Канистры</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('clover');return false;">Кловертейнеры</a>
+    </div>
+    <div class="mobile-nav-group-title" onclick="toggleMobileSubmenu('sub-services', this)">
+      Сервисы <span class="arrow">›</span>
+    </div>
+    <div class="mobile-nav-submenu" id="sub-services">
+      <a href="#" onclick="closeMobileNav();navigateIBCBuy();return false;">Покупаем б/у еврокубы</a>
+      <a href="#" onclick="closeMobileNav();navigate('branding');return false;">Брендирование упаковки</a>
+      <a href="#" onclick="closeMobileNav();navigate('specification');return false;">Подбор спецификации</a>
+      <a href="#" onclick="closeMobileNav();navigate('logistics');return false;">Оптимизация логистики</a>
+    </div>
+    <a href="#" onclick="closeMobileNav();navigate('vacancies');return false;">Вакансии</a>
+    <a href="#" onclick="closeMobileNav();navigate('contact');return false;">Контакты</a>
+  </div>
+  <div class="mobile-nav-actions">
+    <button onclick="closeMobileNav();openPopup('popup-hr')">Связаться с HR</button>
+    <button onclick="closeMobileNav();openPopup('popup-request')">Сделать запрос</button>
+    <button onclick="closeMobileNav();openPopup('popup-director')">Написать директору</button>
+  </div>
+</div>
 
 <!-- ══ PAGES ════════════════════════════════════════════════ -->
 <main id="main-content"></main>
@@ -2981,7 +3356,36 @@ contact: () => `
       </div>
 
       <div class="tab-content" id="tab-can-specs">
-        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+        <p>Технологии и опыт Greif позволяют добиться максимальной прочности канистр и предложить своим партнерам надежную упаковку для критически важных агрохимических продуктов.</p>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin:16px 0">
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted);width:40%">Ёмкость</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">5 литров</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Цвет</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Белый</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Внешний вид</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Матовый, непрозрачный</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Мерная шкала</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Присутствует</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Технология</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Метод ко-экструзии</td>
+            </tr>
+            <tr>
+              <td style="padding:11px 0;color:var(--text-muted)">Горловина</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">63 мм, фольга для индукционной запайки</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Готовые канистры подвергаются многочисленным тестам, подтверждающим их герметичность, износостойкость, ударопрочность и т.п.</p>
       </div>
     </div>
 
@@ -3061,7 +3465,66 @@ contact: () => `
       </div>
 
       <div class="tab-content" id="tab-clv-specs">
-        <p style="color:var(--text-muted)">Информация о спецификациях находится в разработке.</p>
+        <h4>Размеры кловертейнеров</h4>
+        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:32px">
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted);width:50%">Номинальная емкость, литров</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">1000</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Длина, мм</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">1140</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Ширина, мм</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">1140</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Высота, мм</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">1080</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Диаметр заливной горловины, мм</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">200</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Масса кловертейнера в сборе, кг</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">90 ±5</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Материал внутренних вкладышей</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Антиадгезионная бумага</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Сливные краны</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">По запросу</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border)">
+              <td style="padding:11px 0;color:var(--text-muted)">Сертификация</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Сертификат ООН UN11G/Z/</td>
+            </tr>
+            <tr>
+              <td style="padding:11px 0;color:var(--text-muted)">Поставка (пустые контейнеры)</td>
+              <td style="padding:11px 0;color:var(--text-dark);font-weight:500">Еврофура: 44 шт.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div style="background:var(--green-light-bg);border-left:3px solid var(--green-primary);padding:14px 18px;margin-bottom:32px;font-size:13px;color:var(--text-dark)">
+          <strong>Внимание:</strong> кловертейнеры поставляются в собранном виде!
+        </div>
+
+        <h4>Применение</h4>
+        <p>Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 35°C.</p>
+
+        <h4>Преимущества использования кловертейнеров</h4>
+        <ul>
+          <li>Низкая стоимость упаковки на единицу продукции</li>
+          <li>Возможность использования полуавтоматической установки налива в кловертейнер, что позволяет сократить капитальные инвестиции на организацию затаривания</li>
+        </ul>
+        <p>Фасовка в кловертейнеры осуществляется непосредственно на НПЗ и далее происходит отгрузка битума конечным потребителям со склада промежуточного хранения. Организация цепи поставок битумов по данной схеме исключает необходимость обустройства битумохранилищ, расходов на нагрев битума при перевалке, полностью исключает потери вследствие недовыгруза железнодорожных цистерн, а также их пропарку.</p>
+        <p>Использование кловертейнеров позволяет обеспечить сохранность качества битума за счет того, что он разогревается один раз непосредственно на асфальтобетонном заводе, в то время как традиционные способы транспортировки подразумевают многократные циклы разогрева при погрузке-выгрузке. Вместе с этим достигается и экономия энергоресурсов, а также продление срока службы дорожного полотна за счет пониженного окисления материала.</p>
+        <p>Подробную информацию об использовании кловертейнера для фасовки битумов вы сможете найти на сайте <a href="http://www.bitumtsr.com" target="_blank" style="color:var(--green-primary)">www.bitumtsr.com</a>.</p>
       </div>
     </div>
 
@@ -3605,8 +4068,39 @@ function submitPopup(id) {
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     ['popup-hr', 'popup-request', 'popup-director'].forEach(id => closePopup(id));
+    closeMobileNav();
   }
 });
+
+// ── MOBILE NAV ─────────────────────────────────────────────
+function toggleMobileNav() {
+  const drawer = document.getElementById('mobile-nav-drawer');
+  const overlay = document.getElementById('mobile-nav-overlay');
+  const btn = document.getElementById('hamburger-btn');
+  const isOpen = drawer.classList.contains('open');
+  if (isOpen) {
+    closeMobileNav();
+  } else {
+    drawer.classList.add('open');
+    overlay.classList.add('open');
+    btn.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileNav() {
+  document.getElementById('mobile-nav-drawer').classList.remove('open');
+  document.getElementById('mobile-nav-overlay').classList.remove('open');
+  document.getElementById('hamburger-btn').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function toggleMobileSubmenu(id, titleEl) {
+  const sub = document.getElementById(id);
+  const isOpen = sub.classList.contains('open');
+  sub.classList.toggle('open');
+  if (titleEl) titleEl.classList.toggle('open', !isOpen);
+}
 
 // Ждем загрузки страницы и API Яндекс.Карт
 if (typeof ymaps !== 'undefined') {
