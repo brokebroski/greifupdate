@@ -3,230 +3,404 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Greif 200L Steel Drum Configurator</title>
+<title>GREIF CIS — Конфигуратор стальной бочки</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
 <style>
-/* ── RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --green: #1F4B38;
+  --green-mid: #3D6B35;
+  --green-light: #E6EFEA;
+  --orange: #f28900;
+  --border: #e0e0e0;
+  --bg: #f5f5f7;
+  --panel: #fff;
+  --text: #1a1a1a;
+  --muted: #666;
+}
+
 body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: #1a1a1a;
-  color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
+  background: var(--bg);
+  color: var(--text);
   display: flex;
   height: 100vh;
+  min-height: 620px;
   overflow: hidden;
 }
 
-/* ── PANEL ── */
 #panel {
-  width: 320px;
+  width: clamp(300px, 24vw, 360px);
   flex-shrink: 0;
-  background: #222;
-  border-right: 1px solid #303030;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
 }
+
 .panel-header {
-  padding: 20px 22px 16px;
-  border-bottom: 1px solid #303030;
-  background: #1c1c1c;
+  padding: 18px 20px 14px;
+  border-bottom: 3px solid var(--green);
+  background: #0d0d0d;
 }
-.brand { font-size: 20px; font-weight: 900; color: #fff; letter-spacing: -0.02em; }
-.brand em { color: #5faa5a; font-style: normal; }
-.subtitle { margin-top: 3px; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #666; }
+.brand {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+}
+.brand em { color: var(--orange); font-style: normal; }
+.subtitle {
+  margin-top: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #666;
+}
 
-/* Section */
-.section { padding: 16px 22px; border-bottom: 1px solid #2a2a2a; }
-.section-title { font-size: 9px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #5faa5a; margin-bottom: 12px; }
+.section { padding: 14px 18px; border-bottom: 1px solid #f0f0f0; }
+.section-title {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 10px;
+}
 
-/* Color */
-.color-main-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.type-row, .lid-row { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.type-btn, .lid-btn {
+  padding: 8px 6px;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  font-size: 10px;
+  font-weight: 700;
+  text-align: center;
+  color: var(--muted);
+  transition: all .13s;
+  font-family: 'Roboto Condensed', sans-serif;
+  letter-spacing: 0.04em;
+}
+.type-btn .type-vol {
+  display: block;
+  font-size: 13px;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 2px;
+}
+.type-btn.active, .lid-btn.active {
+  border-color: var(--green);
+  background: var(--green-light);
+  color: var(--green);
+}
+.type-btn:hover:not(.active), .lid-btn:hover:not(.active) { border-color: #aaa; }
+
+.color-main-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
 input[type="color"] {
-  width: 48px; height: 40px;
-  border: 2px solid #404040; border-radius: 7px;
-  padding: 2px; background: #2a2a2a; cursor: pointer; flex-shrink: 0;
+  width: 44px;
+  height: 36px;
+  border: 2px solid var(--border);
+  border-radius: 6px;
+  padding: 2px;
+  background: #f5f5f5;
+  cursor: pointer;
 }
 .hex-box {
-  flex: 1; font-family: 'Courier New', monospace; font-size: 14px; font-weight: 700;
-  color: #fff; background: #2a2a2a; border: 1px solid #3a3a3a;
-  border-radius: 7px; padding: 9px 11px; cursor: default;
+  flex: 1;
+  font-family: 'Roboto Condensed', monospace;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text);
+  background: #f5f5f5;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
 }
-.swatches { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.ral-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.swatches { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; }
 .swatch {
-  aspect-ratio: 1; border-radius: 7px; border: 2px solid transparent;
-  cursor: pointer; transition: transform .12s, border-color .12s;
+  aspect-ratio: 1;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform .1s, border-color .1s;
+  position: relative;
 }
-.swatch:hover { transform: scale(1.12); }
-.swatch.active { border-color: #5faa5a; transform: scale(1.08); box-shadow: 0 0 0 1px #5faa5a; }
+.swatch:hover { transform: scale(1.15); }
+.swatch.active {
+  border-color: var(--green);
+  transform: scale(1.1);
+  box-shadow: 0 0 0 1px var(--green);
+}
+.swatch[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: calc(100% + 5px);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  font-size: 9px;
+  white-space: nowrap;
+  padding: 3px 6px;
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 10;
+}
 
-/* Sliders */
-.slider-row { margin-bottom: 10px; }
-.slider-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-.slider-label { font-size: 11px; color: #888; }
-.slider-value { font-size: 11px; font-weight: 700; color: #5faa5a; }
-input[type="range"] { width: 100%; accent-color: #5faa5a; cursor: pointer; }
+.slider-row { margin-bottom: 9px; }
+.slider-label-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+.slider-label { font-size: 11px; color: var(--muted); }
+.slider-value { font-size: 11px; font-weight: 700; color: var(--green); }
+input[type="range"] { width: 100%; accent-color: var(--green); cursor: pointer; }
 
-/* ── TABS (Файл / Текст) ── */
 .tab-bar {
   display: flex;
-  background: #1e1e1e;
-  border-radius: 8px;
+  background: #f5f5f5;
+  border-radius: 6px;
   padding: 3px;
   gap: 3px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .tab-btn {
-  flex: 1; padding: 7px 0;
-  background: transparent; border: none; border-radius: 6px;
-  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
-  text-transform: uppercase; color: #666; cursor: pointer;
-  transition: all .15s;
+  flex: 1;
+  padding: 6px 0;
+  background: transparent;
+  border: none;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all .13s;
 }
-.tab-btn.active { background: #2d5a29; color: #7dd879; }
-.tab-btn:hover:not(.active) { color: #aaa; }
-
+.tab-btn.active { background: var(--green); color: #fff; }
 .tab-pane { display: none; }
 .tab-pane.active { display: block; }
 
-/* Upload button */
 .upload-btn {
-  display: flex; align-items: center; gap: 9px;
-  width: 100%; padding: 10px 13px;
-  background: #2a2a2a; border: 1.5px dashed #484848; border-radius: 8px;
-  color: #aaa; font-size: 12px; font-weight: 600; cursor: pointer;
-  transition: all .15s; margin-bottom: 10px; text-align: left;
-}
-.upload-btn:hover { background: #303030; border-color: #5faa5a; color: #e0e0e0; }
-
-/* Logo preview */
-#logo-preview-wrap {
-  display: none; background: #2a2a2a; border-radius: 8px;
-  padding: 8px; margin-bottom: 10px; text-align: center; position: relative;
-}
-#logo-preview { max-width: 100%; max-height: 52px; object-fit: contain; }
-.clear-btn {
-  position: absolute; top: 5px; right: 5px;
-  background: #444; border: none; border-radius: 4px;
-  color: #aaa; font-size: 11px; padding: 2px 6px; cursor: pointer;
-}
-.clear-btn:hover { background: #c0392b; color: #fff; }
-
-.img-sliders { display: none; }
-
-/* Text label inputs */
-.text-input {
-  width: 100%; background: #2a2a2a; border: 1px solid #3a3a3a;
-  border-radius: 7px; padding: 9px 12px; color: #e0e0e0;
-  font-size: 13px; outline: none; transition: border-color .15s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 9px 12px;
+  background: #f5f5f5;
+  border: 1.5px dashed #ccc;
+  border-radius: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .13s;
   margin-bottom: 8px;
 }
-.text-input:focus { border-color: #5faa5a; }
-.text-input::placeholder { color: #555; }
+.upload-btn:hover { background: var(--green-light); border-color: var(--green); color: var(--text); }
+#logo-preview-wrap {
+  display: none;
+  background: #f5f5f5;
+  border-radius: 7px;
+  padding: 7px;
+  margin-bottom: 8px;
+  text-align: center;
+  position: relative;
+}
+#logo-preview { max-width: 100%; max-height: 48px; object-fit: contain; }
+.clear-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ddd;
+  border: none;
+  border-radius: 3px;
+  color: #666;
+  font-size: 10px;
+  padding: 2px 5px;
+  cursor: pointer;
+}
+.clear-btn:hover { background: #c0392b; color: #fff; }
+.img-sliders { display: none; }
 
-/* Font family selector */
+.text-input {
+  width: 100%;
+  background: #f5f5f5;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+  color: var(--text);
+  font-size: 12px;
+  outline: none;
+  transition: border-color .13s;
+  margin-bottom: 7px;
+}
+.text-input:focus { border-color: var(--green); }
+.text-input::placeholder { color: #bbb; }
 .font-select {
-  width: 100%; background: #2a2a2a; border: 1px solid #3a3a3a;
-  border-radius: 7px; padding: 8px 10px; color: #e0e0e0;
-  font-size: 12px; cursor: pointer; outline: none; margin-bottom: 10px;
+  width: 100%;
+  background: #f5f5f5;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 7px 9px;
+  color: var(--text);
+  font-size: 11px;
+  cursor: pointer;
+  outline: none;
+  margin-bottom: 8px;
 }
-.font-select:focus { border-color: #5faa5a; }
-
-/* Bold / Italic / Color row */
-.text-style-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
+.text-style-row, .text-color-row { display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
 .style-btn {
-  padding: 6px 12px; background: #2a2a2a; border: 1px solid #3a3a3a;
-  border-radius: 6px; color: #888; font-size: 12px; font-weight: 700;
-  cursor: pointer; transition: all .14s; line-height: 1;
+  padding: 5px 10px;
+  background: #f5f5f5;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all .12s;
 }
-.style-btn.active { background: #2d5a29; border-color: #5faa5a; color: #7dd879; }
-.style-btn:hover:not(.active) { color: #e0e0e0; }
+.style-btn.active { background: var(--green-light); border-color: var(--green); color: var(--green); }
+.text-color-row label { font-size: 10px; color: var(--muted); }
+.text-color-row input[type="color"] { width: 32px; height: 26px; }
+.text-color-hex { font-size: 11px; font-family: monospace; color: var(--muted); }
+.hint-text { font-size: 9px; color: #aaa; line-height: 1.5; }
 
-.text-color-row { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; }
-.text-color-row label { font-size: 11px; color: #888; }
-.text-color-row input[type="color"] { width: 36px; height: 30px; }
-.text-color-hex { font-size: 12px; font-family: monospace; color: #aaa; }
-
-/* Hint */
-.hint-text { font-size: 10px; color: #555; margin-top: 6px; line-height: 1.5; }
-
-/* ── CORRUGATIONS ── */
-/* uses same .slider-row, .section styles */
-
-/* ── FOOTER ── */
 .panel-footer {
-  padding: 14px 22px; margin-top: auto;
-  display: flex; flex-direction: column; gap: 7px;
-  border-top: 1px solid #2a2a2a;
+  padding: 12px 18px;
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 1px solid #f0f0f0;
 }
 .btn {
-  padding: 10px; border-radius: 8px;
-  font-size: 11px; font-weight: 800; letter-spacing: 0.08em;
-  text-transform: uppercase; cursor: pointer; border: none; transition: all .14s;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  transition: all .13s;
+  font-family: 'Roboto Condensed', sans-serif;
 }
-.btn-primary { background: #5faa5a; color: #fff; }
-.btn-primary:hover { background: #4d9149; }
-.btn-secondary { background: #2a2a2a; color: #888; border: 1px solid #3a3a3a; }
-.btn-secondary:hover { background: #303030; color: #e0e0e0; }
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-mid); }
+.btn-secondary { background: #f5f5f5; color: var(--muted); border: 1px solid var(--border); }
+.btn-secondary:hover { background: #eee; color: var(--text); }
 
-/* ── VIEWPORT ── */
-#viewport { flex: 1; position: relative; overflow: hidden; }
-#canvas { display: block; }
+#viewport { flex: 1; position: relative; overflow: hidden; background: #e8ecf0; }
+#canvas { display: block; width: 100%; height: 100%; touch-action: none; }
 #scene-label {
-  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-  font-size: 10px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
-  color: rgba(255,255,255,0.18); pointer-events: none; white-space: nowrap;
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.2);
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: 'Roboto Condensed', sans-serif;
 }
 #hint {
-  position: absolute; top: 14px; right: 16px;
-  font-size: 10px; color: rgba(255,255,255,0.2);
-  pointer-events: none; text-align: right; line-height: 1.9;
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  font-size: 9px;
+  color: rgba(0,0,0,0.25);
+  pointer-events: none;
+  text-align: right;
+  line-height: 2;
+}
+.scene-error {
+  position: absolute;
+  inset: 0;
+  display: none;
+  place-items: center;
+  padding: 28px;
+  text-align: center;
+  color: rgba(0,0,0,0.62);
+  font-size: 13px;
+  line-height: 1.55;
+  background: #e8ecf0;
+}
+.scene-error strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--green);
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.03em;
+}
+
+@media (max-width: 860px) {
+  body { flex-direction: column; height: auto; min-height: 100vh; overflow: auto; }
+  #panel { width: 100%; max-height: none; }
+  #viewport { min-height: 58vh; }
 }
 </style>
 </head>
 <body>
-
-<!-- ═══════════════════════ PANEL ═══════════════════════ -->
 <aside id="panel">
-
   <div class="panel-header">
-    <div class="brand">GREIF <em>СНГ</em></div>
-    <div class="subtitle">200L Steel Drum Configurator</div>
+    <div class="brand">GREIF <em>CIS</em></div>
+    <div class="subtitle">Конфигуратор стальной бочки</div>
   </div>
 
-  <!-- ── ЦВЕТ КОРПУСА ── -->
   <div class="section">
-    <div class="section-title">Цвет корпуса</div>
+    <div class="section-title">Тип бочки</div>
+    <div class="type-row">
+      <button class="type-btn active" data-type="closed"><span class="type-vol">216 л</span>1A1 — закрытая</button>
+      <button class="type-btn" data-type="open"><span class="type-vol">210 л</span>1A2 — открытая</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Крышка</div>
+    <div class="lid-row">
+      <button class="lid-btn active" data-lid="steel">Стальная</button>
+      <button class="lid-btn" data-lid="galv">Оцинкованная</button>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Цвет по RAL</div>
     <div class="color-main-row">
-      <input type="color" id="colorPicker" value="#2d5016">
-      <div class="hex-box" id="hexDisplay">#2D5016</div>
+      <input type="color" id="colorPicker" value="#1F4B38">
+      <div class="hex-box" id="hexDisplay">RAL 6005</div>
     </div>
-    <div class="swatches">
-      <div class="swatch active" data-color="#2d5016" style="background:#2d5016" title="Greif Green"></div>
-      <div class="swatch" data-color="#1b3a6b" style="background:#1b3a6b" title="Steel Blue"></div>
-      <div class="swatch" data-color="#7a1f1f" style="background:#7a1f1f" title="Industrial Red"></div>
-      <div class="swatch" data-color="#383838" style="background:#383838" title="Charcoal"></div>
-      <div class="swatch" data-color="#8b5e0a" style="background:#8b5e0a" title="Amber"></div>
-      <div class="swatch" data-color="#1a5a5a" style="background:#1a5a5a" title="Teal"></div>
-      <div class="swatch" data-color="#5a2070" style="background:#5a2070" title="Purple"></div>
-      <div class="swatch" data-color="#cc8800" style="background:#cc8800" title="Safety Yellow"></div>
-      <div class="swatch" data-color="#c8c8c8" style="background:#c8c8c8" title="Light Steel"></div>
-      <div class="swatch" data-color="#8b1f4a" style="background:#8b1f4a" title="Crimson"></div>
-    </div>
+    <div class="ral-label">Стандартные цвета Greif</div>
+    <div class="swatches" id="swatches"></div>
   </div>
 
-  <!-- ── РЁБРА ЖЁСТКОСТИ ── -->
   <div class="section">
-    <div class="section-title">Рёбра жёсткости</div>
-
+    <div class="section-title">Рёбра жёсткости Spiraltainer®</div>
     <div class="slider-row">
       <div class="slider-label-row">
         <span class="slider-label">Количество</span>
-        <span class="slider-value" id="corrCountVal">8</span>
+        <span class="slider-value" id="corrCountVal">2</span>
       </div>
-      <input type="range" id="corrCount" min="0" max="14" value="8">
+      <input type="range" id="corrCount" min="0" max="14" value="2">
     </div>
-
     <div class="slider-row">
       <div class="slider-label-row">
         <span class="slider-label">Выступ</span>
@@ -234,7 +408,6 @@ input[type="range"] { width: 100%; accent-color: #5faa5a; cursor: pointer; }
       </div>
       <input type="range" id="corrOut" min="1" max="5" value="3">
     </div>
-
     <div class="slider-row">
       <div class="slider-label-row">
         <span class="slider-label">Толщина</span>
@@ -244,547 +417,550 @@ input[type="range"] { width: 100%; accent-color: #5faa5a; cursor: pointer; }
     </div>
   </div>
 
-  <!-- ── ЛОГОТИП / НАДПИСЬ ── -->
   <div class="section">
-    <div class="section-title">Логотип / Надпись</div>
-
-    <!-- Вкладки -->
+    <div class="section-title">Маркировка</div>
     <div class="tab-bar">
-      <button class="tab-btn active" data-tab="file">📁 Файл</button>
-      <button class="tab-btn" data-tab="text">✏️ Текст</button>
+      <button class="tab-btn active" data-tab="file">Файл</button>
+      <button class="tab-btn" data-tab="text">Текст</button>
     </div>
 
-    <!-- ── Вкладка: Файл ── -->
     <div class="tab-pane active" id="pane-file">
       <label class="upload-btn" for="logoInput">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
           <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
-          <polyline points="17 8 12 3 7 8"/>
-          <line x1="12" y1="3" x2="12" y2="15"/>
+          <polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
         </svg>
         Загрузить PNG / JPEG
       </label>
       <input type="file" id="logoInput" accept="image/png,image/jpeg,image/webp" style="display:none">
-
       <div id="logo-preview-wrap">
-        <img id="logo-preview" alt="logo">
-        <button class="clear-btn" id="clearLogo">✕</button>
+        <button class="clear-btn" id="clearLogo" type="button">×</button>
+        <img id="logo-preview" alt="">
       </div>
-
       <div class="img-sliders" id="img-sliders">
         <div class="slider-row">
           <div class="slider-label-row">
             <span class="slider-label">Позиция по высоте</span>
             <span class="slider-value" id="imgHeightVal">50%</span>
           </div>
-          <input type="range" id="imgHeight" min="10" max="90" value="50">
+          <input type="range" id="imgHeight" min="12" max="88" value="50">
         </div>
         <div class="slider-row">
           <div class="slider-label-row">
             <span class="slider-label">Масштаб</span>
             <span class="slider-value" id="imgScaleVal">38%</span>
           </div>
-          <input type="range" id="imgScale" min="8" max="70" value="38">
+          <input type="range" id="imgScale" min="10" max="80" value="38">
         </div>
       </div>
-      <p class="hint-text">PNG с прозрачностью рекомендуется.<br>Логотип наносится на лицевую сторону.</p>
+      <p class="hint-text">PNG с прозрачностью. Логотип наносится на фасад бочки.</p>
     </div>
 
-    <!-- ── Вкладка: Текст ── -->
     <div class="tab-pane" id="pane-text">
-      <input class="text-input" type="text" id="textLine1" placeholder="Строка 1 — напр. GREIF" maxlength="24">
-      <input class="text-input" type="text" id="textLine2" placeholder="Строка 2 — напр. 200 л / UN" maxlength="28">
-
-      <!-- Шрифт -->
+      <input class="text-input" id="textLine1" placeholder="Строка 1">
+      <input class="text-input" id="textLine2" placeholder="Строка 2">
       <select class="font-select" id="fontFamily">
         <option value="Arial">Arial</option>
-        <option value="Arial Narrow">Arial Narrow</option>
-        <option value="Impact">Impact</option>
+        <option value="'Roboto Condensed'">Roboto Condensed</option>
         <option value="Georgia">Georgia</option>
-        <option value="'Courier New'">Courier New</option>
-        <option value="Tahoma">Tahoma</option>
-        <option value="Verdana">Verdana</option>
+        <option value="'Times New Roman'">Times New Roman</option>
       </select>
-
-      <!-- Стиль -->
       <div class="text-style-row">
-        <button class="style-btn active" id="btnBold">B</button>
-        <button class="style-btn" id="btnItalic"><em>I</em></button>
-        <div class="text-color-row" style="margin:0;flex:1;justify-content:flex-end">
-          <label for="textColor">Цвет</label>
-          <input type="color" id="textColor" value="#ffffff">
-          <span class="text-color-hex" id="textColorHex">#FFFFFF</span>
-        </div>
+        <button class="style-btn active" id="btnBold" type="button">B</button>
+        <button class="style-btn" id="btnItalic" type="button">I</button>
       </div>
-
-      <!-- Размер и позиция -->
+      <div class="text-color-row">
+        <label for="textColor">Цвет</label>
+        <input type="color" id="textColor" value="#ffffff">
+        <span class="text-color-hex" id="textColorHex">#FFF</span>
+      </div>
       <div class="slider-row">
         <div class="slider-label-row">
           <span class="slider-label">Размер текста</span>
           <span class="slider-value" id="textSizeVal">80px</span>
         </div>
-        <input type="range" id="textSize" min="30" max="200" value="80">
+        <input type="range" id="textSize" min="24" max="160" value="80">
       </div>
-
       <div class="slider-row">
         <div class="slider-label-row">
           <span class="slider-label">Позиция по высоте</span>
           <span class="slider-value" id="textHeightVal">50%</span>
         </div>
-        <input type="range" id="textHeight" min="10" max="90" value="50">
+        <input type="range" id="textHeight" min="12" max="88" value="50">
       </div>
-
-      <p class="hint-text">Текст наносится на фасад бочки.</p>
     </div>
   </div>
 
-  <!-- ── КНОПКИ ── -->
   <div class="panel-footer">
-    <button class="btn btn-primary" id="saveBtn">Сохранить PNG</button>
-    <button class="btn btn-secondary" id="resetBtn">Сбросить всё</button>
+    <button class="btn btn-primary" id="saveBtn" type="button">Сохранить PNG</button>
+    <button class="btn btn-secondary" id="resetBtn" type="button">Сбросить</button>
   </div>
-
 </aside>
 
-<!-- ═══════════════════════ VIEWPORT ═══════════════════════ -->
 <main id="viewport">
   <canvas id="canvas"></canvas>
-  <div id="scene-label">Greif 200L Steel Drum Configurator</div>
-  <div id="hint">
-    Левая кнопка — вращение<br>
-    Правая / ПКМ — панорама<br>
-    Колёсико — масштаб
+  <div id="hint">Потяните мышью, чтобы вращать<br>Колесо — масштаб</div>
+  <div id="scene-label">GREIF CIS — Стальная бочка 1A1 · 216 л</div>
+  <div class="scene-error" id="sceneError">
+    <div><strong>3D-сцена не загрузилась</strong>Проверьте подключение Three.js и перезагрузите страницу.</div>
   </div>
 </main>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
-
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
-'use strict';
+const RAL_COLORS = [
+  { hex: '#1F4B38', label: 'RAL 6005\nЗелёный' },
+  { hex: '#23613A', label: 'RAL 6002\nЛиственно-зелёный' },
+  { hex: '#0F4C81', label: 'RAL 5010\nСиний' },
+  { hex: '#DE5307', label: 'RAL 2009\nОранжевый' },
+  { hex: '#7D7E7C', label: 'RAL 7037\nСерый' },
+  { hex: '#0E0E10', label: 'RAL 9005\nЧёрный' },
+  { hex: '#E0DFDA', label: 'RAL 9002\nСветло-серый' },
+  { hex: '#F7F4E9', label: 'RAL 9010\nБелый' },
+  { hex: '#8B1A1A', label: 'RAL 3011\nКоричнево-красный' },
+  { hex: '#C8C8C7', label: 'RAL 7035\nСветло-серый' },
+  { hex: '#414143', label: 'RAL 7024\nГрафитовый' },
+  { hex: '#F6D43B', label: 'RAL 1018\nЖёлтый' },
+  { hex: '#B51D25', label: 'RAL 3000\nКрасный' },
+  { hex: '#2A6478', label: 'RAL 5024\nПастельно-синий' },
+  { hex: '#5D6B45', label: 'RAL 6011\nРезедово-зелёный' },
+  { hex: '#FFFFFF', label: 'RAL 9016\nБелый' },
+];
 
-// ─────────────────────────────────────────────────────────────────────────────
-// КОНСТАНТЫ ГЕОМЕТРИИ (неизменяемые параметры 200л бочки)
-// ─────────────────────────────────────────────────────────────────────────────
 const B = {
-  height:   0.89,
-  radius:   0.295,
+  height: 0.89,
+  radius: 0.295,
   capThick: 0.020,
-  chimeH:   0.028,
-  chimeW:   0.014,
+  chimeH: 0.028,
+  chimeW: 0.014,
 };
+const TEX_W = 2048, TEX_H = 1024;
+const CORR_OUT_MAP = [0.006, 0.011, 0.017, 0.024, 0.032];
+const CORR_TUBE_MAP = [0.006, 0.009, 0.012, 0.016, 0.020];
+const CORR_OUT_LBL = ['минимальный','малый','средний','большой','максимальный'];
+const CORR_TUBE_LBL = ['тонкая','тонкая+','средняя','толстая','максимум'];
 
-// Размер canvas-текстуры тела бочки
-const TEX_W = 2048;
-const TEX_H = 1024;
-
-// ─────────────────────────────────────────────────────────────────────────────
-// СОСТОЯНИЕ конфигуратора
-// ─────────────────────────────────────────────────────────────────────────────
 const state = {
-  // Цвет
-  color: '#2d5016',
-
-  // Рёбра жёсткости
-  corrCount: 8,
-  corrOut:   0.017,  // выступ (protrusion)
-  corrTube:  0.012,  // радиус сечения
-
-  // Изображение-логотип
-  logoImg:    null,
-  imgHeight:  50,
-  imgScale:   38,
-
-  // Текстовая надпись
-  textLine1:  '',
-  textLine2:  '',
-  textFont:   'Arial',
-  textBold:   true,
+  color: '#1F4B38',
+  ralLabel: 'RAL 6005',
+  drumType: 'closed',
+  lidType: 'steel',
+  corrCount: 2,
+  corrOut: 0.017,
+  corrTube: 0.012,
+  logoImg: null,
+  imgHeight: 50,
+  imgScale: 38,
+  textLine1: '',
+  textLine2: '',
+  textFont: 'Arial',
+  textBold: true,
   textItalic: false,
-  textColor:  '#ffffff',
-  textSize:   80,
+  textColor: '#ffffff',
+  textSize: 80,
   textHeight: 50,
 };
 
-// Маппинг слайдера (1-5) → физические значения рёбер
-const CORR_OUT_MAP  = [0.006, 0.011, 0.017, 0.024, 0.032]; // выступ
-const CORR_TUBE_MAP = [0.006, 0.009, 0.012, 0.016, 0.020]; // толщина
-const CORR_OUT_LABELS  = ['минимальный','малый','средний','большой','максимальный'];
-const CORR_TUBE_LABELS = ['тонкая','тонкая+','средняя','толстая','максимум'];
+const colorPicker = document.getElementById('colorPicker');
+const hexDisplay = document.getElementById('hexDisplay');
+const sceneError = document.getElementById('sceneError');
 
-// ─────────────────────────────────────────────────────────────────────────────
-// THREE.JS — СЦЕНА
-// ─────────────────────────────────────────────────────────────────────────────
-const canvas   = document.getElementById('canvas');
-const viewport = document.getElementById('viewport');
-
-const renderer = new THREE.WebGLRenderer({
-  canvas,
-  antialias: true,
-  preserveDrawingBuffer: true,
+const swatchesEl = document.getElementById('swatches');
+RAL_COLORS.forEach((c, i) => {
+  const el = document.createElement('div');
+  el.className = 'swatch' + (i === 0 ? ' active' : '');
+  el.style.background = c.hex;
+  el.title = c.label;
+  el.dataset.color = c.hex;
+  el.dataset.label = c.label.split('\n')[0];
+  swatchesEl.appendChild(el);
 });
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.shadowMap.enabled    = true;
-renderer.shadowMap.type       = THREE.PCFSoftShadowMap;
-renderer.outputEncoding       = THREE.sRGBEncoding;
-renderer.toneMapping          = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure  = 1.1;
 
-// Студийный градиентный фон
+if (!window.THREE || !THREE.OrbitControls) {
+  sceneError.style.display = 'grid';
+  throw new Error('Three.js is not available');
+}
+
+const canvas = document.getElementById('canvas');
+const viewport = document.getElementById('viewport');
+const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, preserveDrawingBuffer: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.05;
+
 const scene = new THREE.Scene();
 (function() {
-  const bg  = document.createElement('canvas');
-  bg.width  = 2; bg.height = 512;
+  const bg = document.createElement('canvas');
+  bg.width = 2;
+  bg.height = 512;
   const ctx = bg.getContext('2d');
-  const g   = ctx.createLinearGradient(0, 0, 0, 512);
-  g.addColorStop(0,   '#c8cdd4');
-  g.addColorStop(0.5, '#dde1e6');
-  g.addColorStop(1,   '#eceef1');
-  ctx.fillStyle = g; ctx.fillRect(0, 0, 2, 512);
+  const g = ctx.createLinearGradient(0,0,0,512);
+  g.addColorStop(0, '#d0d8e0');
+  g.addColorStop(0.5, '#dde3ea');
+  g.addColorStop(1, '#eaecf0');
+  ctx.fillStyle = g;
+  ctx.fillRect(0,0,2,512);
   scene.background = new THREE.CanvasTexture(bg);
 })();
 
-const camera = new THREE.PerspectiveCamera(38, 1, 0.01, 50);
-camera.position.set(0, 0.18, 2.6);
+const camera = new THREE.PerspectiveCamera(36, 1, 0.01, 50);
+camera.position.set(0, 0.20, 2.7);
 
 const controls = new THREE.OrbitControls(camera, canvas);
 controls.enableDamping = true;
 controls.dampingFactor = 0.07;
-controls.minDistance   = 1.0;
-controls.maxDistance   = 6.5;
+controls.minDistance = 1.0;
+controls.maxDistance = 7.0;
 controls.target.set(0, 0.02, 0);
 controls.update();
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ОСВЕЩЕНИЕ
-// ─────────────────────────────────────────────────────────────────────────────
-scene.add(new THREE.AmbientLight(0xffffff, 0.40));
+scene.add(new THREE.AmbientLight(0xffffff, 0.45));
+const key = new THREE.DirectionalLight(0xfff6ee, 1.2);
+key.position.set(2, 3, 2.5);
+key.castShadow = true;
+key.shadow.mapSize.width = key.shadow.mapSize.height = 1024;
+key.shadow.camera.left = key.shadow.camera.bottom = -1.5;
+key.shadow.camera.right = key.shadow.camera.top = 1.5;
+key.shadow.bias = -0.001;
+scene.add(key);
+const fill = new THREE.DirectionalLight(0xd8e8ff, 0.5);
+fill.position.set(-3, 1, 1);
+scene.add(fill);
+const rim = new THREE.DirectionalLight(0xffffff, 0.35);
+rim.position.set(0, 2, -3.5);
+scene.add(rim);
+const under = new THREE.DirectionalLight(0xfff0e8, 0.15);
+under.position.set(0, -2, 1);
+scene.add(under);
+const ptFront = new THREE.PointLight(0xffffff, 0.3, 5);
+ptFront.position.set(0, 0.5, 1.8);
+scene.add(ptFront);
 
-const keyLight = new THREE.DirectionalLight(0xfff8f0, 1.15);
-keyLight.position.set(1.8, 3.0, 2.5);
-keyLight.castShadow = true;
-keyLight.shadow.mapSize.width  = 2048;
-keyLight.shadow.mapSize.height = 2048;
-keyLight.shadow.camera.near    = 0.5;
-keyLight.shadow.camera.far     = 15;
-keyLight.shadow.camera.left    = keyLight.shadow.camera.bottom = -1.5;
-keyLight.shadow.camera.right   = keyLight.shadow.camera.top   =  1.5;
-keyLight.shadow.bias           = -0.001;
-scene.add(keyLight);
-
-const fillLight = new THREE.DirectionalLight(0xd8eaff, 0.55);
-fillLight.position.set(-3.0, 1.0, 1.0);
-scene.add(fillLight);
-
-const rimLight = new THREE.DirectionalLight(0xffffff, 0.40);
-rimLight.position.set(0, 2.0, -3.5);
-scene.add(rimLight);
-
-scene.add(Object.assign(new THREE.DirectionalLight(0xfff0e8, 0.18), {
-  position: new THREE.Vector3(0, -2.5, 1.0)
-}));
-
-const pointFront = new THREE.PointLight(0xffffff, 0.35, 5.0);
-pointFront.position.set(0, 0.5, 1.8);
-scene.add(pointFront);
-
-// Тень на полу
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(12, 12),
-  new THREE.ShadowMaterial({ opacity: 0.22 })
+  new THREE.PlaneGeometry(12,12),
+  new THREE.ShadowMaterial({ opacity: 0.18 })
 );
-floor.rotation.x  = -Math.PI / 2;
-floor.position.y  = -(B.height / 2 + B.capThick + B.chimeH + 0.003);
+floor.rotation.x = -Math.PI/2;
+floor.position.y = -(B.height/2 + B.capThick + B.chimeH + 0.003);
 floor.receiveShadow = true;
 scene.add(floor);
 
-// ─────────────────────────────────────────────────────────────────────────────
-// CANVAS-ТЕКСТУРА тела бочки (цвет + логотип/текст)
-// ─────────────────────────────────────────────────────────────────────────────
-// UV-координаты CylinderGeometry: u=0 → z=+R (ближний торец до поворота).
-// Группа повёрнута на π → фасад (z+) соответствует u=0.5 → X = TEX_W/2.
-// V: v=0 → низ бочки (y = canvas_bottom), v=1 → верх.
-
-const texCanvas  = document.createElement('canvas');
-texCanvas.width  = TEX_W;
+const texCanvas = document.createElement('canvas');
+texCanvas.width = TEX_W;
 texCanvas.height = TEX_H;
-const texCtx     = texCanvas.getContext('2d');
-let   bodyTexture = null;
+const texCtx = texCanvas.getContext('2d');
+let bodyTexture = null;
+let barrelGroup = null;
+let bodyMat = null;
+let corrMat = null;
 
 function buildTexture() {
   const ctx = texCtx;
-
-  // 1. Заливка основным цветом
   ctx.fillStyle = state.color;
-  ctx.fillRect(0, 0, TEX_W, TEX_H);
+  ctx.fillRect(0,0,TEX_W,TEX_H);
 
-  // 2. Имитация металлического шейдинга (затемнение по краям)
-  const g = ctx.createLinearGradient(0, 0, TEX_W, 0);
-  g.addColorStop(0,    'rgba(0,0,0,0.45)');
+  const g = ctx.createLinearGradient(0,0,TEX_W,0);
+  g.addColorStop(0, 'rgba(0,0,0,0.42)');
   g.addColorStop(0.12, 'rgba(0,0,0,0.04)');
-  g.addColorStop(0.5,  'rgba(255,255,255,0.03)');
+  g.addColorStop(0.5, 'rgba(255,255,255,0.05)');
   g.addColorStop(0.88, 'rgba(0,0,0,0.04)');
-  g.addColorStop(1,    'rgba(0,0,0,0.45)');
+  g.addColorStop(1, 'rgba(0,0,0,0.42)');
   ctx.fillStyle = g;
-  ctx.fillRect(0, 0, TEX_W, TEX_H);
+  ctx.fillRect(0,0,TEX_W,TEX_H);
 
-  // 3. Изображение-логотип
+  ctx.fillStyle = 'rgba(255,255,255,0.08)';
+  ctx.fillRect(TEX_W * 0.18, 0, 3, TEX_H);
+  ctx.fillRect(TEX_W * 0.72, 0, 2, TEX_H);
+  ctx.fillStyle = 'rgba(0,0,0,0.16)';
+  ctx.fillRect(TEX_W - 10, 0, 5, TEX_H);
+
   if (state.logoImg) {
-    const logoW = (state.imgScale / 100) * TEX_W;
-    const ar    = state.logoImg.naturalWidth / state.logoImg.naturalHeight;
-    const logoH = logoW / ar;
-    const cx    = TEX_W / 2 - logoW / 2;
-    const cy    = (1 - state.imgHeight / 100) * TEX_H - logoH / 2;
-    ctx.drawImage(state.logoImg, cx, cy, logoW, logoH);
+    const lw = (state.imgScale/100) * TEX_W;
+    const ar = state.logoImg.naturalWidth / state.logoImg.naturalHeight;
+    const lh = lw / ar;
+    ctx.drawImage(state.logoImg, TEX_W/2-lw/2, (1-state.imgHeight/100)*TEX_H-lh/2, lw, lh);
   }
 
-  // 4. Текстовая надпись
-  const line1 = state.textLine1.trim();
-  const line2 = state.textLine2.trim();
-  if (line1 || line2) {
-    const sz     = state.textSize;
-    const weight = state.textBold   ? 'bold '   : '';
-    const style  = state.textItalic ? 'italic ' : '';
-    const font1  = `${style}${weight}${sz}px ${state.textFont}`;
-    const font2  = `${style}${weight}${Math.round(sz * 0.72)}px ${state.textFont}`;
-
-    ctx.fillStyle  = state.textColor;
-    ctx.textAlign  = 'center';
+  const l1 = state.textLine1.trim();
+  const l2 = state.textLine2.trim();
+  if (l1 || l2) {
+    const sz = state.textSize;
+    const w = state.textBold ? 'bold ' : '';
+    const s = state.textItalic ? 'italic ' : '';
+    ctx.fillStyle = state.textColor;
+    ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-
-    // Вертикальный центр: v=state.textHeight → canvas y
-    const midY = (1 - state.textHeight / 100) * TEX_H;
-    const gap  = sz * 0.65;
-    const cx   = TEX_W / 2;
-
-    if (line1 && line2) {
-      ctx.font = font1;
-      ctx.fillText(line1, cx, midY - gap * 0.5);
-      ctx.font = font2;
-      ctx.fillText(line2, cx, midY + gap * 0.65);
+    ctx.shadowColor = 'rgba(0,0,0,0.18)';
+    ctx.shadowBlur = 10;
+    ctx.shadowOffsetY = 4;
+    const midY = (1-state.textHeight/100)*TEX_H;
+    const gap = sz * 0.65;
+    const maxTextWidth = TEX_W * 0.64;
+    if (l1 && l2) {
+      ctx.font = `${s}${w}${sz}px ${state.textFont}`;
+      ctx.fillText(l1, TEX_W/2, midY - gap*0.5, maxTextWidth);
+      ctx.font = `${s}${w}${Math.round(sz*.72)}px ${state.textFont}`;
+      ctx.fillText(l2, TEX_W/2, midY + gap*0.65, maxTextWidth);
     } else {
-      ctx.font = font1;
-      ctx.fillText(line1 || line2, cx, midY);
+      ctx.font = `${s}${w}${sz}px ${state.textFont}`;
+      ctx.fillText(l1 || l2, TEX_W/2, midY, maxTextWidth);
     }
+    ctx.shadowColor = 'transparent';
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
   }
 
-  // Обновляем или создаём текстуру Three.js
-  if (bodyTexture) {
-    bodyTexture.needsUpdate = true;
-  } else {
+  if (bodyTexture) bodyTexture.needsUpdate = true;
+  else {
     bodyTexture = new THREE.CanvasTexture(texCanvas);
-    bodyTexture.encoding    = THREE.sRGBEncoding;
-    bodyTexture.anisotropy  = renderer.capabilities.getMaxAnisotropy();
+    bodyTexture.encoding = THREE.sRGBEncoding;
+    bodyTexture.anisotropy = renderer.capabilities.getMaxAnisotropy();
   }
   return bodyTexture;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// ПОСТРОЕНИЕ БОЧКИ
-// ─────────────────────────────────────────────────────────────────────────────
-let barrelGroup  = null;
-let bodyMaterial = null;
-let corrMaterial = null;
+function makeMesh(geometry, material, setup) {
+  const mesh = new THREE.Mesh(geometry, material);
+  if (setup) setup(mesh);
+  return mesh;
+}
+
+function disposeObject(obj) {
+  obj.traverse(o => {
+    if (o.geometry) o.geometry.dispose();
+    if (o.material) {
+      const materials = Array.isArray(o.material) ? o.material : [o.material];
+      materials.forEach(m => {
+        Object.keys(m).forEach(k => {
+          if (m[k] && m[k].isTexture && m[k] !== bodyTexture) m[k].dispose();
+        });
+        m.dispose();
+      });
+    }
+  });
+}
 
 function buildBarrel() {
   if (barrelGroup) {
     scene.remove(barrelGroup);
-    barrelGroup.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+    disposeObject(barrelGroup);
   }
-
   const { height: H, radius: R, capThick, chimeH, chimeW } = B;
   const group = new THREE.Group();
-  group.rotation.y = Math.PI; // фасад (u=0.5) смотрит на камеру
+  group.rotation.y = Math.PI;
 
-  // ─ Материалы ─
-  bodyMaterial = new THREE.MeshStandardMaterial({
-    map:             buildTexture(),
-    roughness:       0.40,
-    metalness:       0.85,
-    envMapIntensity: 0.5,
-  });
-
-  corrMaterial = new THREE.MeshStandardMaterial({
-    color:     new THREE.Color(state.color).multiplyScalar(0.90),
+  bodyMat = new THREE.MeshStandardMaterial({
+    map: buildTexture(),
     roughness: 0.38,
     metalness: 0.88,
+    envMapIntensity: 0.5,
   });
-
+  corrMat = new THREE.MeshStandardMaterial({
+    color: new THREE.Color(state.color).multiplyScalar(0.88),
+    roughness: 0.36,
+    metalness: 0.90,
+  });
+  const steelColor = state.lidType === 'galv' ? 0xd4dde4 : 0xa8b8c4;
   const steelMat = new THREE.MeshStandardMaterial({
-    color: 0xa0aeb8, roughness: 0.28, metalness: 0.92,
+    color: steelColor,
+    roughness: 0.25,
+    metalness: 0.94,
+  });
+  const innerMat = new THREE.MeshStandardMaterial({
+    color: 0x202529,
+    roughness: 0.62,
+    metalness: 0.65,
+    side: THREE.BackSide,
+  });
+  const sealMat = new THREE.MeshStandardMaterial({
+    color: 0x151515,
+    roughness: 0.55,
+    metalness: 0.2,
   });
 
-  // ─ Корпус ─
-  const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(R, R, H, 80, 1, true),
-    bodyMaterial
-  );
-  group.add(body);
+  group.add(new THREE.Mesh(new THREE.CylinderGeometry(R,R,H,80,1,true), bodyMat));
+  group.add(new THREE.Mesh(new THREE.CylinderGeometry(R*.985,R*.985,H*.98,80,1,true), innerMat));
 
-  // ─ Обвязки (chime) ─
-  [H / 2 - chimeH * 0.5, -H / 2 + chimeH * 0.5].forEach(y => {
-    const ch = new THREE.Mesh(
-      new THREE.TorusGeometry(R + chimeW * 0.5, chimeW * 0.5, 10, 80),
-      steelMat
-    );
-    ch.rotation.x = Math.PI / 2;
+  [H/2-chimeH*.5, -H/2+chimeH*.5].forEach(y => {
+    const ch = new THREE.Mesh(new THREE.TorusGeometry(R+chimeW*.5, chimeW*.5, 10, 80), steelMat);
+    ch.rotation.x = Math.PI/2;
     ch.position.y = y;
     group.add(ch);
   });
 
-  // ─ Верхняя крышка ─
-  const topY = H / 2 + capThick;
-  group.add(Object.assign(
-    new THREE.Mesh(new THREE.CircleGeometry(R, 80), steelMat),
-    { rotation: new THREE.Euler(-Math.PI / 2, 0, 0), position: new THREE.Vector3(0, topY, 0) }
-  ));
-  group.add(Object.assign(
-    new THREE.Mesh(new THREE.CylinderGeometry(R, R, capThick, 80, 1, true), steelMat),
-    { position: new THREE.Vector3(0, H / 2 + capThick / 2, 0) }
-  ));
+  const topY = H/2 + capThick;
+  if (state.drumType === 'closed') {
+    group.add(makeMesh(new THREE.CircleGeometry(R,80), steelMat, mesh => {
+      mesh.rotation.x = -Math.PI/2;
+      mesh.position.set(0, topY, 0);
+    }));
+    group.add(makeMesh(new THREE.CylinderGeometry(R,R,capThick,80,1,true), steelMat, mesh => {
+      mesh.position.set(0, H/2+capThick/2, 0);
+    }));
+  } else {
+    const lip = new THREE.Mesh(new THREE.TorusGeometry(R+0.004, 0.012, 10, 80), steelMat);
+    lip.rotation.x = Math.PI/2;
+    lip.position.y = H/2+0.006;
+    group.add(lip);
+    const gasket = new THREE.Mesh(new THREE.TorusGeometry(R*.91, 0.006, 8, 80), sealMat);
+    gasket.rotation.x = Math.PI/2;
+    gasket.position.y = H/2+0.010;
+    group.add(gasket);
 
-  // ─ Нижняя крышка ─
-  group.add(Object.assign(
-    new THREE.Mesh(new THREE.CircleGeometry(R * 0.97, 80), steelMat),
-    { rotation: new THREE.Euler(Math.PI / 2, 0, 0), position: new THREE.Vector3(0, -(H / 2 + capThick), 0) }
-  ));
-  group.add(Object.assign(
-    new THREE.Mesh(new THREE.CylinderGeometry(R, R, capThick, 80, 1, true), steelMat),
-    { position: new THREE.Vector3(0, -(H / 2 + capThick / 2), 0) }
-  ));
+    const looseLid = new THREE.Group();
+    looseLid.add(makeMesh(new THREE.CircleGeometry(R*.93,80), steelMat, mesh => {
+      mesh.rotation.x = -Math.PI/2;
+    }));
+    looseLid.position.set(-R*.76, H/2+0.055, R*.22);
+    looseLid.rotation.z = -0.22;
+    group.add(looseLid);
+  }
 
-  // ─ Рёбра жёсткости ─ (тегируем для частичного обновления)
-  buildCorrugationMeshes(group, H, R);
+  const botY = -(H/2 + capThick);
+  group.add(makeMesh(new THREE.CircleGeometry(R*.97,80), steelMat, mesh => {
+    mesh.rotation.x = Math.PI/2;
+    mesh.position.set(0, botY, 0);
+  }));
+  group.add(makeMesh(new THREE.CylinderGeometry(R,R,capThick,80,1,true), steelMat, mesh => {
+    mesh.position.set(0, -(H/2+capThick/2), 0);
+  }));
 
-  // ─ Горловина 1 (2") ─
-  const plugMat = new THREE.MeshStandardMaterial({ color: 0x606060, roughness: 0.25, metalness: 0.95 });
-  const n1 = makeNeck(0.027, 0.029, 0.058, 0.040, 0.022, steelMat, plugMat);
-  n1.position.set(R * 0.38, topY, R * 0.15);
-  group.add(n1);
-
-  // ─ Горловина 2 (3/4") ─
-  const n2 = makeNeck(0.017, 0.019, 0.042, 0.026, 0.013, steelMat, plugMat);
-  n2.position.set(-R * 0.32, topY, -R * 0.25);
-  group.add(n2);
-
-  group.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
-
+  buildCorrugations(group, H, R);
+  group.traverse(o => {
+    if (o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+  });
   barrelGroup = group;
   scene.add(group);
 }
 
-// Строит меши рёбер жёсткости и добавляет в группу
-function buildCorrugationMeshes(group, H, R) {
-  const { corrCount, corrOut, corrTube } = state;
-  for (let i = 0; i < corrCount; i++) {
-    const t   = (i + 0.5) / corrCount;
+function buildCorrugations(group, H, R) {
+  if (state.corrCount <= 0) return;
+  for (let i = 0; i < state.corrCount; i++) {
+    const t = (i+.5) / state.corrCount;
     const rib = new THREE.Mesh(
-      new THREE.TorusGeometry(R + corrOut, corrTube, 16, 80),
-      corrMaterial
+      new THREE.TorusGeometry(R+state.corrOut, state.corrTube, 16, 80),
+      corrMat
     );
-    rib.rotation.x     = Math.PI / 2;
-    rib.position.y     = -H / 2 + H * t;
-    rib.userData.isCorrugation = true; // тег для частичного обновления
+    rib.rotation.x = Math.PI/2;
+    rib.position.y = -H/2 + H*t;
+    rib.userData.isCorrugation = true;
     group.add(rib);
   }
 }
 
-// Частичное обновление — только рёбра, без пересборки всей бочки
 function rebuildCorrugations() {
   if (!barrelGroup) return;
-  // Удаляем старые рёбра
-  const remove = [];
-  barrelGroup.traverse(o => { if (o.userData.isCorrugation) remove.push(o); });
-  remove.forEach(o => { o.geometry.dispose(); barrelGroup.remove(o); });
-  // Добавляем новые
-  buildCorrugationMeshes(barrelGroup, B.height, B.radius);
-  barrelGroup.traverse(o => { if (o.isMesh) { o.castShadow = true; o.receiveShadow = true; } });
+  const rem = [];
+  barrelGroup.traverse(o => {
+    if (o.userData.isCorrugation) rem.push(o);
+  });
+  rem.forEach(o => {
+    o.geometry.dispose();
+    barrelGroup.remove(o);
+  });
+  buildCorrugations(barrelGroup, B.height, B.radius);
+  barrelGroup.traverse(o => {
+    if (o.isMesh) {
+      o.castShadow = true;
+      o.receiveShadow = true;
+    }
+  });
 }
-
-// Вспомогательная функция: собирает группу горловины
-function makeNeck(r1, r2, h, flangeR, hexR, steelMat, plugMat) {
-  const g = new THREE.Group();
-  // Втулка
-  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(r1, r2, h, 32), steelMat),
-    { position: new THREE.Vector3(0, h / 2, 0) }));
-  // Фланец
-  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(flangeR, flangeR, 0.009, 32), steelMat),
-    { position: new THREE.Vector3(0, 0.004, 0) }));
-  // Пробка
-  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(r1 * 0.92, r1 * 0.92, 0.012, 32), plugMat),
-    { position: new THREE.Vector3(0, h + 0.006, 0) }));
-  // Шестигранник
-  g.add(Object.assign(new THREE.Mesh(new THREE.CylinderGeometry(hexR, hexR, 0.010, 6), plugMat),
-    { position: new THREE.Vector3(0, h + 0.018, 0) }));
-  return g;
-}
-
-// ─────────────────────────────────────────────────────────────────────────────
-// ПРИМЕНЕНИЕ ИЗМЕНЕНИЙ (без пересборки геометрии)
-// ─────────────────────────────────────────────────────────────────────────────
 
 function applyColor(hex) {
   state.color = hex;
   buildTexture();
-  if (bodyMaterial) bodyMaterial.map.needsUpdate = true;
-  if (corrMaterial) corrMaterial.color.set(new THREE.Color(hex).multiplyScalar(0.90));
+  if (bodyMat) bodyMat.map.needsUpdate = true;
+  if (corrMat) corrMat.color.set(new THREE.Color(hex).multiplyScalar(0.88));
 }
 
 function applyDecal() {
   buildTexture();
-  if (bodyMaterial && bodyMaterial.map) bodyMaterial.map.needsUpdate = true;
+  if (bodyMat) bodyMat.map.needsUpdate = true;
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// UI — ЦВЕТ
-// ─────────────────────────────────────────────────────────────────────────────
-const colorPicker = document.getElementById('colorPicker');
-const hexDisplay  = document.getElementById('hexDisplay');
+function updateSceneLabel() {
+  const lid = state.lidType === 'galv' ? 'Оцинкованная' : 'Стальная';
+  const type = state.drumType === 'closed' ? '1A1' : '1A2';
+  const vol = state.drumType === 'closed' ? '216 л' : '210 л';
+  document.getElementById('scene-label').textContent = `GREIF CIS — ${lid} бочка ${type} · ${vol}`;
+}
 
-colorPicker.addEventListener('input', e => {
-  hexDisplay.textContent = e.target.value.toUpperCase();
-  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-  applyColor(e.target.value);
-});
+function onResize() {
+  const w = viewport.clientWidth;
+  const h = viewport.clientHeight;
+  renderer.setSize(w, h, false);
+  camera.aspect = w / h;
+  camera.updateProjectionMatrix();
+}
 
-document.querySelectorAll('.swatch').forEach(sw => {
-  sw.addEventListener('click', () => {
-    const hex = sw.dataset.color;
-    colorPicker.value = hex;
-    hexDisplay.textContent = hex.toUpperCase();
-    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
-    sw.classList.add('active');
-    applyColor(hex);
+function animate() {
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(animate);
+}
+
+document.querySelectorAll('.type-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.drumType = btn.dataset.type;
+    updateSceneLabel();
+    buildBarrel();
   });
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// UI — РЁБРА ЖЁСТКОСТИ
-// ─────────────────────────────────────────────────────────────────────────────
+document.querySelectorAll('.lid-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.lid-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    state.lidType = btn.dataset.lid;
+    updateSceneLabel();
+    buildBarrel();
+  });
+});
+
+colorPicker.addEventListener('input', e => {
+  applyColor(e.target.value);
+  hexDisplay.textContent = e.target.value.toUpperCase();
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+});
+
+swatchesEl.addEventListener('click', e => {
+  const sw = e.target.closest('.swatch');
+  if (!sw) return;
+  document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+  sw.classList.add('active');
+  colorPicker.value = sw.dataset.color;
+  hexDisplay.textContent = sw.dataset.label;
+  state.ralLabel = sw.dataset.label;
+  applyColor(sw.dataset.color);
+});
 
 document.getElementById('corrCount').addEventListener('input', e => {
-  state.corrCount = parseInt(e.target.value);
+  state.corrCount = parseInt(e.target.value, 10);
   document.getElementById('corrCountVal').textContent = state.corrCount;
   rebuildCorrugations();
 });
-
 document.getElementById('corrOut').addEventListener('input', e => {
-  const idx = parseInt(e.target.value) - 1;
-  state.corrOut = CORR_OUT_MAP[idx];
-  document.getElementById('corrOutVal').textContent = CORR_OUT_LABELS[idx];
+  const v = parseInt(e.target.value, 10) - 1;
+  state.corrOut = CORR_OUT_MAP[v];
+  document.getElementById('corrOutVal').textContent = CORR_OUT_LBL[v];
   rebuildCorrugations();
 });
-
 document.getElementById('corrTube').addEventListener('input', e => {
-  const idx = parseInt(e.target.value) - 1;
-  state.corrTube = CORR_TUBE_MAP[idx];
-  document.getElementById('corrTubeVal').textContent = CORR_TUBE_LABELS[idx];
+  const v = parseInt(e.target.value, 10) - 1;
+  state.corrTube = CORR_TUBE_MAP[v];
+  document.getElementById('corrTubeVal').textContent = CORR_TUBE_LBL[v];
   rebuildCorrugations();
 });
-
-// ─────────────────────────────────────────────────────────────────────────────
-// UI — ВКЛАДКИ (Файл / Текст)
-// ─────────────────────────────────────────────────────────────────────────────
 
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -795,180 +971,137 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// UI — ЗАГРУЗКА ИЗОБРАЖЕНИЯ
-// ─────────────────────────────────────────────────────────────────────────────
-
 document.getElementById('logoInput').addEventListener('change', e => {
-  const file = e.target.files[0];
+  const file = e.target.files && e.target.files[0];
   if (!file) return;
-  const reader = new FileReader();
-  reader.onload = ev => {
-    const img = new Image();
-    img.onload = () => {
-      state.logoImg = img;
-      document.getElementById('logo-preview').src = ev.target.result;
-      document.getElementById('logo-preview-wrap').style.display = 'block';
-      document.getElementById('img-sliders').style.display = 'block';
-      applyDecal();
-    };
-    img.src = ev.target.result;
+  const img = new Image();
+  img.onload = () => {
+    state.logoImg = img;
+    document.getElementById('logo-preview').src = img.src;
+    document.getElementById('logo-preview-wrap').style.display = 'block';
+    document.getElementById('img-sliders').style.display = 'block';
+    applyDecal();
   };
-  reader.readAsDataURL(file);
+  img.src = URL.createObjectURL(file);
 });
 
 document.getElementById('clearLogo').addEventListener('click', () => {
   state.logoImg = null;
+  document.getElementById('logo-preview').removeAttribute('src');
   document.getElementById('logo-preview-wrap').style.display = 'none';
-  document.getElementById('img-sliders').style.display       = 'none';
+  document.getElementById('img-sliders').style.display = 'none';
   document.getElementById('logoInput').value = '';
   applyDecal();
 });
 
 document.getElementById('imgHeight').addEventListener('input', e => {
-  state.imgHeight = parseInt(e.target.value);
-  document.getElementById('imgHeightVal').textContent = `${state.imgHeight}%`;
+  state.imgHeight = parseInt(e.target.value, 10);
+  document.getElementById('imgHeightVal').textContent = state.imgHeight + '%';
   applyDecal();
 });
-
 document.getElementById('imgScale').addEventListener('input', e => {
-  state.imgScale = parseInt(e.target.value);
-  document.getElementById('imgScaleVal').textContent = `${state.imgScale}%`;
+  state.imgScale = parseInt(e.target.value, 10);
+  document.getElementById('imgScaleVal').textContent = state.imgScale + '%';
   applyDecal();
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// UI — ТЕКСТОВАЯ НАДПИСЬ
-// ─────────────────────────────────────────────────────────────────────────────
-
-document.getElementById('textLine1').addEventListener('input', e => {
-  state.textLine1 = e.target.value; applyDecal();
-});
-document.getElementById('textLine2').addEventListener('input', e => {
-  state.textLine2 = e.target.value; applyDecal();
-});
-
-document.getElementById('fontFamily').addEventListener('change', e => {
-  state.textFont = e.target.value; applyDecal();
-});
-
+document.getElementById('textLine1').addEventListener('input', e => { state.textLine1 = e.target.value; applyDecal(); });
+document.getElementById('textLine2').addEventListener('input', e => { state.textLine2 = e.target.value; applyDecal(); });
+document.getElementById('fontFamily').addEventListener('change', e => { state.textFont = e.target.value; applyDecal(); });
 document.getElementById('btnBold').addEventListener('click', function() {
   state.textBold = !state.textBold;
   this.classList.toggle('active', state.textBold);
   applyDecal();
 });
-
 document.getElementById('btnItalic').addEventListener('click', function() {
   state.textItalic = !state.textItalic;
   this.classList.toggle('active', state.textItalic);
   applyDecal();
 });
-
 document.getElementById('textColor').addEventListener('input', e => {
   state.textColor = e.target.value;
   document.getElementById('textColorHex').textContent = e.target.value.toUpperCase();
   applyDecal();
 });
-
 document.getElementById('textSize').addEventListener('input', e => {
-  state.textSize = parseInt(e.target.value);
-  document.getElementById('textSizeVal').textContent = `${state.textSize}px`;
+  state.textSize = parseInt(e.target.value, 10);
+  document.getElementById('textSizeVal').textContent = state.textSize + 'px';
   applyDecal();
 });
-
 document.getElementById('textHeight').addEventListener('input', e => {
-  state.textHeight = parseInt(e.target.value);
-  document.getElementById('textHeightVal').textContent = `${state.textHeight}%`;
+  state.textHeight = parseInt(e.target.value, 10);
+  document.getElementById('textHeightVal').textContent = state.textHeight + '%';
   applyDecal();
 });
-
-// ─────────────────────────────────────────────────────────────────────────────
-// СОХРАНИТЬ / СБРОСИТЬ
-// ─────────────────────────────────────────────────────────────────────────────
 
 document.getElementById('saveBtn').addEventListener('click', () => {
   renderer.render(scene, camera);
   const a = document.createElement('a');
-  a.download = 'greif-200l-drum.png';
-  a.href     = canvas.toDataURL('image/png');
+  a.download = 'greif-drum.png';
+  a.href = canvas.toDataURL('image/png');
   a.click();
 });
 
 document.getElementById('resetBtn').addEventListener('click', () => {
-  // Сброс состояния
   Object.assign(state, {
-    color: '#2d5016',
-    corrCount: 8, corrOut: 0.017, corrTube: 0.012,
-    logoImg: null, imgHeight: 50, imgScale: 38,
-    textLine1: '', textLine2: '',
-    textFont: 'Arial', textBold: true, textItalic: false,
-    textColor: '#ffffff', textSize: 80, textHeight: 50,
+    color: '#1F4B38',
+    ralLabel: 'RAL 6005',
+    drumType: 'closed',
+    lidType: 'steel',
+    corrCount: 2,
+    corrOut: 0.017,
+    corrTube: 0.012,
+    logoImg: null,
+    imgHeight: 50,
+    imgScale: 38,
+    textLine1: '',
+    textLine2: '',
+    textFont: 'Arial',
+    textBold: true,
+    textItalic: false,
+    textColor: '#ffffff',
+    textSize: 80,
+    textHeight: 50,
   });
-
-  // Сброс UI
-  colorPicker.value = '#2d5016';
-  hexDisplay.textContent = '#2D5016';
-  document.querySelectorAll('.swatch').forEach((s, i) => s.classList.toggle('active', i === 0));
-
-  document.getElementById('corrCount').value = 8;
-  document.getElementById('corrOut').value   = 3;
-  document.getElementById('corrTube').value  = 3;
-  document.getElementById('corrCountVal').textContent = '8';
-  document.getElementById('corrOutVal').textContent   = 'средний';
-  document.getElementById('corrTubeVal').textContent  = 'средняя';
-
+  colorPicker.value = '#1F4B38';
+  hexDisplay.textContent = 'RAL 6005';
+  document.querySelectorAll('.swatch').forEach((s,i) => s.classList.toggle('active', i===0));
+  document.querySelectorAll('.type-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('.lid-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.getElementById('corrCount').value = 2;
+  document.getElementById('corrCountVal').textContent = '2';
+  document.getElementById('corrOut').value = 3;
+  document.getElementById('corrOutVal').textContent = 'средний';
+  document.getElementById('corrTube').value = 3;
+  document.getElementById('corrTubeVal').textContent = 'средняя';
   document.getElementById('logo-preview-wrap').style.display = 'none';
-  document.getElementById('img-sliders').style.display       = 'none';
+  document.getElementById('img-sliders').style.display = 'none';
   document.getElementById('logoInput').value = '';
   document.getElementById('imgHeight').value = 50;
-  document.getElementById('imgScale').value  = 38;
   document.getElementById('imgHeightVal').textContent = '50%';
-  document.getElementById('imgScaleVal').textContent  = '38%';
-
-  document.getElementById('textLine1').value  = '';
-  document.getElementById('textLine2').value  = '';
+  document.getElementById('imgScale').value = 38;
+  document.getElementById('imgScaleVal').textContent = '38%';
+  document.getElementById('textLine1').value = '';
+  document.getElementById('textLine2').value = '';
   document.getElementById('fontFamily').value = 'Arial';
   document.getElementById('btnBold').classList.add('active');
   document.getElementById('btnItalic').classList.remove('active');
-  document.getElementById('textColor').value  = '#ffffff';
-  document.getElementById('textColorHex').textContent = '#FFFFFF';
-  document.getElementById('textSize').value   = 80;
+  document.getElementById('textColor').value = '#ffffff';
+  document.getElementById('textColorHex').textContent = '#FFF';
+  document.getElementById('textSize').value = 80;
+  document.getElementById('textSizeVal').textContent = '80px';
   document.getElementById('textHeight').value = 50;
-  document.getElementById('textSizeVal').textContent   = '80px';
   document.getElementById('textHeightVal').textContent = '50%';
-
-  // Переключаем на вкладку «Файл»
-  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
-  document.querySelectorAll('.tab-pane').forEach((p, i) => p.classList.toggle('active', i === 0));
-
-  applyColor('#2d5016');
-  rebuildCorrugations();
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', i===0));
+  document.querySelectorAll('.tab-pane').forEach((p,i) => p.classList.toggle('active', i===0));
+  updateSceneLabel();
+  buildBarrel();
 });
 
-// ─────────────────────────────────────────────────────────────────────────────
-// RESIZE + LOOP
-// ─────────────────────────────────────────────────────────────────────────────
-
-function onResize() {
-  const w = viewport.clientWidth;
-  const h = viewport.clientHeight;
-  if (w === 0 || h === 0) return;
-  renderer.setSize(w, h, false);
-  canvas.style.width  = w + 'px';
-  canvas.style.height = h + 'px';
-  camera.aspect = w / h;
-  camera.updateProjectionMatrix();
-}
 window.addEventListener('resize', onResize);
-
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
-}
-
-onResize();
 buildBarrel();
+updateSceneLabel();
+onResize();
 animate();
 </script>
 </body>
