@@ -658,7 +658,6 @@
   border: 1px solid var(--border);
   border-radius: 16px;
   border-top: 3px solid var(--green-primary);
-  overflow: hidden;
   box-shadow: 0 4px 20px rgba(0,0,0,0.07);
 }
 
@@ -703,6 +702,13 @@
   position: relative;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.region-combobox-input-wrap:hover .region-combobox-input {
+  border-color: var(--green-primary);
+  background: #fff;
 }
 
 .region-combobox-pin {
@@ -735,10 +741,6 @@
   color: var(--text-muted);
 }
 
-.region-combobox-input:not([readonly]) {
-  cursor: text;
-  background: #fff;
-}
 
 .region-combobox.focused .region-combobox-input,
 .region-combobox-input:focus {
@@ -1634,7 +1636,7 @@ nav a.active { border-bottom: 2px solid var(--green-primary); }
 .page-hero-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
 
 /* ── PRODUCTS CATALOG PAGE ── */
-.products-page-hero { background: var(--green-footer); border-bottom: none; padding: 68px 0 0; position: relative; overflow: hidden; }
+.products-page-hero { background: var(--green-footer); border-bottom: none; padding: 68px 0; position: relative; overflow: hidden; }
 .products-page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 80% 50%, rgba(70,155,128,0.18) 0%, transparent 70%); pointer-events: none; }
 .products-hero-content { max-width: 1200px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
 .products-hero-eyebrow { font-family: 'Roboto Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #469B80; margin-bottom: 16px; }

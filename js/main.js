@@ -390,7 +390,6 @@ function toggleRegionDropdown(id) {
   } else {
     dropdown.classList.add('open');
     if (chevron) chevron.classList.add('open');
-    if (input) input.removeAttribute('readonly');
     if (search) { search.value = ''; search.focus(); }
     _buildRegionList(id, '', _regionComboboxState[id] || null);
   }
@@ -406,7 +405,6 @@ function _closeRegionDropdown(id) {
   const input = document.getElementById(id.replace('Combobox', 'Input'));
   if (dropdown) dropdown.classList.remove('open');
   if (chevron) chevron.classList.remove('open');
-  if (input) input.setAttribute('readonly', '');
 }
 
 function _regionComboboxOutsideClick(e) {

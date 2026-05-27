@@ -119,7 +119,26 @@ function _ibcManagerCard() {
   </div>`;
 }
 
-function _ibcStdProductPage(title, subtitle, weight, pfx, img) {
+function _ibcSideNav(activeId) {
+  const items = [
+    { id:'ibcWooden',   label:'На деревянном поддоне',      img:'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png' },
+    { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'http://www.greif.ru/wp-content/uploads/gibrid.png' },
+    { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png' },
+    { id:'ibcElectron', label:'Антистатический «Электрон»', img:'http://www.greif.ru/wp-content/uploads/electron.png' },
+    { id:'ibcRebo',     label:'Восстановленные REBO',       img:'http://www.greif.ru/wp-content/uploads/rebo.png' },
+  ];
+  return `<div style="background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
+    <div style="padding:13px 18px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Еврокубы IBC</div>
+    <div>${items.map(item => {
+      const active = item.id === activeId;
+      return `<a href="#" onclick="navigate('${item.id}');return false;" style="display:block;padding:11px 18px;text-decoration:none;border-left:3px solid ${active ? 'var(--green-primary)' : 'transparent'};background:${active ? 'var(--green-light-bg)' : '#fff'};transition:background 0.15s">
+        <span style="font-size:13px;line-height:1.35;font-weight:${active ? '600' : '400'};color:${active ? 'var(--green-primary)' : 'var(--text-dark)'}">${item.label}</span>
+      </a>`;
+    }).join('')}</div>
+  </div>`;
+}
+
+function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
   const [wVal] = weight.split(' ');
   const imgSrc = img || 'http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png';
   return `
@@ -131,58 +150,61 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img) {
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">${subtitle}</p>
     </div>
   </div>
-  <div class="product-detail-page">
-    <div class="product-detail-grid">
-      <div class="product-image-col">
-        <img src="${imgSrc}" alt="${title}" style="max-width:100%;max-height:420px;object-fit:contain;">
-      </div>
-      <div class="product-info-col">
-        <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
-          <div class="spec-card">
-            <div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div>
-            <div class="spec-card-label">Объём</div>
-            <div class="spec-card-desc">Номинальный · 1055 л до горловины</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div>
-            <div class="spec-card-label">Габариты, мм</div>
-            <div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-card-value">${wVal}<span class="spec-card-unit"> кг</span></div>
-            <div class="spec-card-label">Вес</div>
-            <div class="spec-card-desc">${weight} кг</div>
-          </div>
-          <div class="spec-card">
-            <div class="spec-card-value" style="font-size:16px">ПЭНД</div>
-            <div class="spec-card-label">Материал</div>
-            <div class="spec-card-desc">Полиэтилен высокой плотности</div>
-          </div>
+  <div class="product-detail-page" style="display:flex;gap:32px;align-items:flex-start;">
+    <div style="width:210px;flex-shrink:0;position:sticky;top:88px;">${_ibcSideNav(id)}</div>
+    <div style="flex:1;min-width:0;">
+      <div class="product-detail-grid">
+        <div class="product-image-col">
+          <img src="${imgSrc}" alt="${title}" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
-        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        <div class="product-info-col">
+          <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
+            <div class="spec-card">
+              <div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div>
+              <div class="spec-card-label">Объём</div>
+              <div class="spec-card-desc">Номинальный · 1055 л до горловины</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div>
+              <div class="spec-card-label">Габариты, мм</div>
+              <div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-card-value">${wVal}<span class="spec-card-unit"> кг</span></div>
+              <div class="spec-card-label">Вес</div>
+              <div class="spec-card-desc">${weight} кг</div>
+            </div>
+            <div class="spec-card">
+              <div class="spec-card-value" style="font-size:16px">ПЭНД</div>
+              <div class="spec-card-label">Материал</div>
+              <div class="spec-card-desc">Полиэтилен высокой плотности</div>
+            </div>
+          </div>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        </div>
       </div>
+      <div class="product-tabs">
+        <div class="tab-headers">
+          <button class="tab-btn active" data-tab="${pfx}-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn" data-tab="${pfx}-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="${pfx}-un">ООН</button>
+        </div>
+        <div class="tab-content active" id="tab-${pfx}-desc">
+          ${_ibcPurpose()}
+          <h4>Технические характеристики</h4>
+          ${_ibcTechTable(weight + ' кг')}
+          <h4 style="margin-top:28px">Исполнение по цвету</h4>
+          ${_ibcColors()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-std">
+          ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-un">
+          ${_ibcUNTab()}
+        </div>
+      </div>
+      ${_ibcManagerCard()}
     </div>
-    <div class="product-tabs">
-      <div class="tab-headers">
-        <button class="tab-btn active" data-tab="${pfx}-desc">ОПИСАНИЕ</button>
-        <button class="tab-btn" data-tab="${pfx}-std">СТАНДАРТ</button>
-        <button class="tab-btn" data-tab="${pfx}-un">ООН</button>
-      </div>
-      <div class="tab-content active" id="tab-${pfx}-desc">
-        ${_ibcPurpose()}
-        <h4>Технические характеристики</h4>
-        ${_ibcTechTable(weight + ' кг')}
-        <h4 style="margin-top:28px">Исполнение по цвету</h4>
-        ${_ibcColors()}
-      </div>
-      <div class="tab-content" id="tab-${pfx}-std">
-        ${_ibcStdTab()}
-      </div>
-      <div class="tab-content" id="tab-${pfx}-un">
-        ${_ibcUNTab()}
-      </div>
-    </div>
-    ${_ibcManagerCard()}
   </div>
 </div>`;
 }
@@ -284,18 +306,10 @@ const PAGES = {
 
   products: () => `
     <div class="page">
-      <div class="products-page-hero">
-        <div class="products-hero-content">
-          <div class="products-hero-eyebrow">Продукция</div>
-          <h1 class="products-hero-title">Промышленная<br>упаковка Greif</h1>
-          <p class="products-hero-sub">Стальные бочки, еврокубы, канистры, конические бочки и кловертейнеры — полный спектр промышленной тары.</p>
-        </div>
-        <div class="products-stats-strip">
-          <div class="products-stats-inner">
-            ${[['5','видов упаковки'],['8','заводов'],['32 года','на рынке РФ'],['1000+','клиентов']].map(([n,l]) => `
-              <div class="pss-item"><div class="pss-num">${n}</div><div class="pss-label">${l}</div></div>
-            `).join('')}
-          </div>
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Продукция</div>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Промышленная упаковка Greif</h1>
         </div>
       </div>
       <div class="prod-cat-strip">
@@ -509,16 +523,16 @@ const PAGES = {
             Регион отгрузки
           </div>
           <div class="region-combobox" id="steelRegionCombobox">
-            <div class="region-combobox-input-wrap">
+            <div class="region-combobox-input-wrap" onclick="toggleRegionDropdown('steelRegionCombobox')">
               <svg class="region-combobox-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
               <input
                 type="text"
                 class="region-combobox-input"
                 id="steelRegionInput"
-                placeholder="Начните вводить регион…"
+                placeholder="Выберите регион"
                 autocomplete="off"
                 readonly
-                onclick="toggleRegionDropdown('steelRegionCombobox')"
+                style="pointer-events:none"
               >
               <svg class="region-combobox-chevron" id="steelRegionChevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
@@ -566,20 +580,13 @@ const PAGES = {
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Выберите тип контейнера GCube® под ваши задачи</p>
     </div>
   </div>
-  <div style="background:var(--green-light-bg);padding:20px 0 0">
-    <div style="max-width:1200px;margin:0 auto;padding:20px 32px 0">
-      <p style="font-size:14px;color:var(--text-muted);line-height:1.8;max-width:820px;margin:0">
-        IBC (Intermediate Bulk Container) — еврокубы Greif серии GCube® объёмом 1000 литров, изготовленные из ПЭНД. Производятся в Казани и Калужской области. Доступны на деревянном, гибридном и пластиковом поддоне, а также в антистатическом исполнении. Все модели соответствуют требованиям ТР ТС; модели с маркировкой ООН сертифицированы для перевозки опасных грузов.
-      </p>
-    </div>
-  </div>
   <div class="ibc-types-grid">
     ${[
       { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
-      { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
+      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
+      { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'http://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
@@ -602,20 +609,24 @@ const PAGES = {
     'Еврокубы на деревянном поддоне',
     'Классическая конструкция с деревянным поддоном — 1000 л',
     '60,0 ±10,0', 'wood',
-    'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png'
+    'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png',
+    'ibcWooden'
   ),
 
   ibcHybrid: () => _ibcStdProductPage(
     'Еврокубы на гибридном поддоне',
     'Металлический поддон с пластиковыми рёбрами — 1000 л',
     '51,5 ±3,0', 'hyb',
-    'http://www.greif.ru/wp-content/uploads/gibrid.png'
+    'http://www.greif.ru/wp-content/uploads/gibrid.png',
+    'ibcHybrid'
   ),
 
   ibcPlastic: () => _ibcStdProductPage(
     'Еврокубы на пластиковом поддоне',
     'Цельнопластиковый поддон, устойчивый к коррозии — 1000 л',
-    '52,5 ±3,0', 'pla'
+    '52,5 ±3,0', 'pla',
+    'http://www.greif.ru/wp-content/uploads/evrokub-1.png',
+    'ibcPlastic'
   ),
 
   ibcElectron: () => `
@@ -627,56 +638,59 @@ const PAGES = {
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Еврокуб с антистатическим покрытием для перевозки ЛВЖ — 1000 л</p>
     </div>
   </div>
-  <div class="product-detail-page">
-    <div class="product-detail-grid">
-      <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
-      </div>
-      <div class="product-info-col">
-        <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
-          <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Номинальный · 1055 л до горловины</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
-          <div class="spec-card"><div class="spec-card-value">51,5<span class="spec-card-unit"> кг</span></div><div class="spec-card-label">Вес</div><div class="spec-card-desc">±3,0 кг · гибридный поддон</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:14px;line-height:1.2">10⁹ Ом</div><div class="spec-card-label">Сопротивление</div><div class="spec-card-desc">Удельное поверхностное</div></div>
+  <div class="product-detail-page" style="display:flex;gap:32px;align-items:flex-start;">
+    <div style="width:210px;flex-shrink:0;position:sticky;top:88px;">${_ibcSideNav('ibcElectron')}</div>
+    <div style="flex:1;min-width:0;">
+      <div class="product-detail-grid">
+        <div class="product-image-col">
+          <img src="http://www.greif.ru/wp-content/uploads/electron.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
-        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        <div class="product-info-col">
+          <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
+            <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Номинальный · 1055 л до горловины</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
+            <div class="spec-card"><div class="spec-card-value">51,5<span class="spec-card-unit"> кг</span></div><div class="spec-card-label">Вес</div><div class="spec-card-desc">±3,0 кг · гибридный поддон</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:14px;line-height:1.2">10⁹ Ом</div><div class="spec-card-label">Сопротивление</div><div class="spec-card-desc">Удельное поверхностное</div></div>
+          </div>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        </div>
       </div>
+      <div class="product-tabs">
+        <div class="tab-headers">
+          <button class="tab-btn active" data-tab="el-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn" data-tab="el-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="el-un">ООН</button>
+        </div>
+        <div class="tab-content active" id="tab-el-desc">
+          <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
+            Еврокуб «Электрон» — специализированный контейнер для хранения и транспортировки легковоспламеняющихся жидкостей (ЛВЖ). Колба из ПЭНД оснащена внешним антистатическим покрытием, обеспечивающим постоянный отвод статического заряда.
+          </p>
+          <h4>Конструктивные особенности</h4>
+          <ul style="list-style:none;padding:0;margin:0 0 24px">${[
+            ['Колба', 'ПЭНД с внешним антистатическим слоем (удельное поверхностное сопротивление 10⁹ Ом)'],
+            ['Кран', 'Приварной антистатический кран «Бабочка» 2" с заземлением на поддон'],
+            ['Крышка', 'Крышка с EX-защитой — дыхательный клапан взрывобезопасного исполнения'],
+            ['Поддон', 'Только гибридный металлопластиковый поддон'],
+            ['Применение', 'Перевозка и хранение ЛВЖ классов опасности, допущенных по ДОПОГ'],
+          ].map(([k,v]) => `<li style="display:flex;gap:0;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px">
+            <span style="color:var(--text-muted);width:120px;flex-shrink:0">${k}</span>
+            <span style="color:var(--text-dark)">${v}</span>
+          </li>`).join('')}</ul>
+          <h4>Технические характеристики</h4>
+          ${_ibcTechTable('51,5 ±3,0 кг')}
+          <p style="font-size:13px;color:var(--text-muted);margin-top:12px;padding:10px 14px;background:var(--green-light-bg);border-left:3px solid var(--green-primary)">
+            Цвет колбы — натуральный (белый). Чёрное исполнение для данной модели не предусмотрено ввиду специфики антистатического покрытия.
+          </p>
+        </div>
+        <div class="tab-content" id="tab-el-std">
+          ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-el-un">
+          ${_ibcUNTab()}
+        </div>
+      </div>
+      ${_ibcManagerCard()}
     </div>
-    <div class="product-tabs">
-      <div class="tab-headers">
-        <button class="tab-btn active" data-tab="el-desc">ОПИСАНИЕ</button>
-        <button class="tab-btn" data-tab="el-std">СТАНДАРТ</button>
-        <button class="tab-btn" data-tab="el-un">ООН</button>
-      </div>
-      <div class="tab-content active" id="tab-el-desc">
-        <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
-          Еврокуб «Электрон» — специализированный контейнер для хранения и транспортировки легковоспламеняющихся жидкостей (ЛВЖ). Колба из ПЭНД оснащена внешним антистатическим покрытием, обеспечивающим постоянный отвод статического заряда.
-        </p>
-        <h4>Конструктивные особенности</h4>
-        <ul style="list-style:none;padding:0;margin:0 0 24px">${[
-          ['Колба', 'ПЭНД с внешним антистатическим слоем (удельное поверхностное сопротивление 10⁹ Ом)'],
-          ['Кран', 'Приварной антистатический кран «Бабочка» 2" с заземлением на поддон'],
-          ['Крышка', 'Крышка с EX-защитой — дыхательный клапан взрывобезопасного исполнения'],
-          ['Поддон', 'Только гибридный металлопластиковый поддон'],
-          ['Применение', 'Перевозка и хранение ЛВЖ классов опасности, допущенных по ДОПОГ'],
-        ].map(([k,v]) => `<li style="display:flex;gap:0;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px">
-          <span style="color:var(--text-muted);width:120px;flex-shrink:0">${k}</span>
-          <span style="color:var(--text-dark)">${v}</span>
-        </li>`).join('')}</ul>
-        <h4>Технические характеристики</h4>
-        ${_ibcTechTable('51,5 ±3,0 кг')}
-        <p style="font-size:13px;color:var(--text-muted);margin-top:12px;padding:10px 14px;background:var(--green-light-bg);border-left:3px solid var(--green-primary)">
-          Цвет колбы — натуральный (белый). Чёрное исполнение для данной модели не предусмотрено ввиду специфики антистатического покрытия.
-        </p>
-      </div>
-      <div class="tab-content" id="tab-el-std">
-        ${_ibcStdTab()}
-      </div>
-      <div class="tab-content" id="tab-el-un">
-        ${_ibcUNTab()}
-      </div>
-    </div>
-    ${_ibcManagerCard()}
   </div>
 </div>`,
 
@@ -689,27 +703,29 @@ const PAGES = {
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Новая ПЭНД-бутыль на б/у металлической обрешётке — 1000 л</p>
     </div>
   </div>
-  <div class="product-detail-page">
-    <div class="product-detail-grid">
-      <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
-      </div>
-      <div class="product-info-col">
-        <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
-          <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Новая ПЭНД-бутыль</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:15px">2"</div><div class="spec-card-label">Кран</div><div class="spec-card-desc">Приварной кран «Бабочка»</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:13px;line-height:1.3">Б/у обрешётка</div><div class="spec-card-label">Каркас</div><div class="spec-card-desc">Гальванизированная сталь</div></div>
+  <div class="product-detail-page" style="display:flex;gap:32px;align-items:flex-start;">
+    <div style="width:210px;flex-shrink:0;position:sticky;top:88px;">${_ibcSideNav('ibcRebo')}</div>
+    <div style="flex:1;min-width:0;">
+      <div class="product-detail-grid">
+        <div class="product-image-col">
+          <img src="http://www.greif.ru/wp-content/uploads/rebo.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
-        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        <div class="product-info-col">
+          <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
+            <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Новая ПЭНД-бутыль</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:15px">2"</div><div class="spec-card-label">Кран</div><div class="spec-card-desc">Приварной кран «Бабочка»</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:13px;line-height:1.3">Б/у обрешётка</div><div class="spec-card-label">Каркас</div><div class="spec-card-desc">Гальванизированная сталь</div></div>
+          </div>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        </div>
       </div>
-    </div>
-    <div class="product-tabs">
-      <div class="tab-headers">
-        <button class="tab-btn active" data-tab="rebo-desc">ОПИСАНИЕ</button>
-        <button class="tab-btn" data-tab="rebo-comp">СОСТАВ</button>
-        <button class="tab-btn" data-tab="rebo-std">СТАНДАРТ</button>
-      </div>
+      <div class="product-tabs">
+        <div class="tab-headers">
+          <button class="tab-btn active" data-tab="rebo-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn" data-tab="rebo-comp">СОСТАВ</button>
+          <button class="tab-btn" data-tab="rebo-std">СТАНДАРТ</button>
+        </div>
       <div class="tab-content active" id="tab-rebo-desc">
         <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
           REBO — восстановленный еврокуб: новая бутыль из полиэтилена высокой плотности устанавливается на б/у металлический поддон и помещается в б/у обрешётку из гальванизированной стали. Это позволяет значительно снизить стоимость тары без потери функциональности.
@@ -742,6 +758,7 @@ const PAGES = {
       </div>
     </div>
     ${_ibcManagerCard()}
+    </div>
   </div>
 </div>`,
 
