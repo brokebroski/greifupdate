@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GREIF CIS / Грайф — Промышленная упаковка</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ══ HEADER ═══════════════════════════════════════════════ -->
+<header class="site-header" id="site-header">
+  <div class="header-main">
+    <a href="#" class="logo" onclick="navigate('home');return false;">
+      <img src="https://www.greif.ru/wp-content/themes/greif/images/logo.png" alt="Greif" style="height:52px;width:auto;display:block;">
+    </a>
+    <nav id="main-nav">
+      <a href="#" data-page="about" onclick="navigate('about');return false;">О компании</a>
+      <div class="dropdown">
+        <a href="#" class="dropbtn" data-page="products" onclick="navigate('products');return false;">Продукция</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="navigateProductSubpage('steelDrums');return false;">Стальные бочки</a>
+          <a href="#" onclick="navigateProductSubpage('ibc');return false;">Еврокубы (IBC)</a>
+          <a href="#" onclick="navigateProductSubpage('conical');return false;">Конические бочки</a>
+          <a href="#" onclick="navigateProductSubpage('canisters');return false;">Канистры</a>
+          <a href="#" onclick="navigateProductSubpage('clover');return false;">Кловертейнеры</a>
+        </div>
+      </div>
+      <div class="dropdown" style="display:none">
+        <a href="#" class="dropbtn" onclick="navigate('services');return false;">Сервисы</a>
+        <div class="dropdown-content">
+          <a href="#" onclick="navigateIBCBuy();return false;">Покупаем б/у еврокубы</a>
+          <a href="#" onclick="navigate('branding');return false;">Брендирование упаковки</a>
+          <a href="#" onclick="navigate('specification');return false;">Подбор спецификации</a>
+          <a href="#" onclick="navigate('logistics');return false;">Оптимизация логистики</a>
+        </div>
+      </div>
+      <a href="#" data-page="vacancies" onclick="navigate('vacancies');return false;">Вакансии</a>
+      <a href="#" data-page="contact" onclick="navigate('contact');return false;">Контакты</a>
+    </nav>
+    <div class="header-actions">
+      <button class="header-action-btn" onclick="openPopup('popup-hr')">Связаться с отделом кадров</button>
+      <button class="header-action-btn" onclick="openPopup('popup-request')">Сделать запрос</button>
+      <button class="header-action-btn" onclick="openPopup('popup-director')">Написать директору</button>
+    </div>
+    <button class="hamburger" id="hamburger-btn" aria-label="Открыть меню" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══ MOBILE NAV ═══════════════════════════════════════════ -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-head">
+    <img src="https://www.greif.ru/wp-content/themes/greif/images/logo.png" alt="Greif" style="height:34px;filter:brightness(0) invert(1)">
+    <button class="mobile-nav-close" onclick="closeMobileNav()" aria-label="Закрыть">&times;</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="#" onclick="closeMobileNav();navigate('home');return false;">Главная</a>
+    <a href="#" onclick="closeMobileNav();navigate('about');return false;">О компании</a>
+    <div class="mobile-nav-group-title" onclick="toggleMobileSubmenu('sub-products', this)">
+      Продукция <span class="arrow">›</span>
+    </div>
+    <div class="mobile-nav-submenu" id="sub-products">
+      <a href="#" onclick="closeMobileNav();navigate('products');return false;">Все продукты</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('steelDrums');return false;">Стальные бочки</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('ibc');return false;">Еврокубы (IBC)</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('conical');return false;">Конические бочки</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('canisters');return false;">Канистры</a>
+      <a href="#" onclick="closeMobileNav();navigateProductSubpage('clover');return false;">Кловертейнеры</a>
+    </div>
+    <div class="mobile-nav-group-title" onclick="toggleMobileSubmenu('sub-services', this)" style="display:none">
+      Сервисы <span class="arrow">›</span>
+    </div>
+    <div class="mobile-nav-submenu" id="sub-services" style="display:none">
+      <a href="#" onclick="closeMobileNav();navigateIBCBuy();return false;">Покупаем б/у еврокубы</a>
+      <a href="#" onclick="closeMobileNav();navigate('branding');return false;">Брендирование упаковки</a>
+      <a href="#" onclick="closeMobileNav();navigate('specification');return false;">Подбор спецификации</a>
+      <a href="#" onclick="closeMobileNav();navigate('logistics');return false;">Оптимизация логистики</a>
+    </div>
+    <a href="#" onclick="closeMobileNav();navigate('vacancies');return false;">Вакансии</a>
+    <a href="#" onclick="closeMobileNav();navigate('contact');return false;">Контакты</a>
+  </div>
+  <div class="mobile-nav-actions">
+    <button onclick="closeMobileNav();openPopup('popup-hr')">Связаться с HR</button>
+    <button onclick="closeMobileNav();openPopup('popup-request')">Сделать запрос</button>
+    <button onclick="closeMobileNav();openPopup('popup-director')">Написать директору</button>
+  </div>
+</div>
+
+<!-- ══ PAGES ════════════════════════════════════════════════ -->
+<main id="main-content"></main>
+
+<!-- ══ POPUP: ОТДЕЛ КАДРОВ ═══════════════════════════════ -->
+<div class="popup-overlay" id="popup-hr" onclick="closePopupOnOverlay(event, 'popup-hr')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Связаться с отделом кадров</div>
+        <div class="popup-subtitle">Вопросы трудоустройства и карьеры</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-hr')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-hr-form">
+      <div class="form-field">
+        <label class="form-label">Ваше имя *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="hr-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон *</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="hr-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="example@mail.ru" id="hr-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Интересующая вакансия</label>
+        <input class="form-input" type="text" placeholder="Менеджер по продажам, инженер и др." id="hr-vacancy">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Сообщение</label>
+        <textarea class="form-input" rows="3" placeholder="Опишите ваш вопрос или интерес..." id="hr-message" style="resize:vertical;min-height:72px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-hr')">Отправить</button>
+    </div>
+    <div class="popup-success" id="popup-hr-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Сообщение отправлено!</div>
+      <div class="popup-success-text">Специалист отдела кадров свяжется с вами в течение 1 рабочего дня.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP: СДЕЛАТЬ ЗАПРОС ═════════════════════════════ -->
+<div class="popup-overlay" id="popup-request" onclick="closePopupOnOverlay(event, 'popup-request')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Сделать запрос</div>
+        <div class="popup-subtitle">Запрос на продукцию или коммерческое предложение</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-request')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-request-form">
+      <div class="form-field">
+        <label class="form-label">Компания *</label>
+        <input class="form-input" type="text" placeholder="ООО «Название»" id="req-company">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Контактное лицо *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="req-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон *</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="req-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email</label>
+        <input class="form-input" type="email" placeholder="example@company.ru" id="req-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Тема запроса *</label>
+        <select class="form-input" id="req-subject" style="background:#fff;cursor:pointer">
+          <option value="">— Выберите тему —</option>
+          <option>Запрос коммерческого предложения</option>
+          <option>Технические характеристики продукции</option>
+          <option>Условия поставки и логистика</option>
+          <option>Сертификация и документация</option>
+          <option>Другое</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label class="form-label">Описание запроса</label>
+        <textarea class="form-input" rows="3" placeholder="Опишите ваш запрос подробнее..." id="req-message" style="resize:vertical;min-height:72px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-request')">Отправить запрос</button>
+    </div>
+    <div class="popup-success" id="popup-request-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Запрос принят!</div>
+      <div class="popup-success-text">Наш менеджер обработает ваш запрос и свяжется с вами в течение рабочего дня.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ POPUP: НАПИСАТЬ ДИРЕКТОРУ ═════════════════════════ -->
+<div class="popup-overlay" id="popup-director" onclick="closePopupOnOverlay(event, 'popup-director')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Написать директору</div>
+        <div class="popup-subtitle">Прямое обращение к руководству компании</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-director')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-director-form">
+      <div class="form-field">
+        <label class="form-label">Ваше имя *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="dir-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Должность / Компания</label>
+        <input class="form-input" type="text" placeholder="Менеджер, ООО «Компания»" id="dir-position">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Email *</label>
+        <input class="form-input" type="email" placeholder="example@mail.ru" id="dir-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="dir-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Тема обращения *</label>
+        <input class="form-input" type="text" placeholder="Кратко опишите суть обращения" id="dir-subject">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Текст обращения *</label>
+        <textarea class="form-input" rows="4" placeholder="Изложите ваше обращение..." id="dir-message" style="resize:vertical;min-height:96px"></textarea>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-director')">Отправить обращение</button>
+    </div>
+    <div class="popup-success" id="popup-director-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Обращение отправлено!</div>
+      <div class="popup-success-text">Ваше обращение передано директору. Ответ придёт на указанный email в течение 2–3 рабочих дней.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-info">
+      <div class="footer-menu">
+        <a href="#" data-page="about" onclick="navigate('about');return false;">О компании</a>
+        <a href="#" data-page="products" onclick="navigate('products');return false;">Продукция</a>
+        <a href="#" data-page="services" onclick="navigate('services');return false;">Сервисы</a>
+        <a href="#" data-page="contact" onclick="navigate('contact');return false;">Контакты</a>
+        <a href="#" data-page="vacancies" onclick="navigate('vacancies');return false;">Вакансии</a>
+      </div>
+      <div class="footer-copyright">
+        GREIF CIS / Грайф. Copyright by GREIF Inc. All rights reserved.
+      </div> 
+      <ul class="social-icons">
+        <li><a href="https://vk.com/greif_russia" class="social-icon social-icon_vk" target="_blank">ВКонтакте</a></li>
+        <li><a href="https://max.ru/join/kvZURTsFxaxmt2gUmvxCX2uV00_NJxkMeglQnVmi2xc" class="social-icon social-icon_max" target="_blank">М</a></li>
+        <li><a href="https://t.me/greif_russia" class="social-icon social-icon_tg" target="_blank">Telegram</a></li>
+      </ul>
+    </div>
+    <div class="country-chooser">
+      <span class="country-label">Greif Global Website</span>
+      <ul>
+        <li><a href="https://www.greif.com/" target="_blank">🌐 Global</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS (dependency order) ═══════════════════════════ -->
+<script src="js/components.js"></script>
+<script src="js/about.js"></script>
+<script src="js/pages.js"></script>
+<script src="js/popups.js"></script>
+<script src="js/vacancies.js"></script>
+<script src="js/ibc-buy.js"></script>
+<script src="https://api-maps.yandex.ru/2.1/?apikey=5b37fb0d-cefe-4d3f-9517-75d396747e1a&lang=ru_RU" type="text/javascript"></script>
+<script src="js/map.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>
