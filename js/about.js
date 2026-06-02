@@ -1,36 +1,181 @@
 /* site_structure/js/about.js */
 
+/* ─── Заполните photo: 'URL' когда будут готовы фотографии ─── */
+const FACTORY_PHOTOS = {
+  belojarsky:  { name: 'Белоярский',          photo: '' },
+  vologda:     { name: 'Вологда',             photo: '' },
+  volgograd:   { name: 'Волгоград',           photo: '' },
+  perm:        { name: 'Пермь',               photo: '' },
+  kazan:       { name: 'Казань',              photo: '' },
+  omsk:        { name: 'Омск',               photo: '' },
+  omsk2:       { name: 'Омск',               photo: '' },
+  ryazan:      { name: 'Рязань',              photo: '' },
+  kaluga:      { name: 'Калуга (Ворсино)',    photo: 'http://www.greif.ru/wp-content/uploads/IMG_5171-scaled.jpeg' },
+  kaluga2:     { name: 'Калуга (Ворсино)',    photo: '' },
+  angarsk:     { name: 'Ангарск',             photo: '' },
+};
+
+/* keys — список заводов в одной точке (если несколько — откроется выбор) */
+const FACTORY_DOTS = [
+  { keys: ['belojarsky'],  left:  6.6, top: 79.8 },
+  { keys: ['vologda'],     left: 14.7, top: 73.4 },
+  { keys: ['volgograd'],   left: 26.1, top: 64.5 },
+  { keys: ['perm'],        left: 34.1, top: 58.3 },
+  { keys: ['kazan'],       left: 53.0, top: 43.5 },
+  { keys: ['omsk2'],       left: 43.4, top: 51.1 },
+  { keys: ['omsk'],        left: 63.5, top: 36.1 },
+  { keys: ['ryazan'],      left: 71.4, top: 29.2 },
+  { keys: ['kaluga'],      left: 82.7, top: 20.9 },
+  { keys: ['kaluga2'],     left: 89.2, top: 16.0 },
+];
+
+function openFactoryPhoto(key) {
+  const f = FACTORY_PHOTOS[key];
+  if (!f) return;
+  const modal = document.getElementById('factory-photo-modal');
+  if (!modal) return;
+  document.getElementById('factory-modal-picker').style.display = 'none';
+  document.getElementById('factory-modal-title').textContent = f.name;
+  const imgEl = document.getElementById('factory-modal-img');
+  if (f.photo) {
+    imgEl.src = f.photo;
+    imgEl.style.display = 'block';
+    document.getElementById('factory-modal-placeholder').style.display = 'none';
+  } else {
+    imgEl.src = '';
+    imgEl.style.display = 'none';
+    document.getElementById('factory-modal-placeholder').style.display = 'flex';
+  }
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function _openFactoryDot(keys) {
+  if (keys.length === 1) { openFactoryPhoto(keys[0]); return; }
+  const modal = document.getElementById('factory-photo-modal');
+  if (!modal) return;
+  document.getElementById('factory-modal-img').style.display = 'none';
+  document.getElementById('factory-modal-placeholder').style.display = 'none';
+  document.getElementById('factory-modal-title').textContent = 'Выберите площадку';
+  const picker = document.getElementById('factory-modal-picker');
+  picker.innerHTML = keys.map(k => {
+    const f = FACTORY_PHOTOS[k];
+    const name = f ? f.name : k;
+    return `<button onclick="openFactoryPhoto('${k}')"
+      style="display:block;width:100%;text-align:left;padding:14px 18px;
+             border:1px solid var(--border);border-radius:8px;background:#fff;
+             font-size:14px;font-weight:600;color:var(--text-dark);cursor:pointer;
+             transition:background 0.15s,border-color 0.15s"
+      onmouseover="this.style.background='var(--green-light-bg)';this.style.borderColor='var(--green-primary)'"
+      onmouseout="this.style.background='#fff';this.style.borderColor='var(--border)'"
+    >${name}</button>`;
+  }).join('');
+  picker.style.display = 'flex';
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFactoryPhoto() {
+  const modal = document.getElementById('factory-photo-modal');
+  if (modal) modal.style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+function _buildFactoryMapHtml() {
+  const dots = FACTORY_DOTS.map(d => {
+    const label = d.keys.map(k => FACTORY_PHOTOS[k] ? FACTORY_PHOTOS[k].name : k).join(' / ');
+    const keysJson = JSON.stringify(d.keys).replace(/"/g, '&quot;');
+    const multi = d.keys.length > 1;
+    return `<button
+      onclick="_openFactoryDot(${JSON.stringify(d.keys).replace(/"/g, "'")})"
+      title="${label}"
+      class="factory-map-dot"
+      style="position:absolute;left:${d.left}%;top:${d.top}%;
+             transform:translate(-50%,-50%);
+             width:${multi ? 30 : 25}px;height:${multi ? 30 : 25}px;border-radius:50%;
+             background:rgba(70,155,128,0.85);border:2.5px solid #fff;
+             cursor:pointer;padding:0;z-index:2"
+      onmouseover="this.style.animationPlayState='paused';this.style.transform='translate(-50%,-50%) scale(1.4)';this.style.boxShadow='0 0 0 6px rgba(70,155,128,0.45)'"
+      onmouseout="this.style.animationPlayState='running';this.style.transform='translate(-50%,-50%) scale(1)';this.style.boxShadow=''"
+    >${multi ? '<svg width="10" height="10" viewBox="0 0 10 10" fill="#fff"><circle cx="2.5" cy="5" r="1.5"/><circle cx="5" cy="5" r="1.5"/><circle cx="7.5" cy="5" r="1.5"/></svg>' : ''}</button>`;
+  }).join('');
+
+  return `
+    <style>
+      @keyframes factory-dot-pulse {
+        0%   { box-shadow: 0 0 0 0   rgba(70,155,128,0.7); }
+        60%  { box-shadow: 0 0 0 10px rgba(70,155,128,0);  }
+        100% { box-shadow: 0 0 0 0   rgba(70,155,128,0);   }
+      }
+      .factory-map-dot {
+        animation: factory-dot-pulse 2s ease-out infinite;
+        transition: transform 0.15s;
+      }
+    </style>
+    <div id="factory-map-wrap"
+         style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.10);background:#f0f8f5;user-select:none;margin-bottom:32px">
+      <img src="http://www.greif.ru/wp-content/uploads/30-let-v-Rossii-2.jpg"
+           alt="Заводы Грайф в России"
+           style="width:100%;height:auto;display:block;pointer-events:none">
+      ${dots}
+    </div>
+
+    <div id="factory-photo-modal"
+         style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.72);
+                z-index:9999;align-items:center;justify-content:center;padding:24px"
+         onclick="if(event.target===this)closeFactoryPhoto()">
+      <div style="background:#fff;border-radius:16px;overflow:hidden;max-width:680px;width:100%;
+                  box-shadow:0 24px 64px rgba(0,0,0,0.35)">
+        <div style="display:flex;align-items:center;justify-content:space-between;
+                    padding:16px 20px;border-bottom:1px solid var(--border)">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;
+                      letter-spacing:0.1em;text-transform:uppercase;color:var(--green-primary)">
+            Завод Грайф
+          </div>
+          <button onclick="closeFactoryPhoto()"
+                  style="background:none;border:none;cursor:pointer;padding:4px;color:var(--text-muted);
+                         display:flex;align-items:center;justify-content:center;border-radius:6px"
+                  onmouseover="this.style.background='#f5f5f5'"
+                  onmouseout="this.style.background='none'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/>
+              <line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+        <div style="padding:24px">
+          <h3 id="factory-modal-title"
+              style="font-size:22px;font-weight:900;color:var(--text-dark);margin:0 0 16px"></h3>
+          <div id="factory-modal-picker"
+               style="display:none;flex-direction:column;gap:10px"></div>
+          <img id="factory-modal-img" src="" alt=""
+               style="width:100%;height:auto;border-radius:10px;display:none">
+          <div id="factory-modal-placeholder"
+               style="display:flex;align-items:center;justify-content:center;
+                      height:220px;border-radius:10px;background:var(--green-light-bg);
+                      color:var(--text-muted);font-size:14px;gap:10px">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                 stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/></svg>
+            Фото будет добавлено позже
+          </div>
+        </div>
+      </div>
+    </div>`;
+}
+
 const aboutSections = {
   greifRu: `
     <div>
       <h2 style="font-size:28px; font-weight:900; color:var(--text-dark); letter-spacing:-0.01em; margin-bottom:20px">Грайф в России</h2>
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; margin-bottom:40px">
-        <div>
-          <p style="font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:16px">Компания Грайф работает на территории России с 1993 года. Под брендом Грайф производятся стальные бочки; пластиковая тара – IBC (еврокубы) и канистры; картонные контейнеры для битума. В 2023 году наша компания отметила 30-летний юбилей работы в России.</p>
-          <p style="font-size:15px; color:var(--text-muted); line-height:1.7">В нашем бизнесе мы используем передовые технологии и оборудование, предъявляем самые строгие требования к качеству выпускаемой нами упаковки. Наши клиенты — все ведущие химические и нефтехимические компании России и СНГ, и мы гордимся долгим и плодотворным сотрудничеством!</p>
-        </div>
-        <div style="background:var(--green-light-bg); border-radius:20px; overflow:hidden; box-shadow:0 4px 20px rgba(0,0,0,0.08)">
-          <img src="http://www.greif.ru/wp-content/uploads/Proizvodstvennaya-set-Grajf-v-RF.jpg" alt="Производственная сеть Greif в России" style="width:100%; height:auto; display:block;">
-        </div>
+      <div style="margin-bottom:8px">
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:16px">Компания Грайф работает на территории России с 1993 года. Под брендом Грайф производятся стальные бочки; пластиковая тара – IBC (еврокубы) и канистры; картонные контейнеры для битума. В 2023 году наша компания отметила 30-летний юбилей работы в России.</p>
+        <p style="font-size:15px; color:var(--text-muted); line-height:1.7; margin-bottom:24px">В нашем бизнесе мы используем передовые технологии и оборудование, предъявляем самые строгие требования к качеству выпускаемой нами упаковки. Наши клиенты — все ведущие химические и нефтехимические компании России и СНГ, и мы гордимся долгим и плодотворным сотрудничеством!</p>
       </div>
+      ${_buildFactoryMapHtml()}
 
       <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">На заводах Greif в России и СНГ реализован более чем вековой опыт компании в области производства промышленной упаковки. Жесткие корпоративные требования к качеству изготавливаемой продукции обеспечивают не только сохранность фасуемого продукта, но и гарантируют безопасность здоровья людей и окружающей среды.</p>
       <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:16px">За годы работы на постсоветском пространстве Greif (до 1999 года — Van Leer) удалось сформировать партнерские отношения с ведущими предприятиями химической, нефтехимической, пищевой индустрии, закрепив свою позицию в качестве лидирующего производителя промышленной упаковки.</p>
-      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:24px">В России расположены 8 производственных площадок, где производятся такие виды промышленной упаковки как стальные бочки, еврокубы, кловертейнеры и пластиковые канистры.</p>
-
-      <div style="display:flex; flex-direction:column; gap:16px; margin-top:24px">
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">1993 год</div><div style="font-size:14px; color:var(--text-muted)">Первым звеном в производственной сети компании в России стал завод по производству стальных цилиндрических бочек в поселке Белоярский Свердловской области.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">1998 год</div><div style="font-size:14px; color:var(--text-muted)">Состоялось открытие завода по производству стальных бочек в Вологде, что позволило укрепить позиции компании в Центральном и Северо-Западном регионах.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2003 год</div><div style="font-size:14px; color:var(--text-muted)">Открыт завод Greif по производству стальных бочек в Волгограде. Позже на той же производственной площадке запущена линия по изготовлению конических стальных бочек.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2004 год</div><div style="font-size:14px; color:var(--text-muted)">В Перми состоялся запуск нового завода Greif по производству стальных бочек.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2007 год</div><div style="font-size:14px; color:var(--text-muted)">Новые мощности по производству стальных бочек появились в Омске. В Казани началось производство IBC контейнеров (еврокубов).</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2010 год</div><div style="font-size:14px; color:var(--text-muted)">В Омске началось производство контейнеров типа Clovertainer® для фасовки битума.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2014 год</div><div style="font-size:14px; color:var(--text-muted)">В Казани запущена линия по изготовлению еврокубов нового поколения GCube.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2015 год</div><div style="font-size:14px; color:var(--text-muted)">В Рязани запущен новый цех Greif по производству кловертейнеров для битума.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2018-19 год</div><div style="font-size:14px; color:var(--text-muted)">В Индустриальном парке Ворсино (Обнинск, Калужская область) стартовало производство стальных бочек и еврокубов IBC GCUBE.</div></div>
-        <div style="display:flex; gap:16px; align-items:flex-start"><div style="min-width:100px; font-weight:700; color:var(--green-primary)">2022 год</div><div style="font-size:14px; color:var(--text-muted)">В Калужской области запущена линия по производству многослойных канистр для агрохимических продуктов.</div></div>
-      </div>
-
       <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-top:32px">К настоящему времени более 1000 предприятий из России и СНГ являются клиентами Greif. Greif видит большой потенциал в дальнейшем развитии деятельности на территории СНГ и продолжит представлять своим потребителям новые виды промышленной упаковки и сервисов.</p>
     </div>
   `,

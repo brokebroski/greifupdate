@@ -1557,6 +1557,7 @@ nav a.active { border-bottom: 2px solid var(--green-primary); }
   font-weight: 700;
   letter-spacing: 0.03em;
   padding: 5px 14px;
+  border-radius: 999px;
   cursor: pointer;
   text-align: left;
   white-space: nowrap;

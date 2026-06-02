@@ -53,6 +53,149 @@ function _ibcColors() {
   </div>`;
 }
 
+function _ibcDeliveryTab() {
+  const cities = ['Москва','Санкт-Петербург','Калуга','Вологда','Казань','Волгоград','Пермь','Екатеринбург','Омск','Ангарск'];
+  const factors = [
+    'Предпочтения или требования клиента',
+    'Оптимальный объём партии (максимальная нагрузка)',
+    'Производственный регламент, определяющий условия и ограничения погрузочно-разгрузочных операций',
+    'Габариты грузовика или трейлера, нагрузка на ось, ходовая часть',
+    'Обеспечение безопасности',
+    'Устойчивость партии товара',
+    'Требования к разгрузке',
+  ];
+  const transport = [
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`, title: 'Автотрейлер', value: '48–52 шт.', desc: 'Стандартная загрузка пустых IBC на паллетах в 2 яруса. Погрузка вилочным погрузчиком.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`, title: 'Железнодорожный вагон', value: '52 шт.', desc: 'Полная загрузка вагона. Оптимальное использование грузовой площади благодаря кубической форме IBC.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M8 6V4M16 6V4"/></svg>`, title: 'Ж/д контейнер 20 т', value: '10 шт.', desc: 'Стандартный контейнер 20 футов. Загрузка IBC в стандартный контейнер ограничена из-за недостаточной высоты.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M5 6V4M12 6V4M19 6V4"/></svg>`, title: 'Ж/д контейнер 40 т', value: '21 шт.', desc: 'Контейнер 40 футов. При международных перевозках учитываются требования к высоте в разных странах.' },
+  ];
+  return `
+  <div style="margin-bottom:28px;padding:20px 24px;background:var(--green-light-bg);border-left:4px solid var(--green-primary);border-radius:6px">
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Сервис доставки Greif</div>
+    <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0 0 10px">Greif предлагает своим клиентам услуги по доставке грузов с использованием собственного транспорта или привлекая проверенных логистических операторов. Менеджеры Greif проводят постоянный мониторинг пожеланий клиентов и открыты к обсуждению различных схем доставки.</p>
+    <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0">Greif осуществляет организацию доставки еврокубов во все регионы СНГ автомобильным и железнодорожным транспортом.</p>
+  </div>
+
+  <div style="margin-bottom:28px">
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">Ключевые города присутствия</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+      ${cities.map(c => `<span style="font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;padding:5px 12px;background:#fff;color:var(--green-primary);border:1.5px solid var(--green-primary);border-radius:4px">${c}</span>`).join('')}
+    </div>
+    <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:8px 0 0">Планируется дальнейшее расширение производственно-коммерческой сети. Локальные клиенты Greif могут отгружать продукцию в IBC по всему миру с поддержкой на площадках Greif Inc.</p>
+  </div>
+
+  <div style="margin-bottom:28px">
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Вместимость транспортных средств (пустые контейнеры)</div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
+      ${transport.map(t => `
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(70,155,128,0.13)'" onmouseout="this.style.boxShadow='none'">
+        <div style="width:42px;height:42px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${t.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">${t.title}</div>
+          <div style="font-size:20px;font-weight:900;color:var(--green-primary);font-family:'Roboto Condensed',sans-serif;letter-spacing:-0.02em;line-height:1.1;margin-bottom:6px">${t.value}</div>
+          <div style="font-size:12px;color:var(--text-muted);line-height:1.55">${t.desc}</div>
+        </div>
+      </div>`).join('')}
+    </div>
+    <div style="margin-top:14px;padding:12px 16px;background:#fff8e6;border:1px solid #ffd28a;border-left:3px solid #c65f00;border-radius:4px;font-size:13px;color:#7a4500;line-height:1.6">
+      <strong>Штабелирование:</strong> максимальная высота штабелирования IBC в транспортных контейнерах — <strong>2 яруса</strong>. Благодаря кубической форме IBC достигается оптимальное расположение партии тары, что снижает затраты на транспортировку.
+    </div>
+  </div>
+
+  <div style="margin-bottom:28px">
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">Факторы выбора схемы загрузки</div>
+    <ul style="list-style:none;padding:0;margin:0">
+      ${factors.map(f => `<li style="display:flex;gap:10px;padding:9px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0;margin-top:1px">—</span>${f}</li>`).join('')}
+    </ul>
+  </div>
+
+  <div>
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">Схема загрузки в фуру</div>
+    <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fafafa;text-align:center;padding:16px">
+      <img src="https://greif.ru/wp-content/uploads/21.png" alt="Схема загрузки IBC в фуру" style="max-width:100%;height:auto;display:inline-block">
+    </div>
+    <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0;text-align:center">Оптимальная расстановка еврокубов Greif в грузовом автотрейлере</p>
+  </div>`;
+}
+
+function _ibcLogisticsTab() {
+  const services = [
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h4"/></svg>`,
+      title: 'Автоматическая разгрузка',
+      highlight: '150 единиц тары за 30 минут',
+      desc: 'Роботизированная система полностью исключает ручные операции. Тара с конвейера сразу попадает на фасовочную линию.',
+      badge: 'Безопасность',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+      title: 'Поставка точно в срок',
+      highlight: 'Just-in-Time (JIT)',
+      desc: 'Диверсифицированная сеть заводов Greif и система страховки поставок гарантируют отсутствие сбоев при любых обстоятельствах.',
+      badge: 'Снижение склада',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="7" rx="1"/><path d="M6 14V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/><line x1="6" y1="18" x2="6" y2="18.01"/><line x1="18" y1="18" x2="18" y2="18.01"/></svg>`,
+      title: 'Паллетизированная доставка',
+      highlight: 'До 264 единиц в партии',
+      desc: 'Оптимальное размещение и устойчивость при транспортировке. Снижение рисков повреждений и возможность полуавтоматической разгрузки.',
+      badge: 'Эргономика',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
+      title: 'Сервис Greif Express',
+      highlight: '48 ед. тары · 6 контейнеров/фура',
+      desc: 'Контейнеры Greif Express остаются на площадке клиента. Хранение тары прямо в контейнере — не нужны склад и дополнительный персонал.',
+      badge: 'Оптимизация',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+      title: 'Комбинированные партии',
+      highlight: 'Принцип «одного окна»',
+      desc: 'Стальные и пластиковые бочки, IBC-контейнеры — в одной смешанной партии. Оптимизация расходов на приобретение, доставку и хранение.',
+      badge: 'Гибкость',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
+      title: 'Фуры повышенной вместимости',
+      highlight: 'Снижение затрат на единицу тары',
+      desc: 'Использование большегрузного транспорта уменьшает долю логистических расходов в структуре себестоимости фасованной продукции.',
+      badge: 'Экономия',
+    },
+  ];
+
+  return `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:8px">
+    ${services.map(s => `
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(70,155,128,0.13)'" onmouseout="this.style.boxShadow='none'">
+      <div style="display:flex;align-items:flex-start;gap:14px">
+        <div style="width:44px;height:44px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${s.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:var(--text-dark);line-height:1.3;margin-bottom:4px">${s.title}</div>
+          <div style="font-size:12px;font-weight:700;color:var(--green-primary);font-family:'Roboto Condensed',sans-serif;letter-spacing:0.04em">${s.highlight}</div>
+        </div>
+        <span style="flex-shrink:0;font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;background:var(--green-light-bg);color:var(--green-primary);border-radius:4px;white-space:nowrap">${s.badge}</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);line-height:1.65;border-top:1px solid var(--border);padding-top:12px">${s.desc}</div>
+    </div>`).join('')}
+  </div>
+  <div style="margin-top:4px;padding:14px 18px;background:var(--green-light-bg);border-left:3px solid var(--green-primary);border-radius:4px;font-size:13px;color:var(--text-dark);line-height:1.6">
+    Greif стремится к долгосрочному партнёрству с каждым клиентом — мы не просто поставляем тару, но участвуем в оптимизации всей цепи поставок от нашего завода до вашей производственной площадки.
+  </div>`;
+}
+
+function _ibcInstructionTab() {
+  return `<div style="max-width:680px">
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 28px">
+      Здесь Вы можете ознакомиться с инструкцией по эксплуатации еврокубов, разработанной техническими специалистами Greif. Мы обладаем многолетней экспертизой в работе с IBC и будем рады оказать содействие совершенствованию производственных операций Вашей компании.
+    </p>
+    <a href="https://www.greif.ru/wp-content/uploads/Instruktsiya-po-ekspluatatsii-2023-kuby.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--green-primary);color:#fff;border-radius:8px;text-decoration:none;font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s" onmouseover="this.style.background='#357a62'" onmouseout="this.style.background='var(--green-primary)'">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      Открыть инструкцию по эксплуатации (PDF)
+    </a>
+  </div>`;
+}
+
 function _ibcStdTab() {
   return `<div class="ibc-spec-block">
     <div class="ibc-spec-block-hd">
@@ -66,29 +209,21 @@ function _ibcStdTab() {
     ].map(t => `<li style="display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)">
       <span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>${t}
     </li>`).join('')}</ul>
-    <div style="display:flex;flex-wrap:wrap;gap:8px">${_ibcDlBtn('Декларация о соответствии ТР ТС')}</div>
   </div>`;
 }
 
-function _ibcUNTab() {
-  return `<div class="ibc-spec-block">
-    <div class="ibc-spec-block-hd">
-      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      ООН — область применения
-    </div>
-    <ul style="list-style:none;padding:0;margin:0 0 18px">${[
-      'Предназначен для пищевой и промышленной продукции',
-      'Для массовых грузов; допускается для опасных грузов II и III группы по ГОСТ 26319 (кроме классов 2, 7 и подкласса 6.2)',
-      'Максимальная плотность продукта по ДОПОГ: <strong>не более 1,9 г/см³</strong>',
-      'Максимальная плотность продукта по МПОГ: <strong>не более 1,6 г/см³</strong>',
-    ].map(t => `<li style="display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)">
-      <span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>${t}
-    </li>`).join('')}</ul>
-    <div style="display:flex;flex-wrap:wrap;gap:8px">
-      ${_ibcDlBtn('Декларация о соответствии ТР ТС')}
-      ${_ibcDlBtn('Сертификат ООН (морской / ж/д транспорт)')}
-      ${_ibcDlBtn('Свидетельство МПОГ')}
-    </div>
+
+function _ibcClosureTab() {
+  return `<div style="max-width:680px">
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
+      Для герметичной и надежной укупорки наших еврокубов мы используем решения Tri-Sure — мирового лидера в области промышленных затворов и комплектующих. Опираясь на опыт компании, насчитывающий более века (с 1919 года), мы гарантируем полную сохранность вашей продукции при транспортировке и хранении.
+    </p>
+    <a href="http://tri-sure.com/" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--green-primary);text-decoration:none"
+       onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Узнайте больше о технологиях Tri-Sure: tri-sure.com
+    </a>
   </div>`;
 }
 
@@ -112,6 +247,33 @@ function _ibcManagerCard() {
           <a href="mailto:Marina.Aleshina@greif.com">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             <span>Marina.Aleshina@greif.com</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function _ibcReboManagerCard() {
+  return `<div class="manager-card">
+    <div class="manager-card-grid">
+      <div class="manager-profile-col">
+        <div class="manager-col-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Ваш менеджер
+        </div>
+        <div class="manager-profile-row">
+          <div class="manager-avatar">РК</div>
+          <div class="manager-name">Рафаэль Курбанов</div>
+        </div>
+        <div class="manager-contacts">
+          <a href="tel:+79872922727">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.59 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
+            <span>+7 (987) 292-27-27</span>
+          </a>
+          <a href="mailto:Rafael.Kurbanov@greif.com">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>Rafael.Kurbanov@greif.com</span>
           </a>
         </div>
       </div>
@@ -187,7 +349,10 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
         <div class="tab-headers">
           <button class="tab-btn active" data-tab="${pfx}-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="${pfx}-std">СТАНДАРТ</button>
-          <button class="tab-btn" data-tab="${pfx}-un">ООН</button>
+          <button class="tab-btn" data-tab="${pfx}-logistics">ЛОГИСТИКА</button>
+          <button class="tab-btn" data-tab="${pfx}-delivery">ДОСТАВКА</button>
+          <button class="tab-btn" data-tab="${pfx}-instruction">ИНСТРУКЦИЯ</button>
+          <button class="tab-btn" data-tab="${pfx}-closure">УКУПОРКА</button>
         </div>
         <div class="tab-content active" id="tab-${pfx}-desc">
           ${_ibcPurpose()}
@@ -199,8 +364,17 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
         <div class="tab-content" id="tab-${pfx}-std">
           ${_ibcStdTab()}
         </div>
-        <div class="tab-content" id="tab-${pfx}-un">
-          ${_ibcUNTab()}
+        <div class="tab-content" id="tab-${pfx}-logistics">
+          ${_ibcLogisticsTab()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-delivery">
+          ${_ibcDeliveryTab()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-instruction">
+          ${_ibcInstructionTab()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-closure">
+          ${_ibcClosureTab()}
         </div>
       </div>
       ${_ibcManagerCard()}
@@ -338,8 +512,7 @@ const PAGES = {
   <div class="page-hero">
     <div class="page-hero-inner">
       <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">О компании</div>
-      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Greif в России и СНГ</h1>
-      <p style="font-size:14px;color:rgba(255,255,255,0.55)">32 года надёжности и качества</p>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Грайф в России</h1>
     </div>
   </div>
   <div style="background:#fff;padding:48px 0">
@@ -659,7 +832,9 @@ const PAGES = {
         <div class="tab-headers">
           <button class="tab-btn active" data-tab="el-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="el-std">СТАНДАРТ</button>
-          <button class="tab-btn" data-tab="el-un">ООН</button>
+          <button class="tab-btn" data-tab="el-logistics">ЛОГИСТИКА</button>
+          <button class="tab-btn" data-tab="el-delivery">ДОСТАВКА</button>
+          <button class="tab-btn" data-tab="el-closure">УКУПОРКА</button>
         </div>
         <div class="tab-content active" id="tab-el-desc">
           <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
@@ -685,8 +860,14 @@ const PAGES = {
         <div class="tab-content" id="tab-el-std">
           ${_ibcStdTab()}
         </div>
-        <div class="tab-content" id="tab-el-un">
-          ${_ibcUNTab()}
+        <div class="tab-content" id="tab-el-logistics">
+          ${_ibcLogisticsTab()}
+        </div>
+        <div class="tab-content" id="tab-el-delivery">
+          ${_ibcDeliveryTab()}
+        </div>
+        <div class="tab-content" id="tab-el-closure">
+          ${_ibcClosureTab()}
         </div>
       </div>
       ${_ibcManagerCard()}
@@ -714,7 +895,6 @@ const PAGES = {
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
             <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Новая ПЭНД-бутыль</div></div>
             <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
-            <div class="spec-card"><div class="spec-card-value" style="font-size:15px">2"</div><div class="spec-card-label">Кран</div><div class="spec-card-desc">Приварной кран «Бабочка»</div></div>
             <div class="spec-card"><div class="spec-card-value" style="font-size:13px;line-height:1.3">Б/у обрешётка</div><div class="spec-card-label">Каркас</div><div class="spec-card-desc">Гальванизированная сталь</div></div>
           </div>
           <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
@@ -722,11 +902,15 @@ const PAGES = {
       </div>
       <div class="product-tabs">
         <div class="tab-headers">
-          <button class="tab-btn active" data-tab="rebo-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn active" data-tab="rebo-buy">ПОКУПАЕМ Б/У</button>
+          <button class="tab-btn" data-tab="rebo-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="rebo-comp">СОСТАВ</button>
           <button class="tab-btn" data-tab="rebo-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="rebo-logistics">ЛОГИСТИКА</button>
+          <button class="tab-btn" data-tab="rebo-delivery">ДОСТАВКА</button>
+          <button class="tab-btn" data-tab="rebo-closure">УКУПОРКА</button>
         </div>
-      <div class="tab-content active" id="tab-rebo-desc">
+      <div class="tab-content" id="tab-rebo-desc">
         <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
           REBO — восстановленный еврокуб: новая бутыль из полиэтилена высокой плотности устанавливается на б/у металлический поддон и помещается в б/у обрешётку из гальванизированной стали. Это позволяет значительно снизить стоимость тары без потери функциональности.
         </p>
@@ -756,8 +940,99 @@ const PAGES = {
       <div class="tab-content" id="tab-rebo-std">
         ${_ibcStdTab()}
       </div>
+      <div class="tab-content" id="tab-rebo-logistics">
+        ${_ibcLogisticsTab()}
+      </div>
+      <div class="tab-content" id="tab-rebo-delivery">
+        ${_ibcDeliveryTab()}
+      </div>
+      <div class="tab-content" id="tab-rebo-closure">
+        ${_ibcClosureTab()}
+      </div>
+      <div class="tab-content active" id="tab-rebo-buy">
+        <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
+          Компания Greif предоставляет профессиональный сервис по восстановлению бывших в употреблении еврокубов. Если у Вас накопились пустые контейнеры, мы готовы оперативно их вывезти с Вашей площадки. Мы готовы выкупить у Вас загрязненную тару, а также предложить услуги по промывке контейнеров, замене колбы, ремонту обрешетки и т.д. Каждый сотрудник компании Грайф делает всё возможное для того, чтобы оптимизировать Ваши расходы на промышленную упаковку и продлить её жизненный цикл.
+        </p>
+        <div style="margin-bottom:28px;border-radius:8px;overflow:hidden;border:1px solid var(--border);max-width:480px">
+          <img src="https://www.greif.ru/wp-content/uploads/buy_eurobox.jpg" alt="Б/у еврокубы" style="width:100%;display:block;object-fit:contain;max-height:200px">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:28px">
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:22px 26px">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Преимущества работы с Грайф</div>
+            <ul style="list-style:none;padding:0;margin:0">
+              ${['Надежный партнер в сфере промышленной упаковки','Индивидуальный подход к формированию цены','Возможность выкупить весь объём','Покупка обрешеток без колбы','Предложение на условиях самовывоза','Работа на всей территории РФ','Минимизация экологических рисков'].map(t =>
+                `<li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>${t}</li>`
+              ).join('')}
+            </ul>
+          </div>
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:22px 26px">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Общие требования к еврокубам</div>
+            <ul style="list-style:none;padding:0;margin:0">
+              ${['Количество — кратно 52 шт.','Колба, поддон и обрешетка без значительных механических повреждений','Остатки продукта не более 5 кг','Наличие табличек, крышки и разгрузочного крана'].map(t =>
+                `<li style="display:flex;gap:10px;align-items:flex-start;padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)"><span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>${t}</li>`
+              ).join('')}
+            </ul>
+          </div>
+        </div>
+        <a href="https://www.greif.ru/wp-content/uploads/Trebovaniya-k-b_u-kubam.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px 24px;text-decoration:none;margin-bottom:32px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+          Требования к б/у еврокубам (PDF)
+        </a>
+        <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 28px">
+          Мы заинтересованы в установлении долгосрочных партнёрских связей с производственными компаниями.
+        </p>
+        <div style="background:var(--green-light-bg);border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:32px 36px;margin-bottom:28px">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Получить предложение</div>
+          <p style="font-size:14px;color:var(--text-dark);line-height:1.7;margin-bottom:24px">Если у Вас накопились использованные еврокубы, просим ответить на следующие вопросы:</p>
+          <form id="ibc-rebo-buy-form" onsubmit="submitIBCBuyForm(event)" style="display:flex;flex-direction:column;gap:18px">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Ваше имя <span style="color:var(--green-primary)">*</span></label>
+                <input type="text" name="name" required placeholder="Иван Иванов" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Телефон для связи <span style="color:var(--green-primary)">*</span></label>
+                <input type="tel" name="phone" required placeholder="+7 (___) ___-__-__" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Ваша почта <span style="color:var(--green-primary)">*</span></label>
+              <input type="email" name="email" required placeholder="example@company.ru" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px">
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Количество еврокубов</label>
+                <input type="text" name="quantity" placeholder="Например: 52" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+              </div>
+              <div>
+                <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Регион отгрузки</label>
+                <input type="text" name="region" placeholder="Например: Москва и МО" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+              </div>
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Фасуемые продукты</label>
+              <input type="text" name="products" placeholder="Например: смазочные масла, химия" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+            </div>
+            <div>
+              <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:10px">Фото</label>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                ${[['rebo-photo1','rebo-label1'],['rebo-photo2','rebo-label2'],['rebo-photo3','rebo-label3']].map(([inputId, labelId]) => `
+                <label style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid var(--border);cursor:pointer;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--green-primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--green-primary)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                  <span id="${labelId}" style="font-size:13px;color:var(--text-muted);flex:1">Файл не выбран</span>
+                  <input type="file" id="${inputId}" name="${inputId}" accept=".jpg,.jpeg,.pdf,.png" style="display:none" onchange="updateFileLabel(this,'${labelId}')">
+                </label>`).join('')}
+              </div>
+              <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0;line-height:1.6">Вы можете загрузить до трёх фото в формате JPG, JPEG, PDF, PNG. Размер каждого фото не более 5 МБ.</p>
+            </div>
+            <div>
+              <button type="submit" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:15px 32px;border:none;cursor:pointer">Отправить заявку →</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    ${_ibcManagerCard()}
+    ${_ibcReboManagerCard()}
     </div>
   </div>
 </div>`,
@@ -810,6 +1085,19 @@ const PAGES = {
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
             <div><label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Количество еврокубов</label><input type="text" name="quantity" placeholder="Например: 52" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'"></div>
             <div><label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Регион отгрузки</label><input type="text" name="region" placeholder="Например: Москва и МО" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'"></div>
+          </div>
+          <div><label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Фасуемые продукты</label><input type="text" name="products" placeholder="Например: смазочные масла, химия" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'"></div>
+          <div>
+            <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:10px">Фото</label>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              ${[['buy-photo1','buy-label1'],['buy-photo2','buy-label2'],['buy-photo3','buy-label3']].map(([inputId, labelId]) => `
+              <label style="display:flex;align-items:center;gap:12px;padding:10px 14px;background:#fff;border:1px solid var(--border);cursor:pointer;transition:border-color 0.15s" onmouseover="this.style.borderColor='var(--green-primary)'" onmouseout="this.style.borderColor='var(--border)'">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;color:var(--green-primary)"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                <span id="${labelId}" style="font-size:13px;color:var(--text-muted);flex:1">Файл не выбран</span>
+                <input type="file" id="${inputId}" name="${inputId}" accept=".jpg,.jpeg,.pdf,.png" style="display:none" onchange="updateFileLabel(this,'${labelId}')">
+              </label>`).join('')}
+            </div>
+            <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0;line-height:1.6">Вы можете загрузить до трёх фото в формате JPG, JPEG, PDF, PNG. Размер каждого фото не более 5 МБ.</p>
           </div>
           <button type="submit" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:15px 32px;border:none;cursor:pointer">Отправить заявку →</button>
         </form>
