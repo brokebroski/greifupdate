@@ -68,21 +68,12 @@ function _ibcDeliveryTab() {
     { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`, title: 'Автотрейлер', value: '48–52 шт.', desc: 'Стандартная загрузка пустых IBC на паллетах в 2 яруса. Погрузка вилочным погрузчиком.' },
     { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`, title: 'Железнодорожный вагон', value: '52 шт.', desc: 'Полная загрузка вагона. Оптимальное использование грузовой площади благодаря кубической форме IBC.' },
     { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M8 6V4M16 6V4"/></svg>`, title: 'Ж/д контейнер 20 т', value: '10 шт.', desc: 'Стандартный контейнер 20 футов. Загрузка IBC в стандартный контейнер ограничена из-за недостаточной высоты.' },
-    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M5 6V4M12 6V4M19 6V4"/></svg>`, title: 'Ж/д контейнер 40 т', value: '21 шт.', desc: 'Контейнер 40 футов. При международных перевозках учитываются требования к высоте в разных странах.' },
   ];
   return `
   <div style="margin-bottom:28px;padding:20px 24px;background:var(--green-light-bg);border-left:4px solid var(--green-primary);border-radius:6px">
     <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Сервис доставки Greif</div>
     <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0 0 10px">Greif предлагает своим клиентам услуги по доставке грузов с использованием собственного транспорта или привлекая проверенных логистических операторов. Менеджеры Greif проводят постоянный мониторинг пожеланий клиентов и открыты к обсуждению различных схем доставки.</p>
     <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0">Greif осуществляет организацию доставки еврокубов во все регионы СНГ автомобильным и железнодорожным транспортом.</p>
-  </div>
-
-  <div style="margin-bottom:28px">
-    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">Ключевые города присутствия</div>
-    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
-      ${cities.map(c => `<span style="font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.06em;padding:5px 12px;background:#fff;color:var(--green-primary);border:1.5px solid var(--green-primary);border-radius:4px">${c}</span>`).join('')}
-    </div>
-    <p style="font-size:13px;color:var(--text-muted);line-height:1.6;margin:8px 0 0">Планируется дальнейшее расширение производственно-коммерческой сети. Локальные клиенты Greif могут отгружать продукцию в IBC по всему миру с поддержкой на площадках Greif Inc.</p>
   </div>
 
   <div style="margin-bottom:28px">
@@ -227,6 +218,20 @@ function _ibcClosureTab() {
   </div>`;
 }
 
+function _barrelClosureTab() {
+  return `<div style="max-width:680px">
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
+      Для герметичной и надежной укупорки стальных бочек мы используем решения Tri-Sure — мирового лидера в области промышленных затворов и комплектующих. Опираясь на опыт компании, насчитывающий более века (с 1919 года), мы гарантируем полную сохранность вашей продукции при транспортировке и хранении.
+    </p>
+    <a href="http://tri-sure.com/" target="_blank" rel="noopener"
+       style="display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--green-primary);text-decoration:none"
+       onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      Узнайте больше о технологиях Tri-Sure: tri-sure.com
+    </a>
+  </div>`;
+}
+
 function _ibcManagerCard() {
   return `<div class="manager-card">
     <div class="manager-card-grid">
@@ -352,7 +357,6 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
           <button class="tab-btn" data-tab="${pfx}-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="${pfx}-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="${pfx}-instruction">ИНСТРУКЦИЯ</button>
-          <button class="tab-btn" data-tab="${pfx}-closure">УКУПОРКА</button>
         </div>
         <div class="tab-content active" id="tab-${pfx}-desc">
           ${_ibcPurpose()}
@@ -373,9 +377,6 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
         <div class="tab-content" id="tab-${pfx}-instruction">
           ${_ibcInstructionTab()}
         </div>
-        <div class="tab-content" id="tab-${pfx}-closure">
-          ${_ibcClosureTab()}
-        </div>
       </div>
       ${_ibcManagerCard()}
     </div>
@@ -395,7 +396,9 @@ const PAGES = {
           <div class="hero-overlay"></div>
         </div>
         <div class="hero-reel">
-          <img src="https://www.greif.com/nitropack_static/yPYDGgMDRoARzvqLtwfOkHNmCxosVbDu/assets/images/optimized/rev-85736f0/www.greif.com/wp-content/uploads/2025/02/WebBannerReel.avif" alt="">
+          <video autoplay muted loop playsinline disablepictureinpicture disableremoteplayback>
+            <source src="assets/hero.webm" type="video/webm">
+          </video>
         </div>
         <div class="hero-content">
           <div class="hero-eyebrow">Ведущий производитель промышленной упаковки</div>
@@ -512,7 +515,7 @@ const PAGES = {
   <div class="page-hero">
     <div class="page-hero-inner">
       <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">О компании</div>
-      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Грайф в России</h1>
+      <h1 id="about-page-title" style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Грайф в России</h1>
     </div>
   </div>
   <div style="background:#fff;padding:48px 0">
@@ -584,6 +587,7 @@ const PAGES = {
         <button class="tab-btn active" data-tab="desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="specs">СПЕЦИФИКАЦИИ</button>
         <button class="tab-btn" data-tab="coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="closure">УКУПОРКА</button>
       </div>
       <div class="tab-content active" id="tab-desc">
         <p>Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения металлических бочек — химическая, нефтехимическая, металлургическая, лакокрасочная и пищевая отрасли. Все производимые бочки проходят многочисленные испытания, в том числе и уникальную проверку на герметичность на гелиевом тестере. Производства бочек расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Ангарске. В 2018 году запущена новая высокопроизводительная линия мощностью 2 миллиона бочек в год в Индустриальном парке Ворсино (Калужская область).</p>
@@ -660,6 +664,9 @@ const PAGES = {
           <li><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем</li>
         </ul>
         <p>Диаметр стандартной металлической бочки с открывающимся верхом по запорному кольцу составляет 610 мм. Также изготавливаются бочки с внешним диаметром 585 мм для оптимального использования пространства грузовых контейнеров.</p>
+      </div>
+      <div class="tab-content" id="tab-closure">
+        ${_barrelClosureTab()}
       </div>
       <div class="tab-content" id="tab-coatings">
         <p>С ростом конкуренции на промышленных рынках упаковка приобрела дополнительную ценность, поскольку ее поверхность представляет собой отличный инструмент для маркетинговых коммуникаций с клиентами. В соответствии с пожеланиями заказчика стальная бочка может быть окрашена в стандартные цвета по системе RAL. Помимо окрашивания, на поверхность бочки возможно нанесение логотипа вашей компании.</p>
