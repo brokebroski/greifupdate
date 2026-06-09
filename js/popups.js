@@ -60,5 +60,6 @@ document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
     ['popup-hr', 'popup-request', 'popup-director'].forEach(id => closePopup(id));
     closeMobileNav();
+    if (typeof _closeFactoryModal === 'function') _closeFactoryModal();
   }
 });

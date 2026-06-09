@@ -1,18 +1,18 @@
 /* site_structure/js/about.js */
 
-/* ─── Заполните photo: 'URL' когда будут готовы фотографии ─── */
+/* ─── Заполните photo/history: '' когда будут готовы данные ─── */
 const FACTORY_PHOTOS = {
-  belojarsky:  { name: 'Белоярский',          photo: 'http://www.greif.ru/wp-content/uploads/2.3-1993-Beloyarsk.jpg' },
-  vologda:     { name: 'Вологда',             photo: 'http://www.greif.ru/wp-content/uploads/2.3-1998-Vologda-scaled.jpg' },
-  volgograd:   { name: 'Волгоград',           photo: 'http://www.greif.ru/wp-content/uploads/2.3-2003-Volgograd.jpg' },
-  perm:        { name: 'Пермь',               photo: 'http://www.greif.ru/wp-content/uploads/2.3-2004-Perm-scaled.jpg' },
-  kazan:       { name: 'Казань',              photo: 'http://www.greif.ru/wp-content/uploads/2.3-2007-Kazan.jpg' },
-  omsk:        { name: 'Омск',               photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg' },
-  omsk2:       { name: 'Омск',               photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg' },
-  ryazan:      { name: 'Рязань',              photo: 'http://www.greif.ru/wp-content/uploads/2.3-2014-Ryazan.jpg' },
-  kaluga:      { name: 'Калуга (Ворсино)',    photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg' },
-  kaluga2:     { name: 'Калуга (Ворсино)',    photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg' },
-  angarsk:     { name: 'Ангарск',             photo: '' },
+  belojarsky:  { name: 'Белоярский',          year: 1993, photo: 'http://www.greif.ru/wp-content/uploads/2.3-1993-Beloyarsk.jpg',       history: 'Завод в Белоярском — первое предприятие Greif (тогда Van Leer) в России. Открыт в 1993 году, производит стальные бочки для нефтехимической и химической промышленности. Расположен в Ханты-Мансийском автономном округе, обслуживает крупнейшие нефтяные компании Западной Сибири.' },
+  vologda:     { name: 'Вологда',             year: 1998, photo: 'http://www.greif.ru/wp-content/uploads/2.3-1998-Vologda-scaled.jpg',   history: 'Вологодский завод основан в 1998 году. Специализируется на производстве стальных бочек и поставляет продукцию предприятиям Северо-Западного федерального округа. За годы работы завод стал ключевым поставщиком промышленной упаковки для химических и пищевых производств региона.' },
+  volgograd:   { name: 'Волгоград',           year: 2003, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2003-Volgograd.jpg',       history: 'Волгоградский завод открыт в 2003 году. С 2007 года здесь выпускаются конические (конусные) стальные бочки, производство которых Greif организовал в России одним из первых. Предприятие обслуживает нефтехимические и химические компании Поволжья и Юга России.' },
+  perm:        { name: 'Пермь',               year: 2004, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2004-Perm-scaled.jpg',     history: 'Пермский завод введён в эксплуатацию в 2004 году. Производит стальные бочки для предприятий Уральского федерального округа и Пермского края. Завод оснащён современным оборудованием и соответствует строгим корпоративным стандартам качества Greif.' },
+  kazan:       { name: 'Казань',              year: 2007, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2007-Kazan.jpg',           history: 'Казанский завод открыт в 2007 году. Выпускает стальные бочки и IBC-контейнеры (еврокубы). Предприятие расположено в развитом промышленном регионе и обслуживает крупных потребителей нефтехимической отрасли Республики Татарстан и Поволжья.' },
+  omsk:        { name: 'Омск',               year: 2005, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
+  omsk2:       { name: 'Омск',               year: 2005, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
+  ryazan:      { name: 'Рязань',              year: 2014, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2014-Ryazan.jpg',         history: 'Рязанский завод открыт в 2014 году. Производит IBC-контейнеры (еврокубы) объёмом 1000 литров. Предприятие оснащено передовым оборудованием и обслуживает клиентов Центрального федерального округа, поставляя продукцию ведущим химическим и пищевым компаниям.' },
+  kaluga:      { name: 'Калуга (Ворсино)',    year: 2018, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
+  kaluga2:     { name: 'Калуга (Ворсино)',    year: 2018, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
+  angarsk:     { name: 'Ангарск',             year: null, photo: '',                                                                     history: 'Завод в Ангарске — новое предприятие Greif в Иркутской области. Обслуживает клиентов Восточной Сибири и Дальнего Востока. Подробная информация будет опубликована позже.' },
 };
 
 /* keys — список заводов в одной точке (если несколько — откроется выбор) */
@@ -66,21 +66,65 @@ function _hideFactoryTooltip() {
   if (tooltip) tooltip.style.display = 'none';
 }
 
+function _openFactoryModal(keys) {
+  const factories = keys.map(k => FACTORY_PHOTOS[k]).filter(Boolean);
+  if (!factories.length) return;
+  const f = factories[0];
+
+  let modal = document.getElementById('factory-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'factory-modal';
+    modal.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.72);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity 0.22s';
+    modal.addEventListener('click', function(e) { if (e.target === modal) _closeFactoryModal(); });
+    document.body.appendChild(modal);
+  }
+
+  const yearLabel = f.year ? `<span style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary)">Основан в ${f.year} году</span>` : '';
+  const photoHtml = f.photo
+    ? `<img src="${f.photo}" alt="${f.name}" style="width:100%;max-height:380px;object-fit:cover;display:block;border-radius:12px 12px 0 0">`
+    : `<div style="height:180px;background:var(--green-light-bg);display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:14px;border-radius:12px 12px 0 0">Фото будет добавлено позже</div>`;
+
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:14px;max-width:600px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.32);overflow:hidden;position:relative;max-height:90vh;display:flex;flex-direction:column">
+      ${photoHtml}
+      <div style="padding:28px 32px 32px;overflow-y:auto">
+        <button onclick="_closeFactoryModal()" style="position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.45);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;line-height:1;z-index:1">&times;</button>
+        <div style="margin-bottom:6px">${yearLabel}</div>
+        <h3 style="font-size:24px;font-weight:900;color:var(--text-dark);margin:6px 0 16px;letter-spacing:-0.01em">Завод Грайф — ${f.name}</h3>
+        <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin:0">${f.history}</p>
+      </div>
+    </div>`;
+
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => { modal.style.opacity = '1'; });
+  document.body.style.overflow = 'hidden';
+}
+
+function _closeFactoryModal() {
+  const modal = document.getElementById('factory-modal');
+  if (!modal) return;
+  modal.style.opacity = '0';
+  setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = ''; }, 220);
+}
+
 function _buildFactoryMapHtml() {
   const dots = FACTORY_DOTS.map(d => {
     const label = d.keys.map(k => FACTORY_PHOTOS[k] ? FACTORY_PHOTOS[k].name : k).join(' / ');
     const multi = d.keys.length > 1;
     const keysArg = JSON.stringify(d.keys).replace(/"/g, "'");
+    const hasPhoto = d.keys.some(k => FACTORY_PHOTOS[k] && FACTORY_PHOTOS[k].photo);
     return `<button
-      title="${label}"
+      title="${label}${hasPhoto ? ' — нажмите, чтобы открыть фото' : ''}"
       class="factory-map-dot"
       style="position:absolute;left:${d.left}%;top:${d.top}%;
              transform:translate(-50%,-50%);
              width:${multi ? 38 : 32}px;height:${multi ? 38 : 32}px;border-radius:50%;
              background:rgba(70,155,128,0.85);border:3px solid #fff;
-             cursor:default;padding:0;z-index:2"
+             cursor:${hasPhoto ? 'pointer' : 'default'};padding:0;z-index:2"
       onmouseenter="_showFactoryTooltip(this,${keysArg})"
       onmouseleave="_hideFactoryTooltip()"
+      ${hasPhoto ? `onclick="_openFactoryModal(${keysArg})"` : ''}
     >${multi ? '<svg width="12" height="12" viewBox="0 0 12 12" fill="#fff"><circle cx="2" cy="6" r="1.8"/><circle cx="6" cy="6" r="1.8"/><circle cx="10" cy="6" r="1.8"/></svg>' : ''}</button>`;
   }).join('');
 
