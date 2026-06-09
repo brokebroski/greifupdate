@@ -232,6 +232,33 @@ function _barrelClosureTab() {
   </div>`;
 }
 
+function _managerCard(initials, name, phone, phoneFormatted, email) {
+  return `<div class="manager-card">
+    <div class="manager-card-grid">
+      <div class="manager-profile-col">
+        <div class="manager-col-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Ваш менеджер
+        </div>
+        <div class="manager-profile-row">
+          <div class="manager-avatar">${initials}</div>
+          <div class="manager-name">${name}</div>
+        </div>
+        <div class="manager-contacts">
+          <a href="tel:${phone}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.59 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
+            <span>${phoneFormatted}</span>
+          </a>
+          <a href="mailto:${email}">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>${email}</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function _ibcManagerCard() {
   return `<div class="manager-card">
     <div class="manager-card-grid">
@@ -1167,14 +1194,7 @@ const PAGES = {
         </table>
       </div>
     </div>
-    <div class="manager-card">
-      <h4>Ваш менеджер:</h4>
-      <div class="manager-name">Александр Седов</div>
-      <div class="manager-contacts">
-        <a href="tel:+79033703111">+7 (903) 370-31-11</a>
-        <a href="mailto:Aleksandr.Sedov@greif.com">Aleksandr.Sedov@greif.com</a>
-      </div>
-    </div>
+    ${_managerCard('АС', 'Александр Седов', '+79033703111', '+7 (903) 370-31-11', 'Aleksandr.Sedov@greif.com')}
   </div>
 </div>`,
 
@@ -1215,14 +1235,7 @@ const PAGES = {
         </table>
       </div>
     </div>
-    <div class="manager-card">
-      <h4>Ваш менеджер:</h4>
-      <div class="manager-name">Александр Седов</div>
-      <div class="manager-contacts">
-        <a href="tel:+79033703111">+7 (903) 370-31-11</a>
-        <a href="mailto:Aleksandr.Sedov@greif.com">Aleksandr.Sedov@greif.com</a>
-      </div>
-    </div>
+    ${_managerCard('АС', 'Александр Седов', '+79033703111', '+7 (903) 370-31-11', 'Aleksandr.Sedov@greif.com')}
   </div>
 </div>`,
 
@@ -1264,14 +1277,7 @@ const PAGES = {
         </table>
       </div>
     </div>
-    <div class="manager-card">
-      <h4>Ваш менеджер:</h4>
-      <div class="manager-name">Марина Леонова</div>
-      <div class="manager-contacts">
-        <a href="tel:+79872309971">+7 (987) 230-99-71</a>
-        <a href="mailto:Marina.Leonova@greif.com">Marina.Leonova@greif.com</a>
-      </div>
-    </div>
+    ${_managerCard('МЛ', 'Марина Леонова', '+79872309971', '+7 (987) 230-99-71', 'Marina.Leonova@greif.com')}
   </div>
 </div>`,
 
