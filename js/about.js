@@ -175,34 +175,21 @@ function _buildHistoryTimeline() {
     { year:2019, title:'Крупнейшая сделка',               desc:'Greif приобретает Caraustar Industries — крупнейшую сделку в истории компании',                                                  img:'https://www.greif.com/wp-content/uploads/2021/11/greif-timeline-2019.jpg' },
     { year:2022, title:'Покупка Lee Container',           desc:'Greif приобретает Lee Container, лидера по производству канистр и малой пластиковой тары',                                      img:'https://www.greif.com/wp-content/uploads/2024/04/lee-chemical-logo.png' },
   ];
-  return events.map(function(e, i) {
-    var isLeft = (i % 2 === 0);
-    var card = `<div class="greif-tl-card">
-        <div class="greif-tl-card-inner${isLeft ? '' : ' tl-flip'}">
-          <div class="greif-tl-img-wrap">
-            <img src="${e.img}" alt="${e.title}" loading="lazy">
-          </div>
-          <div class="greif-tl-text">
-            <div class="greif-tl-year-label">${e.year}</div>
-            <div class="greif-tl-title">${e.title}</div>
-            <p class="greif-tl-desc">${e.desc}</p>
-          </div>
-        </div>
-      </div>`;
-    if (isLeft) {
-      return `<div class="greif-tl-item tl-left">
-        <div class="greif-tl-half is-left">${card}</div>
-        <div class="greif-tl-node"><div class="greif-tl-badge">${e.year}</div></div>
-        <div class="greif-tl-half"></div>
-      </div>`;
+  var aboveCells = '', midCells = '', belowCells = '';
+  events.forEach(function(e, i) {
+    var safeTitle = e.title.replace(/"/g, '&quot;');
+    var safeDesc  = e.desc.replace(/"/g, '&quot;');
+    var card = `<div class="greif-tl-card" onclick="greifTlOpen(this)" data-year="${e.year}" data-title="${safeTitle}" data-desc="${safeDesc}" data-img="${e.img}"><div class="greif-tl-card-head"><span class="greif-tl-card-name">${e.title}</span></div><div class="greif-tl-img-wrap"><img src="${e.img}" alt="${e.title}" loading="lazy"></div></div>`;
+    if (i % 2 === 0) {
+      aboveCells += `<div class="greif-tl-cell"></div>`;
+      belowCells += `<div class="greif-tl-cell"><div class="greif-tl-connector"></div>${card}</div>`;
     } else {
-      return `<div class="greif-tl-item tl-right">
-        <div class="greif-tl-half"></div>
-        <div class="greif-tl-node"><div class="greif-tl-badge">${e.year}</div></div>
-        <div class="greif-tl-half is-right">${card}</div>
-      </div>`;
+      aboveCells += `<div class="greif-tl-cell">${card}<div class="greif-tl-connector"></div></div>`;
+      belowCells += `<div class="greif-tl-cell"></div>`;
     }
-  }).join('');
+    midCells += `<div class="greif-tl-cell"><div class="greif-tl-badge">${e.year}</div></div>`;
+  });
+  return `<div class="greif-tl-row greif-tl-row-above">${aboveCells}</div><div class="greif-tl-row greif-tl-row-mid">${midCells}</div><div class="greif-tl-row greif-tl-row-below">${belowCells}</div>`;
 }
 
 const aboutSections = {
@@ -224,65 +211,104 @@ const aboutSections = {
   historyInc: `
     <div>
       <h2 style="font-size:28px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin-bottom:8px">История Greif Inc.</h2>
-      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:40px">Greif Inc. — мировой лидер в области производства промышленной упаковки. Более 145 лет непрерывной истории, от бондарной мастерской до глобальной корпорации.</p>
+      <p style="font-size:15px;color:var(--text-muted);line-height:1.7;margin-bottom:32px">Greif Inc. — мировой лидер в области производства промышленной упаковки. Более 145 лет непрерывной истории, от бондарной мастерской до глобальной корпорации.</p>
+
+      <div style="display:flex;flex-direction:column;gap:0">
+
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+          <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
+            <img src="http://www.greif.ru/wp-content/uploads/1B-Man-making-barrel-11x14-Black-and-White-scaled.jpg" alt="Бондарная мастерская" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">1877</div>
+            <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">От маленькой бондарни до мирового лидера</h3>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">История компании Greif началась в 1877 году, когда два брата, Эрнст и Альберт Грайф, основали небольшую мастерскую по производству деревянных бочек в Кливленде, штат Огайо. В то время деревянная бочка была основным средством для перевозки всего — от муки и сахара до нефти и виски. С самого начала братья сделали ставку на качество и надежность, что позволило их продукции быстро завоевать доверие клиентов.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+          <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-right:none;border-radius:10px 0 0 10px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Начало XX века</div>
+            <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">Эра индустриализации и расширения</h3>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">В начале XX века, с развитием промышленности, компания начала стремительно расти. Бочки Грайф стали стандартом для американской металлургической и химической промышленности. В 1920-х годах, отвечая на вызовы времени, компания освоила производство стальных барабанов, что ознаменовало начало перехода от традиционного дерева к современным материалам.</p>
+          </div>
+          <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
+            <img src="http://www.greif.ru/wp-content/uploads/Old-Drumline.jpg" alt="Линия производства барабанов" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+          <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
+            <img src="http://www.greif.ru/wp-content/uploads/Greif-Truck.jpg" alt="Грузовик Greif" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+          <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Середина XX века</div>
+            <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">Выход на мировую арену</h3>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">Пик развития пришелся на послевоенные годы. Greif не только модернизировала производственные мощности, но и начала свое глобальное расширение. Компания открыла предприятия в Канаде, а затем и в Европе, превратившись в транснационального гиганта.</p>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+          <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-right:none;border-radius:10px 0 0 10px;display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Современность</div>
+            <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">Многообразие и устойчивость</h3>
+            <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">Сегодня Greif — это глобальный лидер в производстве промышленной упаковки. Мы ушли далеко от простых деревянных бочек. Портфель компании теперь включает не только деревянные и стальные барабаны, но и пластиковую тару, фибровые (картонные) барабаны, многослойные бумажные мешки и экологичные решения.</p>
+          </div>
+          <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
+            <img src="http://www.greif.ru/wp-content/uploads/Lloyd-Drums-display.jpg" alt="Ассортимент продукции Greif" style="width:100%;height:100%;object-fit:cover;display:block">
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--green-primary) 0%,#2d6b52 100%);border-radius:10px;padding:36px 40px;margin-bottom:32px;color:#fff">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сегодня и завтра</div>
+          <h3 style="font-size:22px;font-weight:900;letter-spacing:-0.01em;margin:0 0 16px;color:#fff">Взгляд в будущее</h3>
+          <p style="font-size:14px;line-height:1.85;margin:0;color:rgba(255,255,255,0.88)">Greif продолжает традиции, заложенные братьями Грайф более века назад: качество, инновации и забота о клиенте. Сегодня мы — компания с оборотом в несколько миллиардов долларов, объединяющая более 200 производственных площадок по всему миру. Но наша цель остается прежней — защищать то, что важно для наших клиентов, и делать это экологично и ответственно.</p>
+        </div>
+
+      </div>
+
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Хронология ключевых событий</div>
 
       <style>
         .greif-timeline {
-          position:relative;
-          padding:0;
+          overflow-x:auto;
+          scrollbar-width:thin;
+          scrollbar-color:rgba(70,155,128,0.3) transparent;
         }
-        .greif-timeline::before {
+        .greif-tl-row {
+          display:flex;
+        }
+        .greif-tl-row-above { align-items:flex-end; }
+        .greif-tl-row-mid   { align-items:center; position:relative; }
+        .greif-tl-row-below { align-items:flex-start; }
+        .greif-tl-row-mid::before {
           content:'';
           position:absolute;
-          left:50%;
-          top:0; bottom:0;
-          width:2px;
-          transform:translateX(-50%);
-          background:linear-gradient(to bottom, var(--green-primary) 0%, rgba(70,155,128,0.12) 100%);
+          left:0; right:0; top:50%;
+          height:2px;
+          transform:translateY(-50%);
+          background:linear-gradient(to right, var(--green-primary) 0%, rgba(70,155,128,0.2) 100%);
           z-index:0;
         }
-        .greif-tl-item {
+        .greif-tl-cell {
+          flex:1;
+          min-width:60px;
           display:flex;
-          align-items:flex-start;
-          margin-bottom:32px;
-          position:relative;
+          flex-direction:column;
+          align-items:center;
+          padding:0 4px;
         }
-        .greif-tl-item:last-child { margin-bottom:0; }
-        .greif-tl-half {
-          width:calc(50% - 30px);
+        .greif-tl-row-above .greif-tl-cell { justify-content:flex-end; }
+        .greif-tl-row-below .greif-tl-cell { justify-content:flex-start; }
+        .greif-tl-connector {
+          width:2px;
+          height:10px;
+          background:rgba(70,155,128,0.4);
           flex-shrink:0;
         }
-        .greif-tl-half.is-left {
-          padding-right:22px;
-          padding-top:14px;
-          padding-bottom:14px;
-        }
-        .greif-tl-half.is-right {
-          padding-left:22px;
-          padding-top:14px;
-          padding-bottom:14px;
-        }
-        .greif-tl-node {
-          width:60px;
-          flex-shrink:0;
-          display:flex;
-          justify-content:center;
-          padding-top:22px;
-          position:relative;
-          z-index:1;
-        }
-        .greif-tl-node::before {
-          content:'';
-          position:absolute;
-          top:calc(22px + 25px);
-          height:2px;
-          background:rgba(70,155,128,0.35);
-        }
-        .tl-left .greif-tl-node::before { right:30px; left:-22px; }
-        .tl-right .greif-tl-node::before { left:30px; right:-22px; }
         .greif-tl-badge {
-          width:50px;
-          height:50px;
+          width:42px;
+          height:42px;
           border-radius:50%;
           background:var(--green-primary);
           color:#fff;
@@ -291,42 +317,48 @@ const aboutSections = {
           justify-content:center;
           font-family:'Roboto Condensed',sans-serif;
           font-weight:700;
-          font-size:11px;
-          letter-spacing:0.03em;
+          font-size:10px;
+          letter-spacing:0.01em;
           text-align:center;
-          line-height:1.2;
-          box-shadow:0 0 0 4px #fff, 0 0 0 6px rgba(70,155,128,0.25);
+          line-height:1.1;
+          box-shadow:0 0 0 3px #fff, 0 0 0 5px rgba(70,155,128,0.25);
           flex-shrink:0;
-          transition:transform 0.2s, box-shadow 0.2s;
-        }
-        .greif-tl-item:hover .greif-tl-badge {
-          transform:scale(1.12);
-          box-shadow:0 0 0 4px #fff, 0 0 0 9px rgba(70,155,128,0.4);
+          position:relative;
+          z-index:1;
+          transition:transform 0.2s;
         }
         .greif-tl-card {
           background:#fff;
           border:1px solid var(--border);
-          border-radius:12px;
+          border-radius:6px;
           overflow:hidden;
-          transition:box-shadow 0.2s, border-color 0.2s;
+          cursor:pointer;
+          width:100%;
+          transition:box-shadow 0.2s, border-color 0.2s, transform 0.15s;
         }
-        .greif-tl-item:hover .greif-tl-card {
-          box-shadow:0 6px 24px rgba(70,155,128,0.14);
-          border-color:rgba(70,155,128,0.4);
+        .greif-tl-card:hover {
+          box-shadow:0 3px 12px rgba(70,155,128,0.18);
+          border-color:rgba(70,155,128,0.45);
+          transform:translateY(-1px);
         }
-        .greif-tl-card-inner {
-          display:flex;
-          align-items:stretch;
+        .greif-tl-card-head {
+          padding:6px 7px 5px;
         }
-        .greif-tl-card-inner.tl-flip {
-          flex-direction:row-reverse;
+        .greif-tl-card-name {
+          font-size:11px;
+          font-weight:700;
+          color:var(--text-dark);
+          line-height:1.3;
+          display:-webkit-box;
+          -webkit-line-clamp:2;
+          -webkit-box-orient:vertical;
+          overflow:hidden;
         }
         .greif-tl-img-wrap {
-          width:120px;
-          flex-shrink:0;
+          width:100%;
           background:#f5f9f7;
           overflow:hidden;
-          min-height:110px;
+          height:80px;
           display:flex;
           align-items:center;
           justify-content:center;
@@ -338,35 +370,8 @@ const aboutSections = {
           display:block;
           transition:transform 0.35s;
         }
-        .greif-tl-item:hover .greif-tl-img-wrap img {
+        .greif-tl-card:hover .greif-tl-img-wrap img {
           transform:scale(1.06);
-        }
-        .greif-tl-text {
-          flex:1;
-          min-width:0;
-          padding:15px 17px;
-        }
-        .greif-tl-year-label {
-          font-family:'Roboto Condensed',sans-serif;
-          font-size:10px;
-          font-weight:700;
-          letter-spacing:0.14em;
-          text-transform:uppercase;
-          color:var(--green-primary);
-          margin-bottom:5px;
-        }
-        .greif-tl-title {
-          font-size:14px;
-          font-weight:700;
-          color:var(--text-dark);
-          margin-bottom:6px;
-          line-height:1.35;
-        }
-        .greif-tl-desc {
-          font-size:12px;
-          color:var(--text-muted);
-          line-height:1.65;
-          margin:0;
         }
       </style>
 
@@ -510,3 +515,41 @@ function initAboutNav() {
   });
   switchAboutSection('greifRu');
 }
+
+/* ─── Timeline modal ─── */
+function greifTlOpen(card) {
+  var year  = card.dataset.year;
+  var title = card.dataset.title;
+  var desc  = card.dataset.desc;
+  var img   = card.dataset.img;
+
+  var existing = document.getElementById('greif-tl-modal');
+  if (existing) existing.remove();
+
+  var modal = document.createElement('div');
+  modal.id = 'greif-tl-modal';
+  modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.52);display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:14px;overflow:hidden;max-width:480px;width:100%;box-shadow:0 24px 60px rgba(0,0,0,0.28);position:relative;animation:greifTlIn 0.2s ease">
+      <button onclick="greifTlClose()" style="position:absolute;top:10px;right:10px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(0,0,0,0.45);color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1;line-height:1">✕</button>
+      <img src="${img}" alt="${title}" style="width:100%;height:200px;object-fit:cover;display:block;">
+      <div style="padding:20px 22px 24px">
+        <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:6px">${year}</div>
+        <div style="font-size:17px;font-weight:800;color:var(--text-dark);line-height:1.25;margin-bottom:10px">${title}</div>
+        <p style="font-size:13px;color:var(--text-muted);line-height:1.65;margin:0">${desc}</p>
+      </div>
+    </div>
+    <style>@keyframes greifTlIn{from{opacity:0;transform:scale(0.93)}to{opacity:1;transform:scale(1)}}</style>
+  `;
+  modal.addEventListener('click', function(e) { if (e.target === modal) greifTlClose(); });
+  document.body.appendChild(modal);
+  document.addEventListener('keydown', _greifTlEsc);
+}
+
+function greifTlClose() {
+  var modal = document.getElementById('greif-tl-modal');
+  if (modal) modal.remove();
+  document.removeEventListener('keydown', _greifTlEsc);
+}
+
+function _greifTlEsc(e) { if (e.key === 'Escape') greifTlClose(); }

@@ -1314,6 +1314,262 @@
   justify-content: center;
 }
 
+/* ── VACANCY PAGE ENHANCEMENTS ── */
+
+/* Hero stats */
+.vacancy-stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 28px;
+  flex-wrap: wrap;
+}
+.vacancy-stat { display: flex; flex-direction: column; gap: 2px; }
+.vacancy-stat-num { font-size: 2rem; font-weight: 900; color: #fff; line-height: 1; }
+.vacancy-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* Vacancies heading */
+.vacancies-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 18px 0;
+}
+
+/* Students button */
+.students-main-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, var(--green-secondary) 0%, var(--green-primary) 100%);
+  color: #fff;
+  border: none;
+  padding: 13px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 16px rgba(38,94,76,0.3);
+  margin-bottom: 32px;
+}
+.students-main-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(38,94,76,0.4);
+}
+
+/* City count badge */
+.city-count {
+  display: inline-block;
+  background: rgba(51,119,97,0.18);
+  color: var(--green-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0 6px;
+  margin-left: 4px;
+  vertical-align: middle;
+  line-height: 1.6;
+}
+.city-tab.active .city-count {
+  background: rgba(255,255,255,0.25);
+  color: #fff;
+}
+
+/* Vacancy card header */
+.vacancy-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.vacancy-card-header h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.3;
+  flex: 1;
+}
+
+/* Salary badge */
+.salary-badge {
+  display: inline-block;
+  background: var(--green-light-bg);
+  color: var(--green-secondary);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+  border: 1px solid #b8d9ce;
+}
+
+/* Recruiter label on card */
+.recruiter-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0 0 14px 0;
+  flex-grow: 1;
+}
+
+/* MAX button */
+.max-btn {
+  background: #7c5cbf;
+  color: #fff !important;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 40px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  flex: 1;
+  text-align: center;
+  transition: background 0.25s;
+  cursor: pointer;
+}
+.max-btn:hover { background: #6447a8; }
+
+/* Popup enhancements */
+.popup-header {
+  background: linear-gradient(135deg, var(--green-footer) 0%, var(--green-secondary) 100%);
+  margin: -25px -25px 20px -25px;
+  padding: 24px 25px 20px;
+  border-radius: 18px 18px 0 0;
+}
+.popup-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+  padding-right: 30px;
+}
+.popup-salary {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #5dffc2;
+  margin-bottom: 6px;
+}
+.popup-location {
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.7);
+}
+
+.popup-section { margin: 0 0 18px 0; }
+.popup-section-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green-primary);
+  margin: 0 0 8px 0;
+}
+.popup-list {
+  margin: 0;
+  padding-left: 18px;
+}
+.popup-list li {
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #3a4a3c;
+  line-height: 1.4;
+}
+
+.popup-recruiter {
+  background: var(--green-light-bg);
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin-top: 18px;
+}
+.popup-recruiter-name {
+  margin: 0 0 10px 0;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+}
+.popup-contact-buttons {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.popup-contact-btn {
+  padding: 9px 16px;
+  border-radius: 40px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.25s;
+  border: none;
+  cursor: pointer;
+}
+.popup-tg-btn { background: #0088cc; color: #fff; }
+.popup-tg-btn:hover { background: #0070aa; }
+.popup-max-btn { background: #7c5cbf; color: #fff; }
+.popup-max-btn:hover { background: #6447a8; }
+.popup-phone-btn { background: #fff; color: var(--green-primary); border: 1px solid var(--green-primary); }
+.popup-phone-btn:hover { background: var(--green-primary); color: #fff; }
+
+/* Students popup */
+#studentsPopup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.75);
+  z-index: 999999;
+}
+#studentsPopup > div {
+  background: #fff;
+  width: 90%;
+  max-width: 640px;
+  margin: 40px auto;
+  padding: 25px;
+  border-radius: 20px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+}
+.students-popup-header { text-align: center; margin-bottom: 20px; }
+.students-popup-header h2 { font-size: 1.5rem; color: var(--green-primary); margin: 0 0 6px 0; }
+.students-popup-header p { color: var(--text-muted); font-size: 0.9rem; margin: 0; }
+
+.students-popup-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.students-popup-card {
+  background: #f8faf8;
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+.students-popup-card h3 { font-size: 1rem; color: var(--green-primary); margin: 0 0 8px 0; }
+.students-popup-card ul { margin: 0; padding-left: 18px; }
+.students-popup-card li { font-size: 0.85rem; color: var(--text-dark); margin-bottom: 4px; }
+
+.students-popup-contacts {
+  background: var(--green-light-bg);
+  border-radius: 12px;
+  padding: 16px;
+  text-align: center;
+}
+.students-popup-contacts p { margin: 0 0 12px 0; font-size: 0.9rem; color: var(--text-dark); }
+.students-popup-contact-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.students-popup-contact-btns a {
+  padding: 9px 18px;
+  border-radius: 40px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.25s;
+}
+.students-tg-link { background: #0088cc; color: #fff; }
+.students-tg-link:hover { background: #0070aa; }
+.students-email-link { background: #fff; color: var(--green-primary); border: 1px solid var(--green-primary); }
+.students-email-link:hover { background: var(--green-primary); color: #fff; }
+
 /* ── НОВЫЙ ФУТЕР ── */
 .footer {
   background: var(--green-footer);

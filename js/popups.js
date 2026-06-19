@@ -61,5 +61,6 @@ document.addEventListener('keydown', function(e) {
     ['popup-hr', 'popup-request', 'popup-director'].forEach(id => closePopup(id));
     closeMobileNav();
     if (typeof _closeFactoryModal === 'function') _closeFactoryModal();
+    if (typeof _closeCityModal === 'function') _closeCityModal();
   }
 });

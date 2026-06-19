@@ -131,7 +131,7 @@ render();
 
 /* ── CAROUSEL: Steel Drums ── */
 let _scIdx = 0;
-const _SC_TOTAL = 4;
+const _SC_TOTAL = 3;
 const _SC_INTERVAL = 1500;
 let _scTimer = null;
 

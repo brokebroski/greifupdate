@@ -6,10 +6,12 @@ function initVacancyTabs() {
 
   if (!tabs.length) return;
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', function() {
-      const city = this.dataset.city;
+  // Show all sections initially (active tab is "all")
+  sections.forEach(s => s.classList.add('active'));
 
+  tabs.forEach(tab => {
+    tab.addEventListener('click', function () {
+      const city = this.dataset.city;
       tabs.forEach(t => t.classList.remove('active'));
       this.classList.add('active');
 
@@ -24,46 +26,90 @@ function initVacancyTabs() {
   });
 }
 
-window.showVacancyDemo = function(title, salary, location, recruiter, telegram, phone) {
+window.openVacancyPopup = function (data) {
+  const condHTML = data.conditions && data.conditions.length
+    ? `<div class="popup-section">
+        <p class="popup-section-title">✅ Мы предлагаем</p>
+        <ul class="popup-list">${data.conditions.map(c => `<li>${c}</li>`).join('')}</ul>
+       </div>` : '';
+
+  const dutHTML = data.duties && data.duties.length
+    ? `<div class="popup-section">
+        <p class="popup-section-title">📋 Обязанности</p>
+        <ul class="popup-list">${data.duties.map(d => `<li>${d}</li>`).join('')}</ul>
+       </div>` : '';
+
+  const reqHTML = data.requirements && data.requirements.length
+    ? `<div class="popup-section">
+        <p class="popup-section-title">🎯 Требования</p>
+        <ul class="popup-list">${data.requirements.map(r => `<li>${r}</li>`).join('')}</ul>
+       </div>` : '';
+
+  const tgBtn = data.recruiter_telegram
+    ? `<a href="https://t.me/${data.recruiter_telegram.replace('@', '')}" target="_blank" class="popup-contact-btn popup-tg-btn">Telegram</a>` : '';
+
+  const maxBtn = data.recruiter_max
+    ? `<a href="${data.recruiter_max}" target="_blank" class="popup-contact-btn popup-max-btn">MAX</a>` : '';
+
+  const phoneBtn = data.recruiter_phone
+    ? `<a href="tel:${data.recruiter_phone}" class="popup-contact-btn popup-phone-btn">${data.recruiter_phone}</a>` : '';
+
   const html = `
-    <h2>${title}</h2>
-    <p style="font-size: 22px; font-weight: bold; color: #2C3E2F;">${salary}</p>
-    <p style="color: #2e7d32; font-weight: 500;"><strong>📍 ${location}</strong></p>
-    <hr style="border: none; border-top: 2px solid #e0ede0; margin: 15px 0;">
-    <div style="background: #f5f5f5; padding: 15px; border-radius: 10px; margin: 15px 0;">
-      <div>✅ Официальное трудоустройство</div>
-      <div>✅ Полный социальный пакет</div>
-      <div>✅ Комфортные условия труда</div>
+    <div class="popup-header">
+      <h2 class="popup-title">${data.title}</h2>
+      <div class="popup-salary">${data.salary}</div>
+      <div class="popup-location">📍 ${data.location}</div>
     </div>
-    <div style="background: #e8f3e8; padding: 15px; border-radius: 10px; margin-top: 20px;">
-      <p><strong>Специалист:</strong> ${recruiter}</p>
-      <p><strong>Telegram:</strong> <a href="https://t.me/${telegram.replace('@', '')}" target="_blank" style="color: #2e7d32;">${telegram}</a></p>
-      <p><strong>Телефон:</strong> <a href="tel:${phone}" style="color: #2e7d32;">${phone}</a></p>
+    ${condHTML}${dutHTML}${reqHTML}
+    <div class="popup-recruiter">
+      <p class="popup-recruiter-name">Специалист по подбору: <strong>${data.recruiter_name}</strong></p>
+      <div class="popup-contact-buttons">${tgBtn}${maxBtn}${phoneBtn}</div>
     </div>
   `;
 
-  const popupContent = document.getElementById('popupContent');
+  const content = document.getElementById('popupContent');
   const popup = document.getElementById('vacancyPopup');
-  if (popupContent && popup) {
-    popupContent.innerHTML = html;
+  if (content && popup) {
+    content.innerHTML = html;
     popup.style.display = 'block';
     document.body.style.overflow = 'hidden';
   }
 };
 
-window.closeVacancyPopup = function() {
+window.closeVacancyPopup = function () {
   const popup = document.getElementById('vacancyPopup');
   if (popup) {
     popup.style.display = 'none';
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = '';
   }
 };
 
-document.addEventListener('click', function(e) {
-  const popup = document.getElementById('vacancyPopup');
-  if (e.target === popup) closeVacancyPopup();
+window.openStudentsPopup = function () {
+  const popup = document.getElementById('studentsPopup');
+  if (popup) {
+    popup.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeStudentsPopup = function () {
+  const popup = document.getElementById('studentsPopup');
+  if (popup) {
+    popup.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+};
+
+document.addEventListener('click', function (e) {
+  const vp = document.getElementById('vacancyPopup');
+  if (e.target === vp) closeVacancyPopup();
+  const sp = document.getElementById('studentsPopup');
+  if (e.target === sp) closeStudentsPopup();
 });
 
-document.addEventListener('keydown', function(e) {
-  if (e.key === 'Escape') closeVacancyPopup();
+document.addEventListener('keydown', function (e) {
+  if (e.key === 'Escape') {
+    closeVacancyPopup();
+    closeStudentsPopup();
+  }
 });

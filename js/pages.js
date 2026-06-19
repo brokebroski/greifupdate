@@ -1,5 +1,198 @@
 /* site_structure/js/pages.js */
 
+/* ─────────── CITY CONTACTS DATA ─────────── */
+
+const CITY_CONTACTS = {
+  'moskva': {
+    city: 'Москва',
+    phone: '+7 (495) 933-59-47',
+    address: 'ул. Ленинская слобода, 19, ком. 2061',
+    contacts: []
+  },
+  'vologda': {
+    city: 'Вологда',
+    phone: '+7 (8172) 26-40-13',
+    address: 'ул. Маяковского, 38',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Имя Фамилия',          phone: '+7 (8172) 26-40-13', email: 'Vologda.Office@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',          phone: '',                    email: 'Vologda.Office@greif.com' },
+      { role: 'HR-специалист',         name: 'Александра Караваева', phone: '',                    email: 'Vologda.Office@greif.com' },
+      { role: 'Бухгалтер',             name: 'Барышева Елена',        phone: '8-981-420-16-93',    email: '' },
+    ]
+  },
+  'volgograd': {
+    city: 'Волгоград',
+    phone: '+7 (8442) 78-02-80',
+    address: 'ул. Промысловая, 15',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (8442) 78-02-80', email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
+    ]
+  },
+  'perm': {
+    city: 'Пермь',
+    phone: '+7 (342) 211-07-00',
+    address: 'ул. Героев Хасана, 74',
+    contacts: [
+      { role: 'Офис-менеджер',                                   name: 'Анна Егорова',          phone: '+7 (342) 211-07-00', email: 'Anna.Egorova@greif.com' },
+      { role: 'Главный бухгалтер по налогам',                    name: 'Тимохова Елена',        phone: '8-982-459-97-29',    email: '' },
+      { role: 'Зам. гл. бухгалтера по расчетам',                 name: 'Смолякова Ирина',       phone: '8-919-712-67-53',    email: '' },
+      { role: 'Ведущий бухгалтер расч. центра по производству',  name: 'Янкина Александра',     phone: '8-919-470-57-69',    email: '' },
+      { role: 'Зам. главного бухгалтера',                        name: 'Балуева Анастасия',     phone: '8-912-880-42-54',    email: '' },
+      { role: 'Бухгалтер',                                       name: 'Иванова Мария',         phone: '8-919-712-12-85',    email: '' },
+      { role: 'Руководитель расчетного центра',                  name: 'Соколова Людмила',      phone: '8-921-823-40-40',    email: '' },
+      { role: 'Бухгалтер расчетного центра',                     name: 'Шилова Татьяна',        phone: '8-985-858-01-10',    email: '' },
+      { role: 'Бухгалтер расчетного центра',                     name: 'Ахметзянова Ризида',    phone: '8-915-210-17-38',    email: '' },
+      { role: 'Бухгалтер расчетного центра',                     name: 'Махова Елена',          phone: '8-912-487-29-39',    email: '' },
+      { role: 'Бухгалтер расчетного центра',                     name: 'Можарцева Наталья',     phone: '8-912-881-11-40',    email: '' },
+      { role: 'Рук. отдела по взаиморасчетам с контрагентами',   name: 'Черных Екатерина',      phone: '8-916-650-84-41',    email: '' },
+      { role: 'Бухгалтер расчетного центра',                     name: 'Ярышкина Ирина',        phone: '8-908-279-4540',     email: '' },
+    ]
+  },
+  'ekaterinburg': {
+    city: 'П. Белоярский',
+    phone: '+7 (34377) 21955',
+    address: 'п. Белоярский, ул. Мира, 20',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (34377) 21955', email: 'Sergei.Dronov@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                  email: 'Sergei.Dronov@greif.com' },
+      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                  email: 'Sergei.Dronov@greif.com' },
+    ]
+  },
+  'kazan': {
+    city: 'Казань',
+    phone: '+7 (843) 202-05-45',
+    address: 'ул. М.Миля, 49А',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Марина Леонова', phone: '+7 (843) 202-05-45', email: 'Marina.Leonova@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',    phone: '',                    email: 'Marina.Leonova@greif.com' },
+      { role: 'HR-специалист',         name: 'Имя Фамилия',    phone: '',                    email: 'Marina.Leonova@greif.com' },
+    ]
+  },
+  'omsk': {
+    city: 'Омск',
+    phone: '+7 (381) 221-41-12',
+    address: 'ул. И.Н. Багнюка, 10',
+    contacts: [
+      { role: 'Исполнительный директор',               name: 'Половинский Алексей', phone: '8-913-963-45-27', email: '' },
+      { role: 'Кладовщик',                             name: 'Коновалова Елена',     phone: '8-913-970-02-85', email: '' },
+      { role: 'Бухгалтер',                             name: 'Шмурыгина Ирина',      phone: '8-913-630-74-94', email: '' },
+      { role: 'Бухгалтер',                             name: 'Гурова Татьяна',        phone: '8-913-973-83-35', email: '' },
+      { role: 'Главный инженер',                       name: 'Солтан Игорь',          phone: '8-913-965-00-10', email: '' },
+      { role: 'Инженер КИПиА',                         name: 'Мунарев Дмитрий',       phone: '8-913-671-14-31', email: '' },
+      { role: 'Начальник производства',                name: 'Кудряшов Евгений',      phone: '7-913-627-35-48', email: '' },
+      { role: 'Кладовщик',                             name: 'Кауц Елена',             phone: '7-913-630-75-12', email: '' },
+      { role: 'Мастер (бочка)',                        name: 'Дозоров Виталий',        phone: '7-913-604-26-51', email: '' },
+      { role: 'Менеджер по снабжению',                 name: 'Кузьмин Алексей',       phone: '7-913-988-06-48', email: '' },
+    ]
+  },
+  'ryazan': {
+    city: 'Рязань',
+    phone: '+7 (491) 270-14-17',
+    address: 'ш. Ряжское, 20',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (491) 270-14-17', email: 'Moscow.Office@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                    email: 'Moscow.Office@greif.com' },
+      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                    email: 'Moscow.Office@greif.com' },
+    ]
+  },
+  'kaluga': {
+    city: 'Калуга (Ворсино)',
+    phone: '+7 (4842) 92-21-01',
+    address: 'Индустриальный парк Ворсино',
+    contacts: [
+      { role: 'Офис-менеджер',         name: 'Ильина Вероника', phone: '+7 (4842) 92-21-01', email: 'Kaluga.Office@greif.com' },
+      { role: 'Менеджер по логистике', name: 'Имя Фамилия',     phone: '',                    email: 'Kaluga.Office@greif.com' },
+      { role: 'HR-специалист',         name: 'Имя Фамилия',     phone: '',                    email: 'Kaluga.Office@greif.com' },
+    ]
+  },
+};
+
+function _toTel(phone) {
+  const d = phone.replace(/\D/g, '');
+  if (!d) return '';
+  return 'tel:+7' + (d.startsWith('7') || d.startsWith('8') ? d.slice(1) : d);
+}
+
+function _toggleCityContact(header) {
+  const item = header.parentElement;
+  const details = item.querySelector('.cc-details');
+  const arrow = header.querySelector('.cc-arrow');
+  const isOpen = details.style.maxHeight && details.style.maxHeight !== '0px';
+  const list = item.closest('.cc-list');
+  list.querySelectorAll('.cc-details').forEach(d => { d.style.maxHeight = '0'; d.style.opacity = '0'; });
+  list.querySelectorAll('.cc-arrow').forEach(a => { a.style.transform = ''; });
+  if (!isOpen) {
+    details.style.maxHeight = details.scrollHeight + 'px';
+    details.style.opacity = '1';
+    arrow.style.transform = 'rotate(90deg)';
+  }
+}
+
+function openCityModal(key) {
+  const data = CITY_CONTACTS[key];
+  if (!data) return;
+
+  let modal = document.getElementById('city-contact-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'city-contact-modal';
+    modal.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.65);display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity 0.22s';
+    modal.addEventListener('click', function(e) { if (e.target === modal) _closeCityModal(); });
+    document.body.appendChild(modal);
+  }
+
+  const SVG_PHONE = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>`;
+  const SVG_MAIL  = `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>`;
+
+  const contactsHtml = data.contacts.map(c => {
+    const telHref = _toTel(c.phone);
+    const phoneRow = telHref ? `<a href="${telHref}" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;font-size:14px;font-weight:600">${SVG_PHONE}${c.phone}</a>` : '';
+    const emailRow = c.email ? `<a href="mailto:${c.email}" style="display:inline-flex;align-items:center;gap:5px;color:var(--green-primary);text-decoration:none;font-size:12px;margin-top:4px">${SVG_MAIL}${c.email}</a>` : '';
+    return `
+    <div style="border-bottom:1px solid var(--border)">
+      <div class="cc-header" onclick="_toggleCityContact(this)" style="display:flex;align-items:center;justify-content:space-between;padding:13px 0;cursor:pointer;gap:12px">
+        <div style="flex:1;min-width:0">
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.13em;text-transform:uppercase;color:var(--green-primary);margin-bottom:2px">${c.role}</div>
+          <div style="font-size:14px;font-weight:600;color:var(--text-dark);white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${c.name}</div>
+        </div>
+        <span class="cc-arrow" style="font-size:20px;color:var(--green-primary);transition:transform 0.18s;flex-shrink:0;line-height:1">›</span>
+      </div>
+      <div class="cc-details" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.22s ease,opacity 0.18s;padding:0 0 0 0">
+        <div style="padding-bottom:14px;display:flex;flex-direction:column;gap:4px">
+          ${phoneRow}${emailRow}
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:16px;max-width:480px;width:100%;box-shadow:0 24px 64px rgba(0,0,0,0.28);overflow:hidden;position:relative;max-height:90vh;display:flex;flex-direction:column">
+      <div style="background:var(--green-primary);padding:24px 28px 20px;position:relative;flex-shrink:0">
+        <button onclick="_closeCityModal()" style="position:absolute;top:12px;right:14px;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.2);border:none;cursor:pointer;color:#fff;font-size:22px;line-height:1;display:flex;align-items:center;justify-content:center">&times;</button>
+        <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:4px">Контакты завода</div>
+        <div style="font-size:24px;font-weight:900;color:#fff;letter-spacing:-0.01em">${data.city}</div>
+        <a href="${_toTel(data.phone)}" style="display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-size:14px;font-weight:600;margin-top:6px;opacity:0.92">${SVG_PHONE}${data.phone}</a>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);margin-top:4px">${data.address}</div>
+      </div>
+      <div class="cc-list" style="padding:4px 24px 20px;overflow-y:auto">
+        ${contactsHtml}
+      </div>
+    </div>`;
+
+  modal.style.display = 'flex';
+  requestAnimationFrame(() => { modal.style.opacity = '1'; });
+  document.body.style.overflow = 'hidden';
+}
+
+function _closeCityModal() {
+  const modal = document.getElementById('city-contact-modal');
+  if (!modal) return;
+  modal.style.opacity = '0';
+  setTimeout(() => { modal.style.display = 'none'; document.body.style.overflow = ''; }, 220);
+}
+
 /* ─────────── IBC HELPER FUNCTIONS ─────────── */
 
 function _ibcDlBtn(label) {
@@ -578,10 +771,9 @@ const PAGES = {
         <div class="product-carousel" id="steelCarousel">
           <div class="carousel-track-wrap">
             <div class="carousel-track" id="steelCarouselTrack">
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/bochka.png" alt="Стальная бочка Greif"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/%D0%A1%D0%BA%D1%80%D0%B8%D0%BD%D1%88%D0%BE%D1%82-2015-02-09-07.00.40.png" alt="Стальная бочка Greif — производство"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/01.png" alt="Стальная бочка Greif — вид"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/%D0%B1%D0%BE%D1%87%D0%BA%D0%B0-%D1%81-%D0%B7%D0%B0%D0%BA%D1%80%D1%8B%D1%82%D1%8B%D0%BC-%D0%B2%D0%B5%D1%80%D1%85%D0%BE%D0%BC.jpg" alt="Бочка с закрытым верхом"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/bochka-na-sajt.jpg" alt="Стальная бочка Greif — вид"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/1924756_467075676754287_987316300_n.png" alt="Стальная бочка Greif"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/Скриншот-2015-02-09-07.00.40.png" alt="Стальная бочка Greif — производство"></div>
             </div>
             <button class="carousel-btn carousel-btn-prev" onclick="steelCarouselMove(-1)" aria-label="Назад">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
@@ -589,13 +781,12 @@ const PAGES = {
             <button class="carousel-btn carousel-btn-next" onclick="steelCarouselMove(1)" aria-label="Вперёд">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </button>
-            <div class="carousel-counter" id="steelCarouselCounter">1 / 4</div>
+            <div class="carousel-counter" id="steelCarouselCounter">1 / 3</div>
           </div>
           <div class="carousel-dots" id="steelCarouselDots">
             <button class="carousel-dot active" onclick="steelCarouselGoTo(0)"></button>
             <button class="carousel-dot" onclick="steelCarouselGoTo(1)"></button>
             <button class="carousel-dot" onclick="steelCarouselGoTo(2)"></button>
-            <button class="carousel-dot" onclick="steelCarouselGoTo(3)"></button>
           </div>
         </div>
       </div>
@@ -1178,20 +1369,184 @@ const PAGES = {
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="con-desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="con-specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="con-coating">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="con-lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="con-closure">СИСТЕМЫ УКУПОРКИ</button>
       </div>
       <div class="tab-content active" id="tab-con-desc">
-        <p>Конические (конусные) бочки выпускаются на заводах компании Greif по всему миру. С 2007 года производство конических бочек осуществляется в России — в г. Волгограде.</p>
-        <p>Конические бочки используются для упаковки и транспортировки пищевых продуктов, например, томатной пасты и фруктовых концентратов. Стандартная ёмкость бочки составляет 217 л, она оснащена пластиковой или стальной крышкой с запорным кольцом.</p>
+        <p>Конические (конусные) бочки выпускаются на заводах компании Greif, расположенных в США, Великобритании, Греции, Италии, Турции, Португалии, Египте и Бразилии. С 2007 года производство конических бочек осуществляется в России — в г. Волгограде.</p>
+        <p>Конические бочки используются для упаковки и транспортировки пищевых продуктов, например, томатной пасты и фруктовых концентратов. Стандартная емкость бочки составляет 217 л, она оснащена пластиковой или стальной крышкой с запорным кольцом. Обычно пищевые продукты предварительно упаковываются в полиэтиленовые или асептические мешки. Для упаковки различных видов пищевых продуктов в одну бочку могут применяться пластиковые разделители. Упаковка непищевых продуктов может осуществляться без мешков. Внутренняя поверхность бочки по желанию заказчика покрывается специальным покрытием, защищающим продукт от контакта с металлом, также по желанию заказчика дно бочки может быть перфорировано для удобства использования упаковочных мешков и предотвращения скопления конденсата.</p>
       </div>
       <div class="tab-content" id="tab-con-specs">
-        <h4>Размеры конических бочек 1А2</h4>
-        <table style="width:100%;border-collapse:collapse;font-size:14px">
-          <tbody>
-            ${[['Объем','217 л'],['D — внешний диаметр','580 ±4 мм'],['Высота','970 ±4 мм'],['Толщина стенки корпуса','0,7 мм'],['Масса без крышки','10,4 кг']].map(([k,v]) =>
-              `<tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 0;color:var(--text-muted);width:50%">${k}</td><td style="padding:11px 0;color:var(--text-dark);font-weight:500">${v}</td></tr>`
-            ).join('')}
-          </tbody>
-        </table>
+        <p>При производстве конических бочек Greif используется холоднокатаный стальной прокат марки 08ПС. Технические характеристики стали соответствуют ISO 35373 и ISO 3574 или аналогичным стандартам (EN10130 / EN10131).</p>
+        <p>Стандартная коническая бочка со съёмным верхом имеет объём 217 л. Она состоит из корпуса, нижнего дна и верхней крышки. Корпус бочки сваривается продольным швом, затем осуществляется присоединение нижнего дна к обечайке пятислойным закатным швом. Конические бочки комплектуются различными типами крышек — пластиковыми или металлическими — в зависимости от пожеланий и требований покупателя.</p>
+        <h4 style="margin-top:24px;margin-bottom:12px">Размеры конических бочек со съёмным верхом 1А2</h4>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:520px">
+            <thead>
+              <tr style="background:var(--bg-light,#f5f5f5)">
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Объём, л</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">D, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">d1, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">d2, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">H, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">S, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">S1, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Масса, кг</th>
+              </tr>
+              <tr style="font-size:11px;color:var(--text-muted)">
+                <th style="padding:4px 8px;font-weight:400;text-align:left"></th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">внешний диаметр</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">диаметр дна</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">по ребру жёсткости</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">высота</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">стенка корпуса</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">толщина днища</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">без крышки</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border);font-weight:500">217</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">580 ±4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">525 ±4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">574 ±4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">970 ±4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,7</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,6</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">10,4</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <img src="https://www.greif.ru/wp-content/uploads/Без-названия-716x1024.png" alt="Чертёж конической бочки Greif" style="display:block;margin-top:28px;max-width:100%;max-height:500px;object-fit:contain;">
+      </div>
+      <div class="tab-content" id="tab-con-coating">
+        <p>С ростом конкуренции на промышленных рынках упаковка приобрела дополнительную ценность, поскольку её поверхность представляет собой отличный инструмент для маркетинговых коммуникаций с клиентами. В соответствии с пожеланиями заказчика стальная бочка может быть окрашена в стандартные цвета по системе RAL. Помимо окрашивания, на поверхность бочки возможно нанесение логотипа вашей компании.</p>
+        <h4 style="margin-top:24px;margin-bottom:12px">Каталог цветов RAL — стандартные цвета Greif</h4>
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px">
+            <thead>
+              <tr style="background:var(--bg-light,#f5f5f5)">
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">#</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Код</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Цвет</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">RAL</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Образец</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${[
+                ['2','RD','Красный (ржавый)','RAL3009','#763027'],
+                ['3','RD','Красный (томатный)','RAL3013','#8D1D2C'],
+                ['4','BL','Синий (женьшень)','RAL5010','#1F447E'],
+                ['6','BL','Синий (небесный)','RAL5015','#2570B2'],
+                ['8','GRN','Зелёный (мох)','RAL6005','#1B3A2D'],
+                ['9','GRN','Зелёный (трава)','RAL6010','#3E6B2F'],
+                ['10','GRN','Зелёный (мята)','RAL6029','#1C6B3A'],
+                ['13','GRY','Серый (пыль)','RAL7037','#7D7E7C'],
+                ['14','BCK','Чёрный','RAL9005','#0E0E10'],
+                ['1','YW','Жёлтый (сигнальный)','RAL1003','#F9A800'],
+                ['2','YW','Жёлтый (маис)','RAL1006','#F0A500'],
+                ['3','ORA','Оранжевый (трэфик)','RAL2009','#DD4200'],
+                ['4','RD','Красный (огонь)','RAL3000','#AB2524'],
+                ['5','RD','Красный (коричневый)','RAL3011','#78282C'],
+                ['22','WH','Белый (сероватый)','RAL9002','#E0DDD4'],
+                ['23','WH','Белый (пюре)','RAL9010','#F4F4EE'],
+              ].map(([n,code,name,ral,hex]) =>
+                `<tr style="border-bottom:1px solid var(--border)">
+                  <td style="padding:10px 8px;color:var(--text-muted)">${n}</td>
+                  <td style="padding:10px 8px;font-weight:500">${code}</td>
+                  <td style="padding:10px 8px">${name}</td>
+                  <td style="padding:10px 8px;color:var(--text-muted)">${ral}</td>
+                  <td style="padding:10px 8px"><span style="display:inline-block;width:32px;height:20px;border-radius:3px;background:${hex};border:1px solid rgba(0,0,0,0.15)"></span></td>
+                </tr>`
+              ).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-con-lining">
+        <div style="overflow:hidden;margin-bottom:20px">
+          <img src="https://www.greif.ru/wp-content/uploads/Без-названия11.png" alt="Внутренние покрытия конических бочек Greif" style="float:left;max-width:220px;max-height:220px;object-fit:contain;margin:0 24px 12px 0">
+          <p style="margin:0">Конические бочки могут изготавливаться с внутренними покрытиями. Система лаков RDL® (Regular Drum Lining) является универсальным стандартом внутренних покрытий для стальных бочек, принятым на заводах Greif Inc. по всему миру. Лаки RDL представляют собой передовое решение на рынке покрытий для стальной упаковки, которое позволяет исключить риск изменения свойств вашего продукта в результате контакта с поверхностью бочки, равно как и защитить окружающую среду от воздействия агрессивных продуктов.</p>
+        </div>
+        <p>Система RDL базируется на двух основных типах соединений: фенольные и эпоксидно-фенольные смолы, растворённые в смеси органических растворителей. Композиции на основе смеси фенольных (около 70%) и эпоксидных (около 30%) смол позволяют оптимизировать физико-химические свойства покрытий. Часть покрытий содержит инертные пигменты на основе оксидов титана или железа. Добавление пигментов в рецептуру лака придаёт покрытию характерный оттенок (красный, серый или коричневый). Кроме того, улучшаются физические и химические свойства покрытий: в частности, становится возможным нанесение стабильных слоёв большей толщины. Нанесение лаков RDL на внутреннюю поверхность стальной тары позволяет также защитить стальную поверхность от коррозии при контакте с водорастворимыми продуктами.</p>
+        <p>Лаки RDL включают 6 стандартных типов покрытий: три эпоксидно-фенольных (RDL 29, RDL 06, RDL 44) и три фенольных (RDL 16, RDL 50, RDL 39). Решения на основе этих базовых лаков охватывают 90% продуктов, которые могут быть запакованы в стальную бочку с внутренним покрытием. Для оставшихся 10% случаев компанией Tri-Sure®, входящей в состав корпорации Greif Inc., также разработаны специальные решения в рамках системы RDL. За 50 лет существования данной системы накоплен значительный опыт и сформирована обширная база данных о свойствах нескольких тысяч веществ, что позволяет специалистам Tri-Sure оперативно подобрать лучшее решение. Отметим, что в случае возникновения малейших сомнений в совместимости вашего продукта с покрытием RDL, на базе нашего собственного исследовательского подразделения проводятся все необходимые испытания.</p>
+        <p>В 2014 году компания Greif расширила линейку базовых внутренних покрытий, выпустив новинки — RDL 100 (с добавлением пигмента) и RDL 101 (прозрачный). Основным преимуществом новых лаков является исключение из технологии их производства компонентов, содержащих Бисфенол А (BPA). Испытания этих лаков были проведены с использованием современных методов контроля в лаборатории Tri-Sure, где было подтверждено отсутствие BPA (концентрации менее 0,5 мкг/дм находятся за пределами чувствительности метода). Новые лаки обладают высокой химической стойкостью; показатели сопоставимы со стандартным покрытием RDL 50. Безопасность новых лаков RDL 100 и RDL 101 подтверждена для большинства пищевых и химических продуктов. Проверку совместимости новых лаков с вашими продуктами можно провести совместно с исследовательским подразделением Greif.</p>
+        <p><strong>Нанесение:</strong> все покрытия серии RDL могут наноситься на чистую поверхность стали или жести путём распыления или при помощи валиков. Лак подвергается обжигу при высоких температурах, благодаря чему все органические растворители испаряются. Под воздействием температуры происходит реакция поликонденсации смолы с получением инертной фенольной или эпокси-фенольной структуры, в которой равномерно распределены неорганические пигменты (при их наличии). Эпокси-фенольные покрытия отличает высокая гибкость, а фенольные — стойкость к повышенным температурам. Это позволяет применять лаки RDL 16 и RDL 50 для покрытия бочек, в которые фасуются продукты с высокими температурами при наливе.</p>
+        <h4 style="margin-top:28px;margin-bottom:8px">Характеристики покрытий RDL, используемых на заводах Greif в России</h4>
+        <img src="https://www.greif.ru/wp-content/uploads/Без-названия-2.png" alt="Характеристики покрытий RDL" style="display:block;max-width:100%;max-height:200px;object-fit:contain;margin-bottom:16px">
+        <div style="overflow-x:auto">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:560px">
+            <thead>
+              <tr>
+                <th style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:left;width:22%"></th>
+                <th colspan="2" style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:center;background:var(--bg-light,#f5f5f5)">Эпокси-фенольные</th>
+                <th colspan="2" style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:center;background:var(--bg-light,#f5f5f5)">Фенольные</th>
+              </tr>
+              <tr style="background:var(--bg-light,#f5f5f5)">
+                <th style="padding:8px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)">Наименование</th>
+                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 29</th>
+                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 06</th>
+                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 16</th>
+                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 50</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 8px;color:var(--text-muted);font-weight:500">Цвет</td>
+                <td style="padding:10px 8px;text-align:center">Прозрачный</td>
+                <td style="padding:10px 8px;text-align:center">Красный</td>
+                <td style="padding:10px 8px;text-align:center">Прозрачный (золотистый)</td>
+                <td style="padding:10px 8px;text-align:center">Оливковый зелёный</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 8px;color:var(--text-muted);font-weight:500">Пигмент</td>
+                <td style="padding:10px 8px;text-align:center">Нет</td>
+                <td style="padding:10px 8px;text-align:center">Оксид железа</td>
+                <td style="padding:10px 8px;text-align:center">Нет</td>
+                <td style="padding:10px 8px;text-align:center">Диоксид титана</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 8px;color:var(--text-muted);font-weight:500;vertical-align:top">Свойства</td>
+                <td style="padding:10px 8px;font-size:12px">Хорошая стойкость к большинству органических растворителей. Умеренная стойкость к некоторым продуктам на водной основе.</td>
+                <td style="padding:10px 8px;font-size:12px">Хорошая стойкость к большинству органических растворителей и к некоторым продуктам на водной основе.</td>
+                <td style="padding:10px 8px;font-size:12px">Исключительная стойкость к органическим растворителям.</td>
+                <td style="padding:10px 8px;font-size:12px">Большинство органических растворителей.</td>
+              </tr>
+              <tr style="border-bottom:1px solid var(--border)">
+                <td style="padding:10px 8px;color:var(--text-muted);font-weight:500;vertical-align:top">Назначение</td>
+                <td style="padding:10px 8px;font-size:12px">Защитное (гигиеническое) покрытие. Химические вещества.</td>
+                <td style="padding:10px 8px;font-size:12px">Большинство химических веществ. Пищевые продукты. Защитное (гигиеническое) покрытие.</td>
+                <td style="padding:10px 8px;font-size:12px">Химические вещества.</td>
+                <td style="padding:10px 8px;font-size:12px">Химические вещества.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px;font-size:13px">Лаки для внутреннего покрытия бочек сертифицированы Управлением по санитарному надзору за качеством пищевых продуктов и медикаментов (FDA), США.</p>
+        <p style="margin-top:8px;font-size:13px;color:var(--text-muted)"><strong>Внимание:</strong> фенольные покрытия не рекомендованы к контакту с продуктами с высокими значениями pH — едкие щёлочи, в частности, вызывают разрушение фенольной плёнки.</p>
+      </div>
+      <div class="tab-content" id="tab-con-closure">
+        <p>Выбор подходящей укупорочной системы является крайне важным для надёжной упаковки конических бочек. Стандартное исполнение конических бочек предусматривает наличие съёмной крышки, благодаря которой обеспечивается простота наполнения и опорожнения.</p>
+        <p>Бочки с металлической откидной крышкой комплектуются запорными обручами из горячекатаной гальванизированной стали и уплотнительным кольцом.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin:20px 0">
+          <img src="https://www.greif.ru/wp-content/uploads/113.png" alt="Металлическая крышка конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
+          <img src="https://www.greif.ru/wp-content/uploads/132.png" alt="Запорный обруч конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
+          <img src="https://www.greif.ru/wp-content/uploads/123.png" alt="Укупорка конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
+        </div>
+        <p>Крышка конической бочки также может быть пластиковой, выполненной из полипропилена.</p>
+        <img src="https://www.greif.ru/wp-content/uploads/141.png" alt="Пластиковая крышка конической бочки" style="display:block;max-height:220px;object-fit:contain;margin:16px 0">
+        <p>Конические бочки используются для асептического налива пищевых продуктов (главным образом томатной пасты), которые упаковываются в предварительно стерилизованный барьерный пакет, помещаемый в бочку. Также допускается одновременная упаковка нескольких видов продуктов в одну коническую бочку за счёт применения пластиковых разделителей. Асептические мешки перед применением проходят обработку дезинфектантами. Мешок изготавливается из ламинированного материала, одобренного к упаковке жидкостей, обеспечивая необходимую гибкость и защиту продукта.</p>
+        <p><strong>Преимущества асептического наполнения:</strong></p>
+        <ul style="margin:8px 0 16px 20px;line-height:1.8">
+          <li>асептическая обработка сохраняет аромат продукта и питательные вещества;</li>
+          <li>увеличение срока хранения (нет необходимости использования консервантов);</li>
+          <li>не требуется хранение в холодильнике;</li>
+          <li>современный способ консервирования.</li>
+        </ul>
+        <p>Асептические процедуры делают международный экспорт и импорт пищевых продуктов экономически выгодным и безопасным.</p>
       </div>
     </div>
     ${_managerCard('АС', 'Александр Седов', '+79033703111', '+7 (903) 370-31-11', 'Aleksandr.Sedov@greif.com')}
@@ -1268,13 +1623,52 @@ const PAGES = {
         <p>В отличие от железнодорожных цистерн и битумовозов, затаривание битума в кловертейнеры обеспечивает сокращение транспортных расходов до 15%.</p>
       </div>
       <div class="tab-content" id="tab-clv-specs">
-        <table style="width:100%;border-collapse:collapse;font-size:14px;margin-bottom:32px">
-          <tbody>
-            ${[['Номинальная емкость','1000 литров'],['Длина','1140 мм'],['Ширина','1140 мм'],['Высота','1080 мм'],['Масса кловертейнера в сборе','90 ±5 кг'],['Сертификация','UN11G/Z/']].map(([k,v]) =>
-              `<tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 0;color:var(--text-muted);width:50%">${k}</td><td style="padding:11px 0;color:var(--text-dark);font-weight:500">${v}</td></tr>`
-            ).join('')}
-          </tbody>
-        </table>
+        <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:32px;flex-wrap:wrap">
+          <div style="flex:0 0 auto">
+            <img src="https://www.greif.ru/wp-content/uploads/114.png" alt="Конструкция кловертейнера" style="max-width:320px;width:100%;display:block;border:1px solid var(--border);border-radius:4px">
+            <div style="margin-top:14px;font-size:12px;color:var(--text-muted);line-height:2">
+              <div><strong style="color:var(--text-dark)">1</strong> — поддон</div>
+              <div><strong style="color:var(--text-dark)">2</strong> — обечайка</div>
+              <div><strong style="color:var(--text-dark)">3</strong> — крышка</div>
+              <div><strong style="color:var(--text-dark)">4</strong> — обвязка</div>
+              <div><strong style="color:var(--text-dark)">5</strong> — заливочное отверстие</div>
+              <div><strong style="color:var(--text-dark)">6</strong> — вертикальная стойка</div>
+              <div><strong style="color:var(--text-dark)">7</strong> — антиадгезионная бумага</div>
+            </div>
+          </div>
+          <div style="flex:1;min-width:260px">
+            <table style="width:100%;border-collapse:collapse;font-size:14px">
+              <tbody>
+                ${[
+                  ['Номинальная емкость','1000 л'],
+                  ['Длина','1140 мм'],
+                  ['Ширина','1140 мм'],
+                  ['Высота','1080 мм'],
+                  ['Диаметр заливной горловины','200 мм'],
+                  ['Масса кловертейнера в сборе','90 ±5 кг'],
+                  ['Материал внутренних вкладышей','Антиадгезионная бумага'],
+                  ['Сливные краны','по запросу'],
+                  ['Сертификация','Сертификат ООН UN11G/Z/'],
+                  ['Поставка (пустые контейнеры)','Еврофура: 44 шт.'],
+                ].map(([k,v]) =>
+                  `<tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 0;color:var(--text-muted);width:55%">${k}</td><td style="padding:11px 0;color:var(--text-dark);font-weight:500">${v}</td></tr>`
+                ).join('')}
+              </tbody>
+            </table>
+            <p style="margin-top:16px;font-size:12px;color:var(--text-muted);font-style:italic">Внимание: кловертейнеры поставляются в собранном виде!</p>
+          </div>
+        </div>
+        <div style="border-top:1px solid var(--border);padding-top:28px">
+          <h3 style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-primary);margin:0 0 16px">ПРИМЕНЕНИЕ</h3>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 35°C.</p>
+          <p style="font-size:14px;font-weight:600;color:var(--text-dark);margin:0 0 10px">Преимущества использования кловертейнеров:</p>
+          <ul style="font-size:14px;color:var(--text-muted);line-height:1.9;margin:0 0 16px;padding-left:20px">
+            <li>низкая стоимость упаковки на единицу продукции;</li>
+            <li>возможность использования полуавтоматической установки налива в кловертейнер, что позволяет сократить капитальные инвестиции на организацию затаривания.</li>
+          </ul>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Фасовка в кловертейнеры осуществляется непосредственно на НПЗ и далее происходит отгрузка битума конечным потребителям со склада промежуточного хранения. Организация цепи поставок битумов по данной схеме исключает необходимость обустройства битумохранилищ, расходов на нагрев битума при перевалке, полностью исключает потери вследствие недовыгруза железнодорожных цистерн, а также их пропарку.</p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">Использование кловертейнеров позволяет обеспечить сохранность качества битума за счет того, что он разогревается один раз непосредственно на асфальтобетоном заводе, в то время как традиционные способы транспортировки подразумевают многократные циклы разогрева при погрузке-выгрузке. Вместе с этим достигается и экономия энергоресурсов, а также продление срока службы дорожного полотна за счет пониженного окисления материала.</p>
+        </div>
       </div>
     </div>
     ${_managerCard('МЛ', 'Марина Леонова', '+79872309971', '+7 (987) 230-99-71', 'Marina.Leonova@greif.com')}
@@ -1379,27 +1773,36 @@ const PAGES = {
   </div>
   <div style="background:var(--green-light-bg);padding:48px 0 56px">
     <div style="max-width:1200px;margin:0 auto;padding:0 32px">
-      <div id="map" style="width:100%; height:420px; border-radius:20px; overflow:hidden; margin-bottom:32px; box-shadow:0 4px 20px rgba(0,0,0,0.1)"></div>
-      <p style="text-align:center; font-size:12px; color:var(--text-muted); margin-bottom:32px">Нажмите на метку, чтобы увидеть контакты завода</p>
-      <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:16px">
-        ${[
-          ['Москва','ул. Ленинская слобода, 19, ком. 2061','+7 (495) 933-59-47','Moscow.Office@greif.com'],
-          ['Вологда','ул. Маяковского, 38','+7 (8172) 26-40-13','Vologda.Office@greif.com'],
-          ['Волгоград','ул. Промысловая, 15','+7 (8442) 78-02-80','Aleksandr.Sedov@greif.com'],
-          ['Пермь','ул. Героев Хасана, 74','+7 (342) 211-07-00','Anna.Egorova@greif.com'],
-          ['Екатеринбург','п. Белоярский, ул. Мира, 20','+7 (343) 389-09-79','Sergei.Dronov@greif.com'],
-          ['Казань','ул. М.Миля, 49А','+7 (843) 202-05-45','Marina.Leonova@greif.com'],
-          ['Омск','ул. И.Н. Багнюка, 10','+7 (381) 221-41-12','Aleksei.Kuzmin@greif.com'],
-          ['Рязань','ш. Ряжское, 20','+7 (491) 270-14-17','Moscow.Office@greif.com'],
-          ['Калуга (Ворсино)','Индустриальный парк Ворсино','+7 (4842) 92-21-01','Kaluga.Office@greif.com'],
-        ].map(([city, addr, phone, email]) => `
-          <div style="background:#fff;border:1px solid var(--border);padding:16px 20px;border-left:3px solid var(--green-primary);border-radius:8px">
-            <div style="font-weight:700;color:var(--green-primary);margin-bottom:6px">${city}</div>
-            <div style="font-size:12px;color:#555">${addr}</div>
-            <div style="font-size:12px;color:#555">${phone}</div>
-            <a href="mailto:${email}" style="font-size:12px;color:var(--green-primary);text-decoration:none">${email}</a>
-          </div>`
-        ).join('')}
+      <div style="display:grid;grid-template-columns:480px 1fr;gap:28px;align-items:stretch">
+        <div style="display:flex;flex-direction:column">
+          <div id="map" style="width:100%;aspect-ratio:1/1;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.1)"></div>
+          <p style="font-size:11px;color:var(--text-muted);margin:10px 0 0;text-align:center">Нажмите на метку, чтобы увидеть фото завода</p>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:10px">
+          ${[
+            ['Москва','ул. Ленинская слобода, 19','moskva'],
+            ['Вологда','ул. Маяковского, 38','vologda'],
+            ['Волгоград','ул. Промысловая, 15','volgograd'],
+            ['Пермь','ул. Героев Хасана, 74','perm'],
+            ['Екатеринбург','п. Белоярский, ул. Мира, 20','ekaterinburg'],
+            ['Казань','ул. М.Миля, 49А','kazan'],
+            ['Омск','ул. И.Н. Багнюка, 10','omsk'],
+            ['Рязань','ш. Ряжское, 20','ryazan'],
+            ['Калуга (Ворсино)','Индустриальный парк Ворсино','kaluga'],
+          ].map(([city, addr, key]) => {
+            const ph = (CITY_CONTACTS[key] || {}).phone || '';
+            return `
+            <div onclick="openCityModal('${key}')" style="background:#fff;border:1px solid var(--border);padding:14px 16px;border-left:3px solid var(--green-primary);border-radius:8px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,0.10)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''">
+              <div style="font-weight:700;font-size:13px;color:var(--green-primary);margin-bottom:3px">${city}</div>
+              <div style="font-size:11px;color:#777;margin-bottom:6px;line-height:1.4">${addr}</div>
+              ${ph ? `<div style="font-size:12px;font-weight:600;color:var(--text-dark);margin-bottom:10px">${ph}</div>` : ''}
+              <div style="font-size:10px;font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green-primary);display:flex;align-items:center;gap:4px">
+                Контакты
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+              </div>
+            </div>`;
+          }).join('')}
+        </div>
       </div>
       <div style="background:#fff;border:1px solid var(--border);padding:36px 40px;max-width:760px;margin:40px auto 0;border-top:3px solid var(--green-primary);border-radius:16px">
         <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Сделать запрос</div>
