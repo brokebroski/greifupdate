@@ -125,6 +125,12 @@
         <label class="form-label">Сообщение</label>
         <textarea class="form-input" rows="3" placeholder="Опишите ваш вопрос или интерес..." id="hr-message" style="resize:vertical;min-height:72px"></textarea>
       </div>
+      <div class="form-field form-consent">
+        <label class="form-consent-label">
+          <input type="checkbox" id="hr-consent" class="consent-checkbox">
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> и даю согласие на обработку моих персональных данных *</span>
+        </label>
+      </div>
       <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-hr')">Отправить</button>
     </div>
     <div class="popup-success" id="popup-hr-success">
@@ -179,6 +185,12 @@
         <label class="form-label">Описание запроса</label>
         <textarea class="form-input" rows="3" placeholder="Опишите ваш запрос подробнее..." id="req-message" style="resize:vertical;min-height:72px"></textarea>
       </div>
+      <div class="form-field form-consent">
+        <label class="form-consent-label">
+          <input type="checkbox" id="req-consent" class="consent-checkbox">
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> и даю согласие на обработку моих персональных данных *</span>
+        </label>
+      </div>
       <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-request')">Отправить запрос</button>
     </div>
     <div class="popup-success" id="popup-request-success">
@@ -226,6 +238,12 @@
         <label class="form-label">Текст обращения *</label>
         <textarea class="form-input" rows="4" placeholder="Изложите ваше обращение..." id="dir-message" style="resize:vertical;min-height:96px"></textarea>
       </div>
+      <div class="form-field form-consent">
+        <label class="form-consent-label">
+          <input type="checkbox" id="dir-consent" class="consent-checkbox">
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> и даю согласие на обработку моих персональных данных *</span>
+        </label>
+      </div>
       <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-director')">Отправить обращение</button>
     </div>
     <div class="popup-success" id="popup-director-success">
@@ -245,13 +263,13 @@
       <div class="footer-menu">
         <a href="#" data-page="about" onclick="navigate('about');return false;">О компании</a>
         <a href="#" data-page="products" onclick="navigate('products');return false;">Продукция</a>
-        <a href="#" data-page="services" onclick="navigate('services');return false;">Сервисы</a>
-        <a href="#" data-page="contact" onclick="navigate('contact');return false;">Контакты</a>
         <a href="#" data-page="vacancies" onclick="navigate('vacancies');return false;">Вакансии</a>
+        <a href="#" data-page="contact" onclick="navigate('contact');return false;">Контакты</a>
       </div>
       <div class="footer-copyright">
-        GREIF CIS / Грайф. Copyright by GREIF Inc. All rights reserved.
-      </div> 
+        GREIF CIS / Грайф. Copyright by GREIF Inc. All rights reserved.<br>
+        <a href="privacy.html" style="color:rgba(255,255,255,0.5);font-size:12px;text-decoration:underline;">Политика конфиденциальности</a>
+      </div>
       <ul class="social-icons">
         <li><a href="https://vk.com/greif_russia" class="social-icon social-icon_vk" target="_blank">ВКонтакте</a></li>
         <li><a href="https://max.ru/join/kvZURTsFxaxmt2gUmvxCX2uV00_NJxkMeglQnVmi2xc" class="social-icon social-icon_max" target="_blank">Max</a></li>
@@ -277,6 +295,33 @@
 <script src="https://api-maps.yandex.ru/2.1/?apikey=5b37fb0d-cefe-4d3f-9517-75d396747e1a&lang=ru_RU" type="text/javascript"></script>
 <script src="js/map.js"></script>
 <script src="js/main.js"></script>
+
+<!-- ══ COOKIE BANNER ═════════════════════════════════════════ -->
+<div id="cookie-banner" style="display:none">
+  <div class="cookie-text">
+    Мы используем файлы cookie и технологии хранения браузера для обеспечения работы Сайта.
+    Продолжая использовать Сайт, вы соглашаетесь с <a href="privacy.html">Политикой конфиденциальности</a>.
+  </div>
+  <div class="cookie-actions">
+    <button class="cookie-btn cookie-btn-accept" onclick="cookieAccept()">Принять</button>
+    <a href="privacy.html" class="cookie-btn cookie-btn-policy">Подробнее</a>
+  </div>
+</div>
+<script>
+(function(){
+  if (!localStorage.getItem('greif_cookie_consent')) {
+    document.getElementById('cookie-banner').style.display = 'flex';
+  }
+})();
+function cookieAccept() {
+  localStorage.setItem('greif_cookie_consent', '1');
+  var b = document.getElementById('cookie-banner');
+  b.style.transition = 'opacity 0.4s, transform 0.4s';
+  b.style.opacity = '0';
+  b.style.transform = 'translateY(20px)';
+  setTimeout(function(){ b.style.display = 'none'; }, 420);
+}
+</script>
 
 </body>
 </html>

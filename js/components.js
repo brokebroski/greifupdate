@@ -56,7 +56,7 @@ function productCard(p) {
   return `
   <div class="product-card" onclick="${nav}">
     <div class="product-card-stripe"></div>
-    <div class="product-card-img">${p.img ? `<img src="${p.img}" alt="${p.title}" style="max-height:128px;max-width:100%;object-fit:contain;">` : getIcon(p.icon, '#337761')}</div>
+    <div class="product-card-img">${p.img ? `<img src="${p.img}" alt="${p.title}" style="max-height:128px;max-width:100%;object-fit:contain;">` : getIcon(p.icon, '#317965')}</div>
     <div class="product-card-body">
       <div class="product-card-title">${p.title}</div>
       <div class="product-card-desc">${p.desc}</div>

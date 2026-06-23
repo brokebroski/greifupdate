@@ -120,7 +120,7 @@ function _buildFactoryMapHtml() {
       style="position:absolute;left:${d.left}%;top:${d.top}%;
              transform:translate(-50%,-50%);
              width:${multi ? 38 : 32}px;height:${multi ? 38 : 32}px;border-radius:50%;
-             background:rgba(70,155,128,0.85);border:3px solid #fff;
+             background:rgba(51,119,97,0.85);border:3px solid #fff;
              cursor:${hasPhoto ? 'pointer' : 'default'};padding:0;z-index:2"
       onmouseenter="_showFactoryTooltip(this,${keysArg})"
       onmouseleave="_hideFactoryTooltip()"
@@ -131,9 +131,9 @@ function _buildFactoryMapHtml() {
   return `
     <style>
       @keyframes factory-dot-pulse {
-        0%   { box-shadow: 0 0 0 0   rgba(70,155,128,0.7); }
-        60%  { box-shadow: 0 0 0 12px rgba(70,155,128,0);  }
-        100% { box-shadow: 0 0 0 0   rgba(70,155,128,0);   }
+        0%   { box-shadow: 0 0 0 0   rgba(51,119,97,0.7); }
+        60%  { box-shadow: 0 0 0 12px rgba(51,119,97,0);  }
+        100% { box-shadow: 0 0 0 0   rgba(51,119,97,0);   }
       }
       .factory-map-dot {
         animation: factory-dot-pulse 2s ease-out infinite;
@@ -259,7 +259,7 @@ const aboutSections = {
           </div>
         </div>
 
-        <div style="background:linear-gradient(135deg,var(--green-primary) 0%,#2d6b52 100%);border-radius:10px;padding:36px 40px;margin-bottom:32px;color:#fff">
+        <div style="background:linear-gradient(135deg,var(--green-primary) 0%,#317965 100%);border-radius:10px;padding:36px 40px;margin-bottom:32px;color:#fff">
           <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сегодня и завтра</div>
           <h3 style="font-size:22px;font-weight:900;letter-spacing:-0.01em;margin:0 0 16px;color:#fff">Взгляд в будущее</h3>
           <p style="font-size:14px;line-height:1.85;margin:0;color:rgba(255,255,255,0.88)">Greif продолжает традиции, заложенные братьями Грайф более века назад: качество, инновации и забота о клиенте. Сегодня мы — компания с оборотом в несколько миллиардов долларов, объединяющая более 200 производственных площадок по всему миру. Но наша цель остается прежней — защищать то, что важно для наших клиентов, и делать это экологично и ответственно.</p>
@@ -273,7 +273,7 @@ const aboutSections = {
         .greif-timeline {
           overflow-x:auto;
           scrollbar-width:thin;
-          scrollbar-color:rgba(70,155,128,0.3) transparent;
+          scrollbar-color:rgba(51,119,97,0.3) transparent;
         }
         .greif-tl-row {
           display:flex;
@@ -287,7 +287,7 @@ const aboutSections = {
           left:0; right:0; top:50%;
           height:2px;
           transform:translateY(-50%);
-          background:linear-gradient(to right, var(--green-primary) 0%, rgba(70,155,128,0.2) 100%);
+          background:linear-gradient(to right, var(--green-primary) 0%, rgba(51,119,97,0.2) 100%);
           z-index:0;
         }
         .greif-tl-cell {
@@ -303,7 +303,7 @@ const aboutSections = {
         .greif-tl-connector {
           width:2px;
           height:10px;
-          background:rgba(70,155,128,0.4);
+          background:rgba(51,119,97,0.4);
           flex-shrink:0;
         }
         .greif-tl-badge {
@@ -321,7 +321,7 @@ const aboutSections = {
           letter-spacing:0.01em;
           text-align:center;
           line-height:1.1;
-          box-shadow:0 0 0 3px #fff, 0 0 0 5px rgba(70,155,128,0.25);
+          box-shadow:0 0 0 3px #fff, 0 0 0 5px rgba(51,119,97,0.25);
           flex-shrink:0;
           position:relative;
           z-index:1;
@@ -337,8 +337,8 @@ const aboutSections = {
           transition:box-shadow 0.2s, border-color 0.2s, transform 0.15s;
         }
         .greif-tl-card:hover {
-          box-shadow:0 3px 12px rgba(70,155,128,0.18);
-          border-color:rgba(70,155,128,0.45);
+          box-shadow:0 3px 12px rgba(51,119,97,0.18);
+          border-color:rgba(51,119,97,0.45);
           transform:translateY(-1px);
         }
         .greif-tl-card-head {
@@ -426,7 +426,7 @@ const aboutSections = {
         </div>
 
         <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;margin-bottom:8px">
-          <a href="https://www.greif.ru/wp-content/uploads/Trebovaniya-k-b_u-kubam.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px 24px;text-decoration:none;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#357a62'" onmouseout="this.style.background='var(--green-primary)'">
+          <a href="https://www.greif.ru/wp-content/uploads/Trebovaniya-k-b_u-kubam.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:13px 24px;text-decoration:none;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#317965'" onmouseout="this.style.background='var(--green-primary)'">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="11" x2="12" y2="17"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
             Требования к б/у еврокубам (PDF)
           </a>

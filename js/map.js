@@ -38,10 +38,10 @@ function initYandexMap() {
     const photo = city.name.startsWith('Калуга') ? kalugaPhoto : '';
     return `
       <div style="font-family:Roboto, sans-serif; min-width:200px">
-        <strong style="color:#337761; font-size:16px">📍 ${city.name}</strong><br>
+        <strong style="color:#317965; font-size:16px">📍 ${city.name}</strong><br>
         <span style="font-size:13px; color:#333">${city.address}</span><br>
         <span style="font-size:13px; color:#555">📞 ${city.phone}</span><br>
-        <span style="font-size:13px; color:#555">✉️ <a href="mailto:${city.email}" style="color:#337761; text-decoration:none">${city.email}</a></span>
+        <span style="font-size:13px; color:#555">✉️ <a href="mailto:${city.email}" style="color:#317965; text-decoration:none">${city.email}</a></span>
         ${photo}
       </div>
     `;
@@ -53,7 +53,7 @@ function initYandexMap() {
       balloonContent: makeBalloon(city),
     }, {
       preset: 'islands#greenDotIcon',
-      iconColor: '#337761',
+      iconColor: '#317965',
     });
     _yandexMapInstance.geoObjects.add(placemark);
   });

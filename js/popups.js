@@ -28,7 +28,7 @@ function submitPopup(id) {
   const formEl = document.getElementById(id + '-form');
   const successEl = document.getElementById(id + '-success');
 
-  const required = formEl.querySelectorAll('input[id], textarea[id], select[id]');
+  const required = formEl.querySelectorAll('input[id]:not(.consent-checkbox), textarea[id], select[id]');
   let valid = true;
 
   required.forEach(el => {
@@ -41,6 +41,16 @@ function submitPopup(id) {
     }
   });
 
+  const consentBox = formEl.querySelector('.consent-checkbox');
+  if (consentBox) {
+    if (!consentBox.checked) {
+      consentBox.classList.add('error');
+      valid = false;
+    } else {
+      consentBox.classList.remove('error');
+    }
+  }
+
   if (!valid) return;
 
   formEl.style.display = 'none';
@@ -51,7 +61,8 @@ function submitPopup(id) {
     setTimeout(() => {
       formEl.style.display = '';
       successEl.style.display = 'none';
-      formEl.querySelectorAll('input, textarea, select').forEach(el => el.value = '');
+      formEl.querySelectorAll('input:not([type=checkbox]), textarea, select').forEach(el => el.value = '');
+      formEl.querySelectorAll('input[type=checkbox]').forEach(el => { el.checked = false; el.classList.remove('error'); });
     }, 300);
   }, 2800);
 }

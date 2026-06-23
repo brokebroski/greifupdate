@@ -7,17 +7,21 @@ const CITY_CONTACTS = {
     city: 'Москва',
     phone: '+7 (495) 933-59-47',
     address: 'ул. Ленинская слобода, 19, ком. 2061',
-    contacts: []
+    contacts: [
+      { role: 'Офис-менеджер',                                    name: '',               phone: '8-916-130-17-51', email: '' },
+      { role: 'Зам. генерального директора по закупкам и снабжению', name: '',            phone: '8-916-502-08-42', email: '' },
+      { role: 'HR-менеджер',                                      name: 'Ильина Вероника', phone: '8-982-230-05-83', email: '' },
+    ]
   },
   'vologda': {
     city: 'Вологда',
     phone: '+7 (8172) 26-40-13',
     address: 'ул. Маяковского, 38',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Имя Фамилия',          phone: '+7 (8172) 26-40-13', email: 'Vologda.Office@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',          phone: '',                    email: 'Vologda.Office@greif.com' },
-      { role: 'HR-специалист',         name: 'Александра Караваева', phone: '',                    email: 'Vologda.Office@greif.com' },
-      { role: 'Бухгалтер',             name: 'Барышева Елена',        phone: '8-981-420-16-93',    email: '' },
+      { role: 'Офис-менеджер',         name: '', phone: '+7 (8172) 26-40-13', email: 'Vologda.Office@greif.com' },
+      { role: 'Менеджер по логистике', name: '', phone: '',                    email: 'Vologda.Office@greif.com' },
+      { role: 'HR-специалист',         name: 'Александра Караваева', phone: '', email: 'Vologda.Office@greif.com' },
+      { role: 'Бухгалтер',             name: '', phone: '8-981-420-16-93',    email: '' },
     ]
   },
   'volgograd': {
@@ -25,9 +29,9 @@ const CITY_CONTACTS = {
     phone: '+7 (8442) 78-02-80',
     address: 'ул. Промысловая, 15',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (8442) 78-02-80', email: 'Aleksandr.Sedov@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
-      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'Офис-менеджер',         name: '', phone: '+7 (8442) 78-02-80', email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'Менеджер по логистике', name: '', phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'HR-специалист',         name: '', phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
     ]
   },
   'perm': {
@@ -35,19 +39,14 @@ const CITY_CONTACTS = {
     phone: '+7 (342) 211-07-00',
     address: 'ул. Героев Хасана, 74',
     contacts: [
-      { role: 'Офис-менеджер',                                   name: 'Анна Егорова',          phone: '+7 (342) 211-07-00', email: 'Anna.Egorova@greif.com' },
-      { role: 'Главный бухгалтер по налогам',                    name: 'Тимохова Елена',        phone: '8-982-459-97-29',    email: '' },
-      { role: 'Зам. гл. бухгалтера по расчетам',                 name: 'Смолякова Ирина',       phone: '8-919-712-67-53',    email: '' },
-      { role: 'Ведущий бухгалтер расч. центра по производству',  name: 'Янкина Александра',     phone: '8-919-470-57-69',    email: '' },
-      { role: 'Зам. главного бухгалтера',                        name: 'Балуева Анастасия',     phone: '8-912-880-42-54',    email: '' },
-      { role: 'Бухгалтер',                                       name: 'Иванова Мария',         phone: '8-919-712-12-85',    email: '' },
-      { role: 'Руководитель расчетного центра',                  name: 'Соколова Людмила',      phone: '8-921-823-40-40',    email: '' },
-      { role: 'Бухгалтер расчетного центра',                     name: 'Шилова Татьяна',        phone: '8-985-858-01-10',    email: '' },
-      { role: 'Бухгалтер расчетного центра',                     name: 'Ахметзянова Ризида',    phone: '8-915-210-17-38',    email: '' },
-      { role: 'Бухгалтер расчетного центра',                     name: 'Махова Елена',          phone: '8-912-487-29-39',    email: '' },
-      { role: 'Бухгалтер расчетного центра',                     name: 'Можарцева Наталья',     phone: '8-912-881-11-40',    email: '' },
-      { role: 'Рук. отдела по взаиморасчетам с контрагентами',   name: 'Черных Екатерина',      phone: '8-916-650-84-41',    email: '' },
-      { role: 'Бухгалтер расчетного центра',                     name: 'Ярышкина Ирина',        phone: '8-908-279-4540',     email: '' },
+      { role: 'Исполнительный директор',                        name: '', phone: '8-913-671-09-94', email: '' },
+      { role: 'Офис-менеджер',                                  name: '', phone: '8-912-788-04-73', email: 'Anna.Egorova@greif.com' },
+      { role: 'Менеджер по сопровождению продаж',               name: '', phone: '8-912-881-04-21', email: '' },
+      { role: 'Менеджер по сопровождению продаж',               name: '', phone: '8-912-582-93-51', email: '' },
+      { role: 'Старший менеджер по продажам',                   name: '', phone: '8-917-253-42-36', email: '' },
+      { role: 'Региональный менеджер по закупкам',              name: '', phone: '8-912-069-17-21', email: '' },
+      { role: 'Менеджер по персоналу',                          name: 'Петренко Ника Николаевна', phone: '8-906-644-82-97', email: '' },
+      { role: 'Менеджер по охране труда, качеству и экологии',  name: '', phone: '8-985-750-15-69', email: '' },
     ]
   },
   'ekaterinburg': {
@@ -55,9 +54,9 @@ const CITY_CONTACTS = {
     phone: '+7 (34377) 21955',
     address: 'п. Белоярский, ул. Мира, 20',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (34377) 21955', email: 'Sergei.Dronov@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                  email: 'Sergei.Dronov@greif.com' },
-      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                  email: 'Sergei.Dronov@greif.com' },
+      { role: 'Главный инженер',          name: '', phone: '8-982-640-03-40', email: '' },
+      { role: 'Зам. главного бухгалтера', name: '', phone: '8-953-009-61-05', email: '' },
+      { role: 'Менеджер по продажам',     name: '', phone: '8-982-640-04-25', email: 'Sergei.Dronov@greif.com' },
     ]
   },
   'kazan': {
@@ -65,9 +64,14 @@ const CITY_CONTACTS = {
     phone: '+7 (843) 202-05-45',
     address: 'ул. М.Миля, 49А',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Марина Леонова', phone: '+7 (843) 202-05-45', email: 'Marina.Leonova@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',    phone: '',                    email: 'Marina.Leonova@greif.com' },
-      { role: 'HR-специалист',         name: 'Имя Фамилия',    phone: '',                    email: 'Marina.Leonova@greif.com' },
+      { role: 'Руководитель филиала',                name: '', phone: '8-987-290-89-81', email: '' },
+      { role: 'Директор инженерного центра',          name: '', phone: '8-987-295-69-54', email: '' },
+      { role: 'Менеджер по логистике',                name: '', phone: '8-987-400-62-51', email: '' },
+      { role: 'Старший менеджер по продажам (Пермь)', name: '', phone: '8-917-253-42-36', email: '' },
+      { role: 'Менеджер по продажам',                 name: '', phone: '8-987-292-27-27', email: '' },
+      { role: 'Менеджер по сопровождению продаж',     name: '', phone: '8-987-000-67-13', email: '' },
+      { role: 'Менеджер по сопровождению продаж',     name: '', phone: '8-987-270-04-00', email: '' },
+      { role: 'Менеджер по маркетингу',               name: '', phone: '8-987-230-99-71', email: 'Marina.Leonova@greif.com' },
     ]
   },
   'omsk': {
@@ -75,16 +79,10 @@ const CITY_CONTACTS = {
     phone: '+7 (381) 221-41-12',
     address: 'ул. И.Н. Багнюка, 10',
     contacts: [
-      { role: 'Исполнительный директор',               name: 'Половинский Алексей', phone: '8-913-963-45-27', email: '' },
-      { role: 'Кладовщик',                             name: 'Коновалова Елена',     phone: '8-913-970-02-85', email: '' },
-      { role: 'Бухгалтер',                             name: 'Шмурыгина Ирина',      phone: '8-913-630-74-94', email: '' },
-      { role: 'Бухгалтер',                             name: 'Гурова Татьяна',        phone: '8-913-973-83-35', email: '' },
-      { role: 'Главный инженер',                       name: 'Солтан Игорь',          phone: '8-913-965-00-10', email: '' },
-      { role: 'Инженер КИПиА',                         name: 'Мунарев Дмитрий',       phone: '8-913-671-14-31', email: '' },
-      { role: 'Начальник производства',                name: 'Кудряшов Евгений',      phone: '7-913-627-35-48', email: '' },
-      { role: 'Кладовщик',                             name: 'Кауц Елена',             phone: '7-913-630-75-12', email: '' },
-      { role: 'Мастер (бочка)',                        name: 'Дозоров Виталий',        phone: '7-913-604-26-51', email: '' },
-      { role: 'Менеджер по снабжению',                 name: 'Кузьмин Алексей',       phone: '7-913-988-06-48', email: '' },
+      { role: 'Исполнительный директор', name: '', phone: '8-913-963-45-27', email: '' },
+      { role: 'Бухгалтер',              name: '', phone: '8-913-630-74-94', email: '' },
+      { role: 'Бухгалтер',              name: '', phone: '8-913-973-83-35', email: '' },
+      { role: 'Менеджер по снабжению',  name: '', phone: '7-913-988-06-48', email: '' },
     ]
   },
   'ryazan': {
@@ -92,9 +90,8 @@ const CITY_CONTACTS = {
     phone: '+7 (491) 270-14-17',
     address: 'ш. Ряжское, 20',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Имя Фамилия',  phone: '+7 (491) 270-14-17', email: 'Moscow.Office@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',  phone: '',                    email: 'Moscow.Office@greif.com' },
-      { role: 'HR-специалист',         name: 'Имя Фамилия',  phone: '',                    email: 'Moscow.Office@greif.com' },
+      { role: 'Начальник производства', name: '', phone: '8-915-601-45-17', email: '' },
+      { role: 'Бухгалтер-кладовщик',    name: '', phone: '8-915-590-96-51', email: '' },
     ]
   },
   'kaluga': {
@@ -102,9 +99,17 @@ const CITY_CONTACTS = {
     phone: '+7 (4842) 92-21-01',
     address: 'Индустриальный парк Ворсино',
     contacts: [
-      { role: 'Офис-менеджер',         name: 'Ильина Вероника', phone: '+7 (4842) 92-21-01', email: 'Kaluga.Office@greif.com' },
-      { role: 'Менеджер по логистике', name: 'Имя Фамилия',     phone: '',                    email: 'Kaluga.Office@greif.com' },
-      { role: 'HR-специалист',         name: 'Имя Фамилия',     phone: '',                    email: 'Kaluga.Office@greif.com' },
+      { role: 'Офис-менеджер',                           name: '', phone: '8-911-045-04-63', email: 'Kaluga.Office@greif.com' },
+      { role: 'Руководитель филиала',                     name: '', phone: '8-985-817-16-29', email: '' },
+      { role: 'Менеджер по сопровождению продаж (бочка)', name: '', phone: '8-981-448-93-00', email: '' },
+      { role: 'Сопровождение продаж',                     name: '', phone: '8-981-440-61-50', email: '' },
+      { role: 'Менеджер по продажам КУБЫ',                name: '', phone: '8-911-502-36-63', email: '' },
+      { role: 'Менеджер по продажам КУБЫ',                name: '', phone: '8-910-517-92-24', email: '' },
+      { role: 'Менеджер по продажам БОЧКИ',               name: '', phone: '8-921-143-43-68', email: '' },
+      { role: 'Менеджер по продажам БОЧКИ',               name: '', phone: '8-981-432-19-14', email: '' },
+      { role: 'Главный инженер производства еврокубов',   name: '', phone: '8-981-440-61-36', email: '' },
+      { role: 'Менеджер по сопровождению продаж КУБЫ',    name: '', phone: '8-981-427-35-17', email: '' },
+      { role: 'Менеджер по закупкам КУБЫ',                name: '', phone: '8-961-005-26-58', email: '' },
     ]
   },
 };
@@ -273,7 +278,7 @@ function _ibcDeliveryTab() {
     <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:14px">Вместимость транспортных средств (пустые контейнеры)</div>
     <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px">
       ${transport.map(t => `
-      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(70,155,128,0.13)'" onmouseout="this.style.boxShadow='none'">
+      <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(51,119,97,0.13)'" onmouseout="this.style.boxShadow='none'">
         <div style="width:42px;height:42px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${t.icon}</div>
         <div style="flex:1;min-width:0">
           <div style="font-size:13px;font-weight:700;color:var(--text-dark);margin-bottom:4px">${t.title}</div>
@@ -351,7 +356,7 @@ function _ibcLogisticsTab() {
 
   return `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:8px">
     ${services.map(s => `
-    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(70,155,128,0.13)'" onmouseout="this.style.boxShadow='none'">
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(51,119,97,0.13)'" onmouseout="this.style.boxShadow='none'">
       <div style="display:flex;align-items:flex-start;gap:14px">
         <div style="width:44px;height:44px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${s.icon}</div>
         <div style="flex:1;min-width:0">
@@ -373,7 +378,7 @@ function _ibcInstructionTab() {
     <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 28px">
       Здесь Вы можете ознакомиться с инструкцией по эксплуатации еврокубов, разработанной техническими специалистами Greif. Мы обладаем многолетней экспертизой в работе с IBC и будем рады оказать содействие совершенствованию производственных операций Вашей компании.
     </p>
-    <a href="https://www.greif.ru/wp-content/uploads/Instruktsiya-po-ekspluatatsii-2023-kuby.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--green-primary);color:#fff;border-radius:8px;text-decoration:none;font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s" onmouseover="this.style.background='#357a62'" onmouseout="this.style.background='var(--green-primary)'">
+    <a href="https://www.greif.ru/wp-content/uploads/Instruktsiya-po-ekspluatatsii-2023-kuby.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--green-primary);color:#fff;border-radius:8px;text-decoration:none;font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s" onmouseover="this.style.background='#317965'" onmouseout="this.style.background='var(--green-primary)'">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       Открыть инструкцию по эксплуатации (PDF)
     </a>
@@ -532,7 +537,7 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
+      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">${title}</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">${subtitle}</p>
     </div>
@@ -626,7 +631,7 @@ const PAGES = {
           <p class="hero-sub">Стальные бочки, еврокубы, канистры, конические бочки и кловертейнеры.</p>
           <div class="hero-actions">
             <button class="btn-hero-primary" onclick="navigate('products')">Смотреть продукцию</button>
-            <button class="btn-hero-secondary" onclick="navigate('contact')">Запросить цену</button>
+            <button class="btn-hero-secondary" onclick="openPopup('popup-request')">Сделать запрос</button>
           </div>
           <div class="hero-stats">
             ${[['32 года','в России'],['9','городов'],['8','заводов'],['1000+','клиентов']].map(([n,l]) => `
@@ -687,7 +692,7 @@ const PAGES = {
               <div class="feature-desc">9 представительств по всей России обеспечивают доставку точно в срок и оперативную поддержку клиентов.</div>
               <div style="display:flex;flex-wrap:wrap;gap:5px;margin-top:14px">
                 ${['Москва','Калуга','Вологда','Волгоград','Екатеринбург','Казань','Омск','Пермь','Рязань'].map(c =>
-                  `<span style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;padding:3px 8px;background:#f0f8f5;color:#469B80;border:1px solid #c8e6dc">${c}</span>`
+                  `<span style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.05em;padding:3px 8px;background:#f0f8f5;color:#317965;border:1px solid #c8e6dc">${c}</span>`
                 ).join('')}
               </div>
               <div class="feature-list" style="margin-top:12px">
@@ -705,7 +710,7 @@ const PAGES = {
     <div class="page">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Продукция</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Продукция</div>
           <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Промышленная упаковка Greif</h1>
         </div>
       </div>
@@ -734,7 +739,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">О компании</div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">О компании</div>
       <h1 id="about-page-title" style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Грайф в России</h1>
     </div>
   </div>
@@ -760,7 +765,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
+      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Стальные бочки</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Надёжная промышленная упаковка для любых задач</p>
     </div>
@@ -973,7 +978,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
+      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Еврокубы IBC</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Выберите тип контейнера GCube® под ваши задачи</p>
     </div>
@@ -1031,7 +1036,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
+      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Антистатический «Электрон»</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Еврокуб с антистатическим покрытием для перевозки ЛВЖ — 1000 л</p>
     </div>
@@ -1104,7 +1109,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
+      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Восстановленные REBO</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Новая ПЭНД-бутыль на б/у металлической обрешётке — 1000 л</p>
     </div>
@@ -1266,7 +1271,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Сервисы</div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сервисы</div>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Покупаем б/у еврокубы</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Профессиональный сервис по восстановлению бывших в употреблении еврокубов</p>
     </div>
@@ -1346,7 +1351,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
+      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Конические бочки</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Стальная тара для пищевых концентратов и непищевых продуктов</p>
     </div>
@@ -1557,7 +1562,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
+      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Канистры</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Многослойные пластиковые канистры для агрохимии</p>
     </div>
@@ -1598,7 +1603,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
+      <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Кловертейнеры</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Clovertainer® — картонный IBC объёмом 1000 л для битума</p>
     </div>
@@ -1679,7 +1684,7 @@ const PAGES = {
     <div class="page">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Услуги</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Услуги</div>
           <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Сервисы Greif</h1>
         </div>
       </div>
@@ -1695,7 +1700,7 @@ const PAGES = {
     <div class="page">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Сервисы</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сервисы</div>
           <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Брендирование упаковки</h1>
           <p style="font-size:14px;color:rgba(255,255,255,0.55)">Нанесение фирменного стиля и корпоративной символики на промышленную тару</p>
         </div>
@@ -1718,7 +1723,7 @@ const PAGES = {
     <div class="page">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Сервисы</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сервисы</div>
           <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Подбор спецификации</h1>
         </div>
       </div>
@@ -1739,7 +1744,7 @@ const PAGES = {
     <div class="page">
       <div class="page-hero">
         <div class="page-hero-inner">
-          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Сервисы</div>
+          <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Сервисы</div>
           <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Оптимизация логистики</h1>
         </div>
       </div>
@@ -1766,7 +1771,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Контакты</div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Контакты</div>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Наши производства</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">8 заводов в крупнейших промышленных узлах России</p>
     </div>
@@ -1790,8 +1795,11 @@ const PAGES = {
             ['Рязань','ш. Ряжское, 20','ryazan'],
             ['Калуга (Ворсино)','Индустриальный парк Ворсино','kaluga'],
           ].map(([city, addr, key]) => {
-            const ph = (CITY_CONTACTS[key] || {}).phone || '';
-            return `
+            const cityData = CITY_CONTACTS[key] || {};
+            const ph = cityData.phone || '';
+            const hasContacts = (cityData.contacts || []).length > 0;
+            if (hasContacts) {
+              return `
             <div onclick="openCityModal('${key}')" style="background:#fff;border:1px solid var(--border);padding:14px 16px;border-left:3px solid var(--green-primary);border-radius:8px;cursor:pointer;transition:box-shadow 0.18s,transform 0.18s" onmouseenter="this.style.boxShadow='0 6px 20px rgba(0,0,0,0.10)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.boxShadow='';this.style.transform=''">
               <div style="font-weight:700;font-size:13px;color:var(--green-primary);margin-bottom:3px">${city}</div>
               <div style="font-size:11px;color:#777;margin-bottom:6px;line-height:1.4">${addr}</div>
@@ -1801,6 +1809,15 @@ const PAGES = {
                 <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
               </div>
             </div>`;
+            } else {
+              const telHref = ph ? _toTel(ph) : '';
+              return `
+            <div style="background:#fff;border:1px solid var(--border);padding:14px 16px;border-left:3px solid var(--green-primary);border-radius:8px;">
+              <div style="font-weight:700;font-size:13px;color:var(--green-primary);margin-bottom:3px">${city}</div>
+              <div style="font-size:11px;color:#777;margin-bottom:8px;line-height:1.4">${addr}</div>
+              ${ph ? `<a href="${telHref}" style="display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;color:var(--text-dark);text-decoration:none;background:var(--green-light-bg);border:1px solid var(--border);border-radius:5px;padding:4px 9px;transition:color 0.15s" onmouseenter="this.style.color='var(--green-primary)'" onmouseleave="this.style.color='var(--text-dark)'"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.58 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.5a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>${ph}</a>` : ''}
+            </div>`;
+            }
           }).join('')}
         </div>
       </div>
@@ -1823,7 +1840,7 @@ const PAGES = {
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#469B80;margin-bottom:10px">Карьера</div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Карьера</div>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Вакансии в Greif</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Присоединяйтесь к команде мирового лидера промышленной упаковки</p>
     </div>
