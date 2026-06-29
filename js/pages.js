@@ -29,9 +29,11 @@ const CITY_CONTACTS = {
     phone: '+7 (8442) 78-02-80',
     address: 'ул. Промысловая, 15',
     contacts: [
-      { role: 'Офис-менеджер',         name: '', phone: '+7 (8442) 78-02-80', email: 'Aleksandr.Sedov@greif.com' },
-      { role: 'Менеджер по логистике', name: '', phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
-      { role: 'HR-специалист',         name: '', phone: '',                    email: 'Aleksandr.Sedov@greif.com' },
+      { role: 'Исполнительный директор',          name: '', phone: '8-988-959-03-91', phone2: '8-927-515-13-35', email: '' },
+      { role: 'Офис-менеджер',                    name: '', phone: '8 (844) 278-02-80',                          email: '' },
+      { role: 'Менеджер по логистике',             name: '', phone: '8-937-707-84-34',                           email: '' },
+      { role: 'Менеджер по сопровождению продаж', name: '', phone: '8-988-964-25-08',                           email: '' },
+      { role: 'Менеджер по закупкам',             name: '', phone: '8-961-686-96-88',                           email: '' },
     ]
   },
   'perm': {
@@ -41,8 +43,7 @@ const CITY_CONTACTS = {
     contacts: [
       { role: 'Исполнительный директор',                        name: '', phone: '8-913-671-09-94', email: '' },
       { role: 'Офис-менеджер',                                  name: '', phone: '8-912-788-04-73', email: 'Anna.Egorova@greif.com' },
-      { role: 'Менеджер по сопровождению продаж',               name: '', phone: '8-912-881-04-21', email: '' },
-      { role: 'Менеджер по сопровождению продаж',               name: '', phone: '8-912-582-93-51', email: '' },
+      { role: 'Менеджер по сопровождению продаж',               name: '', phone: '8-912-881-04-21', phone2: '8-912-582-93-51', email: '' },
       { role: 'Старший менеджер по продажам',                   name: '', phone: '8-917-253-42-36', email: '' },
       { role: 'Региональный менеджер по закупкам',              name: '', phone: '8-912-069-17-21', email: '' },
       { role: 'Менеджер по персоналу',                          name: 'Петренко Ника Николаевна', phone: '8-906-644-82-97', email: '' },
@@ -69,8 +70,7 @@ const CITY_CONTACTS = {
       { role: 'Менеджер по логистике',                name: '', phone: '8-987-400-62-51', email: '' },
       { role: 'Старший менеджер по продажам (Пермь)', name: '', phone: '8-917-253-42-36', email: '' },
       { role: 'Менеджер по продажам',                 name: '', phone: '8-987-292-27-27', email: '' },
-      { role: 'Менеджер по сопровождению продаж',     name: '', phone: '8-987-000-67-13', email: '' },
-      { role: 'Менеджер по сопровождению продаж',     name: '', phone: '8-987-270-04-00', email: '' },
+      { role: 'Менеджер по сопровождению продаж',     name: '', phone: '8-987-000-67-13', phone2: '8-987-270-04-00', email: '' },
       { role: 'Менеджер по маркетингу',               name: '', phone: '8-987-230-99-71', email: 'Marina.Leonova@greif.com' },
     ]
   },
@@ -80,8 +80,7 @@ const CITY_CONTACTS = {
     address: 'ул. И.Н. Багнюка, 10',
     contacts: [
       { role: 'Исполнительный директор', name: '', phone: '8-913-963-45-27', email: '' },
-      { role: 'Бухгалтер',              name: '', phone: '8-913-630-74-94', email: '' },
-      { role: 'Бухгалтер',              name: '', phone: '8-913-973-83-35', email: '' },
+      { role: 'Бухгалтер',              name: '', phone: '8-913-630-74-94', phone2: '8-913-973-83-35', email: '' },
       { role: 'Менеджер по снабжению',  name: '', phone: '7-913-988-06-48', email: '' },
     ]
   },
@@ -103,10 +102,8 @@ const CITY_CONTACTS = {
       { role: 'Руководитель филиала',                     name: '', phone: '8-985-817-16-29', email: '' },
       { role: 'Менеджер по сопровождению продаж (бочка)', name: '', phone: '8-981-448-93-00', email: '' },
       { role: 'Сопровождение продаж',                     name: '', phone: '8-981-440-61-50', email: '' },
-      { role: 'Менеджер по продажам КУБЫ',                name: '', phone: '8-911-502-36-63', email: '' },
-      { role: 'Менеджер по продажам КУБЫ',                name: '', phone: '8-910-517-92-24', email: '' },
-      { role: 'Менеджер по продажам БОЧКИ',               name: '', phone: '8-921-143-43-68', email: '' },
-      { role: 'Менеджер по продажам БОЧКИ',               name: '', phone: '8-981-432-19-14', email: '' },
+      { role: 'Менеджер по продажам КУБЫ',                name: '', phone: '8-911-502-36-63', phone2: '8-910-517-92-24', email: '' },
+      { role: 'Менеджер по продажам БОЧКИ',               name: '', phone: '8-921-143-43-68', phone2: '8-981-432-19-14', email: '' },
       { role: 'Главный инженер производства еврокубов',   name: '', phone: '8-981-440-61-36', email: '' },
       { role: 'Менеджер по сопровождению продаж КУБЫ',    name: '', phone: '8-981-427-35-17', email: '' },
       { role: 'Менеджер по закупкам КУБЫ',                name: '', phone: '8-961-005-26-58', email: '' },
@@ -153,7 +150,9 @@ function openCityModal(key) {
 
   const contactsHtml = data.contacts.map(c => {
     const telHref = _toTel(c.phone);
-    const phoneRow = telHref ? `<a href="${telHref}" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;font-size:14px;font-weight:600">${SVG_PHONE}${c.phone}</a>` : '';
+    const tel2Href = c.phone2 ? _toTel(c.phone2) : '';
+    const phoneRow  = telHref  ? `<a href="${telHref}"  style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;font-size:14px;font-weight:600">${SVG_PHONE}${c.phone}</a>`   : '';
+    const phone2Row = tel2Href ? `<a href="${tel2Href}" style="display:inline-flex;align-items:center;gap:6px;color:var(--text-dark);text-decoration:none;font-size:14px;font-weight:600">${SVG_PHONE}${c.phone2}</a>` : '';
     const emailRow = c.email ? `<a href="mailto:${c.email}" style="display:inline-flex;align-items:center;gap:5px;color:var(--green-primary);text-decoration:none;font-size:12px;margin-top:4px">${SVG_MAIL}${c.email}</a>` : '';
     return `
     <div style="border-bottom:1px solid var(--border)">
@@ -166,7 +165,7 @@ function openCityModal(key) {
       </div>
       <div class="cc-details" style="max-height:0;opacity:0;overflow:hidden;transition:max-height 0.22s ease,opacity 0.18s;padding:0 0 0 0">
         <div style="padding-bottom:14px;display:flex;flex-direction:column;gap:4px">
-          ${phoneRow}${emailRow}
+          ${phoneRow}${phone2Row}${emailRow}
         </div>
       </div>
     </div>`;
@@ -517,6 +516,7 @@ function _ibcSideNav(activeId) {
     { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'http://www.greif.ru/wp-content/uploads/gibrid.png' },
     { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png' },
     { id:'ibcElectron', label:'Антистатический «Электрон»', img:'http://www.greif.ru/wp-content/uploads/electron.png' },
+    { id:'ibcBlack',    label:'GCube «Чёрный»',             img:'http://www.greif.ru/wp-content/uploads/blackqube.png' },
     { id:'ibcRebo',     label:'Восстановленные REBO',       img:'http://www.greif.ru/wp-content/uploads/rebo.png' },
   ];
   return `<div style="background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
@@ -711,7 +711,7 @@ const PAGES = {
       <div class="page-hero">
         <div class="page-hero-inner">
           <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Продукция</div>
-          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Промышленная упаковка Greif</h1>
+          <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Промышленная упаковка Грайф</h1>
         </div>
       </div>
       <div class="prod-cat-strip">
@@ -767,42 +767,53 @@ const PAGES = {
     <div class="page-hero-inner">
       <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Стальные бочки</h1>
-      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Надёжная промышленная упаковка для любых задач</p>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Выберите тип бочки под ваши задачи</p>
+    </div>
+  </div>
+  <div class="ibc-types-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px">
+    ${[
+      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/bochkabezfona.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
+      { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'http://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
+    ].map(c => `
+      <div class="ibc-type-card" onclick="navigate('${c.id}')">
+        <div class="ibc-type-card-img">
+          <img src="${c.img}" alt="${c.title}">
+        </div>
+        <div class="ibc-type-card-body">
+          <div class="ibc-type-card-title">${c.title}</div>
+          <div class="ibc-type-card-spec">Объём: ${c.vol} л · Тип ${c.type}</div>
+          <div class="ibc-type-card-spec">${c.desc}</div>
+          <div class="ibc-type-card-badges"><span class="ibc-badge ibc-badge-un">ООН</span><span class="ibc-badge ibc-badge-std">ГОСТ 13950</span></div>
+        </div>
+        <div class="ibc-type-card-footer">
+          <button class="product-link" onclick="event.stopPropagation();navigate('${c.id}')">ПОДРОБНЕЕ →</button>
+        </div>
+      </div>`).join('')}
+  </div>
+</div>`,
+
+  steelDrum1a1: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <a href="#" onclick="navigate('steelDrums');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Стальные бочки</a>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Бочка с несъёмным верхом</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Тип 1А1 · 216 л · Закатная конструкция Spiralon®</p>
     </div>
   </div>
   <div class="product-detail-page">
     <div class="product-detail-grid">
-      <div class="product-image-col" style="padding:20px;flex-direction:column;align-items:stretch;justify-content:center;">
-        <div class="product-carousel" id="steelCarousel">
-          <div class="carousel-track-wrap">
-            <div class="carousel-track" id="steelCarouselTrack">
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/bochka-na-sajt.jpg" alt="Стальная бочка Greif — вид"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/1924756_467075676754287_987316300_n.png" alt="Стальная бочка Greif"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/Скриншот-2015-02-09-07.00.40.png" alt="Стальная бочка Greif — производство"></div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" onclick="steelCarouselMove(-1)" aria-label="Назад">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="carousel-btn carousel-btn-next" onclick="steelCarouselMove(1)" aria-label="Вперёд">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-            </button>
-            <div class="carousel-counter" id="steelCarouselCounter">1 / 3</div>
-          </div>
-          <div class="carousel-dots" id="steelCarouselDots">
-            <button class="carousel-dot active" onclick="steelCarouselGoTo(0)"></button>
-            <button class="carousel-dot" onclick="steelCarouselGoTo(1)"></button>
-            <button class="carousel-dot" onclick="steelCarouselGoTo(2)"></button>
-          </div>
-        </div>
+      <div class="product-image-col">
+        <img src="http://www.greif.ru/wp-content/uploads/bochkabezfona.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
       </div>
       <div class="product-info-col">
-        <p class="product-description">Большие металлические бочки являются нашим ключевым продуктом. Они соответствуют требованиям международных и национальных стандартов, предъявляемым к стальным бочкам.</p>
+        <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международных стандартов ISO 3574 и EN10130.</p>
         <div class="spec-cards">
-          <div class="spec-card"><div class="spec-card-value">216,5<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Закрытый верх · Tab-Seal® 2" и ¾" Tri-Sure®</div></div>
-          <div class="spec-card"><div class="spec-card-value">210<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А2</div><div class="spec-card-desc">Открытый верх · обжимное кольцо с рычажным замком</div></div>
+          <div class="spec-card"><div class="spec-card-value">216<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Несъёмный верх · Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">08ПС</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Холоднокатаная сталь · ISO 3574 / EN10130</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">7×</div><div class="spec-card-label">Spiralon®</div><div class="spec-card-desc">Семислойный закатной шов · с герметиком</div></div>
         </div>
-        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
     <div class="product-tabs">
@@ -813,16 +824,17 @@ const PAGES = {
         <button class="tab-btn" data-tab="closure">УКУПОРКА</button>
       </div>
       <div class="tab-content active" id="tab-desc">
-        <p>Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения металлических бочек — химическая, нефтехимическая, металлургическая, лакокрасочная и пищевая отрасли. Все производимые бочки проходят многочисленные испытания, в том числе и уникальную проверку на герметичность на гелиевом тестере. Производства бочек расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Ангарске. В 2018 году запущена новая высокопроизводительная линия мощностью 2 миллиона бочек в год в Индустриальном парке Ворсино (Калужская область).</p>
-        <p>Мы выпускаем бочки двух типов — закатная стальная бочка и бочка с открывающимся верхом. Стандартная стальная бочка имеет объем от 210 до 230 л. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком.</p>
+        <p>Стальная бочка с несъёмным верхом типа 1А1 — наш ключевой продукт. Используется для транспортировки жидких и вязких продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения — химическая, нефтехимическая, металлургическая и лакокрасочная отрасли. Все бочки проходят многочисленные испытания, в том числе уникальную проверку на герметичность на гелиевом тестере.</p>
+        <p>Производства расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Калуге. В 2018 году запущена новая высокопроизводительная линия мощностью 2 миллиона бочек в год в Индустриальном парке Ворсино (Калужская область).</p>
+        <p>Стандартный объём бочки — 216 л. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Укупорка осуществляется горловинами и крышками-пломбами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®.</p>
       </div>
       <div class="tab-content" id="tab-specs">
         <h4>Цилиндрические стальные бочки</h4>
-        <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС производства ОАО «Северсталь», которая соответствует международным стандартам ISO 3574:2012 или EN10130/EN10131.</p>
+        <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС, соответствующая ГОСТ 13950-91, международным стандартам ISO 3574:2012 или EN10130/EN10131.</p>
         <h4>Бочка с закрытым верхом, тип 1А1</h4>
         <ul>
-          <li><strong>Стандартный объем:</strong> 216,5 л (до 230 л)</li>
-          <li><strong>Укупорка:</strong> горловины и крышки-пломбы Tab-Seal® 2" и ¾" Tri-Sure® с прокладками 4S®</li>
+          <li><strong>Стандартный объем:</strong> 216 л</li>
+          <li><strong>Укупорка:</strong> горловины и крышки-пломбы Tab-Seal® 2" и ¾" Tri-Sure®</li>
         </ul>
         <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Стандартные спецификации (бочки типа 1А1)</h5>
         <div class="ral-table-wrap" style="overflow-x:auto">
@@ -831,25 +843,23 @@ const PAGES = {
               <tr>
                 <th colspan="3" style="text-align:center;border-right:1px solid var(--border)">Толщина стали, мм</th>
                 <th>Стандартная маркировка ООН</th>
-                <th>Средний вес бочек, кг</th>
               </tr>
               <tr>
                 <th>Крышка</th>
                 <th>Корпус</th>
                 <th style="border-right:1px solid var(--border)">Днище</th>
                 <th></th>
-                <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1,2</td><td>1,2</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.4/350</td><td>20,5</td></tr>
-              <tr><td>1,2</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.2/250</td><td>18,4</td></tr>
-              <tr><td>1,0</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td><td>17,4</td></tr>
-              <tr><td>1,0</td><td>0,9</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td><td>16,2</td></tr>
-              <tr><td>1,0</td><td>0,8</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td><td>15,2</td></tr>
-              <tr><td>0,9</td><td>0,9</td><td style="border-right:1px solid var(--border)">0,9</td><td>1A1/X1.2/250</td><td>15,8</td></tr>
-              <tr><td>0,9</td><td>0,8</td><td style="border-right:1px solid var(--border)">0,9</td><td>1A1/X1.2/250</td><td>14,8</td></tr>
-              <tr><td>0,8</td><td>0,8</td><td style="border-right:1px solid var(--border)">0,8</td><td>1A1/Y1.4/150</td><td>14,4</td></tr>
+              <tr><td>1,2</td><td>1,2</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.4/350</td></tr>
+              <tr><td>1,2</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>1,0</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>1,0</td><td>0,9</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>1,0</td><td>0,8</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>0,9</td><td>0,9</td><td style="border-right:1px solid var(--border)">0,9</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>0,9</td><td>0,8</td><td style="border-right:1px solid var(--border)">0,9</td><td>1A1/X1.2/250</td></tr>
+              <tr><td>0,8</td><td>0,8</td><td style="border-right:1px solid var(--border)">0,8</td><td>1A1/Y1.4/150</td></tr>
             </tbody>
           </table>
         </div>
@@ -877,22 +887,23 @@ const PAGES = {
               </tr>
             </thead>
             <tbody>
-              <tr><td>216,5</td><td>571,5</td><td>585</td><td>585</td><td>878</td><td>4</td><td>280</td><td>444±6</td><td>72</td></tr>
+              <tr><td>216</td><td>571,5</td><td>585</td><td>585</td><td>878</td><td>4</td><td>280</td><td>444±6</td><td>72</td></tr>
             </tbody>
           </table>
         </div>
-        <h4 style="margin-top:32px">Бочка с открывающимся верхом, тип 1А2</h4>
-        <ul>
-          <li><strong>Стандартный объем:</strong> 210 л</li>
-          <li><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем</li>
-        </ul>
-        <p>Диаметр стандартной металлической бочки с открывающимся верхом по запорному кольцу составляет 610 мм. Также изготавливаются бочки с внешним диаметром 585 мм для оптимального использования пространства грузовых контейнеров.</p>
+        <div style="margin-top:32px;padding:20px 24px;background:var(--green-light-bg);border:1px solid var(--green-primary);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+          <div>
+            <div style="font-size:13px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-primary);margin-bottom:4px">Бочка со съёмным верхом · тип 1А2</div>
+            <div style="font-size:14px;color:var(--text-dark)">210 л · обжимное кольцо с рычажным замком · диаметр 610 или 585 мм</div>
+          </div>
+          <button class="product-link" onclick="navigate('steelDrum1a2')" style="white-space:nowrap;flex-shrink:0">ПОДРОБНЕЕ →</button>
+        </div>
       </div>
       <div class="tab-content" id="tab-closure">
         ${_barrelClosureTab()}
       </div>
       <div class="tab-content" id="tab-coatings">
-        <p>С ростом конкуренции на промышленных рынках упаковка приобрела дополнительную ценность, поскольку ее поверхность представляет собой отличный инструмент для маркетинговых коммуникаций с клиентами. В соответствии с пожеланиями заказчика стальная бочка может быть окрашена в стандартные цвета по системе RAL. Помимо окрашивания, на поверхность бочки возможно нанесение логотипа вашей компании.</p>
+        <p>Мы разрабатываем индивидуальный дизайн внешнего покрытия бочки: многозонные логотипы, брендинг под ваши задачи. Окраска выполняется в стандартные цвета по системе RAL.</p>
         <h4>Каталог цветов RAL</h4>
         <p class="coating-notice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> <span><strong>Внимание!</strong> Цвета на экране монитора отличаются от оригинала из-за особенностей цветопередачи.</span></p>
         <h5 style="margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Наиболее часто используемые цвета</h5>
@@ -974,6 +985,163 @@ const PAGES = {
   </div>
 </div>`,
 
+  steelDrum1a2: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <a href="#" onclick="navigate('steelDrums');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Стальные бочки</a>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Бочка со съёмным верхом</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Тип 1А2 · 210 л · Обжимное кольцо с рычажным замком</p>
+    </div>
+  </div>
+  <div class="product-detail-page">
+    <div class="product-detail-grid">
+      <div class="product-image-col" style="padding:20px;flex-direction:column;align-items:stretch;justify-content:center;">
+        <div style="text-align:center;padding:12px 0">
+          <img id="drum1a2Img" src="http://www.greif.ru/wp-content/uploads/1a2.png" alt="Бочка 1А2" style="max-width:100%;max-height:360px;object-fit:contain;">
+        </div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <button id="drum1a2BtnStd"
+            onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
+            style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s">
+            Стандартная · Д 610
+          </button>
+          <button id="drum1a2BtnSlim"
+            onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2-kremp-.png';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
+            style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s">
+            Кремпированная · Д 585
+          </button>
+        </div>
+      </div>
+      <div class="product-info-col">
+        <p class="product-description">Стальная бочка со съёмным верхом типа 1А2 для транспортировки и хранения сыпучих, твёрдых и вязких химических веществ. Крышка полностью снимается и надёжно фиксируется обжимным кольцом с рычажным замком.</p>
+        <div class="spec-cards">
+          <div class="spec-card"><div class="spec-card-value">210<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А2</div><div class="spec-card-desc">Съёмный верх · обжимное кольцо с рычажным замком</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 610</div><div class="spec-card-label">Стандартная</div><div class="spec-card-desc">Диаметр по запорному кольцу · стандартное исполнение</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 585</div><div class="spec-card-label">Кремпированная</div><div class="spec-card-desc">Наружный диаметр · оптимально для ISO-контейнеров</div></div>
+        </div>
+        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+      </div>
+    </div>
+    <div class="product-tabs">
+      <div class="tab-headers">
+        <button class="tab-btn active" data-tab="1a2-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="1a2-specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="1a2-coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+      </div>
+      <div class="tab-content active" id="tab-1a2-desc">
+        <p>Бочка стальная со съёмным верхом типа 1А2 вместимостью 210 л изготовлена в соответствии с требованиями ГОСТ 13950. Крышка полностью снимается, обеспечивая удобный доступ к содержимому, и надёжно фиксируется обжимным кольцом с рычажным замком и уплотнителем.</p>
+        <h4>Исполнения по диаметру</h4>
+        <p><strong>Стандартная</strong> (Д 610 мм) — стандартный диаметр по запорному кольцу. Выпускается с тремя вариантами рёбер жёсткости корпуса: «Спиралтейнер», «Спиралтейнер» с дополнительной корругацией, два ребра жёсткости.</p>
+        <p><strong>Кремпированная</strong> (Д ≤ 585 мм) — зауженная горловина обеспечивает максимальный наружный диаметр не более 585 мм. Конструкция оптимально подходит для перевозки в стандартных 20- и 40-футовых ISO-контейнерах: благодаря уменьшенному диаметру в ряду по ширине помещается четыре бочки вместо трёх, что обеспечивает максимальную эффективность использования грузового пространства. Выпускается с рёбрами жёсткости: «Спиралтейнер» или «Спиралтейнер» с дополнительной корругацией.</p>
+        <h4>Комплектации</h4>
+        <div class="ral-table-wrap" style="overflow-x:auto">
+          <table class="ral-table">
+            <thead>
+              <tr><th>Комплектация</th><th>Уплотнительная прокладка</th><th>Запорное кольцо</th><th>Назначение</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><strong>Усиленная</strong></td><td>Усиленная</td><td>Усиленное</td><td>Жидкие и вязкие опасные вещества · группы I, II, III (X, Y, Z)</td></tr>
+              <tr><td><strong>Стандартная</strong></td><td>Стандартная</td><td>Стандартное</td><td>Твёрдые и сыпучие вещества · группы I, II, III (X, Y, Z)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h4>Дополнительные опции</h4>
+        <ul>
+          <li>Внутреннее защитное покрытие (или без него)</li>
+          <li>Горловины 2&quot; и ¾&quot; (или без горловин)</li>
+        </ul>
+      </div>
+      <div class="tab-content" id="tab-1a2-specs">
+        <p><strong>Материал:</strong> холоднокатаная сталь марки 08ПС, ГОСТ 13950-91, ISO 3574:2012 / EN10130/EN10131.</p>
+        <p><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем.</p>
+        <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Основные параметры</h5>
+        <div class="ral-table-wrap" style="overflow-x:auto">
+          <table class="ral-table">
+            <thead>
+              <tr><th>Исполнение</th><th>Объём, л</th><th>Наружный диаметр, мм</th><th>Рёбра жёсткости корпуса</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Стандартная</td><td>210</td><td>610 (по запорному кольцу)</td><td>Спиралтейнер / Спиралтейнер + корругация / 2 ребра</td></tr>
+              <tr><td>Кремпированная</td><td>210</td><td>≤ 585</td><td>Спиралтейнер / Спиралтейнер + корругация</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:16px;font-size:13px;color:var(--text-muted)">По требованию потребителя бочка может поставляться с внутренним защитным покрытием или без него, с горловинами 2&quot; и ¾&quot; или без горловин.</p>
+      </div>
+      <div class="tab-content" id="tab-1a2-coatings">
+        <p>Мы разрабатываем индивидуальный дизайн внешнего покрытия бочки: многозонные логотипы, брендинг под ваши задачи. Окраска выполняется в стандартные цвета по системе RAL.</p>
+        <h4>Каталог цветов RAL</h4>
+        <p class="coating-notice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> <span><strong>Внимание!</strong> Цвета на экране монитора отличаются от оригинала из-за особенностей цветопередачи.</span></p>
+        <h5 style="margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Наиболее часто используемые цвета</h5>
+        <div class="ral-table-wrap">
+          <table class="ral-table">
+            <thead><tr><th>№</th><th>Наименование RAL</th><th>Код RAL</th><th>Цвет</th></tr></thead>
+            <tbody>
+              <tr><td>1</td><td>Желтый яркий</td><td>1021</td><td><span class="ral-swatch" style="background:#F6A500"></span></td></tr>
+              <tr><td>2</td><td>Чистый оранжевый</td><td>2004</td><td><span class="ral-swatch" style="background:#F44611"></span></td></tr>
+              <tr><td>3</td><td>Пунцовый красный</td><td>3002</td><td><span class="ral-swatch" style="background:#9B2423"></span></td></tr>
+              <tr><td>4</td><td>Красный насыщенный</td><td>3020</td><td><span class="ral-swatch" style="background:#CC0605"></span></td></tr>
+              <tr><td>5</td><td>Синий</td><td>5010</td><td><span class="ral-swatch" style="background:#0E294B"></span></td></tr>
+              <tr><td>6</td><td>Синий-бледный</td><td>5017</td><td><span class="ral-swatch" style="background:#0A5B93"></span></td></tr>
+              <tr><td>7</td><td>Зеленая мята</td><td>6029</td><td><span class="ral-swatch" style="background:#2B5F2B"></span></td></tr>
+              <tr><td>8</td><td>Зеленая трава</td><td>6010</td><td><span class="ral-swatch" style="background:#4A6741"></span></td></tr>
+              <tr><td>9</td><td>Телегрэй</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
+              <tr><td>10</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
+              <tr><td>11</td><td>Белый</td><td>9003 / 9016</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="manager-card" id="steel-manager-card">
+      <div class="manager-card-grid">
+        <div class="manager-region-col">
+          <div class="manager-col-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Регион отгрузки
+          </div>
+          <div class="region-combobox" id="steelRegionCombobox">
+            <div class="region-combobox-input-wrap" onclick="toggleRegionDropdown('steelRegionCombobox')">
+              <svg class="region-combobox-pin" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <input type="text" class="region-combobox-input" id="steelRegionInput" placeholder="Выберите регион" autocomplete="off" readonly style="pointer-events:none">
+              <svg class="region-combobox-chevron" id="steelRegionChevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </div>
+            <div class="region-combobox-dropdown" id="steelRegionDropdown">
+              <div class="region-combobox-search-wrap">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" class="region-combobox-search" id="steelRegionSearch" placeholder="Поиск по региону…" oninput="filterRegionOptions('steelRegionCombobox', this.value)">
+              </div>
+              <ul class="region-combobox-list" id="steelRegionList" role="listbox"></ul>
+            </div>
+          </div>
+        </div>
+        <div class="manager-divider-v"></div>
+        <div class="manager-profile-col">
+          <div class="manager-col-label">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Ваш менеджер
+          </div>
+          <div class="manager-profile-row">
+            <div class="manager-avatar" id="steelManagerAvatar">МЛ</div>
+            <div class="manager-name" id="steelManagerName">Марина Леонова</div>
+          </div>
+          <div class="manager-contacts">
+            <a href="tel:+79872309971" id="steelManagerPhone">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.59 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
+              <span>+7 (987) 230-99-71</span>
+            </a>
+            <a href="mailto:Marina.Leonova@greif.com" id="steelManagerEmail">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>Marina.Leonova@greif.com</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`,
+
   ibc: () => `
 <div class="page">
   <div class="page-hero">
@@ -989,6 +1157,7 @@ const PAGES = {
       { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
+      { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'http://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'http://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
@@ -1098,6 +1267,88 @@ const PAGES = {
         </div>
         <div class="tab-content" id="tab-el-closure">
           ${_ibcClosureTab()}
+        </div>
+      </div>
+      ${_ibcManagerCard()}
+    </div>
+  </div>
+</div>`,
+
+  ibcBlack: () => `
+<div class="page">
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">GCube «Чёрный»</h1>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">На деревянном или гибридном поддоне · Защита от УФ-лучей · 1000 л</p>
+    </div>
+  </div>
+  <div class="product-detail-page" style="display:flex;gap:32px;align-items:flex-start;">
+    <div style="width:210px;flex-shrink:0;position:sticky;top:88px;">${_ibcSideNav('ibcBlack')}</div>
+    <div style="flex:1;min-width:0;">
+      <div class="product-detail-grid">
+        <div class="product-image-col">
+          <img src="http://www.greif.ru/wp-content/uploads/blackqube.png" alt="GCube Чёрный" style="max-width:100%;max-height:420px;object-fit:contain;">
+        </div>
+        <div class="product-info-col">
+          <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
+            <div class="spec-card"><div class="spec-card-value">1000<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём</div><div class="spec-card-desc">Номинальный · 1055 л до горловины</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:15px;line-height:1.25">1200×1000×1165</div><div class="spec-card-label">Габариты, мм</div><div class="spec-card-desc">Д × Ш × В · допуск ±10 мм</div></div>
+            <div class="spec-card"><div class="spec-card-value">60,0<span class="spec-card-unit"> кг</span></div><div class="spec-card-label">Вес</div><div class="spec-card-desc">±10,0 кг · деревянный поддон</div></div>
+            <div class="spec-card"><div class="spec-card-value" style="font-size:16px">ПЭНД</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Чёрный полиэтилен высокой плотности</div></div>
+          </div>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        </div>
+      </div>
+      <div class="product-tabs">
+        <div class="tab-headers">
+          <button class="tab-btn active" data-tab="black-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn" data-tab="black-comp">КОМПЛЕКТАЦИЯ</button>
+          <button class="tab-btn" data-tab="black-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="black-logistics">ЛОГИСТИКА</button>
+          <button class="tab-btn" data-tab="black-delivery">ДОСТАВКА</button>
+          <button class="tab-btn" data-tab="black-instruction">ИНСТРУКЦИЯ</button>
+        </div>
+        <div class="tab-content active" id="tab-black-desc">
+          <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
+            GCube «Чёрный» — еврокуб на деревянном или гибридном поддоне с колбой из чёрного полиэтилена высокой плотности (ПЭНД). Чёрный цвет обеспечивает надёжную защиту содержимого от ультрафиолетового излучения, что особенно важно при хранении светочувствительных продуктов на открытых площадках.
+          </p>
+          <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
+            Контейнер предназначен для перевозки и хранения жидких и жидкотекучих продуктов, в том числе относящихся к классу опасных грузов. Доступен в исполнении Стандарт и ООН.
+          </p>
+          <div style="background:var(--green-light-bg);border:1px solid var(--border);border-left:3px solid var(--green-primary);padding:14px 18px;font-size:13px;color:var(--text-dark);line-height:1.7;border-radius:4px;margin-bottom:20px">
+            <strong>Защита от УФ:</strong> чёрный пигмент в составе ПЭНД эффективно поглощает ультрафиолетовое излучение, продлевая срок службы колбы и сохраняя целостность фасуемого продукта.
+          </div>
+          <h4 style="font-size:14px;font-weight:700;color:var(--text-dark);margin:24px 0 12px">Технические характеристики</h4>
+          ${_ibcTechTable('60,0 ±10,0 кг')}
+        </div>
+        <div class="tab-content" id="tab-black-comp">
+          <h4 style="font-size:14px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Комплектация</h4>
+          <table style="width:100%;border-collapse:collapse;font-size:14px"><tbody>${[
+            ['Исполнение', 'Куб Стандарт или ООН'],
+            ['Колба', 'Чёрный ПЭНД, 1000 л, с градуировочной линейкой (13,5 кг)'],
+            ['Заливная горловина', '150 мм и 225 мм'],
+            ['Кран', 'Приварной или прикручиваемый «Бабочка» 2" и 3"'],
+            ['Крышка', 'Резьбовая глухая и с дыхательным клапаном'],
+            ['Обрешётка', 'Из гальванизированной стали'],
+            ['Поддон', 'Деревянный или гибридный'],
+            ['Табличка', 'Металлическая (малая, средняя, большая)'],
+          ].map(([k,v]) => `<tr style="border-bottom:1px solid var(--border)">
+            <td style="padding:10px 0;color:var(--text-muted);width:40%">${k}</td>
+            <td style="padding:10px 0;color:var(--text-dark);font-weight:500">${v}</td>
+          </tr>`).join('')}</tbody></table>
+        </div>
+        <div class="tab-content" id="tab-black-std">
+          ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-black-logistics">
+          ${_ibcLogisticsTab()}
+        </div>
+        <div class="tab-content" id="tab-black-delivery">
+          ${_ibcDeliveryTab()}
+        </div>
+        <div class="tab-content" id="tab-black-instruction">
+          ${_ibcInstructionTab()}
         </div>
       </div>
       ${_ibcManagerCard()}
@@ -1367,7 +1618,7 @@ const PAGES = {
           <div class="spec-card"><div class="spec-card-value">217<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём · тип 1А2</div><div class="spec-card-desc">Стенка 0,7 мм · масса без крышки 10,4 кг</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Ø 580<span class="spec-card-unit"> мм</span></div><div class="spec-card-label">Диаметр</div><div class="spec-card-desc">Высота 970 ±4 мм · штабелируемая</div></div>
         </div>
-        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
     <div class="product-tabs">
@@ -1380,11 +1631,11 @@ const PAGES = {
       </div>
       <div class="tab-content active" id="tab-con-desc">
         <p>Конические (конусные) бочки выпускаются на заводах компании Greif, расположенных в США, Великобритании, Греции, Италии, Турции, Португалии, Египте и Бразилии. С 2007 года производство конических бочек осуществляется в России — в г. Волгограде.</p>
-        <p>Конические бочки используются для упаковки и транспортировки пищевых продуктов, например, томатной пасты и фруктовых концентратов. Стандартная емкость бочки составляет 217 л, она оснащена пластиковой или стальной крышкой с запорным кольцом. Обычно пищевые продукты предварительно упаковываются в полиэтиленовые или асептические мешки. Для упаковки различных видов пищевых продуктов в одну бочку могут применяться пластиковые разделители. Упаковка непищевых продуктов может осуществляться без мешков. Внутренняя поверхность бочки по желанию заказчика покрывается специальным покрытием, защищающим продукт от контакта с металлом, также по желанию заказчика дно бочки может быть перфорировано для удобства использования упаковочных мешков и предотвращения скопления конденсата.</p>
+        <p>Стандартная емкость бочки составляет 217–220 л, она оснащена стальной крышкой с запорным кольцом. По желанию заказчика мы можем надеть мешки на бочку — это упрощает расцепку и делает использование тары более удобным.</p>
       </div>
       <div class="tab-content" id="tab-con-specs">
         <p>При производстве конических бочек Greif используется холоднокатаный стальной прокат марки 08ПС. Технические характеристики стали соответствуют ISO 35373 и ISO 3574 или аналогичным стандартам (EN10130 / EN10131).</p>
-        <p>Стандартная коническая бочка со съёмным верхом имеет объём 217 л. Она состоит из корпуса, нижнего дна и верхней крышки. Корпус бочки сваривается продольным швом, затем осуществляется присоединение нижнего дна к обечайке пятислойным закатным швом. Конические бочки комплектуются различными типами крышек — пластиковыми или металлическими — в зависимости от пожеланий и требований покупателя.</p>
+        <p>Стандартная коническая бочка со съёмным верхом имеет объём 217–220 л. Она состоит из корпуса, нижнего дна и верхней крышки. Корпус бочки сваривается продольным швом, затем осуществляется присоединение нижнего дна к обечайке пятислойным закатным швом. Конические бочки комплектуются металлической крышкой.</p>
         <h4 style="margin-top:24px;margin-bottom:12px">Размеры конических бочек со съёмным верхом 1А2</h4>
         <div style="overflow-x:auto">
           <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:520px">
@@ -1397,6 +1648,7 @@ const PAGES = {
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">H, мм</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">S, мм</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">S1, мм</th>
+                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">S2, мм</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Масса, кг</th>
               </tr>
               <tr style="font-size:11px;color:var(--text-muted)">
@@ -1407,34 +1659,35 @@ const PAGES = {
                 <th style="padding:4px 8px;font-weight:400;text-align:left">высота</th>
                 <th style="padding:4px 8px;font-weight:400;text-align:left">стенка корпуса</th>
                 <th style="padding:4px 8px;font-weight:400;text-align:left">толщина днища</th>
+                <th style="padding:4px 8px;font-weight:400;text-align:left">толщина крышки</th>
                 <th style="padding:4px 8px;font-weight:400;text-align:left">без крышки</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border);font-weight:500">217</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border);font-weight:500">217–220</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">580 ±4</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">525 ±4</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">574 ±4</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">970 ±4</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,7</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,6</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,6–0,7</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,7</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">10,4</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <img src="https://www.greif.ru/wp-content/uploads/Без-названия-716x1024.png" alt="Чертёж конической бочки Greif" style="display:block;margin-top:28px;max-width:100%;max-height:500px;object-fit:contain;">
+        <img src="http://www.greif.ru/wp-content/uploads/konbochka.png" alt="Чертёж конической бочки Greif" style="display:block;margin-top:28px;max-width:100%;max-height:500px;object-fit:contain;">
       </div>
       <div class="tab-content" id="tab-con-coating">
-        <p>С ростом конкуренции на промышленных рынках упаковка приобрела дополнительную ценность, поскольку её поверхность представляет собой отличный инструмент для маркетинговых коммуникаций с клиентами. В соответствии с пожеланиями заказчика стальная бочка может быть окрашена в стандартные цвета по системе RAL. Помимо окрашивания, на поверхность бочки возможно нанесение логотипа вашей компании.</p>
+        <p>Бочка окрашивается в один цвет по системе RAL.</p>
         <h4 style="margin-top:24px;margin-bottom:12px">Каталог цветов RAL — стандартные цвета Greif</h4>
         <div style="overflow-x:auto">
           <table style="width:100%;border-collapse:collapse;font-size:13px">
             <thead>
               <tr style="background:var(--bg-light,#f5f5f5)">
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">#</th>
-                <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Код</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Цвет</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">RAL</th>
                 <th style="padding:10px 8px;text-align:left;font-weight:600;border-bottom:2px solid var(--border)">Образец</th>
@@ -1442,29 +1695,23 @@ const PAGES = {
             </thead>
             <tbody>
               ${[
-                ['2','RD','Красный (ржавый)','RAL3009','#763027'],
-                ['3','RD','Красный (томатный)','RAL3013','#8D1D2C'],
-                ['4','BL','Синий (женьшень)','RAL5010','#1F447E'],
-                ['6','BL','Синий (небесный)','RAL5015','#2570B2'],
-                ['8','GRN','Зелёный (мох)','RAL6005','#1B3A2D'],
-                ['9','GRN','Зелёный (трава)','RAL6010','#3E6B2F'],
-                ['10','GRN','Зелёный (мята)','RAL6029','#1C6B3A'],
-                ['13','GRY','Серый (пыль)','RAL7037','#7D7E7C'],
-                ['14','BCK','Чёрный','RAL9005','#0E0E10'],
-                ['1','YW','Жёлтый (сигнальный)','RAL1003','#F9A800'],
-                ['2','YW','Жёлтый (маис)','RAL1006','#F0A500'],
-                ['3','ORA','Оранжевый (трэфик)','RAL2009','#DD4200'],
-                ['4','RD','Красный (огонь)','RAL3000','#AB2524'],
-                ['5','RD','Красный (коричневый)','RAL3011','#78282C'],
-                ['22','WH','Белый (сероватый)','RAL9002','#E0DDD4'],
-                ['23','WH','Белый (пюре)','RAL9010','#F4F4EE'],
-              ].map(([n,code,name,ral,hex]) =>
+                ['1','Желтый яркий','1021','#F6A500',''],
+                ['2','Чистый оранжевый','2004','#F44611',''],
+                ['3','Пунцовый красный','3002','#9B2423',''],
+                ['4','Красный насыщенный','3020','#CC0605',''],
+                ['5','Синий','5010','#0E294B',''],
+                ['6','Синий-бледный','5017','#0A5B93',''],
+                ['7','Зеленая мята','6029','#2B5F2B',''],
+                ['8','Зеленая трава','6010','#4A6741',''],
+                ['9','Телегрэй','7047','#D0D0D0','border:1px solid #bbb'],
+                ['10','Черный','9005','#0A0A0A',''],
+                ['11','Белый','9003 / 9016','#F4F4F4','border:1px solid #bbb'],
+              ].map(([n,name,ral,hex,border]) =>
                 `<tr style="border-bottom:1px solid var(--border)">
                   <td style="padding:10px 8px;color:var(--text-muted)">${n}</td>
-                  <td style="padding:10px 8px;font-weight:500">${code}</td>
                   <td style="padding:10px 8px">${name}</td>
                   <td style="padding:10px 8px;color:var(--text-muted)">${ral}</td>
-                  <td style="padding:10px 8px"><span style="display:inline-block;width:32px;height:20px;border-radius:3px;background:${hex};border:1px solid rgba(0,0,0,0.15)"></span></td>
+                  <td style="padding:10px 8px"><span style="display:inline-block;width:32px;height:20px;border-radius:3px;background:${hex};${border}"></span></td>
                 </tr>`
               ).join('')}
             </tbody>
@@ -1534,24 +1781,13 @@ const PAGES = {
         <p style="margin-top:8px;font-size:13px;color:var(--text-muted)"><strong>Внимание:</strong> фенольные покрытия не рекомендованы к контакту с продуктами с высокими значениями pH — едкие щёлочи, в частности, вызывают разрушение фенольной плёнки.</p>
       </div>
       <div class="tab-content" id="tab-con-closure">
-        <p>Выбор подходящей укупорочной системы является крайне важным для надёжной упаковки конических бочек. Стандартное исполнение конических бочек предусматривает наличие съёмной крышки, благодаря которой обеспечивается простота наполнения и опорожнения.</p>
+        <p>Выбор подходящей укупорочной системы является крайне важным для надёжной упаковки конических бочек.</p>
         <p>Бочки с металлической откидной крышкой комплектуются запорными обручами из горячекатаной гальванизированной стали и уплотнительным кольцом.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin:20px 0">
           <img src="https://www.greif.ru/wp-content/uploads/113.png" alt="Металлическая крышка конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
           <img src="https://www.greif.ru/wp-content/uploads/132.png" alt="Запорный обруч конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
           <img src="https://www.greif.ru/wp-content/uploads/123.png" alt="Укупорка конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
         </div>
-        <p>Крышка конической бочки также может быть пластиковой, выполненной из полипропилена.</p>
-        <img src="https://www.greif.ru/wp-content/uploads/141.png" alt="Пластиковая крышка конической бочки" style="display:block;max-height:220px;object-fit:contain;margin:16px 0">
-        <p>Конические бочки используются для асептического налива пищевых продуктов (главным образом томатной пасты), которые упаковываются в предварительно стерилизованный барьерный пакет, помещаемый в бочку. Также допускается одновременная упаковка нескольких видов продуктов в одну коническую бочку за счёт применения пластиковых разделителей. Асептические мешки перед применением проходят обработку дезинфектантами. Мешок изготавливается из ламинированного материала, одобренного к упаковке жидкостей, обеспечивая необходимую гибкость и защиту продукта.</p>
-        <p><strong>Преимущества асептического наполнения:</strong></p>
-        <ul style="margin:8px 0 16px 20px;line-height:1.8">
-          <li>асептическая обработка сохраняет аромат продукта и питательные вещества;</li>
-          <li>увеличение срока хранения (нет необходимости использования консервантов);</li>
-          <li>не требуется хранение в холодильнике;</li>
-          <li>современный способ консервирования.</li>
-        </ul>
-        <p>Асептические процедуры делают международный экспорт и импорт пищевых продуктов экономически выгодным и безопасным.</p>
       </div>
     </div>
     ${_managerCard('АС', 'Александр Седов', '+79033703111', '+7 (903) 370-31-11', 'Aleksandr.Sedov@greif.com')}
@@ -1570,11 +1806,11 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/kan.png" alt="Канистры Greif" style="max-width:100%;max-height:380px;object-fit:contain;">
+        <img src="http://www.greif.ru/wp-content/uploads/kanistrabezfona.png" alt="Канистры Greif" style="max-width:100%;max-height:380px;object-fit:contain;">
       </div>
       <div class="product-info-col">
         <p class="product-description">Многослойные канистры используются для хранения агрохимических продуктов. От традиционных полиэтиленовых канистр они отличаются наличием дополнительного полиамидного слоя, который обеспечивает барьерные свойства тары.</p>
-        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
     <div class="product-tabs">
@@ -1615,7 +1851,7 @@ const PAGES = {
       </div>
       <div class="product-info-col">
         <p class="product-description">Clovertainer® — среднетоннажный контейнер из многослойного картона ёмкостью 1000 литров. Кловертейнеры успешно применяются для транспортировки и хранения битума и битумных мастик.</p>
-        <button class="btn-consult" onclick="navigate('contact')">ПОЛУЧИТЬ КОНСУЛЬТАЦИЮ</button>
+        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
     <div class="product-tabs">
@@ -1735,7 +1971,7 @@ const PAGES = {
           <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 20px">Для проведения анализов нам потребуется <strong style="color:var(--text-dark)">250 мл вашего продукта</strong>.</p>
         </div>
         <div style="text-align:center">
-          <button class="btn-consult" onclick="navigate('contact')">ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ</button>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
         </div>
       </div>
     </div>`,
@@ -1753,7 +1989,7 @@ const PAGES = {
         ${[
           ['Автоматическая разгрузка','Роботизированная система обеспечивает разгрузку партии из 150 бочек менее чем за 30 минут. Система полностью исключает операции с бочками, производимые вручную.'],
           ['Поставка точно в срок','Логистическая концепция Just-in-Time позволяет сократить выделенные под тару складские площади и затраты на её хранение. Диверсифицированная сеть предприятий Greif гарантирует отсутствие сбоев в доставке.'],
-          ['Паллетизированная доставка','Greif предлагает доставку паллетизированных стальных бочек. Максимальный объём партии — 264 бочки объёмом до 224 литров.'],
+          ['Паллетизированная доставка','Greif предлагает доставку паллетизированных стальных бочек. Максимальный объём партии — 264 бочки объёмом 216 литров.'],
           ['Сервис Greif Express','Специальный логистический сервис позволяет исключить сложности при поставке и операциях с металлическими бочками: 48 бочек на паллетах в одном контейнере, 6 контейнеров в одном грузовике.'],
         ].map(([title, desc]) => `
           <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:24px">
@@ -1762,7 +1998,7 @@ const PAGES = {
           </div>`
         ).join('')}
         <div style="text-align:center;margin-top:24px">
-          <button class="btn-consult" onclick="navigate('contact')">ЗАПРОСИТЬ КОНСУЛЬТАЦИЮ</button>
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
         </div>
       </div>
     </div>`,
@@ -1841,7 +2077,7 @@ const PAGES = {
   <div class="page-hero">
     <div class="page-hero-inner">
       <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Карьера</div>
-      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Вакансии в Greif</h1>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Вакансии в Грайф</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">Присоединяйтесь к команде мирового лидера промышленной упаковки</p>
     </div>
   </div>

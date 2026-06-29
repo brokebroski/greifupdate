@@ -30,7 +30,7 @@ function render() {
   const fn = PAGES[currentPage] || PAGES.home;
   document.getElementById('main-content').innerHTML = fn();
 
-  const productSubpages = ['steelDrums', 'ibc', 'ibcWooden', 'ibcHybrid', 'ibcPlastic', 'ibcElectron', 'ibcRebo', 'conical', 'canisters', 'clover'];
+  const productSubpages = ['steelDrums', 'steelDrum1a1', 'steelDrum1a2', 'ibc', 'ibcWooden', 'ibcHybrid', 'ibcPlastic', 'ibcElectron', 'ibcRebo', 'conical', 'canisters', 'clover'];
   const effectivePage = productSubpages.includes(currentPage) ? 'products' : currentPage;
 
   document.querySelectorAll('#main-nav a, .footer-menu a').forEach(a => {
@@ -40,7 +40,7 @@ function render() {
     }
   });
 
-  if (['steelDrums', 'ibc', 'ibcWooden', 'ibcHybrid', 'ibcPlastic', 'ibcElectron', 'ibcRebo', 'conical', 'canisters', 'clover'].includes(currentPage)) {
+  if (['steelDrums', 'steelDrum1a1', 'steelDrum1a2', 'ibc', 'ibcWooden', 'ibcHybrid', 'ibcPlastic', 'ibcElectron', 'ibcBlack', 'ibcRebo', 'conical', 'canisters', 'clover'].includes(currentPage)) {
     setTimeout(() => {
       const tabBtns = document.querySelectorAll('.tab-btn');
       const tabContents = document.querySelectorAll('.tab-content');
@@ -56,10 +56,9 @@ function render() {
     }, 50);
   }
 
-  if (currentPage === 'steelDrums') {
+  if (currentPage === 'steelDrum1a1' || currentPage === 'steelDrum1a2') {
     setTimeout(() => {
       initSteelManagerSelect();
-      initSteelCarousel();
     }, 50);
   }
 
