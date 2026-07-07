@@ -2126,25 +2126,27 @@ nav a.active { border-bottom: 2px solid var(--green-primary); }
 
   [style*="display:flex;align-items:center;gap:24px;max-width:560px"] { flex-direction: column !important; align-items: flex-start !important; }
 
-  /* История Greif Inc. — stack image/text story rows on mobile */
+  /* История Greif Inc. — stack image/text story rows on mobile: image on top, text below */
   [style*="align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07)"] {
     flex-direction: column !important;
+    border-radius: 14px !important;
   }
   [style*="flex:0 0 42%;max-width:42%;overflow:hidden"] {
+    order: -1 !important;
     flex: none !important;
     max-width: 100% !important;
     width: 100% !important;
-    height: 180px !important;
-  }
-  [style*="border-right:none;border-radius:10px 0 0 10px"] + [style*="flex:0 0 42%;max-width:42%;overflow:hidden"] {
-    order: -1;
+    height: 210px !important;
   }
   [style*="border-left:none;border-radius:0 10px 10px 0"],
   [style*="border-right:none;border-radius:10px 0 0 10px"] {
-    border: 1px solid var(--border) !important;
-    border-top: none !important;
-    border-radius: 0 0 10px 10px !important;
-    padding: 20px 18px !important;
+    order: 2 !important;
+    flex: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 22px 20px !important;
   }
   [style*="background:linear-gradient(135deg,var(--green-primary) 0%,#317965 100%)"] {
     padding: 24px 20px !important;
