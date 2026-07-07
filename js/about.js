@@ -266,7 +266,7 @@ const aboutSections = {
 
       </div>
 
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Хронология ключевых событий</div>
+      <div style="display:none;font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:16px">Хронология ключевых событий</div>
 
       <style>
         .greif-timeline {
@@ -398,7 +398,7 @@ const aboutSections = {
         }
       </style>
 
-      <div class="greif-timeline">
+      <div class="greif-timeline" style="display:none">
         ${_buildHistoryTimeline()}
       </div>
     </div>
