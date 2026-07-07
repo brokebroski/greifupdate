@@ -671,6 +671,7 @@ const PAGES = {
                 <div class="feature-list-item"><div class="feature-bullet"></div>Производство под заказ</div>
                 <div class="feature-list-item"><div class="feature-bullet"></div>Логистика по СНГ</div>
               </div>
+              <div class="feature-more"><button class="product-link" onclick="navigate('products')">ПОДРОБНЕЕ →</button></div>
             </div>
             <div class="feature-card">
               <div class="feature-icon">
@@ -683,6 +684,7 @@ const PAGES = {
                 <div class="feature-list-item"><div class="feature-bullet"></div>Вторая жизнь упаковки</div>
                 <div class="feature-list-item"><div class="feature-bullet"></div>Эффективность цепи поставок</div>
               </div>
+              <div class="feature-more"><button class="product-link" onclick="navigate('ibcRebo')">ПОДРОБНЕЕ →</button></div>
             </div>
             <div class="feature-card">
               <div class="feature-icon">
@@ -700,6 +702,7 @@ const PAGES = {
                 <div class="feature-list-item"><div class="feature-bullet"></div>Паллетизированная доставка</div>
                 <div class="feature-list-item"><div class="feature-bullet"></div>Автоматическая разгрузка</div>
               </div>
+              <div class="feature-more"><button class="product-link" onclick="navigate('contact')">ПОДРОБНЕЕ →</button></div>
             </div>
           </div>
         </div>
@@ -1369,8 +1372,14 @@ const PAGES = {
     <div style="width:210px;flex-shrink:0;position:sticky;top:88px;">${_ibcSideNav('ibcRebo')}</div>
     <div style="flex:1;min-width:0;">
       <div class="product-detail-grid">
-        <div class="product-image-col">
-          <img src="http://www.greif.ru/wp-content/uploads/rebo.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
+        <div>
+          <div class="product-image-col">
+            <img src="http://www.greif.ru/wp-content/uploads/rebo.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
+          </div>
+          <button class="btn-outline-green" onclick="navigateAboutSection('sustainability')" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;width:100%">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+            Устойчивое развитие
+          </button>
         </div>
         <div class="product-info-col">
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">

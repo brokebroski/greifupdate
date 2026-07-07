@@ -26,6 +26,13 @@ function navigateIBCBuy() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+let pendingAboutSection = null;
+
+function navigateAboutSection(section) {
+  pendingAboutSection = section;
+  navigate('about');
+}
+
 function render() {
   const fn = PAGES[currentPage] || PAGES.home;
   document.getElementById('main-content').innerHTML = fn();
@@ -71,7 +78,9 @@ function render() {
   }
 
   if (currentPage === 'about') {
-    setTimeout(() => initAboutNav(), 50);
+    const section = pendingAboutSection;
+    pendingAboutSection = null;
+    setTimeout(() => initAboutNav(section), 50);
   }
 
   if (currentPage === 'contact') {

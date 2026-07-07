@@ -426,7 +426,10 @@ const aboutSections = {
         <div style="margin-bottom:32px;padding:22px 26px;background:var(--green-light-bg);border-left:4px solid var(--green-primary);border-radius:6px">
           <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">Что такое REBO?</div>
           <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 10px">REBO — восстановленный еврокуб: <strong>новая бутыль из полиэтилена высокой плотности (ПЭНД, 1000 л)</strong> устанавливается на б/у металлический поддон и помещается в б/у обрешётку из гальванизированной стали.</p>
-          <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0">Это позволяет значительно снизить стоимость тары без потери функциональности и многократно продлить жизненный цикл металлических компонентов.</p>
+          <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">Это позволяет значительно снизить стоимость тары без потери функциональности и многократно продлить жизненный цикл металлических компонентов.</p>
+          <a href="#" onclick="navigate('ibcRebo');return false;" style="display:inline-flex;align-items:center;gap:8px;font-family:'Roboto Condensed',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#fff;background:var(--green-primary);text-decoration:none;padding:11px 22px;border-radius:6px;transition:background 0.2s" onmouseover="this.style.background='#317965'" onmouseout="this.style.background='var(--green-primary)'">
+            Карточка REBO →
+          </a>
         </div>
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px">
@@ -529,14 +532,14 @@ function switchAboutSection(sectionId) {
   });
 }
 
-function initAboutNav() {
+function initAboutNav(initialSection) {
   document.querySelectorAll('.about-nav-link').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
       switchAboutSection(this.getAttribute('data-about-section'));
     });
   });
-  switchAboutSection('greifRu');
+  switchAboutSection(initialSection || 'greifRu');
 }
 
 /* ─── Timeline modal ─── */
