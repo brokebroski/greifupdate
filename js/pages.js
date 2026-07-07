@@ -18,10 +18,14 @@ const CITY_CONTACTS = {
     phone: '+7 (8172) 26-40-13',
     address: 'ул. Маяковского, 38',
     contacts: [
-      { role: 'Офис-менеджер',         name: '', phone: '+7 (8172) 26-40-13', email: 'Vologda.Office@greif.com' },
-      { role: 'Менеджер по логистике', name: '', phone: '',                    email: 'Vologda.Office@greif.com' },
-      { role: 'HR-специалист',         name: 'Александра Караваева', phone: '', email: 'Vologda.Office@greif.com' },
-      { role: 'Бухгалтер',             name: '', phone: '8-981-420-16-93',    email: '' },
+      { role: 'Руководитель филиала',                name: '', phone: '8-921-822-76-34', email: '' },
+      { role: 'Главный инженер',                     name: '', phone: '8-921-067-03-26', email: '' },
+      { role: 'Офис-менеджер',                       name: '', phone: '8-921-822-42-94', email: '' },
+      { role: 'Менеджер по продажам',                name: '', phone: '8-921-068-04-60', email: '' },
+      { role: 'Менеджер по сопровождению продаж',    name: '', phone: '8-981-430-10-89', email: '' },
+      { role: 'Менеджер по логистике',                name: '', phone: '8-911-530-15-47', email: '' },
+      { role: 'Менеджер по логистике',                name: '', phone: '8-921-230-18-59', email: '' },
+      { role: 'Менеджер по снабжению',               name: '', phone: '8-921-716-71-89', email: '' },
     ]
   },
   'volgograd': {
