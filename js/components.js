@@ -60,7 +60,6 @@ function productCard(p) {
     <div class="product-card-body">
       <div class="product-card-title">${p.title}</div>
       <div class="product-card-desc">${p.desc}</div>
-      ${p.vol ? `<div class="product-card-volume">${p.vol}</div>` : ''}
     </div>
     <div class="product-card-footer">
       ${p.tag ? `<span class="product-tag">${p.tag}</span>` : '<span></span>'}

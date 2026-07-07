@@ -91,8 +91,7 @@ function _openFactoryModal(keys) {
       <div style="padding:28px 32px 32px;overflow-y:auto">
         <button onclick="_closeFactoryModal()" style="position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(0,0,0,0.45);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:20px;line-height:1;z-index:1">&times;</button>
         <div style="margin-bottom:6px">${yearLabel}</div>
-        <h3 style="font-size:24px;font-weight:900;color:var(--text-dark);margin:6px 0 16px;letter-spacing:-0.01em">Завод Грайф — ${f.name}</h3>
-        <p style="font-size:15px;color:var(--text-muted);line-height:1.75;margin:0">${f.history}</p>
+        <h3 style="font-size:24px;font-weight:900;color:var(--text-dark);margin:6px 0 0;letter-spacing:-0.01em">Завод Грайф — ${f.name}</h3>
       </div>
     </div>`;
 

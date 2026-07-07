@@ -62,6 +62,10 @@ function render() {
     }, 50);
   }
 
+  if (currentPage === 'canisters') {
+    setTimeout(() => initCanCarousel(), 50);
+  }
+
   if (currentPage === 'vacancies') {
     setTimeout(() => initVacancyTabs(), 50);
   }
@@ -185,6 +189,65 @@ function steelCarouselGoTo(idx) {
   _scIdx = idx;
   _scStartAuto();
   _scRender();
+}
+
+/* ── CAROUSEL: Canisters ── */
+let _ccIdx = 0;
+const _CC_TOTAL = 4;
+const _CC_INTERVAL = 2000;
+let _ccTimer = null;
+
+function _ccStartAuto() {
+  _ccStopAuto();
+  _ccTimer = setInterval(() => canCarouselMove(1), _CC_INTERVAL);
+}
+
+function _ccStopAuto() {
+  if (_ccTimer) { clearInterval(_ccTimer); _ccTimer = null; }
+}
+
+function _ccRender() {
+  const track = document.getElementById('canCarouselTrack');
+  const counter = document.getElementById('canCarouselCounter');
+  const dots = document.querySelectorAll('#canCarouselDots .carousel-dot');
+  if (track) track.style.transform = `translateX(${-_ccIdx * 100}%)`;
+  if (counter) counter.textContent = `${_ccIdx + 1} / ${_CC_TOTAL}`;
+  dots.forEach((d, i) => d.classList.toggle('active', i === _ccIdx));
+}
+
+function canCarouselMove(dir) {
+  _ccIdx = (_ccIdx + dir + _CC_TOTAL) % _CC_TOTAL;
+  _ccRender();
+}
+
+function canCarouselGoTo(idx) {
+  _ccIdx = idx;
+  _ccStartAuto();
+  _ccRender();
+}
+
+function initCanCarousel() {
+  _ccIdx = 0;
+  _ccRender();
+
+  const wrap = document.querySelector('#canCarouselTrack')?.closest('.carousel-track-wrap');
+  if (!wrap) return;
+
+  wrap.addEventListener('mouseenter', _ccStopAuto);
+  wrap.addEventListener('mouseleave', _ccStartAuto);
+
+  let startX = 0;
+  wrap.addEventListener('touchstart', e => {
+    startX = e.touches[0].clientX;
+    _ccStopAuto();
+  }, { passive: true });
+  wrap.addEventListener('touchend', e => {
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 40) canCarouselMove(dx < 0 ? 1 : -1);
+    _ccStartAuto();
+  }, { passive: true });
+
+  _ccStartAuto();
 }
 
 const STEEL_REGION_MANAGERS = [

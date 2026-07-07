@@ -319,7 +319,7 @@ function _ibcLogisticsTab() {
     {
       icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
       title: 'Поставка точно в срок',
-      highlight: 'Just-in-Time (JIT)',
+      highlight: 'Поставка точно в срок',
       desc: 'Диверсифицированная сеть заводов Greif и система страховки поставок гарантируют отсутствие сбоев при любых обстоятельствах.',
       badge: 'Снижение склада',
     },
@@ -626,7 +626,7 @@ const PAGES = {
           </video>
         </div>
         <div class="hero-content">
-          <div class="hero-eyebrow">Ведущий производитель промышленной упаковки</div>
+          <div class="hero-eyebrow">Ведущий производитель в России</div>
           <h1 class="hero-headline">Промышленная<br><em>упаковка</em> для<br>вашего бизнеса</h1>
           <p class="hero-sub">Стальные бочки, еврокубы, канистры, конические бочки и кловертейнеры.</p>
           <div class="hero-actions">
@@ -659,7 +659,7 @@ const PAGES = {
       <section class="features">
         <div class="section-inner">
           <div class="section-eyebrow">Почему Грайф</div>
-          <div class="section-title">Надёжность. Опыт. Сертификация.</div>
+          <div class="section-title">Надёжность. Опыт. Качество.</div>
           <div class="features-grid">
             <div class="feature-card">
               <div class="feature-icon">
@@ -696,7 +696,7 @@ const PAGES = {
                 ).join('')}
               </div>
               <div class="feature-list" style="margin-top:12px">
-                <div class="feature-list-item"><div class="feature-bullet"></div>Доставка точно в срок (JIT)</div>
+                <div class="feature-list-item"><div class="feature-bullet"></div>Доставка точно в срок</div>
                 <div class="feature-list-item"><div class="feature-bullet"></div>Паллетизированная доставка</div>
                 <div class="feature-list-item"><div class="feature-bullet"></div>Автоматическая разгрузка</div>
               </div>
@@ -1004,12 +1004,12 @@ const PAGES = {
           <button id="drum1a2BtnStd"
             onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s">
-            Стандартная · Д 610
+            Стандартная
           </button>
           <button id="drum1a2BtnSlim"
             onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2-kremp-.png';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s">
-            Кремпированная · Д 585
+            Кремпированная
           </button>
         </div>
       </div>
@@ -1806,7 +1806,29 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/kanistrabezfona.png" alt="Канистры Greif" style="max-width:100%;max-height:380px;object-fit:contain;">
+        <div class="product-carousel">
+          <div class="carousel-track-wrap">
+            <div class="carousel-track" id="canCarouselTrack">
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif 1"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-2.png" alt="Канистра Greif 2"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-3.png" alt="Канистра Greif 3"></div>
+              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-4.png" alt="Канистра Greif 4"></div>
+            </div>
+            <button class="carousel-btn carousel-btn-prev" onclick="canCarouselMove(-1)" aria-label="Назад">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="carousel-btn carousel-btn-next" onclick="canCarouselMove(1)" aria-label="Вперёд">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <span class="carousel-counter" id="canCarouselCounter">1 / 4</span>
+          </div>
+          <div class="carousel-dots" id="canCarouselDots">
+            <button class="carousel-dot active" onclick="canCarouselGoTo(0)"></button>
+            <button class="carousel-dot" onclick="canCarouselGoTo(1)"></button>
+            <button class="carousel-dot" onclick="canCarouselGoTo(2)"></button>
+            <button class="carousel-dot" onclick="canCarouselGoTo(3)"></button>
+          </div>
+        </div>
       </div>
       <div class="product-info-col">
         <p class="product-description">Многослойные канистры используются для хранения агрохимических продуктов. От традиционных полиэтиленовых канистр они отличаются наличием дополнительного полиамидного слоя, который обеспечивает барьерные свойства тары.</p>
@@ -1928,7 +1950,7 @@ const PAGES = {
         <div onclick="navigate('branding')" class="service-card"><div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="service-card-title">Брендирование упаковки</div><div class="service-card-desc">Нанесение фирменного стиля, цветовой палитры и корпоративной символики. Окраска по RAL, логотип, трёхполосный дизайн.</div><div class="service-card-link">ПОДРОБНЕЕ →</div></div>
         <div onclick="navigateIBCBuy()" class="service-card"><div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="service-card-title">Покупаем б/у еврокубы</div><div class="service-card-desc">Сервис сбора и восстановления использованной тары. Оперативный вывоз пустых контейнеров с вашей площадки.</div><div class="service-card-link">ПОДРОБНЕЕ →</div></div>
         <div onclick="navigate('specification')" class="service-card"><div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M9 11l3 3L22 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="service-card-title">Подбор спецификации</div><div class="service-card-desc">Индивидуальный подбор характеристик упаковки под химическую природу вашего продукта.</div><div class="service-card-link">ПОДРОБНЕЕ →</div></div>
-        <div onclick="navigate('logistics')" class="service-card"><div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="1" y="3" width="15" height="13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4l3 3v5h-7V8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/></svg></div><div class="service-card-title">Оптимизация логистики</div><div class="service-card-desc">Комплексные решения для повышения эффективности цепи поставок. JIT поставки, паллетизированная доставка.</div><div class="service-card-link">ПОДРОБНЕЕ →</div></div>
+        <div onclick="navigate('logistics')" class="service-card"><div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="1" y="3" width="15" height="13" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 8h4l3 3v5h-7V8z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="5.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/><circle cx="18.5" cy="18.5" r="2.5" stroke="#fff" stroke-width="2"/></svg></div><div class="service-card-title">Оптимизация логистики</div><div class="service-card-desc">Комплексные решения для повышения эффективности цепи поставок. Поставки точно в срок, паллетизированная доставка.</div><div class="service-card-link">ПОДРОБНЕЕ →</div></div>
       </div>
     </div>`,
 
