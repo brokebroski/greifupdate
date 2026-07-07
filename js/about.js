@@ -372,6 +372,30 @@ const aboutSections = {
         .greif-tl-card:hover .greif-tl-img-wrap img {
           transform:scale(1.06);
         }
+        @media (max-width: 768px) {
+          .greif-timeline {
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 8px;
+            margin: 0 -16px;
+            padding-left: 16px;
+            padding-right: 16px;
+          }
+          .greif-tl-cell {
+            min-width: 82px;
+            padding: 0 5px;
+          }
+          .greif-tl-badge {
+            width: 36px;
+            height: 36px;
+            font-size: 9px;
+          }
+          .greif-tl-img-wrap {
+            height: 64px;
+          }
+          .greif-tl-card-name {
+            font-size: 10px;
+          }
+        }
       </style>
 
       <div class="greif-timeline">
