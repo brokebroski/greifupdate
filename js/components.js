@@ -1,11 +1,11 @@
 /* site_structure/js/components.js */
 
 const PRODUCTS = [
-  { cat: 'Стальные бочки', title: 'Стальные бочки', desc: 'Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов, не оказывающих воздействия на сталь.', vol: '216 л', tag: '', icon: 'drum', img: 'http://www.greif.ru/wp-content/uploads/bochka.png', page: 'steelDrums' },
-  { cat: 'Еврокубы', title: 'Еврокубы (IBC)', desc: 'Еврокубы — пластиковые контейнеры средней грузоподъемности (IBC), применяемые для перевозки наливных и насыпных грузов.', vol: '1000 л', tag: '', icon: 'ibc', img: 'http://www.greif.ru/wp-content/uploads/qubs.png', page: 'ibc' },
-  { cat: 'Конические бочки', title: 'Конические бочки', desc: 'Стальная тара для транспортировки и хранения овощных и фруктовых концентратов, а также непищевых продуктов.', vol: '', tag: '', icon: 'conical', img: 'http://www.greif.ru/wp-content/uploads/konboch.png', page: 'conical' },
-  { cat: 'Канистры', title: 'Канистры', desc: 'Многослойные канистры используются для хранения агрохимических продуктов.', vol: '', tag: '', icon: 'canister', img: 'http://www.greif.ru/wp-content/uploads/kanistrabezfona.png', page: 'canisters' },
-  { cat: 'Кловертейнеры', title: 'Кловертейнеры', desc: 'Представляют собой картонные IBC, которые успешно применяются для фасовки битума и обеспечивают его эффективную логистику.', vol: '', tag: '', icon: 'clover', img: 'http://www.greif.ru/wp-content/uploads/klover.png', page: 'clover' },
+  { cat: 'Стальные бочки', title: 'Стальные бочки', desc: 'Стальные бочки используются для транспортировки жидких, сыпучих и твердых продуктов, не оказывающих воздействия на сталь.', vol: '216 л', tag: '', icon: 'drum', img: 'https://www.greif.ru/wp-content/uploads/bochka.png', page: 'steelDrums' },
+  { cat: 'Еврокубы', title: 'Еврокубы (IBC)', desc: 'Еврокубы — пластиковые контейнеры средней грузоподъемности (IBC), применяемые для перевозки наливных и насыпных грузов.', vol: '1000 л', tag: '', icon: 'ibc', img: 'https://www.greif.ru/wp-content/uploads/qubs.png', page: 'ibc' },
+  { cat: 'Конические бочки', title: 'Конические бочки', desc: 'Стальная тара для транспортировки и хранения овощных и фруктовых концентратов, а также непищевых продуктов.', vol: '', tag: '', icon: 'conical', img: 'https://www.greif.ru/wp-content/uploads/konboch.png', page: 'conical' },
+  { cat: 'Канистры', title: 'Канистры', desc: 'Многослойные канистры используются для хранения агрохимических продуктов.', vol: '', tag: '', icon: 'canister', img: 'https://www.greif.ru/wp-content/uploads/kanistrabezfona.png', page: 'canisters' },
+  { cat: 'Кловертейнеры', title: 'Кловертейнеры', desc: 'Представляют собой картонные IBC, которые успешно применяются для фасовки битума и обеспечивают его эффективную логистику.', vol: '', tag: '', icon: 'clover', img: 'https://www.greif.ru/wp-content/uploads/klover.png', page: 'clover' },
 ];
 
 const drumSVG = (color) => `<svg width="68" height="80" viewBox="0 0 80 90" fill="none">

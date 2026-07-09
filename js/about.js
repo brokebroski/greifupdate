@@ -2,16 +2,16 @@
 
 /* ─── Заполните photo/history: '' когда будут готовы данные ─── */
 const FACTORY_PHOTOS = {
-  belojarsky:  { name: 'Белоярский',          year: 1993, photo: 'http://www.greif.ru/wp-content/uploads/2.3-1993-Beloyarsk.jpg',       history: 'Завод в Белоярском — первое предприятие Greif (тогда Van Leer) в России. Открыт в 1993 году, производит стальные бочки для нефтехимической и химической промышленности. Расположен в Ханты-Мансийском автономном округе, обслуживает крупнейшие нефтяные компании Западной Сибири.' },
-  vologda:     { name: 'Вологда',             year: 1998, photo: 'http://www.greif.ru/wp-content/uploads/2.3-1998-Vologda-scaled.jpg',   history: 'Вологодский завод основан в 1998 году. Специализируется на производстве стальных бочек и поставляет продукцию предприятиям Северо-Западного федерального округа. За годы работы завод стал ключевым поставщиком промышленной упаковки для химических и пищевых производств региона.' },
-  volgograd:   { name: 'Волгоград',           year: 2003, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2003-Volgograd.jpg',       history: 'Волгоградский завод открыт в 2003 году. С 2007 года здесь выпускаются конические (конусные) стальные бочки, производство которых Greif организовал в России одним из первых. Предприятие обслуживает нефтехимические и химические компании Поволжья и Юга России.' },
-  perm:        { name: 'Пермь',               year: 2004, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2004-Perm-scaled.jpg',     history: 'Пермский завод введён в эксплуатацию в 2004 году. Производит стальные бочки для предприятий Уральского федерального округа и Пермского края. Завод оснащён современным оборудованием и соответствует строгим корпоративным стандартам качества Greif.' },
-  kazan:       { name: 'Казань',              year: 2007, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2007-Kazan.jpg',           history: 'Казанский завод открыт в 2007 году. Выпускает стальные бочки и IBC-контейнеры (еврокубы). Предприятие расположено в развитом промышленном регионе и обслуживает крупных потребителей нефтехимической отрасли Республики Татарстан и Поволжья.' },
-  omsk:        { name: 'Омск',               year: 2005, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
-  omsk2:       { name: 'Омск',               year: 2005, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
-  ryazan:      { name: 'Рязань',              year: 2014, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2014-Ryazan.jpg',         history: 'Рязанский завод открыт в 2014 году. Производит IBC-контейнеры (еврокубы) объёмом 1000 литров. Предприятие оснащено передовым оборудованием и обслуживает клиентов Центрального федерального округа, поставляя продукцию ведущим химическим и пищевым компаниям.' },
-  kaluga:      { name: 'Калуга (Ворсино)',    year: 2018, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
-  kaluga2:     { name: 'Калуга (Ворсино)',    year: 2018, photo: 'http://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
+  belojarsky:  { name: 'Белоярский',          year: 1993, photo: 'https://www.greif.ru/wp-content/uploads/2.3-1993-Beloyarsk.jpg',       history: 'Завод в Белоярском — первое предприятие Greif (тогда Van Leer) в России. Открыт в 1993 году, производит стальные бочки для нефтехимической и химической промышленности. Расположен в Ханты-Мансийском автономном округе, обслуживает крупнейшие нефтяные компании Западной Сибири.' },
+  vologda:     { name: 'Вологда',             year: 1998, photo: 'https://www.greif.ru/wp-content/uploads/2.3-1998-Vologda-scaled.jpg',   history: 'Вологодский завод основан в 1998 году. Специализируется на производстве стальных бочек и поставляет продукцию предприятиям Северо-Западного федерального округа. За годы работы завод стал ключевым поставщиком промышленной упаковки для химических и пищевых производств региона.' },
+  volgograd:   { name: 'Волгоград',           year: 2003, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2003-Volgograd.jpg',       history: 'Волгоградский завод открыт в 2003 году. С 2007 года здесь выпускаются конические (конусные) стальные бочки, производство которых Greif организовал в России одним из первых. Предприятие обслуживает нефтехимические и химические компании Поволжья и Юга России.' },
+  perm:        { name: 'Пермь',               year: 2004, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2004-Perm-scaled.jpg',     history: 'Пермский завод введён в эксплуатацию в 2004 году. Производит стальные бочки для предприятий Уральского федерального округа и Пермского края. Завод оснащён современным оборудованием и соответствует строгим корпоративным стандартам качества Greif.' },
+  kazan:       { name: 'Казань',              year: 2007, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2007-Kazan.jpg',           history: 'Казанский завод открыт в 2007 году. Выпускает стальные бочки и IBC-контейнеры (еврокубы). Предприятие расположено в развитом промышленном регионе и обслуживает крупных потребителей нефтехимической отрасли Республики Татарстан и Поволжья.' },
+  omsk:        { name: 'Омск',               year: 2005, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
+  omsk2:       { name: 'Омск',               year: 2005, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
+  ryazan:      { name: 'Рязань',              year: 2014, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2014-Ryazan.jpg',         history: 'Рязанский завод открыт в 2014 году. Производит IBC-контейнеры (еврокубы) объёмом 1000 литров. Предприятие оснащено передовым оборудованием и обслуживает клиентов Центрального федерального округа, поставляя продукцию ведущим химическим и пищевым компаниям.' },
+  kaluga:      { name: 'Калуга (Ворсино)',    year: 2018, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
+  kaluga2:     { name: 'Калуга (Ворсино)',    year: 2018, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
   angarsk:     { name: 'Ангарск',             year: null, photo: '',                                                                     history: 'Завод в Ангарске — новое предприятие Greif в Иркутской области. Обслуживает клиентов Восточной Сибири и Дальнего Востока. Подробная информация будет опубликована позже.' },
 };
 
@@ -145,7 +145,7 @@ function _buildFactoryMapHtml() {
     </style>
     <div id="factory-map-wrap"
          style="position:relative;border-radius:16px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,0.10);background:#f0f8f5;user-select:none;margin-bottom:32px">
-      <img src="http://www.greif.ru/wp-content/uploads/30-let-v-Rossii-2.jpg"
+      <img src="https://www.greif.ru/wp-content/uploads/30-let-v-Rossii-2.jpg"
            alt="Заводы Грайф в России"
            style="width:100%;height:auto;display:block;pointer-events:none">
       ${dots}
@@ -160,19 +160,19 @@ function _buildFactoryMapHtml() {
 
 function _buildHistoryTimeline() {
   const events = [
-    { year:1877, title:'Открытие мастерской',            desc:'William Greif и Albert Vanderwyst открывают бондарную мастерскую «Vanderwyst and Greif» в Кливленде, Огайо',                         img:'http://www.greif.ru/wp-content/uploads/1877.jpg' },
-    { year:1908, title:'Крупнейший бондарный завод',      desc:'Greif Bros. Company становится крупнейшим бондарным предприятием в мире',                                                          img:'http://www.greif.ru/wp-content/uploads/1908.jpg' },
-    { year:1923, title:'Первая стальная бочка',           desc:'Произведена первая битумная стальная бочка, которая до сих пор входит в портфолио продукции',                                     img:'http://www.greif.ru/wp-content/uploads/1923.jpg' },
-    { year:1951, title:'Переезд штаб-квартиры',           desc:'Под руководством Джона К. Демпси штаб-квартира переезжает из Кливленда в Делавэр, Огайо',                                        img:'http://www.greif.ru/wp-content/uploads/1951.jpg' },
-    { year:1955, title:'Переход на фибровые барабаны',    desc:'Greif переходит от производства деревянных бочек к фибровым барабанам и гофрированным контейнерам',                              img:'http://www.greif.ru/wp-content/uploads/1955.jpg' },
-    { year:1964, title:'Технология выдувного формования', desc:'Greif покупает технологию выдувного формования вкладышей у Haveg Industries',                                                    img:'http://www.greif.ru/wp-content/uploads/greif-timeline-1964.jpg' },
-    { year:1978, title:'Производство гофрокартона',       desc:'Greif официально выходит на рынок производства гофрокартона с покупкой завода в Массилоне, Огайо',                               img:'http://www.greif.ru/wp-content/uploads/greif-timeline-1978.jpg' },
-    { year:1998, title:'Публикация &laquo;The Greif Way&raquo;', desc:'Впервые опубликован «Путь Greif» — чёткое видение компании',                                                             img:'http://www.greif.ru/wp-content/uploads/greif-timeline-1998.jpg' },
-    { year:2001, title:'Покупка Van Leer Industrial',     desc:'Greif покупает Van Leer Industrial, что даёт международное присутствие и удваивает размер компании. Переименование в Greif, Inc.', img:'http://www.greif.ru/wp-content/uploads/greif-timeline-2001.jpg' },
-    { year:2010, title:'Покупка FIBC компаний',           desc:'Greif приобретает 4 компании по производству гибких контейнеров, включая Storsack Group',                                       img:'http://www.greif.ru/wp-content/uploads/greif-timeline-2010.jpg' },
-    { year:2018, title:'Золотой статус EcoVadis',         desc:'Greif впервые получает золотое признание EcoVadis за устойчивое развитие',                                                       img:'http://www.greif.ru/wp-content/uploads/greif-timeline-2018.jpg' },
-    { year:2019, title:'Крупнейшая сделка',               desc:'Greif приобретает Caraustar Industries — крупнейшую сделку в истории компании',                                                  img:'http://www.greif.ru/wp-content/uploads/greif-timeline-2019.jpg' },
-    { year:2022, title:'Покупка Lee Container',           desc:'Greif приобретает Lee Container, лидера по производству канистр и малой пластиковой тары',                                      img:'http://www.greif.ru/wp-content/uploads/lee-chemical-logo.png' },
+    { year:1877, title:'Открытие мастерской',            desc:'William Greif и Albert Vanderwyst открывают бондарную мастерскую «Vanderwyst and Greif» в Кливленде, Огайо',                         img:'https://www.greif.ru/wp-content/uploads/1877.jpg' },
+    { year:1908, title:'Крупнейший бондарный завод',      desc:'Greif Bros. Company становится крупнейшим бондарным предприятием в мире',                                                          img:'https://www.greif.ru/wp-content/uploads/1908.jpg' },
+    { year:1923, title:'Первая стальная бочка',           desc:'Произведена первая битумная стальная бочка, которая до сих пор входит в портфолио продукции',                                     img:'https://www.greif.ru/wp-content/uploads/1923.jpg' },
+    { year:1951, title:'Переезд штаб-квартиры',           desc:'Под руководством Джона К. Демпси штаб-квартира переезжает из Кливленда в Делавэр, Огайо',                                        img:'https://www.greif.ru/wp-content/uploads/1951.jpg' },
+    { year:1955, title:'Переход на фибровые барабаны',    desc:'Greif переходит от производства деревянных бочек к фибровым барабанам и гофрированным контейнерам',                              img:'https://www.greif.ru/wp-content/uploads/1955.jpg' },
+    { year:1964, title:'Технология выдувного формования', desc:'Greif покупает технологию выдувного формования вкладышей у Haveg Industries',                                                    img:'https://www.greif.ru/wp-content/uploads/greif-timeline-1964.jpg' },
+    { year:1978, title:'Производство гофрокартона',       desc:'Greif официально выходит на рынок производства гофрокартона с покупкой завода в Массилоне, Огайо',                               img:'https://www.greif.ru/wp-content/uploads/greif-timeline-1978.jpg' },
+    { year:1998, title:'Публикация &laquo;The Greif Way&raquo;', desc:'Впервые опубликован «Путь Greif» — чёткое видение компании',                                                             img:'https://www.greif.ru/wp-content/uploads/greif-timeline-1998.jpg' },
+    { year:2001, title:'Покупка Van Leer Industrial',     desc:'Greif покупает Van Leer Industrial, что даёт международное присутствие и удваивает размер компании. Переименование в Greif, Inc.', img:'https://www.greif.ru/wp-content/uploads/greif-timeline-2001.jpg' },
+    { year:2010, title:'Покупка FIBC компаний',           desc:'Greif приобретает 4 компании по производству гибких контейнеров, включая Storsack Group',                                       img:'https://www.greif.ru/wp-content/uploads/greif-timeline-2010.jpg' },
+    { year:2018, title:'Золотой статус EcoVadis',         desc:'Greif впервые получает золотое признание EcoVadis за устойчивое развитие',                                                       img:'https://www.greif.ru/wp-content/uploads/greif-timeline-2018.jpg' },
+    { year:2019, title:'Крупнейшая сделка',               desc:'Greif приобретает Caraustar Industries — крупнейшую сделку в истории компании',                                                  img:'https://www.greif.ru/wp-content/uploads/greif-timeline-2019.jpg' },
+    { year:2022, title:'Покупка Lee Container',           desc:'Greif приобретает Lee Container, лидера по производству канистр и малой пластиковой тары',                                      img:'https://www.greif.ru/wp-content/uploads/lee-chemical-logo.png' },
   ];
   var aboveCells = '', midCells = '', belowCells = '';
   events.forEach(function(e, i) {
@@ -216,7 +216,7 @@ const aboutSections = {
 
         <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
-            <img src="http://www.greif.ru/wp-content/uploads/1B-Man-making-barrel-11x14-Black-and-White-scaled.jpg" alt="Бондарная мастерская" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="https://www.greif.ru/wp-content/uploads/1B-Man-making-barrel-11x14-Black-and-White-scaled.jpg" alt="Бондарная мастерская" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
           <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;display:flex;flex-direction:column;justify-content:center">
             <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">1877</div>
@@ -232,13 +232,13 @@ const aboutSections = {
             <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">В начале XX века, с развитием промышленности, компания начала стремительно расти. Бочки Грайф стали стандартом для американской металлургической и химической промышленности. В 1920-х годах, отвечая на вызовы времени, компания освоила производство стальных барабанов, что ознаменовало начало перехода от традиционного дерева к современным материалам.</p>
           </div>
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
-            <img src="http://www.greif.ru/wp-content/uploads/Old-Drumline.jpg" alt="Линия производства барабанов" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="https://www.greif.ru/wp-content/uploads/Old-Drumline.jpg" alt="Линия производства барабанов" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
         </div>
 
         <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
-            <img src="http://www.greif.ru/wp-content/uploads/Greif-Truck.jpg" alt="Грузовик Greif" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="https://www.greif.ru/wp-content/uploads/Greif-Truck.jpg" alt="Грузовик Greif" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
           <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-left:none;border-radius:0 10px 10px 0;display:flex;flex-direction:column;justify-content:center">
             <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Середина XX века</div>
@@ -254,7 +254,7 @@ const aboutSections = {
             <p style="font-size:14px;color:var(--text-muted);line-height:1.8;margin:0">Сегодня Greif — это глобальный лидер в производстве промышленной упаковки. Мы ушли далеко от простых деревянных бочек. Портфель компании теперь включает не только деревянные и стальные барабаны, но и пластиковую тару, фибровые (картонные) барабаны, многослойные бумажные мешки и экологичные решения.</p>
           </div>
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
-            <img src="http://www.greif.ru/wp-content/uploads/Lloyd-Drums-display.jpg" alt="Ассортимент продукции Greif" style="width:100%;height:100%;object-fit:cover;display:block">
+            <img src="https://www.greif.ru/wp-content/uploads/Lloyd-Drums-display.jpg" alt="Ассортимент продукции Greif" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
         </div>
 

@@ -516,12 +516,12 @@ function _ibcReboManagerCard() {
 
 function _ibcSideNav(activeId) {
   const items = [
-    { id:'ibcWooden',   label:'На деревянном поддоне',      img:'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png' },
-    { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'http://www.greif.ru/wp-content/uploads/gibrid.png' },
-    { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png' },
-    { id:'ibcElectron', label:'Антистатический «Электрон»', img:'http://www.greif.ru/wp-content/uploads/electron.png' },
-    { id:'ibcBlack',    label:'GCube «Чёрный»',             img:'http://www.greif.ru/wp-content/uploads/blackqube.png' },
-    { id:'ibcRebo',     label:'Восстановленные REBO',       img:'http://www.greif.ru/wp-content/uploads/rebo.png' },
+    { id:'ibcWooden',   label:'На деревянном поддоне',      img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png' },
+    { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'https://www.greif.ru/wp-content/uploads/gibrid.png' },
+    { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'https://www.greif.ru/wp-content/uploads/evrokub-1.png' },
+    { id:'ibcElectron', label:'Антистатический «Электрон»', img:'https://www.greif.ru/wp-content/uploads/electron.png' },
+    { id:'ibcBlack',    label:'GCube «Чёрный»',             img:'https://www.greif.ru/wp-content/uploads/blackqube.png' },
+    { id:'ibcRebo',     label:'Восстановленные REBO',       img:'https://www.greif.ru/wp-content/uploads/rebo.png' },
   ];
   return `<div style="background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
     <div style="padding:13px 18px;background:var(--green-primary);color:#fff;font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Еврокубы IBC</div>
@@ -536,7 +536,7 @@ function _ibcSideNav(activeId) {
 
 function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
   const [wVal] = weight.split(' ');
-  const imgSrc = img || 'http://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png';
+  const imgSrc = img || 'https://www.greif.ru/wp-content/uploads/a30dcd01-81b5-4b2f-8da8-e76b82b62817.png';
   return `
 <div class="page">
   <div class="page-hero">
@@ -779,8 +779,8 @@ const PAGES = {
   </div>
   <div class="ibc-types-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px">
     ${[
-      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/bochkabezfona.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
-      { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'http://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
+      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'https://www.greif.ru/wp-content/uploads/bochkabezfona.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
+      { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'https://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
@@ -811,7 +811,7 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/bochkabezfona.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
+        <img src="https://www.greif.ru/wp-content/uploads/bochkabezfona.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
       </div>
       <div class="product-info-col">
         <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международных стандартов ISO 3574 и EN10130.</p>
@@ -1005,16 +1005,16 @@ const PAGES = {
     <div class="product-detail-grid">
       <div class="product-image-col" style="padding:20px;flex-direction:column;align-items:stretch;justify-content:center;">
         <div style="text-align:center;padding:12px 0">
-          <img id="drum1a2Img" src="http://www.greif.ru/wp-content/uploads/1a2.png" alt="Бочка 1А2" style="max-width:100%;max-height:360px;object-fit:contain;">
+          <img id="drum1a2Img" src="https://www.greif.ru/wp-content/uploads/1a2.png" alt="Бочка 1А2" style="max-width:100%;max-height:360px;object-fit:contain;">
         </div>
         <div style="display:flex;gap:8px;margin-top:12px">
           <button id="drum1a2BtnStd"
-            onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
+            onclick="document.getElementById('drum1a2Img').src='https://www.greif.ru/wp-content/uploads/1a2.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s">
             Стандартная
           </button>
           <button id="drum1a2BtnSlim"
-            onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/1a2-kremp-.png';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
+            onclick="document.getElementById('drum1a2Img').src='https://www.greif.ru/wp-content/uploads/1a2-kremp-.png';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s">
             Кремпированная
           </button>
@@ -1160,12 +1160,12 @@ const PAGES = {
   </div>
   <div class="ibc-types-grid">
     ${[
-      { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/evrokub-1.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
-      { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'http://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'http://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
+      { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/electron.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
+      { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'https://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
@@ -1188,7 +1188,7 @@ const PAGES = {
     'Еврокубы на деревянном поддоне',
     'Классическая конструкция с деревянным поддоном — 1000 л',
     '60,0 ±10,0', 'wood',
-    'http://www.greif.ru/wp-content/uploads/Bez-imeni-1.png',
+    'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png',
     'ibcWooden'
   ),
 
@@ -1196,7 +1196,7 @@ const PAGES = {
     'Еврокубы на гибридном поддоне',
     'Металлический поддон с пластиковыми рёбрами — 1000 л',
     '51,5 ±3,0', 'hyb',
-    'http://www.greif.ru/wp-content/uploads/gibrid.png',
+    'https://www.greif.ru/wp-content/uploads/gibrid.png',
     'ibcHybrid'
   ),
 
@@ -1204,7 +1204,7 @@ const PAGES = {
     'Еврокубы на пластиковом поддоне',
     'Цельнопластиковый поддон, устойчивый к коррозии — 1000 л',
     '52,5 ±3,0', 'pla',
-    'http://www.greif.ru/wp-content/uploads/evrokub-1.png',
+    'https://www.greif.ru/wp-content/uploads/evrokub-1.png',
     'ibcPlastic'
   ),
 
@@ -1222,7 +1222,7 @@ const PAGES = {
     <div style="flex:1;min-width:0;">
       <div class="product-detail-grid">
         <div class="product-image-col">
-          <img src="http://www.greif.ru/wp-content/uploads/electron.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
+          <img src="https://www.greif.ru/wp-content/uploads/electron.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
         <div class="product-info-col">
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
@@ -1295,7 +1295,7 @@ const PAGES = {
     <div style="flex:1;min-width:0;">
       <div class="product-detail-grid">
         <div class="product-image-col">
-          <img src="http://www.greif.ru/wp-content/uploads/blackqube.png" alt="GCube Чёрный" style="max-width:100%;max-height:420px;object-fit:contain;">
+          <img src="https://www.greif.ru/wp-content/uploads/blackqube.png" alt="GCube Чёрный" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
         <div class="product-info-col">
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
@@ -1378,7 +1378,7 @@ const PAGES = {
       <div class="product-detail-grid">
         <div>
           <div class="product-image-col">
-            <img src="http://www.greif.ru/wp-content/uploads/rebo.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
+            <img src="https://www.greif.ru/wp-content/uploads/rebo.png" alt="REBO IBC" style="max-width:100%;max-height:420px;object-fit:contain;">
           </div>
           <button class="btn-outline-green" onclick="navigateAboutSection('sustainability')" style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:16px;width:100%">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
@@ -1623,7 +1623,7 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/konboch.png" alt="Коническая бочка Greif" style="max-width:100%;max-height:400px;object-fit:contain;">
+        <img src="https://www.greif.ru/wp-content/uploads/konboch.png" alt="Коническая бочка Greif" style="max-width:100%;max-height:400px;object-fit:contain;">
       </div>
       <div class="product-info-col">
         <p class="product-description">Конические стальные бочки используются для транспортировки и хранения пищевых продуктов — концентратов томатной пасты, соков, пюре, а также густых и сыпучих непищевых продуктов.</p>
@@ -1691,7 +1691,7 @@ const PAGES = {
             </tbody>
           </table>
         </div>
-        <img src="http://www.greif.ru/wp-content/uploads/konbochka.png" alt="Чертёж конической бочки Greif" style="display:block;margin-top:28px;max-width:100%;max-height:500px;object-fit:contain;">
+        <img src="https://www.greif.ru/wp-content/uploads/konbochka.png" alt="Чертёж конической бочки Greif" style="display:block;margin-top:28px;max-width:100%;max-height:500px;object-fit:contain;">
       </div>
       <div class="tab-content" id="tab-con-coating">
         <p>Бочка окрашивается в один цвет по системе RAL.</p>
@@ -1822,9 +1822,9 @@ const PAGES = {
         <div class="product-carousel">
           <div class="carousel-track-wrap">
             <div class="carousel-track" id="canCarouselTrack">
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif 1"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-3.png" alt="Канистра Greif 3"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-4.png" alt="Канистра Greif 4"></div>
+              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif 1"></div>
+              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-3.png" alt="Канистра Greif 3"></div>
+              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-4.png" alt="Канистра Greif 4"></div>
             </div>
             <button class="carousel-btn carousel-btn-prev" onclick="canCarouselMove(-1)" aria-label="Назад">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -1903,7 +1903,7 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="http://www.greif.ru/wp-content/uploads/klover.png" alt="Кловертейнер Greif" style="max-width:380px;max-height:380px;width:100%;object-fit:contain;">
+        <img src="https://www.greif.ru/wp-content/uploads/klover.png" alt="Кловертейнер Greif" style="max-width:380px;max-height:380px;width:100%;object-fit:contain;">
       </div>
       <div class="product-info-col">
         <p class="product-description">Clovertainer® — среднетоннажный контейнер из многослойного картона ёмкостью 1000 литров. Кловертейнеры успешно применяются для транспортировки и хранения битума и битумных мастик.</p>
