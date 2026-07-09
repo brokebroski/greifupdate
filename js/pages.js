@@ -1823,7 +1823,6 @@ const PAGES = {
           <div class="carousel-track-wrap">
             <div class="carousel-track" id="canCarouselTrack">
               <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif 1"></div>
-              <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-2.png" alt="Канистра Greif 2"></div>
               <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-3.png" alt="Канистра Greif 3"></div>
               <div class="carousel-slide"><img src="http://www.greif.ru/wp-content/uploads/kanistra-4.png" alt="Канистра Greif 4"></div>
             </div>
@@ -1833,18 +1832,17 @@ const PAGES = {
             <button class="carousel-btn carousel-btn-next" onclick="canCarouselMove(1)" aria-label="Вперёд">
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </button>
-            <span class="carousel-counter" id="canCarouselCounter">1 / 4</span>
+            <span class="carousel-counter" id="canCarouselCounter">1 / 3</span>
           </div>
           <div class="carousel-dots" id="canCarouselDots">
             <button class="carousel-dot active" onclick="canCarouselGoTo(0)"></button>
             <button class="carousel-dot" onclick="canCarouselGoTo(1)"></button>
             <button class="carousel-dot" onclick="canCarouselGoTo(2)"></button>
-            <button class="carousel-dot" onclick="canCarouselGoTo(3)"></button>
           </div>
         </div>
       </div>
       <div class="product-info-col">
-        <p class="product-description">Многослойные канистры используются для хранения агрохимических продуктов. От традиционных полиэтиленовых канистр они отличаются наличием дополнительного полиамидного слоя, который обеспечивает барьерные свойства тары.</p>
+        <p class="product-description">Канистры производятся в двух исполнениях — с барьерным слоем COEX и без него. Барьерное исполнение создано для безопасного хранения и транспортировки жидкостей, вступающих в реакцию с обычным полиэтиленом, разъедающих его стенки или выделяющих едкие запахи; обычная полиэтиленовая канистра подходит для менее агрессивных продуктов, где барьерная защита не требуется.</p>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
@@ -1854,7 +1852,30 @@ const PAGES = {
         <button class="tab-btn" data-tab="can-specs">СПЕЦИФИКАЦИИ</button>
       </div>
       <div class="tab-content active" id="tab-can-desc">
-        <p>Компания Greif начала производить в России многослойные пластиковые канистры с 2022 года. Площадка по выпуску канистр находится в Индустриальном парке Ворсино Калужской области. Область применения — фасовка агрохимии.</p>
+        <p>Компания Greif начала производить в России пластиковые канистры с 2022 года. Площадка по выпуску канистр находится в Индустриальном парке Ворсино Калужской области. Канистры выпускаются в двух вариантах — стандартные полиэтиленовые и многослойные с барьерным слоем COEX, — что позволяет подобрать тару под требования конкретного продукта.</p>
+
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Барьерная технология COEX</h3>
+        <p>Многослойные канистры COEX отличаются от стандартных полиэтиленовых наличием дополнительного барьерного слоя, который обеспечивает два ключевых защитных свойства тары:</p>
+        <ul style="margin:14px 0 0;padding-left:20px;line-height:1.8">
+          <li><strong style="color:var(--text-dark)">Защита от растворения</strong> — предотвращает деформацию тары и миграцию химикатов сквозь пластик.</li>
+          <li><strong style="color:var(--text-dark)">Блокировка запахов и газов</strong> — не даёт запаху выходить наружу, а кислороду проникать внутрь, защищая содержимое от окисления.</li>
+        </ul>
+
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Где применяются</h3>
+        <ul style="margin:0;padding-left:20px;line-height:1.8">
+          <li><strong style="color:var(--text-dark)">Автохимия и ГСМ</strong> — розлив бензина, масел, растворителей (ацетон, толуол) и других летучих жидкостей.</li>
+          <li><strong style="color:var(--text-dark)">Агрохимия</strong> — фасовка агрессивных пестицидов и удобрений.</li>
+          <li><strong style="color:var(--text-dark)">Промышленность</strong> — краски, лаки и химически чувствительные продукты.</li>
+        </ul>
+
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Технология соэкструзии</h3>
+        <p>Соэкструзия — процесс одновременного выдавливания нескольких полимеров через одну формующую головку, позволяющий объединить свойства разных материалов в одном изделии. Каждый полимер плавится в отдельном экструдере, расплавы соединяются в общей головке, образуя единую многослойную структуру, которая затем охлаждается и затвердевает. Так каждый слой канистры отвечает за собственную характеристику — прочность, эластичность или барьерную защиту.</p>
+
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Крышка с индукционной запайкой</h3>
+        <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
+
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Упаковка стрейч-худ</h3>
+        <p>Для упаковки паллет с канистрами используется стрейч-худ — эластичный полимерный рукав, который натягивается на груз без нагрева и усадки. Он обеспечивает полную герметичность паллеты, надёжно фиксирует канистры от сдвига и падения при транспортировке, а монолитная плёнка без прорезей делает любую попытку несанкционированного доступа сразу заметной. Процесс упаковки при этом автоматизирован, экономичен и не требует высоких температур или газа.</p>
       </div>
       <div class="tab-content" id="tab-can-specs">
         <table style="width:100%;border-collapse:collapse;font-size:14px">

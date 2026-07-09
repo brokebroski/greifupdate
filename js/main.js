@@ -202,7 +202,7 @@ function steelCarouselGoTo(idx) {
 
 /* ── CAROUSEL: Canisters ── */
 let _ccIdx = 0;
-const _CC_TOTAL = 4;
+const _CC_TOTAL = 3;
 const _CC_INTERVAL = 2000;
 let _ccTimer = null;
 
