@@ -32,17 +32,13 @@ function initYandexMap() {
 
   _yandexMapInstance.behaviors.disable('scrollZoom');
 
-  const kalugaPhoto = `<img src="http://www.greif.ru/wp-content/uploads/IMG_5171-scaled.jpeg" alt="Завод в Калуге" style="width:100%; max-width:260px; border-radius:6px; margin-top:8px; display:block"/>`;
-
   function makeBalloon(city) {
-    const photo = city.name.startsWith('Калуга') ? kalugaPhoto : '';
     return `
       <div style="font-family:Roboto, sans-serif; min-width:200px">
         <strong style="color:#317965; font-size:16px">📍 ${city.name}</strong><br>
         <span style="font-size:13px; color:#333">${city.address}</span><br>
         <span style="font-size:13px; color:#555">📞 ${city.phone}</span><br>
         <span style="font-size:13px; color:#555">✉️ <a href="mailto:${city.email}" style="color:#317965; text-decoration:none">${city.email}</a></span>
-        ${photo}
       </div>
     `;
   }
