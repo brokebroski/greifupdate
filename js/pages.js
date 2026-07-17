@@ -405,6 +405,33 @@ function _ibcStdTab() {
 }
 
 
+function _ibcUnTab() {
+  return `<div class="ibc-spec-block">
+    <div class="ibc-spec-block-hd">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      ООН — область применения
+    </div>
+    <ul style="list-style:none;padding:0;margin:0 0 18px">${[
+      'Контейнеры спецификации «ООН» предназначены для пищевой и промышленной продукции',
+      'Предназначены для применения в качестве средств (тары) для хранения и транспортирования жидких и жидкотекучих продуктов, отнесённых к массовым грузам',
+      'Допускается использование настоящих контейнеров в качестве тары II и III группы в соответствии с классификацией по ГОСТ 26319 для грузов, относящихся к опасным грузам по ГОСТ 19433, за исключением опасных грузов классов 2, 7 подкласса 6.2',
+    ].map(t => `<li style="display:flex;gap:8px;padding:8px 0;border-bottom:1px solid var(--border);font-size:14px;color:var(--text-dark)">
+      <span style="color:var(--green-primary);font-weight:700;flex-shrink:0">—</span>${t}
+    </li>`).join('')}</ul>
+    <div style="font-size:13px;color:var(--text-muted);margin-bottom:10px">Максимальная плотность продукта, заливаемого в контейнер</div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div style="flex:1;min-width:180px;background:var(--green-light-bg);border:1px solid var(--border);border-radius:6px;padding:14px 18px">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;white-space:nowrap">По ДОПОГ</div>
+        <div style="font-size:17px;font-weight:700;color:var(--text-dark);white-space:nowrap">не более 1,9 г/см³</div>
+      </div>
+      <div style="flex:1;min-width:180px;background:var(--green-light-bg);border:1px solid var(--border);border-radius:6px;padding:14px 18px">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:6px;white-space:nowrap">По МПОГ</div>
+        <div style="font-size:17px;font-weight:700;color:var(--text-dark);white-space:nowrap">не более 1,6 г/см³</div>
+      </div>
+    </div>
+  </div>`;
+}
+
 function _ibcClosureTab() {
   return `<div style="max-width:680px">
     <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
@@ -583,6 +610,7 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
         <div class="tab-headers">
           <button class="tab-btn active" data-tab="${pfx}-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="${pfx}-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="${pfx}-un">ООН</button>
           <button class="tab-btn" data-tab="${pfx}-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="${pfx}-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="${pfx}-instruction">ИНСТРУКЦИЯ</button>
@@ -596,6 +624,9 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
         </div>
         <div class="tab-content" id="tab-${pfx}-std">
           ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-${pfx}-un">
+          ${_ibcUnTab()}
         </div>
         <div class="tab-content" id="tab-${pfx}-logistics">
           ${_ibcLogisticsTab()}
@@ -1238,6 +1269,7 @@ const PAGES = {
         <div class="tab-headers">
           <button class="tab-btn active" data-tab="el-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="el-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="el-un">ООН</button>
           <button class="tab-btn" data-tab="el-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="el-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="el-closure">УКУПОРКА</button>
@@ -1265,6 +1297,9 @@ const PAGES = {
         </div>
         <div class="tab-content" id="tab-el-std">
           ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-el-un">
+          ${_ibcUnTab()}
         </div>
         <div class="tab-content" id="tab-el-logistics">
           ${_ibcLogisticsTab()}
@@ -1312,6 +1347,7 @@ const PAGES = {
           <button class="tab-btn active" data-tab="black-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="black-comp">КОМПЛЕКТАЦИЯ</button>
           <button class="tab-btn" data-tab="black-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="black-un">ООН</button>
           <button class="tab-btn" data-tab="black-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="black-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="black-instruction">ИНСТРУКЦИЯ</button>
@@ -1347,6 +1383,9 @@ const PAGES = {
         </div>
         <div class="tab-content" id="tab-black-std">
           ${_ibcStdTab()}
+        </div>
+        <div class="tab-content" id="tab-black-un">
+          ${_ibcUnTab()}
         </div>
         <div class="tab-content" id="tab-black-logistics">
           ${_ibcLogisticsTab()}
@@ -1400,6 +1439,7 @@ const PAGES = {
           <button class="tab-btn" data-tab="rebo-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="rebo-comp">СОСТАВ</button>
           <button class="tab-btn" data-tab="rebo-std">СТАНДАРТ</button>
+          <button class="tab-btn" data-tab="rebo-un">ООН</button>
           <button class="tab-btn" data-tab="rebo-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="rebo-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="rebo-closure">УКУПОРКА</button>
@@ -1433,6 +1473,9 @@ const PAGES = {
       </div>
       <div class="tab-content" id="tab-rebo-std">
         ${_ibcStdTab()}
+      </div>
+      <div class="tab-content" id="tab-rebo-un">
+        ${_ibcUnTab()}
       </div>
       <div class="tab-content" id="tab-rebo-logistics">
         ${_ibcLogisticsTab()}
