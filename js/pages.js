@@ -810,7 +810,7 @@ const PAGES = {
   </div>
   <div class="ibc-types-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px">
     ${[
-      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'https://www.greif.ru/wp-content/uploads/bochkabezfona.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
+      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
       { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'https://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
@@ -842,7 +842,7 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <img src="https://www.greif.ru/wp-content/uploads/bochkabezfona.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
+        <img src="http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
       </div>
       <div class="product-info-col">
         <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международных стандартов ISO 3574 и EN10130.</p>
@@ -1193,14 +1193,14 @@ const PAGES = {
     ${[
       { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
+      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png', scale:1.3, desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png', scale:1.16, desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
       { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'https://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
-          <img src="${c.img}" alt="${c.title}">
+          <img src="${c.img}" alt="${c.title}"${c.scale ? ` style="transform:scale(${c.scale})"` : ''}>
         </div>
         <div class="ibc-type-card-body">
           <div class="ibc-type-card-title">${c.title}</div>
@@ -2171,93 +2171,6 @@ const PAGES = {
   </div>
 </div>`,
 
-  vacancies: () => `
-<div class="page">
-  <div class="page-hero">
-    <div class="page-hero-inner">
-      <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px">Карьера</div>
-      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Вакансии в Грайф</h1>
-      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Присоединяйтесь к команде мирового лидера промышленной упаковки</p>
-    </div>
-  </div>
-  <div class="career-page">
-    <div class="city-menu-container">
-      <div class="city-tabs">
-        <button class="city-tab active" data-city="all">Все города</button>
-        <button class="city-tab" data-city="vologda">Вологда</button>
-        <button class="city-tab" data-city="kaluga">Калуга (Обнинск)</button>
-        <button class="city-tab" data-city="perm">Пермь</button>
-        <button class="city-tab" data-city="volgograd">Волгоград</button>
-        <button class="city-tab" data-city="kazan">Казань</button>
-        <button class="city-tab" data-city="omsk">Омск</button>
-      </div>
-    </div>
-    <section class="vacancies">
-      <div class="city-section active" data-city="vologda">
-        <h3 class="city-title">Вологда</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Инженер-технолог</h4><p>Специалист по подбору персонала: Александра Караваева</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Инженер-технолог','от 80 000 ₽','Вологда, ул. Маяковского, 38','Александра Караваева','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-          <div class="vacancy-card"><h4>Мастер смены</h4><p>Специалист по подбору персонала: Александра Караваева</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Мастер смены','от 70 000 ₽','Вологда, ул. Маяковского, 38','Александра Караваева','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-      <div class="city-section" data-city="kaluga">
-        <h3 class="city-title">Калуга (Обнинск)</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Оператор линии розлива</h4><p>Специалист по подбору персонала: Ильина Вероника</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Оператор линии розлива','от 65 000 ₽','Калужская обл., Индустриальный парк Ворсино','Ильина Вероника','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-      <div class="city-section" data-city="perm">
-        <h3 class="city-title">Пермь</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Начальник склада</h4><p>Специалист по подбору персонала: Анна Егорова</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Начальник склада','от 90 000 ₽','Пермь, ул. Героев Хасана, 74','Анна Егорова','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-      <div class="city-section" data-city="volgograd">
-        <h3 class="city-title">Волгоград</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Слесарь-ремонтник</h4><p>Специалист по подбору персонала: Александр Седов</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Слесарь-ремонтник','от 60 000 ₽','Волгоград, ул. Промысловая, 15','Александр Седов','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-      <div class="city-section" data-city="kazan">
-        <h3 class="city-title">Казань</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Инженер-химик</h4><p>Специалист по подбору персонала: Марина Леонова</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Инженер-химик','от 85 000 ₽','Казань, ул. М.Миля, 49А','Марина Леонова','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-      <div class="city-section" data-city="omsk">
-        <h3 class="city-title">Омск</h3>
-        <div class="vacancy-grid">
-          <div class="vacancy-card"><h4>Электромонтер</h4><p>Специалист по подбору персонала: Алексей Кузьмин</p><div class="button-group"><button class="details-btn" onclick="showVacancyDemo('Электромонтер','от 55 000 ₽','Омск, ул. И.Н. Багнюка, 10','Алексей Кузьмин','@example','+7 XXX XXX XX XX')">Подробнее</button><a href="#" class="telegram-btn" target="_blank">Telegram</a></div></div>
-        </div>
-      </div>
-    </section>
-    <section class="why-us">
-      <h2>Почему у нас круто работать</h2>
-      <div class="why-grid">
-        <div class="why-card"><div class="why-icon">🌍</div><h4>Международная компания</h4><p>Greif — глобальный производственный лидер с 1877 года</p></div>
-        <div class="why-card"><div class="why-icon">📈</div><h4>Карьерный рост</h4><p>Возможности профессионального развития и обучения</p></div>
-        <div class="why-card"><div class="why-icon">💼</div><h4>Официальное трудоустройство</h4><p>Полный социальный пакет и стабильность</p></div>
-        <div class="why-card"><div class="why-icon">🏭</div><h4>Современное производство</h4><p>Передовые технологии и оборудование</p></div>
-      </div>
-    </section>
-    <section class="company-section">
-      <img src="https://www.greif.ru/wp-content/uploads/2024/11/7.JPG" alt="Команда Greif" style="width:100%; border-radius:16px;">
-      <p class="photo-caption">Наша команда — профессионалы своего дела</p>
-    </section>
-    <section class="social-section">
-      <h3>Следите за нами</h3>
-      <div class="social-grid">
-        <a href="https://vk.com/greif_russia" target="_blank">ВКонтакте</a>
-        <a href="https://t.me/greif_russia" target="_blank">Telegram</a>
-      </div>
-    </section>
-  </div>
-  <div id="vacancyPopup" style="display:none;">
-    <div>
-      <button class="close-popup" onclick="closeVacancyPopup()">×</button>
-      <div id="popupContent"></div>
-    </div>
-  </div>
-</div>`,
+  vacancies: () => renderVacanciesPage(),
 
 };

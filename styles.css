@@ -1570,6 +1570,60 @@
 .students-email-link { background: #fff; color: var(--green-primary); border: 1px solid var(--green-primary); }
 .students-email-link:hover { background: var(--green-primary); color: #fff; }
 
+.students-popup-contact-btns a {
+  background: #fff;
+  color: var(--green-primary);
+  border: 1px solid var(--border);
+}
+.students-popup-contact-btns a:hover { background: var(--green-primary); color: #fff !important; border-color: var(--green-primary); }
+
+/* Two-person recruiter contacts row (students popup) */
+.students-popup-contacts-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 4px 0 20px;
+}
+.students-popup-contact-person {
+  background: var(--green-light-bg);
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  min-width: 220px;
+  text-align: center;
+}
+.students-popup-contact-person strong { display: block; font-size: 0.9rem; color: var(--text-dark); margin-bottom: 6px; }
+.students-popup-contact-person a {
+  display: block;
+  margin: 4px 0;
+  font-size: 0.82rem;
+  color: var(--green-primary);
+  text-decoration: none;
+}
+.students-popup-contact-person a:hover { text-decoration: underline; }
+.students-popup-max-btn {
+  display: inline-block !important;
+  margin-top: 8px !important;
+  padding: 6px 16px;
+  background: #7c5cbf;
+  color: #fff !important;
+  border-radius: 40px;
+  font-weight: 600;
+  text-decoration: none !important;
+}
+.students-popup-max-btn:hover { background: #6447a8; }
+
+.students-popup-note {
+  text-align: center;
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
 /* ── НОВЫЙ ФУТЕР ── */
 .footer {
   background: var(--green-footer);

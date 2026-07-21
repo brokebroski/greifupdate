@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вакансии — Greif | Эксперимент</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Condensed:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --green:        #006B4C;
+      --green-dark:   #004D36;
+      --green-mid:    #008A60;
+      --green-light:  #E1EFEB;
+      --green-accent: #00C47A;
+      --text:         #1A2B22;
+      --text-muted:   #6B7F76;
+      --border:       #D0E5DC;
+      --bg:           #F4F9F6;
+      --white:        #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+
+    /* ═══ COMPACT HEADER ═══════════════════════════════════════ */
+    .page-header {
+      background: var(--green-dark);
+      padding: 28px 40px 32px;
+      position: relative;
+      overflow: hidden;
+    }
+    .page-header::after {
+      content: '';
+      position: absolute;
+      right: -60px; top: -80px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0,196,122,0.18) 0%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite alternate;
+    }
+    @keyframes pulse {
+      from { transform: scale(1);   opacity: .7; }
+      to   { transform: scale(1.1); opacity: 1;  }
+    }
+    .header-inner {
+      position: relative; z-index: 1;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 24px;
+    }
+    .header-label {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .22em; text-transform: uppercase;
+      color: var(--green-accent);
+      margin-bottom: 6px;
+      opacity: 0; animation: fadeUp .5s .05s ease forwards;
+    }
+    .header-title {
+      font-size: clamp(22px, 3.5vw, 34px);
+      font-weight: 900; color: #fff;
+      letter-spacing: -.02em; line-height: 1.15;
+      opacity: 0; animation: fadeUp .5s .15s ease forwards;
+    }
+    .header-title span { color: var(--green-accent); }
+    .header-chips {
+      display: flex; gap: 10px; flex-wrap: wrap;
+      opacity: 0; animation: fadeLeft .5s .3s ease forwards;
+    }
+    .header-chip {
+      display: flex; flex-direction: column; align-items: center;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px; padding: 10px 20px;
+      backdrop-filter: blur(6px);
+    }
+    .chip-num {
+      font-size: 24px; font-weight: 900; color: var(--green-accent); line-height: 1;
+    }
+    .chip-lbl { font-size: 11px; color: rgba(255,255,255,.5); margin-top: 2px; }
+
+    @keyframes fadeUp  { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes fadeLeft{ from { opacity:0; transform:translateX(14px); } to { opacity:1; transform:translateX(0); } }
+
+    /* ═══ LAYOUT ════════════════════════════════════════════════ */
+    .layout {
+      max-width: 1200px; margin: 0 auto;
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 0;
+      min-height: calc(100vh - 130px);
+    }
+
+    /* ═══ SIDEBAR ═══════════════════════════════════════════════ */
+    .sidebar {
+      padding: 28px 0 40px;
+      border-right: 1px solid var(--border);
+      position: sticky; top: 0;
+      height: calc(100vh - 130px);
+      overflow-y: auto;
+    }
+    .sidebar-search {
+      margin: 0 16px 20px;
+      position: relative;
+    }
+    .sidebar-search svg {
+      position: absolute; left: 11px; top: 50%;
+      transform: translateY(-50%); pointer-events: none;
+      color: var(--text-muted);
+    }
+    .sidebar-search input {
+      width: 100%;
+      padding: 9px 12px 9px 34px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      background: var(--white);
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px; color: var(--text);
+      outline: none;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .sidebar-search input:focus {
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(0,107,76,.1);
+    }
+    .sidebar-label {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 0 16px; margin-bottom: 8px;
+    }
+    .city-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 16px;
+      cursor: pointer;
+      border-left: 3px solid transparent;
+      transition: all .2s ease;
+      font-size: 14px; font-weight: 500; color: var(--text-muted);
+      user-select: none;
+    }
+    .city-nav-item:hover { background: var(--green-light); color: var(--green); }
+    .city-nav-item.active {
+      border-left-color: var(--green);
+      background: var(--green-light);
+      color: var(--green);
+      font-weight: 700;
+    }
+    .city-nav-badge {
+      font-size: 11px; font-weight: 700;
+      background: var(--green-light);
+      color: var(--green);
+      padding: 2px 8px; border-radius: 100px;
+      transition: background .2s, color .2s;
+    }
+    .city-nav-item.active .city-nav-badge {
+      background: var(--green); color: #fff;
+    }
+
+    /* ═══ VACANCY LIST ══════════════════════════════════════════ */
+    .vacancy-panel {
+      padding: 28px 32px 60px;
+    }
+    .panel-top {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 24px; gap: 16px;
+    }
+    .panel-count {
+      font-size: 13px; color: var(--text-muted);
+      background: var(--green-light);
+      padding: 5px 14px; border-radius: 100px; font-weight: 500;
+    }
+    .view-toggle {
+      display: flex; gap: 4px;
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 3px;
+    }
+    .view-btn {
+      width: 32px; height: 32px; border: none; background: transparent;
+      border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); transition: all .2s;
+    }
+    .view-btn.active { background: var(--green); color: #fff; }
+    .view-btn:hover:not(.active) { background: var(--green-light); color: var(--green); }
+
+    /* ─── City Group ─── */
+    .city-group {
+      margin-bottom: 36px;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .city-group.visible { opacity: 1; transform: translateY(0); }
+
+    .group-heading {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .group-heading h3 {
+      font-family: 'Roboto Condensed', sans-serif;
+      font-size: 16px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--text);
+    }
+    .group-count {
+      font-size: 12px; color: var(--text-muted);
+      background: var(--bg); border: 1px solid var(--border);
+      padding: 2px 10px; border-radius: 100px;
+    }
+
+    /* ─── LIST VIEW (default) ─── */
+    body.list-view .vacancy-stack { display: flex; flex-direction: column; gap: 10px; }
+    body.list-view .vacancy-row  { display: flex; }
+    body.list-view .vacancy-grid-cards { display: none; }
+
+    /* ─── GRID VIEW ─── */
+    body.grid-view .vacancy-stack { display: none; }
+    body.grid-view .vacancy-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* ─── ROW CARD (list view) ─── */
+    .vacancy-row {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 20px;
+      display: flex; align-items: center; gap: 16px;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      position: relative; overflow: hidden;
+    }
+    .vacancy-row::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, var(--green), var(--green-accent));
+      transform: scaleY(0);
+      transform-origin: bottom;
+      transition: transform .3s ease;
+      border-radius: 0 2px 2px 0;
+    }
+    .vacancy-row:hover { transform: translateX(4px); box-shadow: 0 4px 20px rgba(0,107,76,.1); border-color: rgba(0,107,76,.3); }
+    .vacancy-row:hover::before { transform: scaleY(1); }
+
+    .row-left { flex: 1; min-width: 0; }
+    .row-dept {
+      font-size: 10px; font-weight: 700;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 3px;
+      font-family: 'Roboto Condensed', sans-serif;
+    }
+    .row-title { font-size: 16px; font-weight: 700; color: var(--text); }
+    .row-meta {
+      display: flex; gap: 14px; margin-top: 5px;
+      flex-wrap: wrap;
+    }
+    .row-meta-item {
+      display: flex; align-items: center; gap: 5px;
+      font-size: 12px; color: var(--text-muted);
+    }
+    .row-meta-item svg { color: var(--green-mid); }
+
+    .row-right { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; flex-shrink: 0; }
+    .row-salary {
+      font-size: 17px; font-weight: 900; color: var(--green);
+      white-space: nowrap;
+    }
+    .row-actions { display: flex; gap: 6px; }
+    .row-btn {
+      padding: 6px 14px; border-radius: 8px;
+      font-family: 'Roboto', sans-serif; font-size: 12px; font-weight: 600;
+      border: none; cursor: pointer; transition: all .2s;
+    }
+    .row-btn-main { background: var(--green); color: #fff; }
+    .row-btn-main:hover { background: var(--green-dark); }
+    .row-btn-tg {
+      background: transparent; border: 1.5px solid var(--border);
+      color: #229ED9; width: 32px; padding: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .row-btn-tg:hover { background: #E8F5FF; border-color: #229ED9; }
+
+    .row-new {
+      font-size: 10px; font-weight: 700;
+      background: var(--green-accent); color: #fff;
+      padding: 2px 8px; border-radius: 100px;
+      letter-spacing: .04em;
+    }
+
+    /* ─── GRID CARD (grid view) ─── */
+    .grid-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 22px;
+      cursor: pointer;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+      display: flex; flex-direction: column; gap: 12px;
+      position: relative; overflow: hidden;
+    }
+    .grid-card::after {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--green), var(--green-accent));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .grid-card:hover { transform: translateY(-5px); box-shadow: 0 14px 40px rgba(0,107,76,.13); border-color: rgba(0,107,76,.25); }
+    .grid-card:hover::after { transform: scaleX(1); }
+    .gc-dept { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); font-family: 'Roboto Condensed', sans-serif; }
+    .gc-title { font-size: 16px; font-weight: 700; color: var(--text); line-height: 1.3; }
+    .gc-salary { font-size: 20px; font-weight: 900; color: var(--green); }
+    .gc-meta { display: flex; flex-direction: column; gap: 5px; }
+    .gc-meta-item { display: flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-muted); }
+    .gc-meta-item svg { color: var(--green-mid); }
+    .gc-footer {
+      display: flex; align-items: center; gap: 10px;
+      padding-top: 10px; border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+    .gc-avatar {
+      width: 30px; height: 30px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green), var(--green-accent));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .gc-hr { font-size: 12px; font-weight: 600; color: var(--text); }
+    .gc-hr-role { font-size: 11px; color: var(--text-muted); }
+    .gc-tg {
+      margin-left: auto;
+      width: 32px; height: 32px; border-radius: 8px;
+      background: transparent; border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: #229ED9; cursor: pointer; transition: all .2s;
+    }
+    .gc-tg:hover { background: #E8F5FF; border-color: #229ED9; }
+
+    /* ═══ EMPTY STATE ═══════════════════════════════════════════ */
+    .empty-state {
+      text-align: center; padding: 80px 20px; display: none;
+    }
+    .empty-state svg { color: var(--border); margin-bottom: 16px; }
+    .empty-state p { color: var(--text-muted); font-size: 15px; }
+
+    /* ═══ MODAL ═════════════════════════════════════════════════ */
+    .modal-overlay {
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.45);
+      backdrop-filter: blur(6px);
+      z-index: 1000;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px;
+      opacity: 0; pointer-events: none;
+      transition: opacity .3s ease;
+    }
+    .modal-overlay.open { opacity: 1; pointer-events: all; }
+    .modal {
+      background: var(--white);
+      border-radius: 24px;
+      max-width: 520px; width: 100%;
+      max-height: 90vh; overflow-y: auto;
+      padding: 36px;
+      transform: scale(.93) translateY(16px);
+      transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+      position: relative;
+    }
+    .modal-overlay.open .modal { transform: scale(1) translateY(0); }
+    .modal-close {
+      position: absolute; top: 18px; right: 18px;
+      width: 34px; height: 34px; border-radius: 50%;
+      border: 1.5px solid var(--border); background: var(--white);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 17px; color: var(--text-muted);
+      transition: all .2s;
+    }
+    .modal-close:hover { background: #FEF2F2; border-color: #F87171; color: #EF4444; }
+    .modal-dept { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--green); font-family: 'Roboto Condensed', sans-serif; margin-bottom: 6px; }
+    .modal-title { font-size: 24px; font-weight: 900; color: var(--text); letter-spacing: -.02em; margin-bottom: 4px; }
+    .modal-salary { font-size: 22px; font-weight: 900; color: var(--green); margin-bottom: 20px; }
+    .modal-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 4px; }
+    .modal-tag { font-size: 12px; padding: 4px 12px; background: var(--green-light); color: var(--green-dark); border-radius: 100px; font-weight: 500; }
+    .modal-divider { height: 1px; background: var(--border); margin: 20px 0; }
+    .modal-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .modal-row:last-child { border-bottom: none; }
+    .modal-row svg { color: var(--green-mid); flex-shrink: 0; }
+    .modal-row-lbl { font-size: 11px; color: var(--text-muted); min-width: 90px; }
+    .modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+    .modal-btn-main { flex: 1; padding: 13px; background: var(--green); color: #fff; border: none; border-radius: 13px; font-family: 'Roboto', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: background .2s; }
+    .modal-btn-main:hover { background: var(--green-dark); }
+    .modal-btn-tg { padding: 13px 18px; background: #229ED9; color: #fff; border: none; border-radius: 13px; font-family: 'Roboto', sans-serif; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 8px; transition: background .2s; }
+    .modal-btn-tg:hover { background: #1a8bc4; }
+
+    /* ═══ SCROLLBAR ═════════════════════════════════════════════ */
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--green-mid); }
+
+    /* ═══ RESPONSIVE ════════════════════════════════════════════ */
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 16px 0; }
+      .city-nav-item { display: inline-flex; border-left: none; border-radius: 100px; padding: 7px 14px; }
+      .city-nav-item.active { border-left: none; background: var(--green); color: #fff; }
+      .city-nav-item.active .city-nav-badge { background: rgba(255,255,255,.2); color: #fff; }
+      .sidebar-label { display: none; }
+      .sidebar > div:first-child { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 16px; }
+      .page-header { padding: 20px 20px 24px; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      .vacancy-panel { padding: 20px 16px 40px; }
+      .vacancy-row { flex-direction: column; align-items: flex-start; }
+      .row-right { align-items: flex-start; flex-direction: row; flex-wrap: wrap; }
+    }
+  </style>
+</head>
+<body class="list-view">
+
+<!-- ═══ COMPACT HEADER ════════════════════════════════════════ -->
+<header class="page-header">
+  <div class="header-inner">
+    <div>
+      <div class="header-label">Карьера в Greif</div>
+      <div class="header-title">Вакансии <span>&amp;</span> карьера</div>
+    </div>
+    <div class="header-chips">
+      <div class="header-chip">
+        <span class="chip-num" data-count="7">0</span>
+        <span class="chip-lbl">открытых вакансий</span>
+      </div>
+      <div class="header-chip">
+        <span class="chip-num" data-count="6">0</span>
+        <span class="chip-lbl">городов</span>
+      </div>
+      <div class="header-chip">
+        <span class="chip-num" data-count="1877">0</span>
+        <span class="chip-lbl">год основания</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ═══ LAYOUT ════════════════════════════════════════════════ -->
+<div class="layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-search">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+      <input type="text" id="searchInput" placeholder="Поиск вакансии...">
+    </div>
+    <div class="sidebar-label">Города</div>
+    <div class="city-nav-item active" data-city="all" onclick="filterCity('all',this)">
+      Все города <span class="city-nav-badge" id="badge-all">7</span>
+    </div>
+    <div class="city-nav-item" data-city="vologda" onclick="filterCity('vologda',this)">
+      Вологда <span class="city-nav-badge" id="badge-vologda">2</span>
+    </div>
+    <div class="city-nav-item" data-city="kaluga" onclick="filterCity('kaluga',this)">
+      Калуга <span class="city-nav-badge" id="badge-kaluga">1</span>
+    </div>
+    <div class="city-nav-item" data-city="perm" onclick="filterCity('perm',this)">
+      Пермь <span class="city-nav-badge" id="badge-perm">1</span>
+    </div>
+    <div class="city-nav-item" data-city="volgograd" onclick="filterCity('volgograd',this)">
+      Волгоград <span class="city-nav-badge" id="badge-volgograd">1</span>
+    </div>
+    <div class="city-nav-item" data-city="kazan" onclick="filterCity('kazan',this)">
+      Казань <span class="city-nav-badge" id="badge-kazan">1</span>
+    </div>
+    <div class="city-nav-item" data-city="omsk" onclick="filterCity('omsk',this)">
+      Омск <span class="city-nav-badge" id="badge-omsk">1</span>
+    </div>
+  </aside>
+
+  <!-- VACANCY PANEL -->
+  <section class="vacancy-panel">
+    <div class="panel-top">
+      <span class="panel-count" id="panelCount">7 вакансий</span>
+      <div class="view-toggle">
+        <button class="view-btn active" id="btnList" title="Список" onclick="setView('list')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        </button>
+        <button class="view-btn" id="btnGrid" title="Сетка" onclick="setView('grid')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div id="vacancyContainer">
+
+      <!-- Вологда -->
+      <div class="city-group" data-city="vologda">
+        <div class="group-heading">
+          <h3>Вологда</h3>
+          <span class="group-count">2 вакансии</span>
+        </div>
+
+        <!-- LIST -->
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Инженер-технолог" data-dept="Производство"
+            data-salary="от 80 000 ₽" data-city="Вологда, ул. Маяковского, 38"
+            data-schedule="5/2, полный день" data-experience="От 2 лет"
+            data-hr="Александра Караваева" data-tg="#" data-new="true">
+            <div class="row-left">
+              <div class="row-dept">Производство</div>
+              <div class="row-title">Инженер-технолог</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Александра Караваева</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-new">Новая</span>
+              <span class="row-salary">80 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()" title="Telegram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Мастер смены" data-dept="Производство"
+            data-salary="от 70 000 ₽" data-city="Вологда, ул. Маяковского, 38"
+            data-schedule="2/2, сменный" data-experience="От 1 года"
+            data-hr="Александра Караваева" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Производство</div>
+              <div class="row-title">Мастер смены</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Вологда</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Александра Караваева</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">70 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()" title="Telegram"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- GRID -->
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Инженер-технолог" data-dept="Производство"
+            data-salary="от 80 000 ₽" data-city="Вологда, ул. Маяковского, 38"
+            data-schedule="5/2, полный день" data-experience="От 2 лет"
+            data-hr="Александра Караваева" data-tg="#" data-new="true">
+            <div class="gc-dept">Производство <span class="row-new" style="margin-left:4px">Новая</span></div>
+            <div class="gc-title">Инженер-технолог</div>
+            <div class="gc-salary">80 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Вологда, ул. Маяковского, 38</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2, полный день</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">АК</div>
+              <div><div class="gc-hr">Александра Краваева</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Мастер смены" data-dept="Производство"
+            data-salary="от 70 000 ₽" data-city="Вологда, ул. Маяковского, 38"
+            data-schedule="2/2, сменный" data-experience="От 1 года"
+            data-hr="Александра Краваева" data-tg="#">
+            <div class="gc-dept">Производство</div>
+            <div class="gc-title">Мастер смены</div>
+            <div class="gc-salary">70 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Вологда, ул. Маяковского, 38</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2, сменный</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">АК</div>
+              <div><div class="gc-hr">Александра Краваева</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Калуга -->
+      <div class="city-group" data-city="kaluga">
+        <div class="group-heading"><h3>Калуга (Обнинск)</h3><span class="group-count">1 вакансия</span></div>
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Оператор линии розлива" data-dept="Производство"
+            data-salary="от 65 000 ₽" data-city="Калужская обл., Индустриальный парк Ворсино"
+            data-schedule="2/2, сменный" data-experience="Без опыта"
+            data-hr="Ильина Вероника" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Производство</div>
+              <div class="row-title">Оператор линии розлива</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Калуга</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Ильина Вероника</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">65 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Оператор линии розлива" data-dept="Производство"
+            data-salary="от 65 000 ₽" data-city="Калужская обл., Индустриальный парк Ворсино"
+            data-schedule="2/2, сменный" data-experience="Без опыта"
+            data-hr="Ильина Вероника" data-tg="#">
+            <div class="gc-dept">Производство</div>
+            <div class="gc-title">Оператор линии розлива</div>
+            <div class="gc-salary">65 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Калужская обл., Ворсино</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2, сменный</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">ИВ</div>
+              <div><div class="gc-hr">Ильина Вероника</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Пермь -->
+      <div class="city-group" data-city="perm">
+        <div class="group-heading"><h3>Пермь</h3><span class="group-count">1 вакансия</span></div>
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Начальник склада" data-dept="Логистика"
+            data-salary="от 90 000 ₽" data-city="Пермь, ул. Героев Хасана, 74"
+            data-schedule="5/2, полный день" data-experience="От 3 лет"
+            data-hr="Анна Егорова" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Логистика</div>
+              <div class="row-title">Начальник склада</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Пермь</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Анна Егорова</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">90 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Начальник склада" data-dept="Логистика"
+            data-salary="от 90 000 ₽" data-city="Пермь, ул. Героев Хасана, 74"
+            data-schedule="5/2, полный день" data-experience="От 3 лет"
+            data-hr="Анна Егорова" data-tg="#">
+            <div class="gc-dept">Логистика</div>
+            <div class="gc-title">Начальник склада</div>
+            <div class="gc-salary">90 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Пермь, ул. Героев Хасана, 74</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2, полный день</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">АЕ</div>
+              <div><div class="gc-hr">Анна Егорова</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Волгоград -->
+      <div class="city-group" data-city="volgograd">
+        <div class="group-heading"><h3>Волгоград</h3><span class="group-count">1 вакансия</span></div>
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Слесарь-ремонтник" data-dept="Техническое обслуживание"
+            data-salary="от 60 000 ₽" data-city="Волгоград, ул. Промысловая, 15"
+            data-schedule="2/2, сменный" data-experience="От 2 лет"
+            data-hr="Александр Седов" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Техническое обслуживание</div>
+              <div class="row-title">Слесарь-ремонтник</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Волгоград</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Александр Седов</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">60 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Слесарь-ремонтник" data-dept="Техническое обслуживание"
+            data-salary="от 60 000 ₽" data-city="Волгоград, ул. Промысловая, 15"
+            data-schedule="2/2, сменный" data-experience="От 2 лет"
+            data-hr="Александр Седов" data-tg="#">
+            <div class="gc-dept">Тех. обслуживание</div>
+            <div class="gc-title">Слесарь-ремонтник</div>
+            <div class="gc-salary">60 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Волгоград, ул. Промысловая, 15</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2, сменный</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">АС</div>
+              <div><div class="gc-hr">Александр Седов</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Казань -->
+      <div class="city-group" data-city="kazan">
+        <div class="group-heading"><h3>Казань</h3><span class="group-count">1 вакансия</span></div>
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Инженер-химик" data-dept="Производство"
+            data-salary="от 85 000 ₽" data-city="Казань, ул. М.Миля, 49А"
+            data-schedule="5/2, полный день" data-experience="От 2 лет"
+            data-hr="Марина Леонова" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Производство</div>
+              <div class="row-title">Инженер-химик</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Казань</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Марина Леонова</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">85 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Инженер-химик" data-dept="Производство"
+            data-salary="от 85 000 ₽" data-city="Казань, ул. М.Миля, 49А"
+            data-schedule="5/2, полный день" data-experience="От 2 лет"
+            data-hr="Марина Леонова" data-tg="#">
+            <div class="gc-dept">Производство</div>
+            <div class="gc-title">Инженер-химик</div>
+            <div class="gc-salary">85 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Казань, ул. М.Миля, 49А</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>5/2, полный день</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">МЛ</div>
+              <div><div class="gc-hr">Марина Леонова</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Омск -->
+      <div class="city-group" data-city="omsk">
+        <div class="group-heading"><h3>Омск</h3><span class="group-count">1 вакансия</span></div>
+        <div class="vacancy-stack">
+          <div class="vacancy-row" onclick="openModal(this)"
+            data-title="Электромонтер" data-dept="Техническое обслуживание"
+            data-salary="от 55 000 ₽" data-city="Омск, ул. И.Н. Багнюка, 10"
+            data-schedule="2/2, сменный" data-experience="От 1 года"
+            data-hr="Алексей Кузьмин" data-tg="#">
+            <div class="row-left">
+              <div class="row-dept">Техническое обслуживание</div>
+              <div class="row-title">Электромонтер</div>
+              <div class="row-meta">
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Омск</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2</div>
+                <div class="row-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Алексей Кузьмин</div>
+              </div>
+            </div>
+            <div class="row-right">
+              <span class="row-salary">55 000 ₽</span>
+              <div class="row-actions">
+                <button class="row-btn row-btn-main" onclick="event.stopPropagation();openModal(this.closest('.vacancy-row'))">Подробнее</button>
+                <button class="row-btn row-btn-tg" onclick="event.stopPropagation()"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vacancy-grid-cards">
+          <div class="grid-card" onclick="openModal(this)"
+            data-title="Электромонтер" data-dept="Техническое обслуживание"
+            data-salary="от 55 000 ₽" data-city="Омск, ул. И.Н. Багнюка, 10"
+            data-schedule="2/2, сменный" data-experience="От 1 года"
+            data-hr="Алексей Кузьмин" data-tg="#">
+            <div class="gc-dept">Тех. обслуживание</div>
+            <div class="gc-title">Электромонтер</div>
+            <div class="gc-salary">55 000 ₽</div>
+            <div class="gc-meta">
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Омск, ул. И.Н. Багнюка, 10</div>
+              <div class="gc-meta-item"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>2/2, сменный</div>
+            </div>
+            <div class="gc-footer">
+              <div class="gc-avatar">АК</div>
+              <div><div class="gc-hr">Алексей Кузьмин</div><div class="gc-hr-role">HR-специалист</div></div>
+              <button class="gc-tg"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="empty-state" id="emptyState">
+        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <p>Вакансий по вашему запросу не найдено</p>
+      </div>
+
+    </div><!-- /vacancyContainer -->
+  </section>
+
+</div><!-- /layout -->
+
+<!-- ═══ MODAL ════════════════════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-dept" id="mDept"></div>
+    <div class="modal-title" id="mTitle"></div>
+    <div class="modal-salary" id="mSalary"></div>
+    <div class="modal-tags">
+      <span class="modal-tag" id="mSchedule"></span>
+      <span class="modal-tag" id="mExp"></span>
+    </div>
+    <div class="modal-divider"></div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;font-family:'Roboto Condensed',sans-serif;">Место работы</div>
+    <div class="modal-row">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+      <span id="mCity"></span>
+    </div>
+    <div class="modal-divider"></div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px;font-family:'Roboto Condensed',sans-serif;">HR-специалист</div>
+    <div class="modal-row">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      <div><div style="font-weight:600" id="mHr"></div><div style="font-size:12px;color:var(--text-muted)">Специалист по подбору персонала</div></div>
+    </div>
+    <div class="modal-actions">
+      <button class="modal-btn-main">Откликнуться</button>
+      <button class="modal-btn-tg" id="mTgBtn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.833.941z"/></svg>
+        Telegram
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ─── COUNTER ANIMATION ────────────────────────────
+  document.querySelectorAll('.chip-num[data-count]').forEach(el => {
+    const target = parseInt(el.dataset.count);
+    const dur = target > 100 ? 1600 : 700;
+    const start = Date.now();
+    const tick = () => {
+      const p = Math.min((Date.now() - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(e * target);
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    setTimeout(tick, 400);
+  });
+
+  // ─── VIEW TOGGLE ──────────────────────────────────
+  function setView(v) {
+    document.body.className = v + '-view';
+    document.getElementById('btnList').classList.toggle('active', v === 'list');
+    document.getElementById('btnGrid').classList.toggle('active', v === 'grid');
+  }
+
+  // ─── CITY FILTER ──────────────────────────────────
+  let activeCity = 'all';
+
+  function filterCity(city, el) {
+    activeCity = city;
+    document.querySelectorAll('.city-nav-item').forEach(i => i.classList.remove('active'));
+    el.classList.add('active');
+    applyFilters();
+  }
+
+  // ─── SEARCH ───────────────────────────────────────
+  document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+  function applyFilters() {
+    const q = document.getElementById('searchInput').value.toLowerCase().trim();
+    let total = 0;
+
+    document.querySelectorAll('.city-group').forEach(group => {
+      const cityMatch = activeCity === 'all' || group.dataset.city === activeCity;
+      let groupVisible = false;
+
+      // list rows
+      group.querySelectorAll('.vacancy-row').forEach(row => {
+        const match = cityMatch && (!q || row.dataset.title.toLowerCase().includes(q) || row.dataset.dept.toLowerCase().includes(q));
+        row.style.display = match ? '' : 'none';
+        if (match) { total++; groupVisible = true; }
+      });
+      // grid cards
+      group.querySelectorAll('.grid-card').forEach(card => {
+        const match = cityMatch && (!q || card.dataset.title.toLowerCase().includes(q) || card.dataset.dept.toLowerCase().includes(q));
+        card.style.display = match ? '' : 'none';
+      });
+
+      group.style.display = groupVisible ? '' : 'none';
+    });
+
+    document.getElementById('panelCount').textContent = total + ' вакансий';
+    document.getElementById('emptyState').style.display = total === 0 ? 'block' : 'none';
+  }
+
+  // ─── MODAL ────────────────────────────────────────
+  function openModal(el) {
+    document.getElementById('mDept').textContent     = el.dataset.dept;
+    document.getElementById('mTitle').textContent    = el.dataset.title;
+    document.getElementById('mSalary').textContent   = el.dataset.salary;
+    document.getElementById('mCity').textContent     = el.dataset.city;
+    document.getElementById('mSchedule').textContent = el.dataset.schedule;
+    document.getElementById('mExp').textContent      = el.dataset.experience;
+    document.getElementById('mHr').textContent       = el.dataset.hr;
+    document.getElementById('mTgBtn').onclick        = () => window.open(el.dataset.tg, '_blank');
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModalOutside(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // ─── SCROLL APPEAR ────────────────────────────────
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 60);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05 });
+
+  document.querySelectorAll('.city-group').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>

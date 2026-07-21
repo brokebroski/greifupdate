@@ -7,11 +7,11 @@ const FACTORY_PHOTOS = {
   volgograd:   { name: 'Волгоград',           year: 2003, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2003-Volgograd.jpg',       history: 'Волгоградский завод открыт в 2003 году. С 2007 года здесь выпускаются конические (конусные) стальные бочки, производство которых Greif организовал в России одним из первых. Предприятие обслуживает нефтехимические и химические компании Поволжья и Юга России.' },
   perm:        { name: 'Пермь',               year: 2004, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2004-Perm-scaled.jpg',     history: 'Пермский завод введён в эксплуатацию в 2004 году. Производит стальные бочки для предприятий Уральского федерального округа и Пермского края. Завод оснащён современным оборудованием и соответствует строгим корпоративным стандартам качества Greif.' },
   kazan:       { name: 'Казань',              year: 2007, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2007-Kazan.jpg',           history: 'Казанский завод открыт в 2007 году. Выпускает стальные бочки и IBC-контейнеры (еврокубы). Предприятие расположено в развитом промышленном регионе и обслуживает крупных потребителей нефтехимической отрасли Республики Татарстан и Поволжья.' },
-  omsk:        { name: 'Омск',               year: 2005, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
+  omsk:        { name: 'Омск',               year: 2005, photo: 'http://www.greif.ru/wp-content/uploads/новая-линия-GCUBE.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
   omsk2:       { name: 'Омск',               year: 2005, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2005-Omsk-scaled.jpg',     history: 'Омский завод — один из крупных производственных объектов Greif в Сибири. Основан в 2005 году. Выпускает стальные бочки для нефтяной и химической промышленности. Удобное географическое расположение позволяет эффективно обслуживать клиентов всего Сибирского федерального округа.' },
   ryazan:      { name: 'Рязань',              year: 2014, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2014-Ryazan.jpg',         history: 'Рязанский завод открыт в 2014 году. Производит IBC-контейнеры (еврокубы) объёмом 1000 литров. Предприятие оснащено передовым оборудованием и обслуживает клиентов Центрального федерального округа, поставляя продукцию ведущим химическим и пищевым компаниям.' },
   kaluga:      { name: 'Калуга (Ворсино)',    year: 2018, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
-  kaluga2:     { name: 'Калуга (Ворсино)',    year: 2018, photo: 'https://www.greif.ru/wp-content/uploads/2.3-2018-Kaluga.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
+  kaluga2:     { name: 'Калуга (Ворсино)',    year: 2018, photo: 'http://www.greif.ru/wp-content/uploads/IMG_0685-scaled.jpg',         history: 'Завод в Индустриальном парке Ворсино Калужской области введён в строй в 2018 году. Производит IBC-контейнеры и многослойные пластиковые канистры (с 2022 года). Современное предприятие полного цикла, расположенное в одном из наиболее развитых индустриальных парков России.' },
   angarsk:     { name: 'Ангарск',             year: null, photo: '',                                                                     history: 'Завод в Ангарске — новое предприятие Greif в Иркутской области. Обслуживает клиентов Восточной Сибири и Дальнего Востока. Подробная информация будет опубликована позже.' },
 };
 
@@ -214,7 +214,7 @@ const aboutSections = {
 
       <div style="display:flex;flex-direction:column;gap:0">
 
-        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px;height:320px">
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
             <img src="https://www.greif.ru/wp-content/uploads/1B-Man-making-barrel-11x14-Black-and-White-scaled.jpg" alt="Бондарная мастерская" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
@@ -225,7 +225,7 @@ const aboutSections = {
           </div>
         </div>
 
-        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px;height:320px">
           <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-right:none;border-radius:10px 0 0 10px;display:flex;flex-direction:column;justify-content:center">
             <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Начало XX века</div>
             <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">Эра индустриализации и расширения</h3>
@@ -236,7 +236,7 @@ const aboutSections = {
           </div>
         </div>
 
-        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px;height:320px">
           <div style="flex:0 0 42%;max-width:42%;overflow:hidden">
             <img src="https://www.greif.ru/wp-content/uploads/Greif-Truck.jpg" alt="Грузовик Greif" style="width:100%;height:100%;object-fit:cover;display:block">
           </div>
@@ -247,7 +247,7 @@ const aboutSections = {
           </div>
         </div>
 
-        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px">
+        <div style="display:flex;align-items:stretch;gap:0;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.07);margin-bottom:24px;height:320px">
           <div style="flex:1;padding:32px 36px;background:#fff;border:1px solid var(--border);border-right:none;border-radius:10px 0 0 10px;display:flex;flex-direction:column;justify-content:center">
             <div style="font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Современность</div>
             <h3 style="font-size:20px;font-weight:900;color:var(--text-dark);letter-spacing:-0.01em;margin:0 0 14px">Многообразие и устойчивость</h3>
