@@ -545,8 +545,8 @@ function _ibcSideNav(activeId) {
   const items = [
     { id:'ibcWooden',   label:'На деревянном поддоне',      img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png' },
     { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'https://www.greif.ru/wp-content/uploads/gibrid.png' },
-    { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'https://www.greif.ru/wp-content/uploads/evrokub-1.png' },
-    { id:'ibcElectron', label:'Антистатический «Электрон»', img:'https://www.greif.ru/wp-content/uploads/electron.png' },
+    { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png' },
+    { id:'ibcElectron', label:'Антистатический «Электрон»', img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png' },
     { id:'ibcBlack',    label:'GCube «Чёрный»',             img:'https://www.greif.ru/wp-content/uploads/blackqube.png' },
     { id:'ibcRebo',     label:'Восстановленные REBO',       img:'https://www.greif.ru/wp-content/uploads/rebo.png' },
   ];
@@ -1193,8 +1193,8 @@ const PAGES = {
     ${[
       { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/electron.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
+      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png', desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png', desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
       { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'https://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
@@ -1235,7 +1235,7 @@ const PAGES = {
     'Еврокубы на пластиковом поддоне',
     'Цельнопластиковый поддон, устойчивый к коррозии — 1000 л',
     '52,5 ±3,0', 'pla',
-    'https://www.greif.ru/wp-content/uploads/evrokub-1.png',
+    'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png',
     'ibcPlastic'
   ),
 
@@ -1253,7 +1253,7 @@ const PAGES = {
     <div style="flex:1;min-width:0;">
       <div class="product-detail-grid">
         <div class="product-image-col">
-          <img src="https://www.greif.ru/wp-content/uploads/electron.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
+          <img src="http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png" alt="IBC Электрон" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
         <div class="product-info-col">
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
