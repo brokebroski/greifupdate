@@ -474,7 +474,7 @@ const aboutSections = {
             <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">30/04/2025</div>
             <h3 style="font-size:17px;font-weight:700;color:var(--text-dark);margin-bottom:10px">Грайф Вологда — обладатель премии Dempsey Award</h3>
             <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:12px">Коллеги, добрый день! В понедельник, 28 апреля, в Вологде состоялся праздник, которого все долго ждали! В январе 2025 года наша Вологодская площадка стала обладателем самой престижной премии в корпорации Greif: Dempsey Award. Эта премия вручается коллективам, проявившим исключительные производственные и коммерческие успехи в прошедшем году…</p>
-            <a href="#" style="font-size:13px;font-weight:700;color:var(--green-primary);text-decoration:none">Читать полностью →</a>
+            <a href="#" onclick="openNewsArticle('dempsey');return false;" style="font-size:13px;font-weight:700;color:var(--green-primary);text-decoration:none">Читать полностью →</a>
           </div>
         </article>
         <article style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
@@ -482,6 +482,7 @@ const aboutSections = {
             <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">18/03/2025</div>
             <h3 style="font-size:17px;font-weight:700;color:var(--text-dark);margin-bottom:10px">Фильм про IBC GCube Electron</h3>
             <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:12px">Коллеги, представляем Вашему вниманию фильм про IBC GCube Electron — еврокуб с антистатическими свойствами, который обеспечивает безопасную перевозку и хранение легко-воспламеняющихся жидкостей. Фильм вы можете посмотреть в нашем сообществе в <a href="https://t.me/greif_russia/522" style="color:var(--green-primary)">Телеграм</a> и в <a href="https://vk.com/wall-221692797_1365" style="color:var(--green-primary)">ВКонтакте</a>.</p>
+            <a href="#" onclick="openNewsArticle('gcubeElectron');return false;" style="font-size:13px;font-weight:700;color:var(--green-primary);text-decoration:none">Читать полностью →</a>
           </div>
         </article>
         <article style="border:1px solid var(--border);border-radius:8px;overflow:hidden">
@@ -489,7 +490,7 @@ const aboutSections = {
             <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">25/02/2025</div>
             <h3 style="font-size:17px;font-weight:700;color:var(--text-dark);margin-bottom:10px">Chairman's Safety Award 2024</h3>
             <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:12px">Коллеги, добрый день! В начале февраля 2025 состоялась церемония награждения заводов Грайф, получивших премию в области безопасности — Chairman's Safety Award 2024. Мы рады сообщить, что 6 российских заводов Грайф получили эту почётную награду.</p>
-            <a href="#" style="font-size:13px;font-weight:700;color:var(--green-primary);text-decoration:none">Читать полностью →</a>
+            <a href="#" onclick="openNewsArticle('chairmanSafety');return false;" style="font-size:13px;font-weight:700;color:var(--green-primary);text-decoration:none">Читать полностью →</a>
           </div>
         </article>
       </div>
@@ -579,3 +580,70 @@ function greifTlClose() {
 }
 
 function _greifTlEsc(e) { if (e.key === 'Escape') greifTlClose(); }
+
+/* ─── News article modal ─── */
+const newsArticles = {
+  dempsey: {
+    date: '30/04/2025',
+    title: 'Грайф Вологда — обладатель премии Dempsey Award',
+    body: `
+      <p>Коллеги, добрый день!</p>
+      <p>В понедельник, 28 апреля, в Вологде состоялся праздник, которого все долго ждали! В январе 2025 года наша Вологодская площадка стала обладателем самой престижной премии в корпорации Greif: Dempsey Award. Эта премия вручается коллективам, проявившим исключительные производственные и коммерческие успехи в прошедшем году.</p>
+      <p>Команда Вологды — это уникальный коллектив, для которых служение заказчикам является образом жизни, а клиенты воспринимаются как близкие друзья. Это подтверждается цифрами: Индекс Удовлетворенности заказчиков по Вологодской площадке (CSI) 96 из 100 баллов; Индекс Лояльности Клиентов (NPS) 90 из 100 баллов. Клиентский портфель завода превышает 200 регулярных покупателей бочки и является наиболее диверсифицированным среди всех площадок Грайф в России. Бочки, которые производятся в Вологде, отличает сложный дизайн и исключительно высокое качество, в чем огромная заслуга производственной команды завода.</p>
+      <p>Поздравляем ВСЕХ и КАЖДОГО в Грайф Вологда! Успех зависит от слаженной работы всей команды и ВЫ эту истину подтвердили!</p>
+    `
+  },
+  gcubeElectron: {
+    date: '18/03/2025',
+    title: 'Фильм про IBC GCube Electron',
+    body: `
+      <p>Коллеги, представляем Вашему вниманию фильм про IBC GCube Electron — еврокуб с антистатическими свойствами, который обеспечивает безопасную перевозку и хранение легко-воспламеняющихся жидкостей. 💯‼👍</p>
+      <p>Фильм вы можете посмотреть в нашем сообществе в Телеграм <a href="https://t.me/greif_russia/522" target="_blank" rel="noopener" style="color:var(--green-primary)">t.me/greif_russia/522</a> и в ВКонтакте <a href="https://vk.com/wall-221692797_1365" target="_blank" rel="noopener" style="color:var(--green-primary)">vk.com/wall-221692797_1365</a>. Не забудьте подписаться!</p>
+    `
+  },
+  chairmanSafety: {
+    date: '25/02/2025',
+    title: 'Chairman’s Safety Award 2024',
+    body: `
+      <p>Коллеги, добрый день!</p>
+      <p>В начале февраля 2025 состоялась церемония награждения заводов Грайф, получивших премию в области безопасности — Chairman's Safety Award 2024. Безопасность является персональным приоритетом для каждого сотрудника Грайф во всем мире вне зависимости от его местонахождения — на работе, по дороге домой, в кругу семьи и друзей.</p>
+      <p>Мы рады сообщить, что 6 российских заводов Грайф получили заслуженные награды Chairman's Safety Award по итогам работы в 2024 году. Безопасность для каждого из нас — это не правила, это образ жизни, и поэтому наши предприятия работают без несчастных случаев на протяжении многих лет, а именно:</p>
+      <p>✅ Белоярский — 16 лет;<br>✅ Омск — 16 лет;<br>✅ Волгоград — 14 лет;<br>✅ Вологда — 10 лет;<br>✅ Казань — 10 лет;<br>✅ Рязань — 8 лет!</p>
+      <p>Большое спасибо всем коллегам! Будьте здоровы!</p>
+    `
+  }
+};
+
+function openNewsArticle(id) {
+  const article = newsArticles[id];
+  if (!article) return;
+
+  const existing = document.getElementById('news-article-modal');
+  if (existing) existing.remove();
+
+  const modal = document.createElement('div');
+  modal.id = 'news-article-modal';
+  modal.style.cssText = 'position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,0.52);display:flex;align-items:center;justify-content:center;padding:20px;';
+  modal.innerHTML = `
+    <div style="background:#fff;border-radius:14px;overflow:hidden;max-width:600px;width:100%;max-height:85vh;box-shadow:0 24px 60px rgba(0,0,0,0.28);position:relative;animation:greifTlIn 0.2s ease;display:flex;flex-direction:column">
+      <button onclick="closeNewsArticle()" style="position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:none;background:rgba(0,0,0,0.45);color:#fff;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:1;line-height:1">✕</button>
+      <div style="padding:28px 30px;overflow-y:auto">
+        <div style="font-size:12px;color:var(--text-muted);margin-bottom:10px">${article.date}</div>
+        <h3 style="font-size:20px;font-weight:800;color:var(--text-dark);line-height:1.3;margin-bottom:16px">${article.title}</h3>
+        <div style="font-size:14px;color:var(--text-muted);line-height:1.75">${article.body}</div>
+      </div>
+    </div>
+    <style>@keyframes greifTlIn{from{opacity:0;transform:scale(0.93)}to{opacity:1;transform:scale(1)}}</style>
+  `;
+  modal.addEventListener('click', function(e) { if (e.target === modal) closeNewsArticle(); });
+  document.body.appendChild(modal);
+  document.addEventListener('keydown', _newsArticleEsc);
+}
+
+function closeNewsArticle() {
+  const modal = document.getElementById('news-article-modal');
+  if (modal) modal.remove();
+  document.removeEventListener('keydown', _newsArticleEsc);
+}
+
+function _newsArticleEsc(e) { if (e.key === 'Escape') closeNewsArticle(); }

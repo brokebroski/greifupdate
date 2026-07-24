@@ -378,13 +378,18 @@ function _ibcLogisticsTab() {
 
 function _ibcInstructionTab() {
   return `<div style="max-width:680px">
-    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 28px">
-      Здесь Вы можете ознакомиться с инструкцией по эксплуатации еврокубов, разработанной техническими специалистами Greif. Мы обладаем многолетней экспертизой в работе с IBC и будем рады оказать содействие совершенствованию производственных операций Вашей компании.
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 24px">
+      Инструкция по эксплуатации еврокубов, разработанная техническими специалистами Greif, доступна по запросу. Мы обладаем многолетней экспертизой в работе с IBC и будем рады оказать содействие совершенствованию производственных операций Вашей компании. Оставьте контакт — и мы вышлем инструкцию.
     </p>
-    <a href="https://www.greif.ru/wp-content/uploads/Instruktsiya-po-ekspluatatsii-2023-kuby.pdf" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;padding:14px 24px;background:var(--green-primary);color:#fff;border-radius:8px;text-decoration:none;font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s" onmouseover="this.style.background='#317965'" onmouseout="this.style.background='var(--green-primary)'">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-      Открыть инструкцию по эксплуатации (PDF)
-    </a>
+    <form id="ibc-instruction-form" onsubmit="submitIBCInstructionForm(event)" style="display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;max-width:520px">
+      <div style="flex:1;min-width:220px">
+        <label style="display:block;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.08em;text-transform:uppercase;color:var(--text-dark);margin-bottom:8px">Телефон или email <span style="color:var(--green-primary)">*</span></label>
+        <input type="text" name="contact" required placeholder="+7 (___) ___-__-__ или example@company.ru" style="width:100%;box-sizing:border-box;border:1px solid var(--border);padding:11px 14px;font-size:14px;font-family:'Roboto',sans-serif;color:var(--text-dark);background:#fff;outline:none" onfocus="this.style.borderColor='var(--green-primary)'" onblur="this.style.borderColor='var(--border)'">
+      </div>
+      <button type="submit" style="display:inline-flex;align-items:center;gap:10px;padding:13px 24px;background:var(--green-primary);color:#fff;border-radius:8px;border:none;cursor:pointer;text-decoration:none;font-family:'Roboto Condensed',sans-serif;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s" onmouseover="this.style.background='#317965'" onmouseout="this.style.background='var(--green-primary)'">
+        Запросить инструкцию →
+      </button>
+    </form>
   </div>`;
 }
 
@@ -547,7 +552,7 @@ function _ibcSideNav(activeId) {
     { id:'ibcHybrid',   label:'На гибридном поддоне',       img:'https://www.greif.ru/wp-content/uploads/gibrid.png' },
     { id:'ibcPlastic',  label:'На пластиковом поддоне',     img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png' },
     { id:'ibcElectron', label:'Антистатический «Электрон»', img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png' },
-    { id:'ibcBlack',    label:'GCube «Чёрный»',             img:'https://www.greif.ru/wp-content/uploads/blackqube.png' },
+    { id:'ibcBlack',    label:'Куб с защитой от УФ-излучения',             img:'https://www.greif.ru/wp-content/uploads/blackqube.png' },
     { id:'ibcRebo',     label:'Восстановленные REBO',       img:'https://www.greif.ru/wp-content/uploads/rebo.png' },
   ];
   return `<div style="background:#fff;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.06)">
@@ -845,7 +850,7 @@ const PAGES = {
         <img src="http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png" alt="Стальная бочка с несъёмным верхом 1А1" style="max-width:100%;max-height:420px;object-fit:contain;">
       </div>
       <div class="product-info-col">
-        <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международных стандартов ISO 3574 и EN10130.</p>
+        <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международным стандартам ISO 3574 и EN10130.</p>
         <div class="spec-cards">
           <div class="spec-card"><div class="spec-card-value">216<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Несъёмный верх · Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">08ПС</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Холоднокатаная сталь · ISO 3574 / EN10130</div></div>
@@ -1193,14 +1198,14 @@ const PAGES = {
     ${[
       { id:'ibcWooden',  title:'На деревянном поддоне',        weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/Bez-imeni-1.png', desc:'Классическое исполнение. Деревянный поддон обеспечивает надёжную опору при штабелировании.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcHybrid',  title:'На гибридном поддоне',         weight:'51,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/gibrid.png', desc:'Металлический поддон с пластиковыми рёбрами — лучший баланс прочности и собственного веса.', badges:[['std','Стандарт'],['un','ООН']] },
-      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png', scale:1.3, desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcPlastic', title:'На пластиковом поддоне',       weight:'52,5 ±3,0 кг',  img:'https://www.greif.ru/wp-content/uploads/evrokub-1-e1784615711214.png', scale:1.3, offsetY:-8, desc:'Цельнопластиковый поддон, устойчивый к коррозии. Оптимален для агрессивных производственных сред.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcElectron',title:'Антистатический «Электрон»',   weight:'51,5 ±3,0 кг',  img:'http://www.greif.ru/wp-content/uploads/electron-e1784615798855.png', scale:1.16, desc:'Колба с антистатическим слоем (10⁹ Ом), приварной кран с заземлением и EX-крышкой. Для перевозки ЛВЖ.', badges:[['antistatic','Антистатик'],['un','ООН']] },
-      { id:'ibcBlack',   title:'GCube «Чёрный»',               weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
+      { id:'ibcBlack',   title:'Куб с защитой от УФ-излучения',               weight:'60,0 ±10,0 кг', img:'https://www.greif.ru/wp-content/uploads/blackqube.png', desc:'На деревянном или гибридном поддоне. Защита от УФ-лучей. Для жидких и жидкотекучих, в т.ч. опасных продуктов.', badges:[['std','Стандарт'],['un','ООН']] },
       { id:'ibcRebo',    title:'Восстановленные REBO',         weight:'—',              img:'https://www.greif.ru/wp-content/uploads/rebo.png', desc:'Новая ПЭНД-бутыль 1000 л на б/у металлической обрешётке. Экономичное решение.', badges:[['rebo','REBO']] },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
-          <img src="${c.img}" alt="${c.title}"${c.scale ? ` style="transform:scale(${c.scale})"` : ''}>
+          <img src="${c.img}" alt="${c.title}"${(c.scale || c.offsetY) ? ` style="transform:${c.offsetY ? `translateY(${c.offsetY}px) ` : ''}${c.scale ? `scale(${c.scale})` : ''}"` : ''}>
         </div>
         <div class="ibc-type-card-body">
           <div class="ibc-type-card-title">${c.title}</div>
@@ -1321,7 +1326,7 @@ const PAGES = {
   <div class="page-hero">
     <div class="page-hero-inner">
       <a href="#" onclick="navigate('ibc');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Еврокубы IBC</a>
-      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">GCube «Чёрный»</h1>
+      <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Куб с защитой от УФ-излучения</h1>
       <p style="font-size:14px;color:rgba(255,255,255,0.55)">На деревянном или гибридном поддоне · Защита от УФ-лучей · 1000 л</p>
     </div>
   </div>
@@ -1330,7 +1335,7 @@ const PAGES = {
     <div style="flex:1;min-width:0;">
       <div class="product-detail-grid">
         <div class="product-image-col">
-          <img src="https://www.greif.ru/wp-content/uploads/blackqube.png" alt="GCube Чёрный" style="max-width:100%;max-height:420px;object-fit:contain;">
+          <img src="https://www.greif.ru/wp-content/uploads/blackqube.png" alt="Куб с защитой от УФ-излучения" style="max-width:100%;max-height:420px;object-fit:contain;">
         </div>
         <div class="product-info-col">
           <div class="spec-cards" style="grid-template-columns:repeat(2,1fr)">
@@ -1354,7 +1359,7 @@ const PAGES = {
         </div>
         <div class="tab-content active" id="tab-black-desc">
           <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
-            GCube «Чёрный» — еврокуб на деревянном или гибридном поддоне с колбой из чёрного полиэтилена высокой плотности (ПЭНД). Чёрный цвет обеспечивает надёжную защиту содержимого от ультрафиолетового излучения, что особенно важно при хранении светочувствительных продуктов на открытых площадках.
+            Куб с защитой от УФ-излучения — еврокуб на деревянном или гибридном поддоне с колбой из чёрного полиэтилена высокой плотности (ПЭНД). Чёрный цвет обеспечивает надёжную защиту содержимого от ультрафиолетового излучения, что особенно важно при хранении светочувствительных продуктов на открытых площадках.
           </p>
           <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
             Контейнер предназначен для перевозки и хранения жидких и жидкотекучих продуктов, в том числе относящихся к классу опасных грузов. Доступен в исполнении Стандарт и ООН.
