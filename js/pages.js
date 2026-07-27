@@ -226,6 +226,31 @@ function _ibcTechTable(weight) {
   </tr>`).join('')}</tbody></table>`;
 }
 
+function _reboTechTable() {
+  return `<table style="width:100%;border-collapse:collapse;font-size:14px"><tbody>${[
+    ['Внешний вид, конфигурация емкости', 'В соответствии с требованиями конструкторской документации, требований настоящих ТУ'],
+    ['Номинальная емкость, л', '1000'],
+    ['Грузоподъемность, кг', '1100'],
+    ['Габаритные размеры, мм: Длина', '1200 ± 20'],
+    ['Габаритные размеры, мм: Ширина', '1000 ± 20'],
+    ['Габаритные размеры, мм: Высота', '1165 ± 20'],
+    ['Вес контейнера в сборе, кг', '60 ± 10,0'],
+    ['Материал емкости', 'Полиэтилен высокой плотности (первичный и вторичный)'],
+    ['Размеры емкости-вкладыша, мм: Длина', '1164 ± 15'],
+    ['Размеры емкости-вкладыша, мм: Ширина', '964 ± 15'],
+    ['Размеры емкости-вкладыша, мм: Высота', '1009 ± 15'],
+    ['Тип поддона по способу захвата', 'Захват не менее чем с 2-х сторон'],
+    ['Диаметр заливной горловины, мм', '150 ± 1,5'],
+    ['Диаметр сливного отверстия крана, мм', '49,0 ± 0,5'],
+    ['Кран разгрузочного отверстия', 'С алюминиевой защитной мембраной, предохранительным винтом и колпачком защитной мембраны'],
+    ['Цвет емкости', 'Не регламентируется'],
+    ['Материал обрешетки', 'Сварные стальные трубы с защитно-декоративным покрытием'],
+  ].map(([k,v]) => `<tr style="border-bottom:1px solid var(--border)">
+    <td style="padding:10px 0;color:var(--text-muted);width:45%">${k}</td>
+    <td style="padding:10px 0;color:var(--text-dark);font-weight:500">${v}</td>
+  </tr>`).join('')}</tbody></table>`;
+}
+
 function _ibcPurpose() {
   return `<p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 4px">
     Контейнеры предназначены для применения в качестве тары для хранения и транспортирования пищевой и химической продукции, жидких и жидкотекучих продуктов. Допускается применение для сыпучих и вязких продуктов.
@@ -254,6 +279,15 @@ function _ibcColors() {
   </div>`;
 }
 
+function _ibcOptionRow(title, items) {
+  return `<div style="margin-top:20px">
+    <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:12px">${title}</div>
+    <div class="ibc-colors-row">
+      ${items.map(t => `<div class="ibc-color-swatch"><div style="font-weight:600;font-size:13px;color:var(--text-dark)">${t}</div></div>`).join('')}
+    </div>
+  </div>`;
+}
+
 function _ibcDeliveryTab() {
   const cities = ['Москва','Санкт-Петербург','Калуга','Вологда','Казань','Волгоград','Пермь','Екатеринбург','Омск','Ангарск'];
   const factors = [
@@ -266,15 +300,46 @@ function _ibcDeliveryTab() {
     'Требования к разгрузке',
   ];
   const transport = [
-    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`, title: 'Автотрейлер', value: '48–52 шт.', desc: 'Стандартная загрузка пустых IBC на паллетах в 2 яруса. Погрузка вилочным погрузчиком.' },
-    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`, title: 'Железнодорожный вагон', value: '52 шт.', desc: 'Полная загрузка вагона. Оптимальное использование грузовой площади благодаря кубической форме IBC.' },
-    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M8 6V4M16 6V4"/></svg>`, title: 'Ж/д контейнер 20 т', value: '10 шт.', desc: 'Стандартный контейнер 20 футов. Загрузка IBC в стандартный контейнер ограничена из-за недостаточной высоты.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`, title: 'Автотрейлер', value: '52 шт.', desc: 'Стандартная загрузка пустых IBC на паллетах в 2 яруса. Погрузка вилочным погрузчиком.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="11" rx="1"/><path d="M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>`, title: 'Железнодорожный вагон', value: '60 шт.', desc: 'Полная загрузка вагона. Оптимальное использование грузовой площади благодаря кубической форме IBC.' },
+    { icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="6" width="22" height="13" rx="1"/><path d="M1 10h22"/><path d="M8 6V4M16 6V4"/></svg>`, title: 'Ж/д контейнер 40-футовый', value: '42 шт.', desc: 'Стандартный контейнер 40 футов. Оптимальное использование грузовой площади благодаря кубической форме IBC.' },
+  ];
+  const extraServices = [
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+      title: 'Поставка точно в срок',
+      highlight: 'Поставка точно в срок',
+      desc: 'Диверсифицированная сеть заводов Greif и система страховки поставок гарантируют отсутствие сбоев при любых обстоятельствах.',
+      badge: 'Снижение склада',
+    },
+    {
+      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
+      title: 'Комбинированные партии',
+      highlight: 'Принцип «одного окна»',
+      desc: 'Стальные и пластиковые бочки, IBC-контейнеры — в одной смешанной партии. Оптимизация расходов на приобретение, доставку и хранение.',
+      badge: 'Гибкость',
+    },
   ];
   return `
   <div style="margin-bottom:28px;padding:20px 24px;background:var(--green-light-bg);border-left:4px solid var(--green-primary);border-radius:6px">
     <div style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green-primary);margin-bottom:10px">Сервис доставки Greif</div>
     <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0 0 10px">Greif предлагает своим клиентам услуги по доставке грузов с использованием собственного транспорта или привлекая проверенных логистических операторов. Менеджеры Greif проводят постоянный мониторинг пожеланий клиентов и открыты к обсуждению различных схем доставки.</p>
     <p style="font-size:14px;color:var(--text-dark);line-height:1.75;margin:0">Greif осуществляет организацию доставки еврокубов во все регионы СНГ автомобильным и железнодорожным транспортом.</p>
+  </div>
+
+  <div style="margin-bottom:28px;display:grid;grid-template-columns:repeat(2,1fr);gap:20px">
+    ${extraServices.map(s => `
+    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(51,119,97,0.13)'" onmouseout="this.style.boxShadow='none'">
+      <div style="display:flex;align-items:flex-start;gap:14px">
+        <div style="width:44px;height:44px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${s.icon}</div>
+        <div style="flex:1;min-width:0">
+          <div style="font-size:13px;font-weight:700;color:var(--text-dark);line-height:1.3;margin-bottom:4px">${s.title}</div>
+          <div style="font-size:12px;font-weight:700;color:var(--green-primary);font-family:'Roboto Condensed',sans-serif;letter-spacing:0.04em">${s.highlight}</div>
+        </div>
+        <span style="flex-shrink:0;font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;background:var(--green-light-bg);color:var(--green-primary);border-radius:4px;white-space:nowrap">${s.badge}</span>
+      </div>
+      <div style="font-size:13px;color:var(--text-muted);line-height:1.65;border-top:1px solid var(--border);padding-top:12px">${s.desc}</div>
+    </div>`).join('')}
   </div>
 
   <div style="margin-bottom:28px">
@@ -308,71 +373,6 @@ function _ibcDeliveryTab() {
       <img src="https://greif.ru/wp-content/uploads/21.png" alt="Схема загрузки IBC в фуру" style="max-width:100%;height:auto;display:inline-block">
     </div>
     <p style="font-size:12px;color:var(--text-muted);margin:8px 0 0;text-align:center">Оптимальная расстановка еврокубов Greif в грузовом автотрейлере</p>
-  </div>`;
-}
-
-function _ibcLogisticsTab() {
-  const services = [
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 8h.01M10 8h4"/></svg>`,
-      title: 'Автоматическая разгрузка',
-      highlight: '150 единиц тары за 30 минут',
-      desc: 'Роботизированная система полностью исключает ручные операции. Тара с конвейера сразу попадает на фасовочную линию.',
-      badge: 'Безопасность',
-    },
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
-      title: 'Поставка точно в срок',
-      highlight: 'Поставка точно в срок',
-      desc: 'Диверсифицированная сеть заводов Greif и система страховки поставок гарантируют отсутствие сбоев при любых обстоятельствах.',
-      badge: 'Снижение склада',
-    },
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="14" width="20" height="7" rx="1"/><path d="M6 14V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v6"/><line x1="6" y1="18" x2="6" y2="18.01"/><line x1="18" y1="18" x2="18" y2="18.01"/></svg>`,
-      title: 'Паллетизированная доставка',
-      highlight: 'До 264 единиц в партии',
-      desc: 'Оптимальное размещение и устойчивость при транспортировке. Снижение рисков повреждений и возможность полуавтоматической разгрузки.',
-      badge: 'Эргономика',
-    },
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>`,
-      title: 'Сервис Greif Express',
-      highlight: '48 ед. тары · 6 контейнеров/фура',
-      desc: 'Контейнеры Greif Express остаются на площадке клиента. Хранение тары прямо в контейнере — не нужны склад и дополнительный персонал.',
-      badge: 'Оптимизация',
-    },
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>`,
-      title: 'Комбинированные партии',
-      highlight: 'Принцип «одного окна»',
-      desc: 'Стальные и пластиковые бочки, IBC-контейнеры — в одной смешанной партии. Оптимизация расходов на приобретение, доставку и хранение.',
-      badge: 'Гибкость',
-    },
-    {
-      icon: `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`,
-      title: 'Фуры повышенной вместимости',
-      highlight: 'Снижение затрат на единицу тары',
-      desc: 'Использование большегрузного транспорта уменьшает долю логистических расходов в структуре себестоимости фасованной продукции.',
-      badge: 'Экономия',
-    },
-  ];
-
-  return `<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:8px">
-    ${services.map(s => `
-    <div style="background:#fff;border:1px solid var(--border);border-radius:10px;padding:22px 24px;display:flex;flex-direction:column;gap:12px;transition:box-shadow 0.2s" onmouseover="this.style.boxShadow='0 4px 16px rgba(51,119,97,0.13)'" onmouseout="this.style.boxShadow='none'">
-      <div style="display:flex;align-items:flex-start;gap:14px">
-        <div style="width:44px;height:44px;background:var(--green-light-bg);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:var(--green-primary)">${s.icon}</div>
-        <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:700;color:var(--text-dark);line-height:1.3;margin-bottom:4px">${s.title}</div>
-          <div style="font-size:12px;font-weight:700;color:var(--green-primary);font-family:'Roboto Condensed',sans-serif;letter-spacing:0.04em">${s.highlight}</div>
-        </div>
-        <span style="flex-shrink:0;font-family:'Roboto Condensed',sans-serif;font-size:10px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;background:var(--green-light-bg);color:var(--green-primary);border-radius:4px;white-space:nowrap">${s.badge}</span>
-      </div>
-      <div style="font-size:13px;color:var(--text-muted);line-height:1.65;border-top:1px solid var(--border);padding-top:12px">${s.desc}</div>
-    </div>`).join('')}
-  </div>
-  <div style="margin-top:4px;padding:14px 18px;background:var(--green-light-bg);border-left:3px solid var(--green-primary);border-radius:4px;font-size:13px;color:var(--text-dark);line-height:1.6">
-    Greif стремится к долгосрочному партнёрству с каждым клиентом — мы не просто поставляем тару, но участвуем в оптимизации всей цепи поставок от нашего завода до вашей производственной площадки.
   </div>`;
 }
 
@@ -616,7 +616,6 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
           <button class="tab-btn active" data-tab="${pfx}-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="${pfx}-std">СТАНДАРТ</button>
           <button class="tab-btn" data-tab="${pfx}-un">ООН</button>
-          <button class="tab-btn" data-tab="${pfx}-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="${pfx}-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="${pfx}-instruction">ИНСТРУКЦИЯ</button>
         </div>
@@ -626,15 +625,15 @@ function _ibcStdProductPage(title, subtitle, weight, pfx, img, id) {
           ${_ibcTechTable(weight + ' кг')}
           <h4 style="margin-top:28px">Исполнение по цвету</h4>
           ${_ibcColors()}
+          ${_ibcOptionRow('Виды кранов', ['2” приварной', '2” прикручиваемый', '3” прикручиваемый', 'Без крана'])}
+          ${_ibcOptionRow('Виды крышек', ['Глухая (чёрная)', 'С мембранным клапаном (красная)', 'С дыхательным клапаном (чёрная)', 'Пищевая (зелёная)'])}
+          ${_ibcOptionRow('Тип горловины', ['150 мм (стандартная)', '220 мм (широкая)'])}
         </div>
         <div class="tab-content" id="tab-${pfx}-std">
           ${_ibcStdTab()}
         </div>
         <div class="tab-content" id="tab-${pfx}-un">
           ${_ibcUnTab()}
-        </div>
-        <div class="tab-content" id="tab-${pfx}-logistics">
-          ${_ibcLogisticsTab()}
         </div>
         <div class="tab-content" id="tab-${pfx}-delivery">
           ${_ibcDeliveryTab()}
@@ -1275,7 +1274,6 @@ const PAGES = {
           <button class="tab-btn active" data-tab="el-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="el-std">СТАНДАРТ</button>
           <button class="tab-btn" data-tab="el-un">ООН</button>
-          <button class="tab-btn" data-tab="el-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="el-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="el-closure">УКУПОРКА</button>
         </div>
@@ -1299,15 +1297,15 @@ const PAGES = {
           <p style="font-size:13px;color:var(--text-muted);margin-top:12px;padding:10px 14px;background:var(--green-light-bg);border-left:3px solid var(--green-primary)">
             Цвет колбы — натуральный (белый). Чёрное исполнение для данной модели не предусмотрено ввиду специфики антистатического покрытия.
           </p>
+          ${_ibcOptionRow('Виды кранов', ['2” приварной (антистатического исполнения с соединительным проводом)'])}
+          ${_ibcOptionRow('Виды крышек', ['Глухая (антистатического исполнения)', 'С дыхательным клапаном (антистатического исполнения)'])}
+          ${_ibcOptionRow('Тип горловины', ['150 мм (стандартная)'])}
         </div>
         <div class="tab-content" id="tab-el-std">
           ${_ibcStdTab()}
         </div>
         <div class="tab-content" id="tab-el-un">
           ${_ibcUnTab()}
-        </div>
-        <div class="tab-content" id="tab-el-logistics">
-          ${_ibcLogisticsTab()}
         </div>
         <div class="tab-content" id="tab-el-delivery">
           ${_ibcDeliveryTab()}
@@ -1353,7 +1351,6 @@ const PAGES = {
           <button class="tab-btn" data-tab="black-comp">КОМПЛЕКТАЦИЯ</button>
           <button class="tab-btn" data-tab="black-std">СТАНДАРТ</button>
           <button class="tab-btn" data-tab="black-un">ООН</button>
-          <button class="tab-btn" data-tab="black-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="black-delivery">ДОСТАВКА</button>
           <button class="tab-btn" data-tab="black-instruction">ИНСТРУКЦИЯ</button>
         </div>
@@ -1369,6 +1366,9 @@ const PAGES = {
           </div>
           <h4 style="font-size:14px;font-weight:700;color:var(--text-dark);margin:24px 0 12px">Технические характеристики</h4>
           ${_ibcTechTable('60,0 ±10,0 кг')}
+          ${_ibcOptionRow('Виды кранов', ['2” приварной', '2” прикручиваемый', '3” прикручиваемый', 'Без крана'])}
+          ${_ibcOptionRow('Виды крышек', ['Глухая (чёрная)', 'С мембранным клапаном (красная)', 'С дыхательным клапаном (чёрная)', 'Пищевая (зелёная)'])}
+          ${_ibcOptionRow('Тип горловины', ['150 мм (стандартная)', '220 мм (широкая)'])}
         </div>
         <div class="tab-content" id="tab-black-comp">
           <h4 style="font-size:14px;font-weight:700;color:var(--text-dark);margin:0 0 16px">Комплектация</h4>
@@ -1391,9 +1391,6 @@ const PAGES = {
         </div>
         <div class="tab-content" id="tab-black-un">
           ${_ibcUnTab()}
-        </div>
-        <div class="tab-content" id="tab-black-logistics">
-          ${_ibcLogisticsTab()}
         </div>
         <div class="tab-content" id="tab-black-delivery">
           ${_ibcDeliveryTab()}
@@ -1440,16 +1437,12 @@ const PAGES = {
       </div>
       <div class="product-tabs">
         <div class="tab-headers">
-          <button class="tab-btn active" data-tab="rebo-buy">ПОКУПАЕМ Б/У</button>
-          <button class="tab-btn" data-tab="rebo-desc">ОПИСАНИЕ</button>
+          <button class="tab-btn active" data-tab="rebo-desc">ОПИСАНИЕ</button>
           <button class="tab-btn" data-tab="rebo-comp">СОСТАВ</button>
-          <button class="tab-btn" data-tab="rebo-std">СТАНДАРТ</button>
-          <button class="tab-btn" data-tab="rebo-un">ООН</button>
-          <button class="tab-btn" data-tab="rebo-logistics">ЛОГИСТИКА</button>
           <button class="tab-btn" data-tab="rebo-delivery">ДОСТАВКА</button>
-          <button class="tab-btn" data-tab="rebo-closure">УКУПОРКА</button>
+          <button class="tab-btn" data-tab="rebo-buy">ПОКУПАЕМ Б/У</button>
         </div>
-      <div class="tab-content" id="tab-rebo-desc">
+      <div class="tab-content active" id="tab-rebo-desc">
         <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
           REBO — восстановленный еврокуб: новая бутыль из полиэтилена высокой плотности устанавливается на б/у металлический поддон и помещается в б/у обрешётку из гальванизированной стали. Это позволяет значительно снизить стоимость тары без потери функциональности.
         </p>
@@ -1459,6 +1452,11 @@ const PAGES = {
         <div style="background:#fff8e6;border:1px solid #ffd28a;border-left:3px solid #c65f00;padding:12px 16px;font-size:13px;color:#7a4500;line-height:1.6;border-radius:4px">
           <strong>Важно:</strong> сертификат ООН для REBO не выдаётся в стандартной конфигурации. Для перевозки опасных грузов — запросите специальную комплектацию.
         </div>
+        <h4 style="margin-top:28px">Технические характеристики</h4>
+        ${_reboTechTable()}
+        ${_ibcOptionRow('Виды кранов', ['2” приварной'])}
+        ${_ibcOptionRow('Виды крышек', ['Глухая (чёрная)', 'С мембранным клапаном (красная)', 'С дыхательным клапаном (чёрная)'])}
+        ${_ibcOptionRow('Тип горловины', ['150 мм (стандартная)'])}
       </div>
       <div class="tab-content" id="tab-rebo-comp">
         <h4>Состав контейнера REBO</h4>
@@ -1476,22 +1474,10 @@ const PAGES = {
           <td style="padding:10px 0;color:var(--text-dark);font-weight:500">${v}</td>
         </tr>`).join('')}</tbody></table>
       </div>
-      <div class="tab-content" id="tab-rebo-std">
-        ${_ibcStdTab()}
-      </div>
-      <div class="tab-content" id="tab-rebo-un">
-        ${_ibcUnTab()}
-      </div>
-      <div class="tab-content" id="tab-rebo-logistics">
-        ${_ibcLogisticsTab()}
-      </div>
       <div class="tab-content" id="tab-rebo-delivery">
         ${_ibcDeliveryTab()}
       </div>
-      <div class="tab-content" id="tab-rebo-closure">
-        ${_ibcClosureTab()}
-      </div>
-      <div class="tab-content active" id="tab-rebo-buy">
+      <div class="tab-content" id="tab-rebo-buy">
         <p style="font-size:14px;color:var(--text-dark);line-height:1.8;margin:0 0 20px">
           Компания Greif предоставляет профессиональный сервис по восстановлению бывших в употреблении еврокубов. Если у Вас накопились пустые контейнеры, мы готовы оперативно их вывезти с Вашей площадки. Мы готовы выкупить у Вас загрязненную тару, а также предложить услуги по промывке контейнеров, замене колбы, ремонту обрешетки и т.д. Каждый сотрудник компании Грайф делает всё возможное для того, чтобы оптимизировать Ваши расходы на промышленную упаковку и продлить её жизненный цикл.
         </p>
