@@ -4,6 +4,7 @@ const FORM_RECIPIENTS = {
   'popup-hr':       { to: 'greif.ru@yandex.ru', subject: 'Связаться с отделом кадров' },
   'popup-director': { to: 'greif.ru@yandex.ru', subject: 'Обращение директору' },
   'popup-request':  { to: 'greif.ru@yandex.ru', subject: 'Общий запрос' },
+  'popup-ibc-buy':  { to: 'greif.ru@yandex.ru', subject: 'Заявка на выкуп б/у еврокубов' },
 };
 
 function openPopup(id) {
@@ -69,7 +70,7 @@ function submitPopup(id) {
 
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') {
-    ['popup-hr', 'popup-request', 'popup-director'].forEach(id => closePopup(id));
+    ['popup-hr', 'popup-request', 'popup-director', 'popup-ibc-buy'].forEach(id => closePopup(id));
     closeMobileNav();
     if (typeof _closeFactoryModal === 'function') _closeFactoryModal();
     if (typeof _closeCityModal === 'function') _closeCityModal();

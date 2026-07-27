@@ -233,6 +233,55 @@
   </div>
 </div>
 
+<!-- ══ POPUP: ПОЛУЧИТЬ ПРЕДЛОЖЕНИЕ (Б/У ЕВРОКУБЫ) ═════════ -->
+<div class="popup-overlay" id="popup-ibc-buy" onclick="closePopupOnOverlay(event, 'popup-ibc-buy')">
+  <div class="popup-box">
+    <div class="popup-head">
+      <div>
+        <div class="popup-title">Получить предложение</div>
+        <div class="popup-subtitle">Заявка на выкуп и восстановление б/у еврокубов</div>
+      </div>
+      <button class="popup-close" onclick="closePopup('popup-ibc-buy')">&times;</button>
+    </div>
+    <div class="popup-body" id="popup-ibc-buy-form">
+      <div class="form-field">
+        <label class="form-label">Ваше имя *</label>
+        <input class="form-input" type="text" placeholder="Иван Иванов" id="ibcbuy-name">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Телефон для связи *</label>
+        <input class="form-input" type="tel" placeholder="+7 (___) ___-__-__" id="ibcbuy-phone">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Ваш E-mail</label>
+        <input class="form-input" type="email" placeholder="example@company.ru" id="ibcbuy-email">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Количество еврокубов</label>
+        <input class="form-input" type="text" placeholder="Например: 52" id="ibcbuy-quantity">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Регион отгрузки</label>
+        <input class="form-input" type="text" placeholder="Например: Москва и МО" id="ibcbuy-region">
+      </div>
+      <div class="form-field form-consent">
+        <label class="form-consent-label">
+          <input type="checkbox" id="ibcbuy-consent" class="consent-checkbox">
+          <span>Я согласен(а) с <a href="privacy.html" target="_blank">Политикой конфиденциальности</a> и даю согласие на обработку моих персональных данных *</span>
+        </label>
+      </div>
+      <button class="btn-form-submit" style="margin-top:6px" onclick="submitPopup('popup-ibc-buy')">Отправить заявку</button>
+    </div>
+    <div class="popup-success" id="popup-ibc-buy-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Заявка отправлена!</div>
+      <div class="popup-success-text">Мы свяжемся с Вами в ближайшее время для уточнения деталей и оценки Вашей партии еврокубов.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ FOOTER ═══════════════════════════════════════════════ -->
 <footer class="footer">
   <div class="footer-inner">
