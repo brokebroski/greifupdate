@@ -462,6 +462,12 @@ function _barrelClosureTab() {
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       Узнайте больше о технологиях Tri-Sure: tri-sure.com
     </a>
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:20px 0 0">
+      Для персонализации бочек и защиты от фальсификации Greif предлагает комплектовать бочку крышками-пломбами с логотипом.
+    </p>
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:12px 0 0">
+      Компания Greif также предлагает комплектовать бочки пробкой-клапаном для фасовки продуктов с вакуумацией.
+    </p>
   </div>`;
 }
 
@@ -814,7 +820,7 @@ const PAGES = {
   </div>
   <div class="ibc-types-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px">
     ${[
-      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
+      { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216.5', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
       { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'https://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
@@ -840,7 +846,7 @@ const PAGES = {
     <div class="page-hero-inner">
       <a href="#" onclick="navigate('steelDrums');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Стальные бочки</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Бочка с несъёмным верхом</h1>
-      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Тип 1А1 · 216 л · Закатная конструкция Spiralon®</p>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Тип 1А1 · 216.5 л · Закатная конструкция Spiralon®</p>
     </div>
   </div>
   <div class="product-detail-page">
@@ -851,7 +857,7 @@ const PAGES = {
       <div class="product-info-col">
         <p class="product-description">Бочка с несъёмным верхом — ключевой продукт Greif. Соответствует требованиям ГОСТ 13950, международным стандартам ISO 3574 и EN10130.</p>
         <div class="spec-cards">
-          <div class="spec-card"><div class="spec-card-value">216<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Несъёмный верх · Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:26px">216.5<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Несъёмный верх · Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">08ПС</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Холоднокатаная сталь · ISO 3574 / EN10130</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">7×</div><div class="spec-card-label">Spiralon®</div><div class="spec-card-desc">Семислойный закатной шов · с герметиком</div></div>
         </div>
@@ -867,15 +873,18 @@ const PAGES = {
       </div>
       <div class="tab-content active" id="tab-desc">
         <p>Стальная бочка с несъёмным верхом типа 1А1 — наш ключевой продукт. Используется для транспортировки жидких и вязких продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения — химическая, нефтехимическая, металлургическая и лакокрасочная отрасли. Все бочки проходят многочисленные испытания, в том числе уникальную проверку на герметичность на гелиевом тестере.</p>
-        <p>Производства расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Калуге. В 2018 году запущена новая высокопроизводительная линия мощностью 2 миллиона бочек в год в Индустриальном парке Ворсино (Калужская область).</p>
-        <p>Стандартный объём бочки — 216 л. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Укупорка осуществляется горловинами и крышками-пломбами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®.</p>
+        <p>Производства расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Калуге. Такое расположение заводов создано, чтобы обеспечить максимальную логистическую эффективность для наших заказчиков: производственная площадка всегда находится рядом с клиентом, а плечо доставки сведено к минимуму. Кроме того, такая география обеспечивает нашим клиентам систему внутренней страховки при возникновении внештатных ситуаций — при необходимости выпуск продукции оперативно перераспределяется между заводами без потери сроков поставки.</p>
+        <p>Стандартный объём бочки — 216.5 л. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Укупорка осуществляется горловинами и крышками-пломбами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®.</p>
+        <h4 style="margin-top:24px">Нанесение логотипа</h4>
+        <p>На стальную бочку может наноситься логотип. Корпус условно разделён на 4 зоны нанесения — это позволяет разместить уникальный логотип клиента именно там, где он лучше всего работает на узнаваемость бренда, будь то одна зона или комбинация из нескольких.</p>
+        <p>Наше оборудование способно наносить двухцветный логотип, а исполнение нанесения — любое, под индивидуальный макет заказчика.</p>
       </div>
       <div class="tab-content" id="tab-specs">
         <h4>Цилиндрические стальные бочки</h4>
         <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС, соответствующая ГОСТ 13950-91, международным стандартам ISO 3574:2012 или EN10130/EN10131.</p>
         <h4>Бочка с закрытым верхом, тип 1А1</h4>
         <ul>
-          <li><strong>Стандартный объем:</strong> 216 л</li>
+          <li><strong>Стандартный объем:</strong> 216.5 л</li>
           <li><strong>Укупорка:</strong> горловины и крышки-пломбы Tab-Seal® 2" и ¾" Tri-Sure®</li>
         </ul>
         <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Стандартные спецификации (бочки типа 1А1)</h5>
@@ -929,16 +938,9 @@ const PAGES = {
               </tr>
             </thead>
             <tbody>
-              <tr><td>216</td><td>571,5</td><td>585</td><td>585</td><td>878</td><td>4</td><td>280</td><td>444±6</td><td>72</td></tr>
+              <tr><td>216.5</td><td>571,5</td><td>585</td><td>585</td><td>878</td><td>4</td><td>280</td><td>444±6</td><td>72</td></tr>
             </tbody>
           </table>
-        </div>
-        <div style="margin-top:32px;padding:20px 24px;background:var(--green-light-bg);border:1px solid var(--green-primary);border-radius:8px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
-          <div>
-            <div style="font-size:13px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.06em;text-transform:uppercase;color:var(--green-primary);margin-bottom:4px">Бочка со съёмным верхом · тип 1А2</div>
-            <div style="font-size:14px;color:var(--text-dark)">210 л · обжимное кольцо с рычажным замком · диаметр 610 или 585 мм</div>
-          </div>
-          <button class="product-link" onclick="navigate('steelDrum1a2')" style="white-space:nowrap;flex-shrink:0">ПОДРОБНЕЕ →</button>
         </div>
       </div>
       <div class="tab-content" id="tab-closure">
@@ -946,6 +948,7 @@ const PAGES = {
       </div>
       <div class="tab-content" id="tab-coatings">
         <p>Мы разрабатываем индивидуальный дизайн внешнего покрытия бочки: многозонные логотипы, брендинг под ваши задачи. Окраска выполняется в стандартные цвета по системе RAL.</p>
+        <p>При оформлении заказа по согласованию с заказчиком может быть использован любой цвет из каталога RAL.</p>
         <h4>Каталог цветов RAL</h4>
         <p class="coating-notice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> <span><strong>Внимание!</strong> Цвета на экране монитора отличаются от оригинала из-за особенностей цветопередачи.</span></p>
         <h5 style="margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Наиболее часто используемые цвета</h5>
@@ -956,16 +959,15 @@ const PAGES = {
             </thead>
             <tbody>
               <tr><td>1</td><td>Желтый яркий</td><td>1021</td><td><span class="ral-swatch" style="background:#F6A500"></span></td></tr>
-              <tr><td>2</td><td>Чистый оранжевый</td><td>2004</td><td><span class="ral-swatch" style="background:#F44611"></span></td></tr>
-              <tr><td>3</td><td>Пунцовый красный</td><td>3002</td><td><span class="ral-swatch" style="background:#9B2423"></span></td></tr>
-              <tr><td>4</td><td>Красный насыщенный</td><td>3020</td><td><span class="ral-swatch" style="background:#CC0605"></span></td></tr>
-              <tr><td>5</td><td>Синий</td><td>5010</td><td><span class="ral-swatch" style="background:#0E294B"></span></td></tr>
-              <tr><td>6</td><td>Синий-бледный</td><td>5017</td><td><span class="ral-swatch" style="background:#0A5B93"></span></td></tr>
-              <tr><td>7</td><td>Зеленая мята</td><td>6029</td><td><span class="ral-swatch" style="background:#2B5F2B"></span></td></tr>
-              <tr><td>8</td><td>Зеленая трава</td><td>6010</td><td><span class="ral-swatch" style="background:#4A6741"></span></td></tr>
-              <tr><td>9</td><td>Телегрэй</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
-              <tr><td>10</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
-              <tr><td>11</td><td>Белый</td><td>9003 / 9016</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
+              <tr><td>2</td><td>Чистый оранжевый</td><td>2009</td><td><span class="ral-swatch" style="background:#F44611"></span></td></tr>
+              <tr><td>3</td><td>Сигнальный красный</td><td>3020</td><td><span class="ral-swatch" style="background:#CC0605"></span></td></tr>
+              <tr><td>4</td><td>Синий</td><td>5010</td><td><span class="ral-swatch" style="background:#0E294B"></span></td></tr>
+              <tr><td>5</td><td>Небесно-голубой</td><td>5017</td><td><span class="ral-swatch" style="background:#0A5B93"></span></td></tr>
+              <tr><td>6</td><td>Зеленая мята</td><td>6029</td><td><span class="ral-swatch" style="background:#2B5F2B"></span></td></tr>
+              <tr><td>7</td><td>Зеленая трава</td><td>6010</td><td><span class="ral-swatch" style="background:#4A6741"></span></td></tr>
+              <tr><td>8</td><td>Светло-серый</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
+              <tr><td>9</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
+              <tr><td>10</td><td>Белый</td><td>9003</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1056,7 +1058,7 @@ const PAGES = {
         </div>
       </div>
       <div class="product-info-col">
-        <p class="product-description">Стальная бочка со съёмным верхом типа 1А2 для транспортировки и хранения сыпучих, твёрдых и вязких химических веществ. Крышка полностью снимается и надёжно фиксируется обжимным кольцом с рычажным замком.</p>
+        <p class="product-description">Стальная бочка со съёмным верхом типа 1А2 для транспортировки и хранения сыпучих, твёрдых, вязких и жидких химических веществ. Крышка полностью снимается и надёжно фиксируется обжимным кольцом с рычажным замком.</p>
         <div class="spec-cards">
           <div class="spec-card"><div class="spec-card-value">210<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А2</div><div class="spec-card-desc">Съёмный верх · обжимное кольцо с рычажным замком</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 610</div><div class="spec-card-label">Стандартная</div><div class="spec-card-desc">Диаметр по запорному кольцу · стандартное исполнение</div></div>
@@ -1070,12 +1072,13 @@ const PAGES = {
         <button class="tab-btn active" data-tab="1a2-desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="1a2-specs">СПЕЦИФИКАЦИИ</button>
         <button class="tab-btn" data-tab="1a2-coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="1a2-lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
       </div>
       <div class="tab-content active" id="tab-1a2-desc">
         <p>Бочка стальная со съёмным верхом типа 1А2 вместимостью 210 л изготовлена в соответствии с требованиями ГОСТ 13950. Крышка полностью снимается, обеспечивая удобный доступ к содержимому, и надёжно фиксируется обжимным кольцом с рычажным замком и уплотнителем.</p>
         <h4>Исполнения по диаметру</h4>
         <p><strong>Стандартная</strong> (Д 610 мм) — стандартный диаметр по запорному кольцу. Выпускается с тремя вариантами рёбер жёсткости корпуса: «Спиралтейнер», «Спиралтейнер» с дополнительной корругацией, два ребра жёсткости.</p>
-        <p><strong>Кремпированная</strong> (Д ≤ 585 мм) — зауженная горловина обеспечивает максимальный наружный диаметр не более 585 мм. Конструкция оптимально подходит для перевозки в стандартных 20- и 40-футовых ISO-контейнерах: благодаря уменьшенному диаметру в ряду по ширине помещается четыре бочки вместо трёх, что обеспечивает максимальную эффективность использования грузового пространства. Выпускается с рёбрами жёсткости: «Спиралтейнер» или «Спиралтейнер» с дополнительной корругацией.</p>
+        <p><strong>Кремпированная</strong> (Д 585 мм) — зауженная горловина обеспечивает максимальный наружный диаметр не более 585 мм. Конструкция оптимально подходит для перевозки в стандартных 20- и 40-футовых ISO-контейнерах: благодаря уменьшенному диаметру в ряду по ширине помещается четыре бочки вместо трёх, что обеспечивает максимальную эффективность использования грузового пространства. Выпускается с рёбрами жёсткости: «Спиралтейнер» или «Спиралтейнер» с дополнительной корругацией.</p>
         <h4>Комплектации</h4>
         <div class="ral-table-wrap" style="overflow-x:auto">
           <table class="ral-table">
@@ -1090,12 +1093,12 @@ const PAGES = {
         </div>
         <h4>Дополнительные опции</h4>
         <ul>
-          <li>Внутреннее защитное покрытие (или без него)</li>
-          <li>Горловины 2&quot; и ¾&quot; (или без горловин)</li>
+          <li>Внутреннее защитное покрытие</li>
+          <li>Горловины 2&quot; и ¾&quot;</li>
         </ul>
       </div>
       <div class="tab-content" id="tab-1a2-specs">
-        <p><strong>Материал:</strong> холоднокатаная сталь марки 08ПС, ГОСТ 13950-91, ISO 3574:2012 / EN10130/EN10131.</p>
+        <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС, соответствующая ГОСТ 13950-91, международным стандартам ISO 3574:2012 или EN10130/EN10131.</p>
         <p><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем.</p>
         <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Основные параметры</h5>
         <div class="ral-table-wrap" style="overflow-x:auto">
@@ -1105,14 +1108,15 @@ const PAGES = {
             </thead>
             <tbody>
               <tr><td>Стандартная</td><td>210</td><td>610 (по запорному кольцу)</td><td>Спиралтейнер / Спиралтейнер + корругация / 2 ребра</td></tr>
-              <tr><td>Кремпированная</td><td>210</td><td>≤ 585</td><td>Спиралтейнер / Спиралтейнер + корругация</td></tr>
+              <tr><td>Кремпированная</td><td>210</td><td>585</td><td>Спиралтейнер / Спиралтейнер + корругация</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="margin-top:16px;font-size:13px;color:var(--text-muted)">По требованию потребителя бочка может поставляться с внутренним защитным покрытием или без него, с горловинами 2&quot; и ¾&quot; или без горловин.</p>
+        <p style="margin-top:16px;font-size:13px;color:var(--text-muted)">По требованию потребителя бочка может поставляться с внутренним защитным покрытием, с горловинами 2&quot; и ¾&quot; или без горловин.</p>
       </div>
       <div class="tab-content" id="tab-1a2-coatings">
-        <p>Мы разрабатываем индивидуальный дизайн внешнего покрытия бочки: многозонные логотипы, брендинг под ваши задачи. Окраска выполняется в стандартные цвета по системе RAL.</p>
+        <p>Бочка окрашивается в один цвет по системе RAL.</p>
+        <p>При оформлении заказа по согласованию с заказчиком может быть использован любой цвет из каталога RAL.</p>
         <h4>Каталог цветов RAL</h4>
         <p class="coating-notice"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg> <span><strong>Внимание!</strong> Цвета на экране монитора отличаются от оригинала из-за особенностей цветопередачи.</span></p>
         <h5 style="margin:20px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Наиболее часто используемые цвета</h5>
@@ -1121,19 +1125,26 @@ const PAGES = {
             <thead><tr><th>№</th><th>Наименование RAL</th><th>Код RAL</th><th>Цвет</th></tr></thead>
             <tbody>
               <tr><td>1</td><td>Желтый яркий</td><td>1021</td><td><span class="ral-swatch" style="background:#F6A500"></span></td></tr>
-              <tr><td>2</td><td>Чистый оранжевый</td><td>2004</td><td><span class="ral-swatch" style="background:#F44611"></span></td></tr>
-              <tr><td>3</td><td>Пунцовый красный</td><td>3002</td><td><span class="ral-swatch" style="background:#9B2423"></span></td></tr>
-              <tr><td>4</td><td>Красный насыщенный</td><td>3020</td><td><span class="ral-swatch" style="background:#CC0605"></span></td></tr>
-              <tr><td>5</td><td>Синий</td><td>5010</td><td><span class="ral-swatch" style="background:#0E294B"></span></td></tr>
-              <tr><td>6</td><td>Синий-бледный</td><td>5017</td><td><span class="ral-swatch" style="background:#0A5B93"></span></td></tr>
-              <tr><td>7</td><td>Зеленая мята</td><td>6029</td><td><span class="ral-swatch" style="background:#2B5F2B"></span></td></tr>
-              <tr><td>8</td><td>Зеленая трава</td><td>6010</td><td><span class="ral-swatch" style="background:#4A6741"></span></td></tr>
-              <tr><td>9</td><td>Телегрэй</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
-              <tr><td>10</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
-              <tr><td>11</td><td>Белый</td><td>9003 / 9016</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
+              <tr><td>2</td><td>Чистый оранжевый</td><td>2009</td><td><span class="ral-swatch" style="background:#F44611"></span></td></tr>
+              <tr><td>3</td><td>Сигнальный красный</td><td>3020</td><td><span class="ral-swatch" style="background:#CC0605"></span></td></tr>
+              <tr><td>4</td><td>Синий</td><td>5010</td><td><span class="ral-swatch" style="background:#0E294B"></span></td></tr>
+              <tr><td>5</td><td>Небесно-голубой</td><td>5017</td><td><span class="ral-swatch" style="background:#0A5B93"></span></td></tr>
+              <tr><td>6</td><td>Зеленая мята</td><td>6029</td><td><span class="ral-swatch" style="background:#2B5F2B"></span></td></tr>
+              <tr><td>7</td><td>Зеленая трава</td><td>6010</td><td><span class="ral-swatch" style="background:#4A6741"></span></td></tr>
+              <tr><td>8</td><td>Светло-серый</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
+              <tr><td>9</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
+              <tr><td>10</td><td>Белый</td><td>9003</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="tab-content" id="tab-1a2-lining">
+        <div style="overflow:hidden;margin-bottom:20px">
+          <img src="https://www.greif.ru/wp-content/uploads/Без-названия11.png" alt="Внутренние покрытия бочки 1А2" style="float:left;max-width:220px;max-height:220px;object-fit:contain;margin:0 24px 12px 0">
+          <p style="margin:0">Бочка 1А2 может изготавливаться с внутренним покрытием. Система лаков RDL® (Regular Drum Lining) является универсальным стандартом внутренних покрытий для стальных бочек, принятым на заводах Greif Inc. по всему миру. Лаки RDL представляют собой передовое решение на рынке покрытий для стальной упаковки, которое позволяет исключить риск изменения свойств вашего продукта в результате контакта с поверхностью бочки, равно как и защитить окружающую среду от воздействия агрессивных продуктов.</p>
+        </div>
+        <p>Система RDL базируется на двух основных типах соединений: фенольные и эпоксидно-фенольные смолы, растворённые в смеси органических растворителей. Композиции на основе смеси фенольных (около 70%) и эпоксидных (около 30%) смол позволяют оптимизировать физико-химические свойства покрытий. Часть покрытий содержит инертные пигменты на основе оксидов титана или железа. Добавление пигментов в рецептуру лака придаёт покрытию характерный оттенок (красный, серый или коричневый). Кроме того, улучшаются физические и химические свойства покрытий: в частности, становится возможным нанесение стабильных слоёв большей толщины. Нанесение лаков RDL на внутреннюю поверхность стальной тары позволяет также защитить стальную поверхность от коррозии при контакте с водорастворимыми продуктами.</p>
+        <p><strong>Нанесение:</strong> внутреннее покрытие наносится без распыления.</p>
       </div>
     </div>
     <div class="manager-card" id="steel-manager-card">
@@ -1662,8 +1673,8 @@ const PAGES = {
       <div class="product-info-col">
         <p class="product-description">Конические стальные бочки используются для транспортировки и хранения пищевых продуктов — концентратов томатной пасты, соков, пюре, а также густых и сыпучих непищевых продуктов.</p>
         <div class="spec-cards" style="grid-template-columns: repeat(2, 1fr)">
-          <div class="spec-card"><div class="spec-card-value">217<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём · тип 1А2</div><div class="spec-card-desc">Стенка 0,7 мм · масса без крышки 10,4 кг</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Ø 580<span class="spec-card-unit"> мм</span></div><div class="spec-card-label">Диаметр</div><div class="spec-card-desc">Высота 970 ±4 мм · штабелируемая</div></div>
+          <div class="spec-card"><div class="spec-card-value">218-220<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Объём · тип 1А2</div><div class="spec-card-desc">Стенка 0,7 мм · масса без крышки 11,4 кг</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Ø 577<span class="spec-card-unit"> мм</span></div><div class="spec-card-label">Диаметр</div><div class="spec-card-desc">Высота 975 ±2 мм · штабелируемая</div></div>
         </div>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
@@ -1678,11 +1689,11 @@ const PAGES = {
       </div>
       <div class="tab-content active" id="tab-con-desc">
         <p>Конические (конусные) бочки выпускаются на заводах компании Greif, расположенных в США, Великобритании, Греции, Италии, Турции, Португалии, Египте и Бразилии. С 2007 года производство конических бочек осуществляется в России — в г. Волгограде.</p>
-        <p>Стандартная емкость бочки составляет 217–220 л, она оснащена стальной крышкой с запорным кольцом. По желанию заказчика мы можем надеть мешки на бочку — это упрощает расцепку и делает использование тары более удобным.</p>
+        <p>Стандартная емкость бочки составляет 218–220 л, она оснащена стальной крышкой с запорным кольцом. Бочка поставляется на палетах по 84 шт. на одном палете, в стандартную фуру помещается 1344 бочки.</p>
       </div>
       <div class="tab-content" id="tab-con-specs">
         <p>При производстве конических бочек Greif используется холоднокатаный стальной прокат марки 08ПС. Технические характеристики стали соответствуют ISO 35373 и ISO 3574 или аналогичным стандартам (EN10130 / EN10131).</p>
-        <p>Стандартная коническая бочка со съёмным верхом имеет объём 217–220 л. Она состоит из корпуса, нижнего дна и верхней крышки. Корпус бочки сваривается продольным швом, затем осуществляется присоединение нижнего дна к обечайке пятислойным закатным швом. Конические бочки комплектуются металлической крышкой.</p>
+        <p>Стандартная коническая бочка со съёмным верхом имеет объём 218–220 л. Она состоит из корпуса, нижнего дна и верхней крышки. Корпус бочки сваривается продольным швом, затем осуществляется присоединение нижнего дна к обечайке пятислойным закатным швом. Конические бочки комплектуются металлической крышкой и металлическим запорным кольцом.</p>
         <h4 style="margin-top:24px;margin-bottom:12px">Размеры конических бочек со съёмным верхом 1А2</h4>
         <div style="overflow-x:auto">
           <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:520px">
@@ -1712,15 +1723,15 @@ const PAGES = {
             </thead>
             <tbody>
               <tr>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border);font-weight:500">217–220</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">580 ±4</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">525 ±4</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">574 ±4</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">970 ±4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border);font-weight:500">218–220</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">577 ±3</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">521 ±3</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">573 ±2</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">975 ±2</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,7</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,6–0,7</td>
                 <td style="padding:12px 8px;border-bottom:1px solid var(--border)">0,7</td>
-                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">10,4</td>
+                <td style="padding:12px 8px;border-bottom:1px solid var(--border)">11,4</td>
               </tr>
             </tbody>
           </table>
@@ -1729,6 +1740,7 @@ const PAGES = {
       </div>
       <div class="tab-content" id="tab-con-coating">
         <p>Бочка окрашивается в один цвет по системе RAL.</p>
+        <p>При оформлении заказа по согласованию с заказчиком может быть использован любой цвет из каталога RAL.</p>
         <h4 style="margin-top:24px;margin-bottom:12px">Каталог цветов RAL — стандартные цвета Greif</h4>
         <div style="overflow-x:auto">
           <table style="width:100%;border-collapse:collapse;font-size:13px">
@@ -1743,16 +1755,15 @@ const PAGES = {
             <tbody>
               ${[
                 ['1','Желтый яркий','1021','#F6A500',''],
-                ['2','Чистый оранжевый','2004','#F44611',''],
-                ['3','Пунцовый красный','3002','#9B2423',''],
-                ['4','Красный насыщенный','3020','#CC0605',''],
-                ['5','Синий','5010','#0E294B',''],
-                ['6','Синий-бледный','5017','#0A5B93',''],
-                ['7','Зеленая мята','6029','#2B5F2B',''],
-                ['8','Зеленая трава','6010','#4A6741',''],
-                ['9','Телегрэй','7047','#D0D0D0','border:1px solid #bbb'],
-                ['10','Черный','9005','#0A0A0A',''],
-                ['11','Белый','9003 / 9016','#F4F4F4','border:1px solid #bbb'],
+                ['2','Чистый оранжевый','2009','#F44611',''],
+                ['3','Сигнальный красный','3020','#CC0605',''],
+                ['4','Синий','5010','#0E294B',''],
+                ['5','Небесно-голубой','5017','#0A5B93',''],
+                ['6','Зеленая мята','6029','#2B5F2B',''],
+                ['7','Зеленая трава','6010','#4A6741',''],
+                ['8','Светло-серый','7047','#D0D0D0','border:1px solid #bbb'],
+                ['9','Черный','9005','#0A0A0A',''],
+                ['10','Белый','9003','#F4F4F4','border:1px solid #bbb'],
               ].map(([n,name,ral,hex,border]) =>
                 `<tr style="border-bottom:1px solid var(--border)">
                   <td style="padding:10px 8px;color:var(--text-muted)">${n}</td>
@@ -1771,65 +1782,41 @@ const PAGES = {
           <p style="margin:0">Конические бочки могут изготавливаться с внутренними покрытиями. Система лаков RDL® (Regular Drum Lining) является универсальным стандартом внутренних покрытий для стальных бочек, принятым на заводах Greif Inc. по всему миру. Лаки RDL представляют собой передовое решение на рынке покрытий для стальной упаковки, которое позволяет исключить риск изменения свойств вашего продукта в результате контакта с поверхностью бочки, равно как и защитить окружающую среду от воздействия агрессивных продуктов.</p>
         </div>
         <p>Система RDL базируется на двух основных типах соединений: фенольные и эпоксидно-фенольные смолы, растворённые в смеси органических растворителей. Композиции на основе смеси фенольных (около 70%) и эпоксидных (около 30%) смол позволяют оптимизировать физико-химические свойства покрытий. Часть покрытий содержит инертные пигменты на основе оксидов титана или железа. Добавление пигментов в рецептуру лака придаёт покрытию характерный оттенок (красный, серый или коричневый). Кроме того, улучшаются физические и химические свойства покрытий: в частности, становится возможным нанесение стабильных слоёв большей толщины. Нанесение лаков RDL на внутреннюю поверхность стальной тары позволяет также защитить стальную поверхность от коррозии при контакте с водорастворимыми продуктами.</p>
-        <p>Лаки RDL включают 6 стандартных типов покрытий: три эпоксидно-фенольных (RDL 29, RDL 06, RDL 44) и три фенольных (RDL 16, RDL 50, RDL 39). Решения на основе этих базовых лаков охватывают 90% продуктов, которые могут быть запакованы в стальную бочку с внутренним покрытием. Для оставшихся 10% случаев компанией Tri-Sure®, входящей в состав корпорации Greif Inc., также разработаны специальные решения в рамках системы RDL. За 50 лет существования данной системы накоплен значительный опыт и сформирована обширная база данных о свойствах нескольких тысяч веществ, что позволяет специалистам Tri-Sure оперативно подобрать лучшее решение. Отметим, что в случае возникновения малейших сомнений в совместимости вашего продукта с покрытием RDL, на базе нашего собственного исследовательского подразделения проводятся все необходимые испытания.</p>
-        <p>В 2014 году компания Greif расширила линейку базовых внутренних покрытий, выпустив новинки — RDL 100 (с добавлением пигмента) и RDL 101 (прозрачный). Основным преимуществом новых лаков является исключение из технологии их производства компонентов, содержащих Бисфенол А (BPA). Испытания этих лаков были проведены с использованием современных методов контроля в лаборатории Tri-Sure, где было подтверждено отсутствие BPA (концентрации менее 0,5 мкг/дм находятся за пределами чувствительности метода). Новые лаки обладают высокой химической стойкостью; показатели сопоставимы со стандартным покрытием RDL 50. Безопасность новых лаков RDL 100 и RDL 101 подтверждена для большинства пищевых и химических продуктов. Проверку совместимости новых лаков с вашими продуктами можно провести совместно с исследовательским подразделением Greif.</p>
-        <p><strong>Нанесение:</strong> все покрытия серии RDL могут наноситься на чистую поверхность стали или жести путём распыления или при помощи валиков. Лак подвергается обжигу при высоких температурах, благодаря чему все органические растворители испаряются. Под воздействием температуры происходит реакция поликонденсации смолы с получением инертной фенольной или эпокси-фенольной структуры, в которой равномерно распределены неорганические пигменты (при их наличии). Эпокси-фенольные покрытия отличает высокая гибкость, а фенольные — стойкость к повышенным температурам. Это позволяет применять лаки RDL 16 и RDL 50 для покрытия бочек, в которые фасуются продукты с высокими температурами при наливе.</p>
-        <h4 style="margin-top:28px;margin-bottom:8px">Характеристики покрытий RDL, используемых на заводах Greif в России</h4>
-        <img src="https://www.greif.ru/wp-content/uploads/Без-названия-2.png" alt="Характеристики покрытий RDL" style="display:block;max-width:100%;max-height:200px;object-fit:contain;margin-bottom:16px">
+        <p>Для конической бочки используется лак RDL 06.</p>
+        <p><strong>Нанесение:</strong> внутреннее покрытие наносится на внутреннее покрытие без распыления.</p>
+        <h4 style="margin-top:28px;margin-bottom:8px">Характеристики покрытия RDL 06, используемого на заводах Greif в России</h4>
         <div style="overflow-x:auto">
-          <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:560px">
+          <table style="width:100%;border-collapse:collapse;font-size:13px;min-width:280px">
             <thead>
-              <tr>
-                <th style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:left;width:22%"></th>
-                <th colspan="2" style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:center;background:var(--bg-light,#f5f5f5)">Эпокси-фенольные</th>
-                <th colspan="2" style="padding:10px 8px;border-bottom:2px solid var(--border);text-align:center;background:var(--bg-light,#f5f5f5)">Фенольные</th>
-              </tr>
               <tr style="background:var(--bg-light,#f5f5f5)">
                 <th style="padding:8px;text-align:left;font-weight:600;border-bottom:1px solid var(--border)">Наименование</th>
-                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 29</th>
                 <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 06</th>
-                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 16</th>
-                <th style="padding:8px;text-align:center;font-weight:700;border-bottom:1px solid var(--border)">RDL 50</th>
               </tr>
             </thead>
             <tbody>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:10px 8px;color:var(--text-muted);font-weight:500">Цвет</td>
-                <td style="padding:10px 8px;text-align:center">Прозрачный</td>
                 <td style="padding:10px 8px;text-align:center">Красный</td>
-                <td style="padding:10px 8px;text-align:center">Прозрачный (золотистый)</td>
-                <td style="padding:10px 8px;text-align:center">Оливковый зелёный</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:10px 8px;color:var(--text-muted);font-weight:500">Пигмент</td>
-                <td style="padding:10px 8px;text-align:center">Нет</td>
                 <td style="padding:10px 8px;text-align:center">Оксид железа</td>
-                <td style="padding:10px 8px;text-align:center">Нет</td>
-                <td style="padding:10px 8px;text-align:center">Диоксид титана</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:10px 8px;color:var(--text-muted);font-weight:500;vertical-align:top">Свойства</td>
-                <td style="padding:10px 8px;font-size:12px">Хорошая стойкость к большинству органических растворителей. Умеренная стойкость к некоторым продуктам на водной основе.</td>
                 <td style="padding:10px 8px;font-size:12px">Хорошая стойкость к большинству органических растворителей и к некоторым продуктам на водной основе.</td>
-                <td style="padding:10px 8px;font-size:12px">Исключительная стойкость к органическим растворителям.</td>
-                <td style="padding:10px 8px;font-size:12px">Большинство органических растворителей.</td>
               </tr>
               <tr style="border-bottom:1px solid var(--border)">
                 <td style="padding:10px 8px;color:var(--text-muted);font-weight:500;vertical-align:top">Назначение</td>
-                <td style="padding:10px 8px;font-size:12px">Защитное (гигиеническое) покрытие. Химические вещества.</td>
                 <td style="padding:10px 8px;font-size:12px">Большинство химических веществ. Пищевые продукты. Защитное (гигиеническое) покрытие.</td>
-                <td style="padding:10px 8px;font-size:12px">Химические вещества.</td>
-                <td style="padding:10px 8px;font-size:12px">Химические вещества.</td>
               </tr>
             </tbody>
           </table>
         </div>
-        <p style="margin-top:16px;font-size:13px">Лаки для внутреннего покрытия бочек сертифицированы Управлением по санитарному надзору за качеством пищевых продуктов и медикаментов (FDA), США.</p>
-        <p style="margin-top:8px;font-size:13px;color:var(--text-muted)"><strong>Внимание:</strong> фенольные покрытия не рекомендованы к контакту с продуктами с высокими значениями pH — едкие щёлочи, в частности, вызывают разрушение фенольной плёнки.</p>
       </div>
       <div class="tab-content" id="tab-con-closure">
         <p>Выбор подходящей укупорочной системы является крайне важным для надёжной упаковки конических бочек.</p>
-        <p>Бочки с металлической откидной крышкой комплектуются запорными обручами из горячекатаной гальванизированной стали и уплотнительным кольцом.</p>
+        <p>Бочки с металлической откидной крышкой комплектуются запорными обручами из горячекатаной гальванизированной стали.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin:20px 0">
           <img src="https://www.greif.ru/wp-content/uploads/113.png" alt="Металлическая крышка конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
           <img src="https://www.greif.ru/wp-content/uploads/132.png" alt="Запорный обруч конической бочки" style="height:180px;object-fit:contain;flex:1;min-width:120px;max-width:220px">
@@ -2079,7 +2066,7 @@ const PAGES = {
         ${[
           ['Автоматическая разгрузка','Роботизированная система обеспечивает разгрузку партии из 150 бочек менее чем за 30 минут. Система полностью исключает операции с бочками, производимые вручную.'],
           ['Поставка точно в срок','Логистическая концепция Just-in-Time позволяет сократить выделенные под тару складские площади и затраты на её хранение. Диверсифицированная сеть предприятий Greif гарантирует отсутствие сбоев в доставке.'],
-          ['Паллетизированная доставка','Greif предлагает доставку паллетизированных стальных бочек. Максимальный объём партии — 264 бочки объёмом 216 литров.'],
+          ['Паллетизированная доставка','Greif предлагает доставку паллетизированных стальных бочек. Максимальный объём партии — 264 бочки объёмом 216.5 литров.'],
           ['Сервис Greif Express','Специальный логистический сервис позволяет исключить сложности при поставке и операциях с металлическими бочками: 48 бочек на паллетах в одном контейнере, 6 контейнеров в одном грузовике.'],
         ].map(([title, desc]) => `
           <div style="background:#fff;border:1px solid var(--border);border-top:3px solid var(--green-primary);padding:36px 40px;margin-bottom:24px">
