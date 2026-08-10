@@ -1914,20 +1914,6 @@ const PAGES = {
             </div>
           </div>
         </div>
-        <div class="features-grid" style="margin-top:28px">
-          <div class="feature-card">
-            <div class="feature-title">Стабильное качество</div>
-            <div class="feature-desc">Высокоточное итальянское оборудование с сервоприводами — каждая канистра идентична предыдущей.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-title">Низкая цена</div>
-            <div class="feature-desc">Полностью электрический привод экономит до 50% энергии — мы не закладываем лишние расходы в стоимость.</div>
-          </div>
-          <div class="feature-card">
-            <div class="feature-title">Сроки</div>
-            <div class="feature-desc">Оборудование работает надёжно и без сбоев, простоев нет — заказы выполняются точно в срок.</div>
-          </div>
-        </div>
       </div>
 
       <div class="tab-content" id="tab-can-specs">
