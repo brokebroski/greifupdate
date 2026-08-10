@@ -311,6 +311,51 @@
   </div>
 </footer>
 
+<!-- ══ ЧАТ-ВИДЖЕТ (умный онлайн-консультант) ═══════════════════ -->
+<button class="chat-fab" id="chat-fab" aria-label="Открыть чат с консультантом">
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M12 3C6.48 3 2 6.94 2 11.5c0 2.6 1.44 4.93 3.7 6.44-.12.86-.5 2.15-1.53 3.6-.1.13-.02.32.14.34 2.11.28 3.87-.45 5.06-1.2.83.22 1.71.32 2.63.32 5.52 0 10-3.94 10-8.5S17.52 3 12 3z"/>
+  </svg>
+</button>
+
+<div class="chat-invite" id="chat-invite">
+  <button class="chat-invite-close" id="chat-invite-close" aria-label="Закрыть приглашение">&times;</button>
+  <div class="chat-invite-eyebrow">Онлайн-консультант</div>
+  <div class="chat-invite-title">Нужна помощь?</div>
+  <p class="chat-invite-text">Ответим на вопросы по продукции, доставке и сотрудничеству — прямо сейчас.</p>
+  <button class="btn-form-submit" id="chat-invite-btn">Связаться с консультантом</button>
+</div>
+
+<div class="chat-window" id="chat-window">
+  <div class="chat-window-head">
+    <div>
+      <div class="chat-window-title">Онлайн-консультант</div>
+      <div class="chat-window-subtitle">Обычно отвечаем в течение нескольких минут</div>
+    </div>
+    <button class="chat-window-close" id="chat-window-close" aria-label="Закрыть чат">&times;</button>
+  </div>
+  <div class="chat-window-body">
+    <form id="chat-window-form">
+      <div class="form-field">
+        <label class="form-label">Имя *</label>
+        <input class="form-input" type="text" id="chat-name" placeholder="Как к вам обращаться?">
+      </div>
+      <div class="form-field">
+        <label class="form-label">Сообщение *</label>
+        <textarea class="form-input" id="chat-message" rows="4" placeholder="Опишите ваш вопрос" style="resize:vertical;min-height:88px"></textarea>
+      </div>
+      <button type="submit" class="btn-form-submit">Отправить</button>
+    </form>
+    <div class="popup-success" id="chat-window-success">
+      <div class="popup-success-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="popup-success-title">Сообщение отправлено!</div>
+      <div class="popup-success-text">Консультант свяжется с вами в ближайшее время.</div>
+    </div>
+  </div>
+</div>
+
 <!-- ══ SCRIPTS (dependency order) ═══════════════════════════ -->
 <script src="js/components.js"></script>
 <script src="js/vacancies-data.js"></script>
@@ -349,6 +394,7 @@ function cookieAccept() {
   setTimeout(function(){ b.style.display = 'none'; }, 420);
 }
 </script>
+<script src="js/chat-widget.js"></script>
 
 </body>
 </html>

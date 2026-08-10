@@ -466,7 +466,7 @@ function _barrelClosureTab() {
       Для персонализации бочек и защиты от фальсификации Greif предлагает комплектовать бочку крышками-пломбами с логотипом.
     </p>
     <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:12px 0 0">
-      Компания Greif также предлагает комплектовать бочки пробкой-клапаном для фасовки продуктов с вакуумацией.
+      Компания Greif также предлагает комплектовать бочки пробкой-клапаном для фасовки продуктов с вакумизацией.
     </p>
   </div>`;
 }
@@ -821,7 +821,7 @@ const PAGES = {
   <div class="ibc-types-grid" style="grid-template-columns:repeat(2,1fr);max-width:800px">
     ${[
       { id:'steelDrum1a1', title:'Бочка с несъёмным верхом', vol:'216.5', type:'1А1', img:'http://www.greif.ru/wp-content/uploads/sud-se-sroubovymi-uzavery-216-5l-na-sajt.png', desc:'Закатная конструкция Spiralon®. Укупорка горловинами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®. Для жидких и вязких продуктов.' },
-      { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'https://www.greif.ru/wp-content/uploads/1a2.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
+      { id:'steelDrum1a2', title:'Бочка со съёмным верхом',  vol:'210', type:'1А2', img:'http://www.greif.ru/wp-content/uploads/olivkovoe.png',               desc:'Съёмная крышка с обжимным кольцом и рычажным замком. Для сыпучих, твёрдых и вязких продуктов.' },
     ].map(c => `
       <div class="ibc-type-card" onclick="navigate('${c.id}')">
         <div class="ibc-type-card-img">
@@ -859,7 +859,7 @@ const PAGES = {
         <div class="spec-cards">
           <div class="spec-card"><div class="spec-card-value" style="font-size:26px">216.5<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А1</div><div class="spec-card-desc">Несъёмный верх · Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">08ПС</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Холоднокатаная сталь · ISO 3574 / EN10130</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">7×</div><div class="spec-card-label">Spiralon®</div><div class="spec-card-desc">Семислойный закатной шов · с герметиком</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">7×/5×</div><div class="spec-card-label">Spiralon®</div><div class="spec-card-desc">Семи- или пятислойный закатной шов · с герметиком</div></div>
         </div>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
@@ -868,16 +868,16 @@ const PAGES = {
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="specs">СПЕЦИФИКАЦИИ</button>
-        <button class="tab-btn" data-tab="coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="coatings">ЦВЕТОВЫЕ РЕШЕНИЯ</button>
         <button class="tab-btn" data-tab="closure">УКУПОРКА</button>
       </div>
       <div class="tab-content active" id="tab-desc">
         <p>Стальная бочка с несъёмным верхом типа 1А1 — наш ключевой продукт. Используется для транспортировки жидких и вязких продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения — химическая, нефтехимическая, металлургическая и лакокрасочная отрасли. Все бочки проходят многочисленные испытания, в том числе уникальную проверку на герметичность на гелиевом тестере.</p>
         <p>Производства расположены в Вологде, Волгограде, Перми, Екатеринбурге, Омске и Калуге. Такое расположение заводов создано, чтобы обеспечить максимальную логистическую эффективность для наших заказчиков: производственная площадка всегда находится рядом с клиентом, а плечо доставки сведено к минимуму. Кроме того, такая география обеспечивает нашим клиентам систему внутренней страховки при возникновении внештатных ситуаций — при необходимости выпуск продукции оперативно перераспределяется между заводами без потери сроков поставки.</p>
-        <p>Стандартный объём бочки — 216.5 л. Закатной шов типа Spiralon® является семислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Укупорка осуществляется горловинами и крышками-пломбами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®.</p>
+        <p>Стандартный объём бочки — 216.5 л. Закатной шов типа Spiralon® выполняется семи- или пятислойным и для увеличения прочности в обязательном порядке фиксируется герметиком. Укупорка осуществляется горловинами и крышками-пломбами Tab-Seal® 2&quot; и ¾&quot; Tri-Sure®.</p>
         <h4 style="margin-top:24px">Нанесение логотипа</h4>
-        <p>На стальную бочку может наноситься логотип. Корпус условно разделён на 4 зоны нанесения — это позволяет разместить уникальный логотип клиента именно там, где он лучше всего работает на узнаваемость бренда, будь то одна зона или комбинация из нескольких.</p>
-        <p>Наше оборудование способно наносить двухцветный логотип, а исполнение нанесения — любое, под индивидуальный макет заказчика.</p>
+        <p>На стальную бочку может наноситься логотип. Корпус разделён на 4 зоны нанесения — это позволяет разместить уникальный логотип именно там, где выберет заказчик.</p>
+        <p>Наше оборудование позволяет наносить двухцветный логотип, а исполнение нанесения — любое, под индивидуальный макет заказчика.</p>
       </div>
       <div class="tab-content" id="tab-specs">
         <h4>Цилиндрические стальные бочки</h4>
@@ -885,7 +885,7 @@ const PAGES = {
         <h4>Бочка с закрытым верхом, тип 1А1</h4>
         <ul>
           <li><strong>Стандартный объем:</strong> 216.5 л</li>
-          <li><strong>Укупорка:</strong> горловины и крышки-пломбы Tab-Seal® 2" и ¾" Tri-Sure®</li>
+          <li><strong>Укупорка:</strong> горловины, пломбы и крышки-пломбы Tab-Seal® 2" и ¾" Tri-Sure®</li>
         </ul>
         <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Стандартные спецификации (бочки типа 1А1)</h5>
         <div class="ral-table-wrap" style="overflow-x:auto">
@@ -898,12 +898,12 @@ const PAGES = {
               <tr>
                 <th>Крышка</th>
                 <th>Корпус</th>
-                <th style="border-right:1px solid var(--border)">Днище</th>
+                <th style="border-right:1px solid var(--border)">Дно</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>1,2</td><td>1,2</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.4/350</td></tr>
+              <tr><td>1,2</td><td>1,2</td><td style="border-right:1px solid var(--border)">1,4</td><td>1A1/X1.4/350</td></tr>
               <tr><td>1,2</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,2</td><td>1A1/X1.2/250</td></tr>
               <tr><td>1,0</td><td>1,0</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td></tr>
               <tr><td>1,0</td><td>0,9</td><td style="border-right:1px solid var(--border)">1,0</td><td>1A1/X1.2/250</td></tr>
@@ -968,6 +968,7 @@ const PAGES = {
               <tr><td>8</td><td>Светло-серый</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
               <tr><td>9</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
               <tr><td>10</td><td>Белый</td><td>9003</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
+              <tr><td>11</td><td>Темно-серый</td><td>7024</td><td><span class="ral-swatch" style="background:#474A51"></span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1042,27 +1043,27 @@ const PAGES = {
     <div class="product-detail-grid">
       <div class="product-image-col" style="padding:20px;flex-direction:column;align-items:stretch;justify-content:center;">
         <div style="text-align:center;padding:12px 0">
-          <img id="drum1a2Img" src="https://www.greif.ru/wp-content/uploads/1a2.png" alt="Бочка 1А2" style="max-width:100%;max-height:360px;object-fit:contain;">
+          <img id="drum1a2Img" src="http://www.greif.ru/wp-content/uploads/olivkovoe.png" alt="Бочка 1А2" style="max-width:100%;max-height:360px;object-fit:contain;">
         </div>
         <div style="display:flex;gap:8px;margin-top:12px">
           <button id="drum1a2BtnStd"
-            onclick="document.getElementById('drum1a2Img').src='https://www.greif.ru/wp-content/uploads/1a2.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
+            onclick="document.getElementById('drum1a2Img').src='http://www.greif.ru/wp-content/uploads/olivkovoe.png';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s">
             Стандартная
           </button>
           <button id="drum1a2BtnSlim"
             onclick="document.getElementById('drum1a2Img').src='https://www.greif.ru/wp-content/uploads/1a2-kremp-.png';document.getElementById('drum1a2BtnSlim').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:var(--green-primary);color:#fff;cursor:pointer;border-radius:4px;transition:all 0.15s';document.getElementById('drum1a2BtnStd').style.cssText='flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:Roboto Condensed,sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s'"
             style="flex:1;padding:9px 12px;font-size:12px;font-weight:700;font-family:'Roboto Condensed',sans-serif;letter-spacing:0.05em;border:2px solid var(--green-primary);background:#fff;color:var(--green-primary);cursor:pointer;border-radius:4px;transition:all 0.15s">
-            Кремпированная
+            Кримпированная
           </button>
         </div>
       </div>
       <div class="product-info-col">
-        <p class="product-description">Стальная бочка со съёмным верхом типа 1А2 для транспортировки и хранения сыпучих, твёрдых, вязких и жидких химических веществ. Крышка полностью снимается и надёжно фиксируется обжимным кольцом с рычажным замком.</p>
+        <p class="product-description">Стальная бочка со съёмным верхом типа 1А2 для транспортировки и хранения сыпучих, твёрдых, вязких и жидких химических веществ. Крышка полностью снимается и надёжно фиксируется запорным кольцом с рычажным замком.</p>
         <div class="spec-cards">
-          <div class="spec-card"><div class="spec-card-value">210<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А2</div><div class="spec-card-desc">Съёмный верх · обжимное кольцо с рычажным замком</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 610</div><div class="spec-card-label">Стандартная</div><div class="spec-card-desc">Диаметр по запорному кольцу · стандартное исполнение</div></div>
-          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 585</div><div class="spec-card-label">Кремпированная</div><div class="spec-card-desc">Наружный диаметр · оптимально для ISO-контейнеров</div></div>
+          <div class="spec-card"><div class="spec-card-value">210<span class="spec-card-unit"> л</span></div><div class="spec-card-label">Тип 1А2</div><div class="spec-card-desc">Съёмный верх · запорное кольцо с рычажным замком</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 610 мм</div><div class="spec-card-label">Стандартная</div><div class="spec-card-desc">Диаметр по запорному кольцу · стандартное исполнение</div></div>
+          <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 585 мм</div><div class="spec-card-label">Кримпированная</div><div class="spec-card-desc">Наружный диаметр · оптимально для ISO-контейнеров (морские)</div></div>
         </div>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
@@ -1071,14 +1072,15 @@ const PAGES = {
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="1a2-desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="1a2-specs">СПЕЦИФИКАЦИИ</button>
-        <button class="tab-btn" data-tab="1a2-coatings">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="1a2-coatings">ЦВЕТОВЫЕ РЕШЕНИЯ</button>
         <button class="tab-btn" data-tab="1a2-lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="1a2-closure">УКУПОРКА</button>
       </div>
       <div class="tab-content active" id="tab-1a2-desc">
-        <p>Бочка стальная со съёмным верхом типа 1А2 вместимостью 210 л изготовлена в соответствии с требованиями ГОСТ 13950. Крышка полностью снимается, обеспечивая удобный доступ к содержимому, и надёжно фиксируется обжимным кольцом с рычажным замком и уплотнителем.</p>
+        <p>Бочка стальная со съёмным верхом типа 1А2 вместимостью 210 л изготовлена в соответствии с требованиями ГОСТ 13950. Крышка полностью снимается, обеспечивая удобный доступ к содержимому, и надёжно фиксируется запорным кольцом с рычажным замком и уплотнителем.</p>
         <h4>Исполнения по диаметру</h4>
         <p><strong>Стандартная</strong> (Д 610 мм) — стандартный диаметр по запорному кольцу. Выпускается с тремя вариантами рёбер жёсткости корпуса: «Спиралтейнер», «Спиралтейнер» с дополнительной корругацией, два ребра жёсткости.</p>
-        <p><strong>Кремпированная</strong> (Д 585 мм) — зауженная горловина обеспечивает максимальный наружный диаметр не более 585 мм. Конструкция оптимально подходит для перевозки в стандартных 20- и 40-футовых ISO-контейнерах: благодаря уменьшенному диаметру в ряду по ширине помещается четыре бочки вместо трёх, что обеспечивает максимальную эффективность использования грузового пространства. Выпускается с рёбрами жёсткости: «Спиралтейнер» или «Спиралтейнер» с дополнительной корругацией.</p>
+        <p><strong>Кримпированная</strong> (Д 585 мм) — зауженная горловина обеспечивает максимальный наружный диаметр не более 585 мм. Конструкция оптимально подходит для перевозки в стандартных 20- и 40-футовых ISO-контейнерах (морские): благодаря уменьшенному диаметру в ряду по ширине помещается четыре бочки вместо трёх, что обеспечивает максимальную эффективность использования грузового пространства. Выпускается с рёбрами жёсткости: «Спиралтейнер» или «Спиралтейнер» с дополнительной корругацией.</p>
         <h4>Комплектации</h4>
         <div class="ral-table-wrap" style="overflow-x:auto">
           <table class="ral-table">
@@ -1099,7 +1101,7 @@ const PAGES = {
       </div>
       <div class="tab-content" id="tab-1a2-specs">
         <p><strong>Материалы:</strong> холоднокатаная сталь марки 08ПС, соответствующая ГОСТ 13950-91, международным стандартам ISO 3574:2012 или EN10130/EN10131.</p>
-        <p><strong>Укупорка:</strong> обжимное кольцо с рычажным замком и уплотнителем.</p>
+        <p><strong>Укупорка:</strong> запорное кольцо с рычажным замком и уплотнителем.</p>
         <h5 style="margin:24px 0 12px;font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;color:var(--text-muted)">Основные параметры</h5>
         <div class="ral-table-wrap" style="overflow-x:auto">
           <table class="ral-table">
@@ -1108,7 +1110,7 @@ const PAGES = {
             </thead>
             <tbody>
               <tr><td>Стандартная</td><td>210</td><td>610 (по запорному кольцу)</td><td>Спиралтейнер / Спиралтейнер + корругация / 2 ребра</td></tr>
-              <tr><td>Кремпированная</td><td>210</td><td>585</td><td>Спиралтейнер / Спиралтейнер + корругация</td></tr>
+              <tr><td>Кримпированная</td><td>210</td><td>585</td><td>Спиралтейнер / Спиралтейнер + корругация / 2 ребра</td></tr>
             </tbody>
           </table>
         </div>
@@ -1134,6 +1136,7 @@ const PAGES = {
               <tr><td>8</td><td>Светло-серый</td><td>7047</td><td><span class="ral-swatch" style="background:#D0D0D0;border:1px solid #bbb"></span></td></tr>
               <tr><td>9</td><td>Черный</td><td>9005</td><td><span class="ral-swatch" style="background:#0A0A0A"></span></td></tr>
               <tr><td>10</td><td>Белый</td><td>9003</td><td><span class="ral-swatch" style="background:#F4F4F4;border:1px solid #bbb"></span></td></tr>
+              <tr><td>11</td><td>Темно-серый</td><td>7024</td><td><span class="ral-swatch" style="background:#474A51"></span></td></tr>
             </tbody>
           </table>
         </div>
@@ -1145,6 +1148,9 @@ const PAGES = {
         </div>
         <p>Система RDL базируется на двух основных типах соединений: фенольные и эпоксидно-фенольные смолы, растворённые в смеси органических растворителей. Композиции на основе смеси фенольных (около 70%) и эпоксидных (около 30%) смол позволяют оптимизировать физико-химические свойства покрытий. Часть покрытий содержит инертные пигменты на основе оксидов титана или железа. Добавление пигментов в рецептуру лака придаёт покрытию характерный оттенок (красный, серый или коричневый). Кроме того, улучшаются физические и химические свойства покрытий: в частности, становится возможным нанесение стабильных слоёв большей толщины. Нанесение лаков RDL на внутреннюю поверхность стальной тары позволяет также защитить стальную поверхность от коррозии при контакте с водорастворимыми продуктами.</p>
         <p><strong>Нанесение:</strong> внутреннее покрытие наносится без распыления.</p>
+      </div>
+      <div class="tab-content" id="tab-1a2-closure">
+        ${_barrelClosureTab()}
       </div>
     </div>
     <div class="manager-card" id="steel-manager-card">
@@ -1683,7 +1689,7 @@ const PAGES = {
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="con-desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="con-specs">СПЕЦИФИКАЦИИ</button>
-        <button class="tab-btn" data-tab="con-coating">ВНЕШНИЕ ПОКРЫТИЯ</button>
+        <button class="tab-btn" data-tab="con-coating">ЦВЕТОВЫЕ РЕШЕНИЯ</button>
         <button class="tab-btn" data-tab="con-lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
         <button class="tab-btn" data-tab="con-closure">СИСТЕМЫ УКУПОРКИ</button>
       </div>
@@ -1764,6 +1770,7 @@ const PAGES = {
                 ['8','Светло-серый','7047','#D0D0D0','border:1px solid #bbb'],
                 ['9','Черный','9005','#0A0A0A',''],
                 ['10','Белый','9003','#F4F4F4','border:1px solid #bbb'],
+                ['11','Темно-серый','7024','#474A51',''],
               ].map(([n,name,ral,hex,border]) =>
                 `<tr style="border-bottom:1px solid var(--border)">
                   <td style="padding:10px 8px;color:var(--text-muted)">${n}</td>
@@ -1828,7 +1835,8 @@ const PAGES = {
   </div>
 </div>`,
 
-  canisters: () => `
+  canisters: () => {
+    return `
 <div class="page">
   <div class="page-hero">
     <div class="page-hero-inner">
@@ -1840,77 +1848,131 @@ const PAGES = {
   <div class="product-detail-page">
     <div class="product-detail-grid">
       <div class="product-image-col">
-        <div class="product-carousel">
-          <div class="carousel-track-wrap">
-            <div class="carousel-track" id="canCarouselTrack">
-              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif 1"></div>
-              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-3.png" alt="Канистра Greif 3"></div>
-              <div class="carousel-slide"><img src="https://www.greif.ru/wp-content/uploads/kanistra-4.png" alt="Канистра Greif 4"></div>
-            </div>
-            <button class="carousel-btn carousel-btn-prev" onclick="canCarouselMove(-1)" aria-label="Назад">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 4L6 9l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <button class="carousel-btn carousel-btn-next" onclick="canCarouselMove(1)" aria-label="Вперёд">
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <span class="carousel-counter" id="canCarouselCounter">1 / 3</span>
-          </div>
-          <div class="carousel-dots" id="canCarouselDots">
-            <button class="carousel-dot active" onclick="canCarouselGoTo(0)"></button>
-            <button class="carousel-dot" onclick="canCarouselGoTo(1)"></button>
-            <button class="carousel-dot" onclick="canCarouselGoTo(2)"></button>
-          </div>
-        </div>
+        <img src="https://www.greif.ru/wp-content/uploads/kanistra-1.png" alt="Канистра Greif" style="max-width:380px;max-height:380px;width:100%;object-fit:contain;">
       </div>
       <div class="product-info-col">
-        <p class="product-description">Канистры производятся в двух исполнениях — с барьерным слоем COEX и без него. Барьерное исполнение создано для безопасного хранения и транспортировки жидкостей, вступающих в реакцию с обычным полиэтиленом, разъедающих его стенки или выделяющих едкие запахи; обычная полиэтиленовая канистра подходит для менее агрессивных продуктов, где барьерная защита не требуется.</p>
+        <p class="product-description">Канистры производятся в двух исполнениях — с барьерным слоем и без него. Барьерное исполнение создано для безопасного хранения и транспортировки жидкостей, вступающих в реакцию с обычным полиэтиленом, разъедающих его стенки или выделяющих едкие запахи; обычная полиэтиленовая канистра подходит для менее агрессивных продуктов, где барьерная защита не требуется.</p>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
+
+    ${false ? `
+    <div style="margin:8px 0 56px">
+      <div class="section-eyebrow">Преимущества</div>
+      <div class="section-title" style="font-size:26px;margin-bottom:28px">Почему канистры Greif</div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="square"><path d="M5 20c-1-8 3-14 14-15-1 10-6 15-14 15z"/><path d="M5 20c2-5 6-9 10-11"/></svg>
+          </div>
+          <div class="feature-title">Устойчивое развитие</div>
+          <div class="feature-desc">Greif предлагает экологичные решения на основе инновационных конструкций тары, которые позволяют использовать меньше сырья или экологичное сырьё без потери прочности и защитных свойств упаковки. Облегчённые барьерные канистры с уменьшённым углеродным следом помогают вам достигать собственных целей в области устойчивого развития.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5.5-3.6 9-8 10-4.4-1-8-4.5-8-10V6l8-4z"/></svg>
+          </div>
+          <div class="feature-title">Барьерная технология</div>
+          <div class="feature-desc">Greif предлагает широкий спектр надёжных решений, эффективно снижающих риски проницаемости, миграции химических веществ и вреда для окружающей среды. Барьерный слой COEX продлевает срок годности продукта, защищает его от внешних воздействий и не позволяет опасным парам и запахам выходить наружу.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><circle cx="9" cy="6" r="2" fill="white" stroke="none"/><line x1="4" y1="12" x2="20" y2="12"/><circle cx="15" cy="12" r="2" fill="white" stroke="none"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="18" r="2" fill="white" stroke="none"/></svg>
+          </div>
+          <div class="feature-title">Кастомизация</div>
+          <div class="feature-desc">От небольших доработок до смелых решений — наши специалисты создают индивидуальную тару, точно отражающую особенности вашего продукта и бренда. Канистры Greif проектируются с учётом удобства использования: разные объёмы, варианты ручек и горловин для лёгкого хранения, транспортировки и розлива.</div>
+        </div>
+      </div>
+    </div>
+    ` : ''}
+
     <div class="product-tabs">
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="can-desc">ОПИСАНИЕ</button>
-        <button class="tab-btn" data-tab="can-specs">СПЕЦИФИКАЦИИ</button>
+        <button class="tab-btn" data-tab="can-specs">ХАРАКТЕРИСТИКИ</button>
+        <button class="tab-btn" data-tab="can-construction">КОНСТРУКЦИЯ</button>
+        <button class="tab-btn" data-tab="can-custom">БРЕНДИРОВАНИЕ</button>
+        <button class="tab-btn" data-tab="can-logistics">ЛОГИСТИКА</button>
       </div>
+
       <div class="tab-content active" id="tab-can-desc">
-        <p>Компания Greif начала производить в России пластиковые канистры с 2022 года. Площадка по выпуску канистр находится в Индустриальном парке Ворсино Калужской области. Канистры выпускаются в двух вариантах — стандартные полиэтиленовые и многослойные с барьерным слоем COEX, — что позволяет подобрать тару под требования конкретного продукта.</p>
-
-        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Барьерная технология COEX</h3>
-        <p>Многослойные канистры COEX отличаются от стандартных полиэтиленовых наличием дополнительного барьерного слоя, который обеспечивает два ключевых защитных свойства тары:</p>
-        <ul style="margin:14px 0 0;padding-left:20px;line-height:1.8">
-          <li><strong style="color:var(--text-dark)">Защита от растворения</strong> — предотвращает деформацию тары и миграцию химикатов сквозь пластик.</li>
-          <li><strong style="color:var(--text-dark)">Блокировка запахов и газов</strong> — не даёт запаху выходить наружу, а кислороду проникать внутрь, защищая содержимое от окисления.</li>
-        </ul>
-
-        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Где применяются</h3>
-        <ul style="margin:0;padding-left:20px;line-height:1.8">
-          <li><strong style="color:var(--text-dark)">Автохимия и ГСМ</strong> — розлив бензина, масел, растворителей (ацетон, толуол) и других летучих жидкостей.</li>
-          <li><strong style="color:var(--text-dark)">Агрохимия</strong> — фасовка агрессивных пестицидов и удобрений.</li>
-          <li><strong style="color:var(--text-dark)">Промышленность</strong> — краски, лаки и химически чувствительные продукты.</li>
-        </ul>
+        <p>Компания Greif начала производить в России пластиковые канистры с 2022 года. Площадка по выпуску канистр находится в Индустриальном парке Ворсино Калужской области. Канистры изготавливаются из качественного первичного сырья, что обеспечивает стабильные характеристики, прочность и долгий срок службы тары. Канистры выпускаются в двух вариантах — стандартные полиэтиленовые и многослойные с барьерным слоем COEX, — что позволяет подобрать тару под требования конкретного продукта.</p>
 
         <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Технология соэкструзии</h3>
         <p>Соэкструзия — процесс одновременного выдавливания нескольких полимеров через одну формующую головку, позволяющий объединить свойства разных материалов в одном изделии. Каждый полимер плавится в отдельном экструдере, расплавы соединяются в общей головке, образуя единую многослойную структуру, которая затем охлаждается и затвердевает. Так каждый слой канистры отвечает за собственную характеристику — прочность, эластичность или барьерную защиту.</p>
 
-        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Крышка с индукционной запайкой</h3>
-        <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
-
-        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Упаковка стрейч-худ</h3>
-        <p>Для упаковки паллет с канистрами используется стрейч-худ — эластичный полимерный рукав, который натягивается на груз без нагрева и усадки. Он обеспечивает полную герметичность паллеты, надёжно фиксирует канистры от сдвига и падения при транспортировке, а монолитная плёнка без прорезей делает любую попытку несанкционированного доступа сразу заметной. Процесс упаковки при этом автоматизирован, экономичен и не требует высоких температур или газа.</p>
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:36px 0 12px">Производство на итальянском оборудовании Magic MP</h3>
+        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px">
+          <div style="flex:1 1 380px;min-width:280px">
+            <img src="assets/canisters/magic-mp-machine.jpg" alt="Выдувная машина Magic MP на производстве канистр" style="width:100%;height:auto;display:block;border-radius:24px;box-shadow:0 10px 32px rgba(0,0,0,0.16)">
+          </div>
+          <div style="flex:1 1 380px;min-width:280px">
+            <p style="margin-bottom:16px">Канистры производятся на современном итальянском оборудовании Magic MP — полностью электрических выдувных машинах с сервоприводами, проверенных годами эксплуатации.</p>
+            <div class="feature-list">
+              <div class="feature-list-item"><div class="feature-bullet"></div>Точная геометрия каждого изделия</div>
+              <div class="feature-list-item"><div class="feature-bullet"></div>Стабильное качество от партии к партии</div>
+              <div class="feature-list-item"><div class="feature-bullet"></div>Экономия электроэнергии до 50%</div>
+            </div>
+          </div>
+        </div>
+        <div class="features-grid" style="margin-top:28px">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+            </div>
+            <div class="feature-title">Стабильное качество</div>
+            <div class="feature-desc">Высокоточное итальянское оборудование с сервоприводами — каждая канистра идентична предыдущей.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
+            </div>
+            <div class="feature-title">Низкая цена</div>
+            <div class="feature-desc">Полностью электрический привод экономит до 50% энергии — мы не закладываем лишние расходы в стоимость.</div>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div class="feature-title">Сроки</div>
+            <div class="feature-desc">Оборудование работает надёжно и без сбоев, простоев нет — заказы выполняются точно в срок.</div>
+          </div>
+        </div>
       </div>
+
       <div class="tab-content" id="tab-can-specs">
         <table style="width:100%;border-collapse:collapse;font-size:14px">
           <tbody>
-            ${[['Ёмкость','5 литров'],['Цвет','Белый'],['Технология','Метод ко-экструзии'],['Горловина','63 мм, фольга для индукционной запайки']].map(([k,v]) =>
+            ${[['Ёмкость','5 литров'],['Цвет','Белый, бесцветный'],['Технология','Метод ко-экструзии'],['Горловина','63 мм, фольга для индукционной запайки'],['Масса изделия, кг','0,021 ± 0,001'],['Высота, мм (с обрывным кольцом)','32,5 ± 2'],['Внутренний диаметр с резьбой, мм','60 ± 2'],['Внешний диаметр самой широкой части, мм','71 ± 2']].map(([k,v]) =>
               `<tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 0;color:var(--text-muted);width:40%">${k}</td><td style="padding:11px 0;color:var(--text-dark);font-weight:500">${v}</td></tr>`
             ).join('')}
           </tbody>
         </table>
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:32px 0 12px">Чертёж</h3>
+        <div style="text-align:center;margin:16px 0">
+          <img src="assets/canisters/kanistra-chertez.png" alt="Чертёж канистры с размерами" style="max-width:100%;height:auto;border:1px solid var(--border);border-radius:6px;padding:8px;background:#fafafa">
+        </div>
+      </div>
+
+      <div class="tab-content" id="tab-can-construction">
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:0 0 12px">Крышка с индукционной запайкой</h3>
+        <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
+      </div>
+
+      <div class="tab-content" id="tab-can-custom">
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:0 0 12px">Нанесение рельефного логотипа заказчика на корпус изделия</h3>
+        <p>Рельефная маркировка на боковине канистры — это двойная выгода: надежная антиподдельная защита и дополнительная рекламная площадь. Логотип на таре обеспечивает постоянную видимость бренда на складе, в пути и на витрине, делая вашу продукцию легко узнаваемой без лишних усилий.</p>
+      </div>
+
+      <div class="tab-content" id="tab-can-logistics">
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:0 0 12px">Упаковка стрейч-худ</h3>
+        <p>Для упаковки паллет с канистрами используется стрейч-худ — эластичный полимерный рукав, который натягивается на груз без нагрева и усадки. Он обеспечивает полную герметичность паллеты, надёжно фиксирует канистры от сдвига и падения при транспортировке, а монолитная плёнка без прорезей делает любую попытку несанкционированного доступа сразу заметной. Процесс упаковки при этом автоматизирован, экономичен и не требует высоких температур или газа.</p>
       </div>
     </div>
     ${_managerCard('АС', 'Александр Седов', '+79033703111', '+7 (903) 370-31-11', 'Aleksandr.Sedov@greif.com')}
   </div>
-</div>`,
+</div>`;
+  },
 
   clover: () => `
 <div class="page">
@@ -1965,8 +2027,7 @@ const PAGES = {
                   ['Диаметр заливной горловины','200 мм'],
                   ['Масса кловертейнера в сборе','90 ±5 кг'],
                   ['Материал внутренних вкладышей','Антиадгезионная бумага'],
-                  ['Сливные краны','по запросу'],
-                  ['Сертификация','Сертификат ООН UN11G/Z/'],
+                  ['Сертификация','по запросу'],
                   ['Поставка (пустые контейнеры)','Еврофура: 44 шт.'],
                 ].map(([k,v]) =>
                   `<tr style="border-bottom:1px solid var(--border)"><td style="padding:11px 0;color:var(--text-muted);width:55%">${k}</td><td style="padding:11px 0;color:var(--text-dark);font-weight:500">${v}</td></tr>`
@@ -1978,11 +2039,15 @@ const PAGES = {
         </div>
         <div style="border-top:1px solid var(--border);padding-top:28px">
           <h3 style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-primary);margin:0 0 16px">ПРИМЕНЕНИЕ</h3>
-          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 35°C.</p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 65°C.</p>
           <p style="font-size:14px;font-weight:600;color:var(--text-dark);margin:0 0 10px">Преимущества использования кловертейнеров:</p>
           <ul style="font-size:14px;color:var(--text-muted);line-height:1.9;margin:0 0 16px;padding-left:20px">
             <li>низкая стоимость упаковки на единицу продукции;</li>
-            <li>возможность использования полуавтоматической установки налива в кловертейнер, что позволяет сократить капитальные инвестиции на организацию затаривания.</li>
+            <li>возможность использования полуавтоматической установки налива в кловертейнер, что позволяет сократить капитальные инвестиции на организацию затаривания;</li>
+            <li>компактная и устойчивая форма позволяет плотно штабелировать кловертейнеры при хранении и транспортировке, увеличивая загрузку транспортного средства;</li>
+            <li>поставка еврофурой — 20 шт. за рейс, что снижает удельные транспортные расходы на единицу продукции;</li>
+            <li>исключает необходимость строительства и содержания битумохранилищ и специализированного парка вагонов-цистерн;</li>
+            <li>отгрузка конечным потребителям осуществляется напрямую со склада промежуточного хранения, что упрощает логистическую цепочку.</li>
           </ul>
           <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Фасовка в кловертейнеры осуществляется непосредственно на НПЗ и далее происходит отгрузка битума конечным потребителям со склада промежуточного хранения. Организация цепи поставок битумов по данной схеме исключает необходимость обустройства битумохранилищ, расходов на нагрев битума при перевалке, полностью исключает потери вследствие недовыгруза железнодорожных цистерн, а также их пропарку.</p>
           <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">Использование кловертейнеров позволяет обеспечить сохранность качества битума за счет того, что он разогревается один раз непосредственно на асфальтобетоном заводе, в то время как традиционные способы транспортировки подразумевают многократные циклы разогрева при погрузке-выгрузке. Вместе с этим достигается и экономия энергоресурсов, а также продление срока службы дорожного полотна за счет пониженного окисления материала.</p>

@@ -69,10 +69,6 @@ function render() {
     }, 50);
   }
 
-  if (currentPage === 'canisters') {
-    setTimeout(() => initCanCarousel(), 50);
-  }
-
   if (currentPage === 'vacancies') {
     setTimeout(() => initVacancyTabs(), 50);
   }
@@ -81,6 +77,10 @@ function render() {
     const section = pendingAboutSection;
     pendingAboutSection = null;
     setTimeout(() => initAboutNav(section), 50);
+  }
+
+  if (currentPage === 'canisters') {
+    setTimeout(() => initCanisterScale(), 50);
   }
 
   if (currentPage === 'contact') {
@@ -200,65 +200,6 @@ function steelCarouselGoTo(idx) {
   _scRender();
 }
 
-/* ── CAROUSEL: Canisters ── */
-let _ccIdx = 0;
-const _CC_TOTAL = 3;
-const _CC_INTERVAL = 2000;
-let _ccTimer = null;
-
-function _ccStartAuto() {
-  _ccStopAuto();
-  _ccTimer = setInterval(() => canCarouselMove(1), _CC_INTERVAL);
-}
-
-function _ccStopAuto() {
-  if (_ccTimer) { clearInterval(_ccTimer); _ccTimer = null; }
-}
-
-function _ccRender() {
-  const track = document.getElementById('canCarouselTrack');
-  const counter = document.getElementById('canCarouselCounter');
-  const dots = document.querySelectorAll('#canCarouselDots .carousel-dot');
-  if (track) track.style.transform = `translateX(${-_ccIdx * 100}%)`;
-  if (counter) counter.textContent = `${_ccIdx + 1} / ${_CC_TOTAL}`;
-  dots.forEach((d, i) => d.classList.toggle('active', i === _ccIdx));
-}
-
-function canCarouselMove(dir) {
-  _ccIdx = (_ccIdx + dir + _CC_TOTAL) % _CC_TOTAL;
-  _ccRender();
-}
-
-function canCarouselGoTo(idx) {
-  _ccIdx = idx;
-  _ccStartAuto();
-  _ccRender();
-}
-
-function initCanCarousel() {
-  _ccIdx = 0;
-  _ccRender();
-
-  const wrap = document.querySelector('#canCarouselTrack')?.closest('.carousel-track-wrap');
-  if (!wrap) return;
-
-  wrap.addEventListener('mouseenter', _ccStopAuto);
-  wrap.addEventListener('mouseleave', _ccStartAuto);
-
-  let startX = 0;
-  wrap.addEventListener('touchstart', e => {
-    startX = e.touches[0].clientX;
-    _ccStopAuto();
-  }, { passive: true });
-  wrap.addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) > 40) canCarouselMove(dx < 0 ? 1 : -1);
-    _ccStartAuto();
-  }, { passive: true });
-
-  _ccStartAuto();
-}
-
 const STEEL_REGION_MANAGERS = [
   { region: 'Амурская область', name: 'Руслан Андреев', phone: '+7 (917) 253-42-36', email: 'Ruslan.Andreev@greif.com' },
   { region: 'Алтайский край', name: 'Алексей Кузьмин', phone: '+7 (913) 988-06-48', email: 'Aleksei.Kuzmin@greif.com' },
@@ -367,6 +308,131 @@ function setSteelManager(region) {
   const emailSpan = emailEl.querySelector('span');
   if (emailSpan) emailSpan.textContent = m.email; else emailEl.childNodes[emailEl.childNodes.length - 1].textContent = m.email;
   emailEl.href = 'mailto:' + m.email;
+}
+
+// Мерная шкала на странице "Канистры" — зелёная полупрозрачная полоса "поднимается" при попадании в область видимости.
+// Добавь ?calibrate к адресу сайта, чтобы включить режим ручной настройки положения полосы (перетаскиванием).
+function initCanisterScale() {
+  const demo = document.getElementById('canister-scale-demo');
+  const img = document.getElementById('canister-scale-img');
+  const line = document.getElementById('canister-scale-line');
+  if (!demo || !img || !line) return;
+
+  const calibrating = new URLSearchParams(location.search).has('calibrate');
+  document.body.classList.toggle('calibrate-mode', calibrating);
+
+  if (calibrating) {
+    demo.classList.add('in-view'); // показываем полосу сразу, без ожидания скролла
+    initCanisterScaleDrag(demo, img, line);
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          demo.classList.add('in-view');
+          io.unobserve(demo);
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(demo);
+  }
+
+  // Клик по картинке печатает в консоль % координаты под то место, куда кликнули — быстрый способ подсмотреть точку.
+  img.addEventListener('click', function(e) {
+    const rect = img.getBoundingClientRect();
+    const left = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+    const top = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+    console.log(`{ top: ${top}, left: ${left} }`);
+  });
+}
+
+function initCanisterScaleDrag(demo, img, line) {
+  const readout = document.getElementById('canister-scale-readout');
+  const copyBtn = document.getElementById('canister-scale-copy');
+
+  function current() {
+    const top = parseFloat(line.style.top);
+    const height = parseFloat(line.style.height);
+    const left = parseFloat(line.style.left);
+    const width = parseFloat(line.style.width);
+    return { top, bottom: top + height, left, width };
+  }
+
+  function updateReadout() {
+    const v = current();
+    const text = `{ top: ${v.top.toFixed(1)}, bottom: ${v.bottom.toFixed(1)}, left: ${v.left.toFixed(1)}, width: ${v.width.toFixed(1)} }`;
+    if (readout) readout.textContent = text;
+    return text;
+  }
+  updateReadout();
+
+  function clamp(v, min, max) { return Math.max(min, Math.min(max, v)); }
+
+  function dragHandle(handleType) {
+    return function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const rect = img.getBoundingClientRect();
+      function onMove(ev) {
+        const pct = clamp((ev.clientY - rect.top) / rect.height * 100, 0, 100);
+        const v = current();
+        if (handleType === 'top') {
+          const newTop = clamp(pct, 0, v.bottom - 1);
+          line.style.top = newTop + '%';
+          line.style.height = (v.bottom - newTop) + '%';
+        } else {
+          const newBottom = clamp(pct, v.top + 1, 100);
+          line.style.height = (newBottom - v.top) + '%';
+        }
+        updateReadout();
+      }
+      function onUp() {
+        document.removeEventListener('pointermove', onMove);
+        document.removeEventListener('pointerup', onUp);
+      }
+      document.addEventListener('pointermove', onMove);
+      document.addEventListener('pointerup', onUp);
+    };
+  }
+
+  line.querySelector('.scale-handle-top').addEventListener('pointerdown', dragHandle('top'));
+  line.querySelector('.scale-handle-bottom').addEventListener('pointerdown', dragHandle('bottom'));
+
+  // Перетаскивание всей полосы — двигает left (по горизонтали) и целиком top/bottom (по вертикали)
+  line.addEventListener('pointerdown', function(e) {
+    if (e.target.classList.contains('scale-handle')) return;
+    e.preventDefault();
+    const rect = img.getBoundingClientRect();
+    const start = current();
+    const startXPct = (e.clientX - rect.left) / rect.width * 100;
+    const startYPct = (e.clientY - rect.top) / rect.height * 100;
+    function onMove(ev) {
+      const xPct = (ev.clientX - rect.left) / rect.width * 100;
+      const yPct = (ev.clientY - rect.top) / rect.height * 100;
+      const dx = xPct - startXPct;
+      const dy = yPct - startYPct;
+      const height = start.bottom - start.top;
+      const newTop = clamp(start.top + dy, 0, 100 - height);
+      line.style.top = newTop + '%';
+      line.style.left = clamp(start.left + dx, 0, 100) + '%';
+      updateReadout();
+    }
+    function onUp() {
+      document.removeEventListener('pointermove', onMove);
+      document.removeEventListener('pointerup', onUp);
+    }
+    document.addEventListener('pointermove', onMove);
+    document.addEventListener('pointerup', onUp);
+  });
+
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function() {
+      const text = updateReadout();
+      navigator.clipboard.writeText(text).then(() => {
+        copyBtn.textContent = 'Скопировано!';
+        setTimeout(() => { copyBtn.textContent = 'Скопировать'; }, 1200);
+      }).catch(() => {});
+    });
+  }
 }
 
 // region combobox — searchable dropdown replacing native <select>
