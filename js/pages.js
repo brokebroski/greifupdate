@@ -1114,7 +1114,6 @@ const PAGES = {
             </tbody>
           </table>
         </div>
-        <p style="margin-top:16px;font-size:13px;color:var(--text-muted)">По требованию потребителя бочка может поставляться с внутренним защитным покрытием, с горловинами 2&quot; и ¾&quot; или без горловин.</p>
       </div>
       <div class="tab-content" id="tab-1a2-coatings">
         <p>Бочка окрашивается в один цвет по системе RAL.</p>
@@ -1917,23 +1916,14 @@ const PAGES = {
         </div>
         <div class="features-grid" style="margin-top:28px">
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-            </div>
             <div class="feature-title">Стабильное качество</div>
             <div class="feature-desc">Высокоточное итальянское оборудование с сервоприводами — каждая канистра идентична предыдущей.</div>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h6l-1 8 9-12h-6l1-8z"/></svg>
-            </div>
             <div class="feature-title">Низкая цена</div>
             <div class="feature-desc">Полностью электрический привод экономит до 50% энергии — мы не закладываем лишние расходы в стоимость.</div>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
-            </div>
             <div class="feature-title">Сроки</div>
             <div class="feature-desc">Оборудование работает надёжно и без сбоев, простоев нет — заказы выполняются точно в срок.</div>
           </div>
