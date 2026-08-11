@@ -1,5 +1,56 @@
 /* site_structure/styles.css */
 
+/* ── ЛОКАЛЬНЫЕ ШРИФТЫ (вместо Google Fonts — тот CDN блокируется без VPN в РФ) ── */
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('assets/fonts/roboto-300.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/roboto-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('assets/fonts/roboto-500.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/roboto-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('assets/fonts/roboto-900.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('assets/fonts/roboto-condensed-400.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('assets/fonts/roboto-condensed-700.woff2') format('woff2');
+}
+
 /* ── КАРТА РОССИИ С ТОЧКАМИ ── */
 .map-container {
   position: relative;
