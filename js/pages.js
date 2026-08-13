@@ -1015,13 +1015,13 @@ const PAGES = {
             <div class="manager-name" id="steelManagerName">Марина Леонова</div>
           </div>
           <div class="manager-contacts">
-            <a href="tel:+79872309971" id="steelManagerPhone">
+            <a href="tel:+74959335947" id="steelManagerPhone">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.59 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
-              <span>+7 (987) 230-99-71</span>
+              <span>8 (495) 933-59-47</span>
             </a>
-            <a href="mailto:Marina.Leonova@greif.com" id="steelManagerEmail">
+            <a href="mailto:Moscow.office@greif.com" id="steelManagerEmail">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>Marina.Leonova@greif.com</span>
+              <span>Moscow.office@greif.com</span>
             </a>
           </div>
         </div>
@@ -1175,13 +1175,13 @@ const PAGES = {
             <div class="manager-name" id="steelManagerName">Марина Леонова</div>
           </div>
           <div class="manager-contacts">
-            <a href="tel:+79872309971" id="steelManagerPhone">
+            <a href="tel:+74959335947" id="steelManagerPhone">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13 19.79 19.79 0 0 1 1.62 4.4 2 2 0 0 1 3.59 2.2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 17z"/></svg>
-              <span>+7 (987) 230-99-71</span>
+              <span>8 (495) 933-59-47</span>
             </a>
-            <a href="mailto:Marina.Leonova@greif.com" id="steelManagerEmail">
+            <a href="mailto:Moscow.office@greif.com" id="steelManagerEmail">
               <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>Marina.Leonova@greif.com</span>
+              <span>Moscow.office@greif.com</span>
             </a>
           </div>
         </div>
@@ -1879,7 +1879,7 @@ const PAGES = {
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="can-desc">ОПИСАНИЕ</button>
         <button class="tab-btn" data-tab="can-specs">ХАРАКТЕРИСТИКИ</button>
-        <button class="tab-btn" data-tab="can-construction">КОНСТРУКЦИЯ</button>
+        <button class="tab-btn" data-tab="can-construction">УКУПОРКА</button>
         <button class="tab-btn" data-tab="can-custom">БРЕНДИРОВАНИЕ</button>
         <button class="tab-btn" data-tab="can-logistics">ЛОГИСТИКА</button>
       </div>
@@ -1890,11 +1890,11 @@ const PAGES = {
         <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:28px 0 12px">Технология соэкструзии</h3>
         <p>Соэкструзия — процесс одновременного выдавливания нескольких полимеров через одну формующую головку, позволяющий объединить свойства разных материалов в одном изделии. Каждый полимер плавится в отдельном экструдере, расплавы соединяются в общей головке, образуя единую многослойную структуру, которая затем охлаждается и затвердевает. Так каждый слой канистры отвечает за собственную характеристику — прочность, эластичность или барьерную защиту.</p>
 
+        <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:36px 0 12px">Прозрачная мерная полоса на изделии</h3>
+        <p style="margin-bottom:16px">Прозрачная мерная полоса на корпусе канистры позволяет отслеживать остаток фасованного продукта, даже если сама тара окрашена и непрозрачна.</p>
+
         <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:36px 0 12px">Производство на итальянском оборудовании Magic MP</h3>
-        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap;margin-bottom:8px">
-          <div style="flex:1 1 380px;min-width:280px">
-            <img src="assets/canisters/magic-mp-machine.jpg" alt="Выдувная машина Magic MP на производстве канистр" style="width:100%;height:auto;display:block;border-radius:24px;box-shadow:0 10px 32px rgba(0,0,0,0.16)">
-          </div>
+        <div style="display:flex;gap:32px;align-items:stretch;flex-wrap:wrap;margin-bottom:8px">
           <div style="flex:1 1 380px;min-width:280px">
             <p style="margin-bottom:16px">Канистры производятся на современном итальянском оборудовании Magic MP — полностью электрических выдувных машинах с сервоприводами, проверенных годами эксплуатации.</p>
             <div class="feature-list">
@@ -1902,6 +1902,9 @@ const PAGES = {
               <div class="feature-list-item"><div class="feature-bullet"></div>Стабильное качество от партии к партии</div>
               <div class="feature-list-item"><div class="feature-bullet"></div>Экономия электроэнергии до 50%</div>
             </div>
+          </div>
+          <div style="flex:1 1 380px;min-width:280px">
+            <img src="assets/canisters/magic-mp-machine.jpg" alt="Выдувная машина Magic MP на производстве канистр" style="width:100%;height:100%;object-fit:cover;display:block;border-radius:24px;box-shadow:0 10px 32px rgba(0,0,0,0.16)">
           </div>
         </div>
       </div>
@@ -1922,7 +1925,15 @@ const PAGES = {
 
       <div class="tab-content" id="tab-can-construction">
         <h3 style="font-family:'Roboto',sans-serif;font-size:18px;font-weight:700;color:var(--text-dark);margin:0 0 12px">Крышка с индукционной запайкой</h3>
-        <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
+        <div style="display:flex;gap:32px;align-items:flex-start;flex-wrap:wrap">
+          <div style="flex:1 1 380px;min-width:280px">
+            <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
+          </div>
+          <div style="flex:1 1 320px;min-width:240px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+            <img src="assets/canisters/kryshka-odna.png" alt="Крышка канистры с индукционной запайкой" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.05s">
+            <img src="assets/canisters/kryshki-dve.png" alt="Крышки канистр в сборе" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.2s">
+          </div>
+        </div>
       </div>
 
       <div class="tab-content" id="tab-can-custom">
@@ -1946,7 +1957,7 @@ const PAGES = {
     <div class="page-hero-inner">
       <a href="#" onclick="navigate('products');return false;" style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.65);margin-bottom:10px;display:inline-flex;align-items:center;gap:6px;text-decoration:none;opacity:0.9">← Продукция</a>
       <h1 style="font-family:'Roboto',sans-serif;font-size:36px;font-weight:900;color:#fff;letter-spacing:-0.02em">Кловертейнеры</h1>
-      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Clovertainer® — картонный IBC объёмом 1000 л для битума</p>
+      <p style="font-size:14px;color:rgba(255,255,255,0.55)">Clovertainer® — картонный среднетоннажный контейнер (IBC) объёмом 1000 л, в трёх исполнениях</p>
     </div>
   </div>
   <div class="product-detail-page">
@@ -1955,18 +1966,42 @@ const PAGES = {
         <img src="https://www.greif.ru/wp-content/uploads/klover.png" alt="Кловертейнер Greif" style="max-width:380px;max-height:380px;width:100%;object-fit:contain;">
       </div>
       <div class="product-info-col">
-        <p class="product-description">Clovertainer® — среднетоннажный контейнер из многослойного картона ёмкостью 1000 литров. Кловертейнеры успешно применяются для транспортировки и хранения битума и битумных мастик.</p>
+        <p class="product-description">Clovertainer® — среднетоннажный контейнер из многослойного картона ёмкостью 1000 литров. Выпускается в трёх исполнениях — для нефтепродуктов (в т.ч. битума), сыпучих и жидких продуктов — по ТУ 3177-002-61207594-2016.</p>
         <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
       </div>
     </div>
     <div class="product-tabs">
       <div class="tab-headers">
         <button class="tab-btn active" data-tab="clv-desc">ОПИСАНИЕ</button>
+        <button class="tab-btn" data-tab="clv-types">ИСПОЛНЕНИЯ</button>
         <button class="tab-btn" data-tab="clv-specs">СПЕЦИФИКАЦИИ</button>
       </div>
       <div class="tab-content active" id="tab-clv-desc">
         <p>Кловертейнер состоит из поддона и крышки, снабжённой заливным отверстием, соединённых вертикальными стойками и обечайкой. Производство кловертейнеров компании Greif в России началось с 2010 года.</p>
         <p>В отличие от железнодорожных цистерн и битумовозов, затаривание битума в кловертейнеры обеспечивает сокращение транспортных расходов до 15%.</p>
+        <p>Базовая конструкция едина для всех исполнений — различается только внутреннее оснащение под тип упаковываемого продукта (см. вкладку «Исполнения»). Каждая партия контейнеров проходит приёмо-сдаточные испытания (внешний вид, габариты, масса), периодически — испытания на герметичность стыков, прочность при штабелировании, подъёме вилочным погрузчиком и падении.</p>
+      </div>
+      <div class="tab-content" id="tab-clv-types">
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+          <div class="service-card" style="cursor:default">
+            <div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><rect x="6" y="3" width="12" height="18" rx="2" stroke="#fff" stroke-width="2"/><line x1="6" y1="8" x2="18" y2="8" stroke="#fff" stroke-width="2"/><line x1="6" y1="16" x2="18" y2="16" stroke="#fff" stroke-width="2"/></svg></div>
+            <div class="service-card-title">СК 1-Н</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-primary);margin:-8px 0 12px">Для нефтепродуктов</div>
+            <div class="service-card-desc">Заливка продукта с температурой до 165°C (в зависимости от типа продукта): битум БНД 90/130 — не выше 135°C, ПБВ-160 — не выше 165°C, битумные мастики, гудроны. Также применяется для парафинов (плавление ≥60°C) и церезинов (каплепадение ≥70°C). Комплектуется антиадгезионным покрытием внутренней поверхности.</div>
+          </div>
+          <div class="service-card" style="cursor:default">
+            <div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.6"><circle cx="7" cy="17" r="2"/><circle cx="13" cy="17" r="2"/><circle cx="19" cy="17" r="2"/><circle cx="10" cy="11" r="2"/><circle cx="16" cy="11" r="2"/><circle cx="13" cy="5" r="2"/></svg></div>
+            <div class="service-card-title">СК 2-С</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-primary);margin:-8px 0 12px">Для сыпучих продуктов</div>
+            <div class="service-card-desc">Комплектуется герметичным мешком-вкладышем из полимерных материалов, защищающим сыпучий продукт от влаги и загрязнений при хранении и транспортировке. Применяется по согласованию с Заказчиком при условии обеспечения сохранности продукта.</div>
+          </div>
+          <div class="service-card" style="cursor:default">
+            <div class="service-card-icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M12 2C12 2 5 10 5 15a7 7 0 0014 0c0-5-7-13-7-13z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="service-card-title">СК 3-Ж</div>
+            <div style="font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-primary);margin:-8px 0 12px">Для жидких продуктов</div>
+            <div class="service-card-desc">Мешок-вкладыш снабжён заливным и сливным устройством, что позволяет заполнять и сливать продукт без разгерметизации контейнера. Применяется по согласованию с Заказчиком при условии обеспечения сохранности продукта.</div>
+          </div>
+        </div>
       </div>
       <div class="tab-content" id="tab-clv-specs">
         <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:32px;flex-wrap:wrap">
@@ -1991,7 +2026,11 @@ const PAGES = {
                   ['Ширина','1140 мм'],
                   ['Высота','1080 мм'],
                   ['Диаметр заливной горловины','200 мм'],
-                  ['Масса кловертейнера в сборе','90 ±5 кг'],
+                  ['Масса кловертейнера в сборе','90 ±5 кг (не более 100 кг по ТУ)'],
+                  ['Грузоподъёмность','не более 1000 кг'],
+                  ['Штабелирование заполненных','2 яруса'],
+                  ['Штабелирование порожних','6 ярусов'],
+                  ['Гарантия изготовителя','12 месяцев со дня изготовления'],
                   ['Материал внутренних вкладышей','Антиадгезионная бумага'],
                   ['Сертификация','по запросу'],
                   ['Поставка (пустые контейнеры)','Еврофура: 44 шт.'],
@@ -2005,7 +2044,7 @@ const PAGES = {
         </div>
         <div style="border-top:1px solid var(--border);padding-top:28px">
           <h3 style="font-family:'Roboto Condensed',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-primary);margin:0 0 16px">ПРИМЕНЕНИЕ</h3>
-          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 65°C.</p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Специальная модификация кловертейнера разработана для упаковки, транспортировки и хранения нефтяных битумов, битумных составов, сырья для производства битумов, гудронов, мастики и подобных им нефтепродуктов, имеющих температуру размягчения не ниже 65°C, а также парафинов и церезинов.</p>
           <p style="font-size:14px;font-weight:600;color:var(--text-dark);margin:0 0 10px">Преимущества использования кловертейнеров:</p>
           <ul style="font-size:14px;color:var(--text-muted);line-height:1.9;margin:0 0 16px;padding-left:20px">
             <li>низкая стоимость упаковки на единицу продукции;</li>
@@ -2016,11 +2055,12 @@ const PAGES = {
             <li>отгрузка конечным потребителям осуществляется напрямую со склада промежуточного хранения, что упрощает логистическую цепочку.</li>
           </ul>
           <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Фасовка в кловертейнеры осуществляется непосредственно на НПЗ и далее происходит отгрузка битума конечным потребителям со склада промежуточного хранения. Организация цепи поставок битумов по данной схеме исключает необходимость обустройства битумохранилищ, расходов на нагрев битума при перевалке, полностью исключает потери вследствие недовыгруза железнодорожных цистерн, а также их пропарку.</p>
-          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">Использование кловертейнеров позволяет обеспечить сохранность качества битума за счет того, что он разогревается один раз непосредственно на асфальтобетоном заводе, в то время как традиционные способы транспортировки подразумевают многократные циклы разогрева при погрузке-выгрузке. Вместе с этим достигается и экономия энергоресурсов, а также продление срока службы дорожного полотна за счет пониженного окисления материала.</p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0 0 16px">Использование кловертейнеров позволяет обеспечить сохранность качества битума за счет того, что он разогревается один раз непосредственно на асфальтобетоном заводе, в то время как традиционные способы транспортировки подразумевают многократные циклы разогрева при погрузке-выгрузке. Вместе с этим достигается и экономия энергоресурсов, а также продление срока службы дорожного полотна за счет пониженного окисления материала.</p>
+          <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin:0">После налива заполненные контейнеры выдерживают в один ярус на площадке остывания не менее 5 суток. Хранение — в крытых сухих помещениях либо на открытой площадке под навесом, защищающим от атмосферных осадков.</p>
         </div>
       </div>
     </div>
-    ${_managerCard('МЛ', 'Марина Леонова', '+79872309971', '+7 (987) 230-99-71', 'Marina.Leonova@greif.com')}
+    ${_managerCard('МЛ', 'Марина Леонова', '+74959335947', '8 (495) 933-59-47', 'Moscow.office@greif.com')}
   </div>
 </div>`,
 

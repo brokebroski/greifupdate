@@ -254,7 +254,7 @@ const STEEL_REGION_MANAGERS = [
   { region: 'Республика Мордовия', name: 'Руслан Андреев', phone: '+7 (917) 253-42-36', email: 'Ruslan.Andreev@greif.com' },
   { region: 'Республика Саха (Якутия)', name: 'Руслан Андреев', phone: '+7 (917) 253-42-36', email: 'Ruslan.Andreev@greif.com' },
   { region: 'Республика СО — Алания', name: 'Александр Седов', phone: '+7 (903) 370-31-11', email: 'Aleksandr.Sedov@greif.com' },
-  { region: 'Республика Татарстан', name: 'Руслан Андреев', phone: '+7 (982) 480-03-02', email: 'Ruslan.Andreev@greif.com' },
+  { region: 'Республика Татарстан', name: 'Руслан Андреев', phone: '+7 (982) 480-03-02', email: 'marina.aleshina@greif.com' },
   { region: 'Республика Тыва', name: 'Алексей Кузьмин', phone: '+7 (913) 988-06-48', email: 'Aleksei.Kuzmin@greif.com' },
   { region: 'Республика Удмуртия', name: 'Руслан Андреев', phone: '+7 (917) 253-42-36', email: 'Ruslan.Andreev@greif.com' },
   { region: 'Республика Хакасия', name: 'Алексей Кузьмин', phone: '+7 (913) 988-06-48', email: 'Aleksei.Kuzmin@greif.com' },
@@ -289,7 +289,7 @@ const STEEL_REGION_MANAGERS = [
   { region: 'Кыргызстан', name: 'Руслан Андреев', phone: '+7 (917) 253-42-36', email: 'Ruslan.Andreev@greif.com' },
 ];
 
-const STEEL_DEFAULT_MANAGER = { name: 'Марина Леонова', phone: '+7 (987) 230-99-71', email: 'Marina.Leonova@greif.com' };
+const STEEL_DEFAULT_MANAGER = { name: 'Марина Леонова', phone: '+7 (495) 933-59-47', email: 'Moscow.office@greif.com' };
 
 function getSteelManagerInitials(name) {
   return name.split(' ').map(p => p[0]).slice(0, 2).join('');
@@ -323,7 +323,12 @@ function initCanisterScale() {
 
   if (calibrating) {
     demo.classList.add('in-view'); // показываем полосу сразу, без ожидания скролла
-    initCanisterScaleDrag(demo, img, line);
+    // Ждём полной загрузки картинки — иначе img.getBoundingClientRect() в первых расчётах перетаскивания даст неверные размеры
+    if (img.complete) {
+      initCanisterScaleDrag(demo, img, line);
+    } else {
+      img.addEventListener('load', () => initCanisterScaleDrag(demo, img, line), { once: true });
+    }
   } else {
     const io = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
