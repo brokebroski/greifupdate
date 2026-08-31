@@ -1930,8 +1930,8 @@ const PAGES = {
             <p>Крышка с индукционной запайкой обеспечивает абсолютную герметичность упаковки: прочно припаянная мембрана из фольги исключает протекание или испарение продукта, блокирует доступ кислорода и влаги и продлевает срок годности содержимого. Нарушение целостности фольги сразу заметно, что гарантирует контроль первого вскрытия и защищает горловину тары при транспортировке.</p>
           </div>
           <div style="flex:1 1 320px;min-width:240px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
-            <img src="assets/canisters/kryshka-odna.png" alt="Крышка канистры с индукционной запайкой" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.05s">
-            <img src="assets/canisters/kryshki-dve.png" alt="Крышки канистр в сборе" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.2s">
+            <img src="http://www.greif.ru/wp-content/uploads/kryshka1.png" alt="Крышка канистры с индукционной запайкой" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.05s">
+            <img src="http://www.greif.ru/wp-content/uploads/2kryshki.png" alt="Крышки канистр в сборе" class="construction-fade-img" style="max-width:220px;width:100%;height:auto;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,0.12);animation-delay:0.2s">
           </div>
         </div>
       </div>
