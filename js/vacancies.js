@@ -18,7 +18,6 @@ function renderVacanciesPage() {
         <div class="vacancy-card">
           <div class="vacancy-card-header">
             <h4>${v.title}</h4>
-            <span class="salary-badge">${v.salary}</span>
           </div>
           <div class="button-group">
             <button class="details-btn" onclick="openVacancyPopup(VACANCIES[${idx}])">Подробнее</button>
