@@ -392,6 +392,38 @@
   background: var(--green-secondary);
 }
 
+.product-cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.btn-instruction {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #fff;
+  color: var(--green-primary);
+  border: 2px solid var(--green-primary);
+  padding: 12px 24px;
+  font-weight: 700;
+  font-size: 13px;
+  line-height: 1.25;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  width: fit-content;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.btn-instruction:hover {
+  background: var(--green-primary);
+  color: #fff;
+}
+
 /* Табы */
 .product-tabs {
   margin: 48px 0;
