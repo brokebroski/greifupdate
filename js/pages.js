@@ -471,6 +471,17 @@ function _barrelClosureTab() {
   </div>`;
 }
 
+function _barrelLiningTab() {
+  return `<div style="max-width:680px">
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0 0 16px">
+      Внутренние покрытия используются для защиты от продуктов, которые могут вступать в реакцию с металлом — они исключают риск изменения свойств вашего продукта при контакте с поверхностью бочки и защищают саму тару от коррозии.
+    </p>
+    <p style="font-size:15px;color:var(--text-dark);line-height:1.8;margin:0">
+      Подбор конкретного типа покрытия зависит от химической природы перевозимого продукта. За более подробной информацией обращайтесь к менеджеру.
+    </p>
+  </div>`;
+}
+
 function _managerCard(initials, name, phone, phoneFormatted, email) {
   return `<div class="manager-card">
     <div class="manager-card-grid">
@@ -873,6 +884,7 @@ const PAGES = {
         <button class="tab-btn" data-tab="specs">СПЕЦИФИКАЦИИ</button>
         <button class="tab-btn" data-tab="coatings">ЦВЕТОВЫЕ РЕШЕНИЯ</button>
         <button class="tab-btn" data-tab="closure">УКУПОРКА</button>
+        <button class="tab-btn" data-tab="lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
       </div>
       <div class="tab-content active" id="tab-desc">
         <p>Стальная бочка с несъёмным верхом типа 1А1 — наш ключевой продукт. Используется для транспортировки жидких и вязких продуктов и веществ, не оказывающих активного воздействия на сталь. Основные сферы применения — химическая, нефтехимическая, металлургическая и лакокрасочная отрасли. Все бочки проходят многочисленные испытания, в том числе уникальную проверку на герметичность на гелиевом тестере.</p>
@@ -975,6 +987,9 @@ const PAGES = {
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="tab-content" id="tab-lining">
+        ${_barrelLiningTab()}
       </div>
     </div>
     <div class="manager-card" id="steel-manager-card">
@@ -1080,6 +1095,7 @@ const PAGES = {
         <button class="tab-btn" data-tab="1a2-specs">СПЕЦИФИКАЦИИ</button>
         <button class="tab-btn" data-tab="1a2-coatings">ЦВЕТОВЫЕ РЕШЕНИЯ</button>
         <button class="tab-btn" data-tab="1a2-closure">УКУПОРКА</button>
+        <button class="tab-btn" data-tab="1a2-lining">ВНУТРЕННИЕ ПОКРЫТИЯ</button>
       </div>
       <div class="tab-content active" id="tab-1a2-desc">
         <p>Бочка стальная со съёмным верхом типа 1А2 вместимостью 210 л изготовлена в соответствии с требованиями ГОСТ 13950. Крышка полностью снимается, обеспечивая удобный доступ к содержимому, и надёжно фиксируется запорным кольцом с рычажным замком и уплотнителем.</p>
@@ -1146,6 +1162,9 @@ const PAGES = {
       </div>
       <div class="tab-content" id="tab-1a2-closure">
         ${_barrelClosureTab()}
+      </div>
+      <div class="tab-content" id="tab-1a2-lining">
+        ${_barrelLiningTab()}
       </div>
     </div>
     <div class="manager-card" id="steel-manager-card">
