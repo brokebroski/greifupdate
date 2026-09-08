@@ -861,7 +861,10 @@ const PAGES = {
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">08ПС</div><div class="spec-card-label">Материал</div><div class="spec-card-desc">Холоднокатаная сталь · ISO 3574 / EN10130</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">7×/5×</div><div class="spec-card-label">Spiralon®</div><div class="spec-card-desc">Семи- или пятислойный закатной шов · с герметиком</div></div>
         </div>
-        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        <div class="product-cta-row">
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+          <a class="btn-instruction" href="https://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-ver.1.2-24.07.2026.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
+        </div>
       </div>
     </div>
     <div class="product-tabs">
@@ -1065,7 +1068,10 @@ const PAGES = {
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 610 мм</div><div class="spec-card-label">Стандартная</div><div class="spec-card-desc">Диаметр по запорному кольцу · стандартное исполнение</div></div>
           <div class="spec-card"><div class="spec-card-value" style="font-size:20px">Д 585 мм</div><div class="spec-card-label">Кримпированная</div><div class="spec-card-desc">Наружный диаметр · оптимально для ISO-контейнеров (морские)</div></div>
         </div>
-        <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+        <div class="product-cta-row">
+          <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
+          <a class="btn-instruction" href="https://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-ver.1.2-24.07.2026.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
+        </div>
       </div>
     </div>
     <div class="product-tabs">
