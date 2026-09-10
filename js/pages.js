@@ -874,7 +874,7 @@ const PAGES = {
         </div>
         <div class="product-cta-row">
           <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
-          <a class="btn-instruction" href="https://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-ver.1.2-24.07.2026.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
+          <a class="btn-instruction" href="http://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-1.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
         </div>
       </div>
     </div>
@@ -1085,7 +1085,7 @@ const PAGES = {
         </div>
         <div class="product-cta-row">
           <button class="btn-consult" onclick="openPopup('popup-request')">СДЕЛАТЬ ЗАПРОС</button>
-          <a class="btn-instruction" href="https://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-ver.1.2-24.07.2026.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
+          <a class="btn-instruction" href="http://www.greif.ru/wp-content/uploads/instruktsiya-GP-bochka-1.pdf" target="_blank" rel="noopener">Инструкция по эксплуатации продукции</a>
         </div>
       </div>
     </div>
